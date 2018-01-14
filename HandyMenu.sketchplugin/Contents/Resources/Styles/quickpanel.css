@@ -1,0 +1,32 @@
+body,
+html {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+	overflow: hidden;
+	-webkit-user-select: none;
+	background-color: #ECECEC;
+	box-sizing: border-box
+}
+
+ul#command-list {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0
+}
+
+ul#command-list li {
+	font-size: 14px;
+	padding: 3px 20px 3px 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
+}
+
+ul#command-list li:hover {
+	color: white;
+	background-color: #3F9BFE;
+	cursor: default;
+}

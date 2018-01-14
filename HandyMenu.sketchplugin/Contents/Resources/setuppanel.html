@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="./Styles/setuppanel.css" type="text/css">
+</head>
+
+<body>
+    <div id="header">
+        <img src="./images/icon_80.png" />
+        <h2>Setup Handy Menu</h2>
+        <p>Drag and drop commands you needed from one list to another</p>
+    </div>
+    <div id="lists">
+        <div id="left">
+            <h5>Your commands</h5>
+            <ul class="baselist" id="my-command-list">
+
+            </ul>
+        </div>
+        <div id="right">
+            <h5>All Commands</h5>
+            <ul id="all-command-list" class="baselist">
+
+            </ul>
+        </div>
+    </div>
+    <div id="footer">
+        <button onclick="closeWindow();">Cancel</button>
+        <button class="main" onclick="saveCommands();">Save</button>
+    </div>
+    <script type="text/javascript" src="./Scripts/Sortable.min.js"></script>
+    <script type="text/javascript" src="./Scripts/setuppanel.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+@media (-webkit-min-device-pixel-ratio:2) {
+    div {
+        border-width: 0.5px;
+    }
+}
+
+* {
+    -webkit-user-select: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background-color: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-end;
+}
+
+
+
+
+div#header {
+    background-color: #211253;
+    color: white;
+    height: 104px;
+    flex-basis: 104px;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+h2 {
+    padding: 24px 0 0 0;
+    margin: 0;
+}
+
+p {
+    padding: 0;
+    margin: 8px 0 0 0;
+    font-size: 15px;
+}
+
+div#header img {
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	float: left;
+	margin: 12px 24px;
+}
+
+
+div#footer {
+	background-color: #ECECEC;
+    flex-shrink: 1;
+    padding-right: 24px;
+    flex-basis: 72px;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+div#lists {
+	background-color: #ECECEC;
+    flex-shrink: 0.5;
+    flex-grow: 18;
+    flex-basis: 120px;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+div#left {
+	padding-right: 12px;
+}
+
+div#right {
+	padding-left: 12px;
+}
+
+div#lists div {
+    flex-grow: 1;
+    flex-basis: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+div#lists div h5 {
+	margin: 24px 0 12px 0;
+	flex-grow: 1px;
+}
+
+ul {
+	margin: 0;
+    flex-grow: 4;
+    padding: 0;
+    overflow-y: auto;
+    list-style-type: none;
+    border-radius: 3px;
+}
+
+ul li {
+    background-color: white;
+    font-size: 14px;
+    padding: 5px 0px 5px 12px;
+    margin: 3px 0;
+    white-space: nowrap;
+    border-radius: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+ul li:hover {
+    cursor: pointer;
+}
+
+i.delete-icon {
+    display: block;
+    float: right;
+    margin-right: 8px;
+    cursor: pointer;
+    font-style: normal;
+    color: #dadada;
+}
+
+i.delete-icon:hover {
+    color: #F40076;
+}
+
+.ghost {
+    background-color: #ECECEC;
+}
+
+.drag {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.chosen {
+    opacity: 0.9;
+}
+
+button {
+    cursor: pointer;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    height: 32px;
+    font-size: 13px;
+    padding: 8px 20px;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin-left: 8px;
+}
+
+button.main {
+    background-color: #65AFFF;
+    color: white;
+}
+
+button:active {
+    background-color: #58a8ff;
+}

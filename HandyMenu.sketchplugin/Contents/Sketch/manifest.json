@@ -1,0 +1,31 @@
+{
+  "author" : "Sergey Dmitriev",
+  "commands" : [
+    {
+      "script" : "showmenu.js",
+      "handler" : "onRun",
+      "shortcut" : "cmd 4",
+      "name" : "Show Handy Menu",
+      "identifier" : "show"
+    }, {
+      "script" : "setupmenu.js",
+      "handler" : "onRun",
+      "name" : "Setup Handy Menu",
+      "identifier" : "setup",
+      "shortcut" : "cmd option 4",
+    }
+  ],
+  "menu" : {
+    "items" : [
+      "show",
+      "setup"
+    ],
+    "title" : "Handy Menu"
+  },
+  "identifier" : "com.sergeishere.plugins.handymenu",
+  "version" : "1",
+  "description" : "Get quick access to all plugins you love",
+  "homepage": "",
+  "authorEmail" : "el.pajaro.sabio@gmail.com",
+  "name" : "Handy Menu"
+}
