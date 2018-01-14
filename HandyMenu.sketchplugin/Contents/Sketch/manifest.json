@@ -27,5 +27,6 @@
   "description" : "Get quick access to all plugins you love",
   "homepage": "",
   "authorEmail" : "el.pajaro.sabio@gmail.com",
-  "name" : "Handy Menu"
+  "name" : "Handy Menu",
+  "appcast": "https://raw.githubusercontent.com/sergeishere/Handy-Menu-Sketch-Plugin/master/appcast.xml"
 }
