@@ -1,16 +1,12 @@
 @import "MochaJSDelegate.js";
-@import "quickPanelDefaults.js";
+@import "handyMenuDefaults.js";
 
 function onRun(context) {
-  //Since the webview can talk with Sketch, we have a function to update the context
-  //as needed to make sure we have the correct context when we apply changes
-  //the updateContext function is in utils.js
-  // var doc = updateContext().document;
 
   var userDefaults = NSUserDefaults.standardUserDefaults();
   var threadDictionary = NSThread.mainThread().threadDictionary();
 
-  if (threadDictionary[setupWindowIdentifier]) {
+  if (threadDictionary[setupMenuIdentifier]) {
     return;
   }
 
@@ -27,15 +23,14 @@ function onRun(context) {
   webViewWindow.setBackgroundColor(NSColor.colorWithRed_green_blue_alpha(0.13, 0.07, 0.33, 1.0));
   webViewWindow.standardWindowButton(NSWindowMiniaturizeButton).setHidden(true);
   webViewWindow.standardWindowButton(NSWindowZoomButton).setHidden(true);
-  // webViewWindow.setTitle("Setup QuickPanel");
   webViewWindow.setTitlebarAppearsTransparent(true);
   webViewWindow.becomeKeyWindow();
   webViewWindow.setLevel(NSFloatingWindowLevel);
   webViewWindow.isMovable = true;
 
-  threadDictionary[setupWindowIdentifier] = webViewWindow;
+  threadDictionary[setupMenuIdentifier] = webViewWindow;
 
-  // Get commands list
+  // Getting commands list
   var pluginManager = AppController.sharedInstance().pluginManager();
   var plugins = pluginManager.plugins();
 
@@ -64,7 +59,7 @@ function onRun(context) {
 
     "webView:didFinishLoadForFrame:": (function(webView, webFrame) {
 
-      var myCommandsString = userDefaults.stringForKey(panelCommandsKey);
+      var myCommandsString = userDefaults.stringForKey(menuCommandsKey);
 
       windowObject.callWebScriptMethod_withArguments("loadMyCommandsList", [myCommandsString]);
       windowObject.callWebScriptMethod_withArguments("loadAllCommandsList",[allCommandsString]);
@@ -88,23 +83,23 @@ function onRun(context) {
         var commandsString = hash.commands;
         var commandsCount = hash.commandsCount;
 
-        userDefaults.setObject_forKey(commandsString, panelCommandsKey);
-        userDefaults.setObject_forKey(commandsCount, panelCommandsCountKey);
+        userDefaults.setObject_forKey(commandsString, menuCommandsKey);
+        userDefaults.setObject_forKey(commandsCount, menuCommandsCountKey);
         userDefaults.synchronize();
 
-        threadDictionary.removeObjectForKey(setupWindowIdentifier);
+        threadDictionary.removeObjectForKey(setupMenuIdentifier);
         webViewWindow.close();
         COScript.currentCOScript().setShouldKeepAround(false);
       }else if (hash.hasOwnProperty('closeWindow')){
         webViewWindow.close();
-        threadDictionary.removeObjectForKey(setupWindowIdentifier);
+        threadDictionary.removeObjectForKey(setupMenuIdentifier);
         COScript.currentCOScript().setShouldKeepAround(false);
       }
     })
   });
 
   webView.setFrameLoadDelegate_(delegate.getClassInstance());
-  webView.setMainFrameURL_(context.plugin.urlForResourceNamed("setuppanel.html").path());
+  webView.setMainFrameURL_(context.plugin.urlForResourceNamed("setupMenu.html").path());
   webViewWindow.contentView().addSubview(webView);
   webViewWindow.center();
   webViewWindow.makeKeyAndOrderFront(nil);
@@ -113,7 +108,7 @@ function onRun(context) {
   var closeButton = webViewWindow.standardWindowButton(NSWindowCloseButton);
   closeButton.setCOSJSTargetFunction(function(sender) {
     COScript.currentCOScript().setShouldKeepAround(false);
-    threadDictionary.removeObjectForKey(setupWindowIdentifier);
+    threadDictionary.removeObjectForKey(setupMenuIdentifier);
     webViewWindow.close();
   });
   closeButton.setAction("callAction:");

@@ -1,22 +1,25 @@
 @import "MochaJSDelegate.js";
-@import "quickPanelDefaults.js";
+@import "handyMenuDefaults.js";
 
 function onRun(context) {
-  //Since the webview can talk with Sketch, we have a function to update the context
-  //as needed to make sure we have the correct context when we apply changes
-  //the updateContext function is in utils.js
-  // var doc = updateContext().document;
 
   var userDefaults = NSUserDefaults.standardUserDefaults();
 
-  // Create a window
+  
   var threadDictionary = NSThread.mainThread().threadDictionary();
 
-  if (threadDictionary[panelIdentifier]) {
+  const itemsCount = userDefaults.integerForKey(menuCommandsCountKey);
+
+  if (itemsCount == 0) {
+    context.document.showMessage("Hadny Menu is empty. Settings: Cmd + Option + 4.");
     return;
   }
 
-  var itemsCount = userDefaults.integerForKey(panelCommandsCountKey);
+  if (threadDictionary[menuIdentifier]) {
+    return;
+  }
+
+  
   const commandItemHeight = 23;
 
   const windowWidth = 200;
@@ -27,21 +30,19 @@ function onRun(context) {
   var xPos = mouseLocation.x;
   var yPos = mouseLocation.y - windowHeight + 27;
 
+  // Creating a window
   var webViewWindow = NSPanel.alloc().init();
   webViewWindow.setFrame_display(NSMakeRect(xPos, yPos, windowWidth, windowHeight), false);
   webViewWindow.setStyleMask(NSTexturedBackgroundWindowMask | NSTitledWindowMask | NSClosableWindowMask | NSFullSizeContentViewWindowMask);
-
-  //Uncomment the following line to define the app bar color with an NSColor
   webViewWindow.setBackgroundColor(NSColor.windowBackgroundColor());
   webViewWindow.standardWindowButton(NSWindowCloseButton).setHidden(true);
   webViewWindow.standardWindowButton(NSWindowMiniaturizeButton).setHidden(true);
   webViewWindow.standardWindowButton(NSWindowZoomButton).setHidden(true);
-  webViewWindow.setTitle("");
   webViewWindow.setTitlebarAppearsTransparent(true);
   webViewWindow.becomeKeyWindow();
   webViewWindow.setLevel(NSPopUpMenuWindowLevel);
 
-  threadDictionary[panelIdentifier] = webViewWindow;
+  threadDictionary[menuIdentifier] = webViewWindow;
 
   COScript.currentCOScript().setShouldKeepAround(true);
 
@@ -54,7 +55,7 @@ function onRun(context) {
 
     "webView:didFinishLoadForFrame:": (function(webView, webFrame) {
 
-      var myCommandsString = userDefaults.stringForKey(panelCommandsKey);
+      var myCommandsString = userDefaults.stringForKey(menuCommandsKey);
       windowObject.callWebScriptMethod_withArguments('updateCommandsList', [myCommandsString]);
 
     }),
@@ -86,7 +87,7 @@ function onRun(context) {
           for (command in commands) {
             if (key == pluginID && commands[command].metadata().identifier == commandID) {
               webViewWindow.close();
-              threadDictionary.removeObjectForKey(panelIdentifier);
+              threadDictionary.removeObjectForKey(menuIdentifier);
               commands[command].run_manager(context, pluginManager);
               COScript.currentCOScript().setShouldKeepAround(false);
               return
@@ -99,7 +100,7 @@ function onRun(context) {
   });
 
   webView.setFrameLoadDelegate_(delegate.getClassInstance());
-  webView.setMainFrameURL_(context.plugin.urlForResourceNamed("quickpanel.html").path());
+  webView.setMainFrameURL_(context.plugin.urlForResourceNamed("handyMenu.html").path());
   webViewWindow.contentView().addSubview(webView);
 
   webViewWindow.makeKeyAndOrderFront(nil);
@@ -108,7 +109,7 @@ function onRun(context) {
   var closeButton = webViewWindow.standardWindowButton(NSWindowCloseButton);
   closeButton.setCOSJSTargetFunction(function(sender) {
     COScript.currentCOScript().setShouldKeepAround(false);
-    threadDictionary.removeObjectForKey(panelIdentifier);
+    threadDictionary.removeObjectForKey(menuIdentifier);
     webViewWindow.close();
   });
   closeButton.setAction("callAction:");
