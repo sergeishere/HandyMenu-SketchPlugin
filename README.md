@@ -1,5 +1,5 @@
 # Handy Menu Sketch Plugin
-Quick access to Sketch App plugins through floating menu
+Quick access to Sketch App plugins through context menu
 
 ## Instalation
 
