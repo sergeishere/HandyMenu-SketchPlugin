@@ -2,7 +2,7 @@
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
     <item>
-      <enclosure url="https://github.com/sergeishere/Handy-Menu-Sketch-Plugin/releases/download/v1/HandyMenu.sketchplugin.zip" sparkle:version="1"/>
+      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v1/HandyMenu.sketchplugin.zip" sparkle:version="1"/>
     </item>
   </channel>
 </rss>
