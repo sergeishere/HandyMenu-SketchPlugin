@@ -2,14 +2,14 @@
   "author" : "Sergey Dmitriev",
   "commands" : [
     {
-      "script" : "showmenu.js",
+      "script" : "script.js",
       "handler" : "onRun",
       "shortcut" : "cmd 4",
       "name" : "Show Handy Menu",
       "identifier" : "show"
     }, {
-      "script" : "setupmenu.js",
-      "handler" : "onRun",
+      "script" : "script.js",
+      "handler" : "onSetup",
       "name" : "Setup Handy Menu",
       "identifier" : "setup",
       "shortcut" : "cmd option 4",
