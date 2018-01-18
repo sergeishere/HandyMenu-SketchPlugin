@@ -1,5 +1,6 @@
 # Handy Menu Sketch Plugin
-Quick access to Sketch App plugins through context menu
+
+![Main Image](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/master/images/twitter_image.png)
 
 ## Instalation
 
@@ -11,6 +12,10 @@ Quick access to Sketch App plugins through context menu
 1. Open setting `Plugins` > `Handy Menu` > `Setup Handy Menu` or press `cmd` + `option` + 4
 2. Choose commands you need quick access to using drag and drop.
 
+![Settings](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/master/images/settings.png)
+
 #### Use
 
 Just press `cmd` + `4`
+
+![Menu](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/master/images/usage.png)
