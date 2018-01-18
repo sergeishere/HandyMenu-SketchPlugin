@@ -28,5 +28,5 @@
   "homepage": "",
   "authorEmail" : "el.pajaro.sabio@gmail.com",
   "name" : "Handy Menu",
-  "appcast": "https://raw.githubusercontent.com/sergeishere/Handy-Menu-Sketch-Plugin/master/appcast.xml"
+  "appcast": "https://raw.githubusercontent.com/sergeishere/HandyMenu-SketchPlugin/master/appcast.xml"
 }
