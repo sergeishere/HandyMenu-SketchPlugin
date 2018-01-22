@@ -20,3 +20,6 @@
 Just press `cmd` + `4`
 
 ![Menu](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/master/images/usage.png)
+
+##
+Feel free to send me your feedback and ideas: [Serge D](https://twitter.com/sergehere)
