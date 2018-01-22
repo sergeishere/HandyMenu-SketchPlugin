@@ -4,7 +4,8 @@
 
 ## Instalation
 
-[Download](https://github.com/sergeishere/HandyMenu-SketchPlugin/archive/master.zip) archive and unzip it. Then double-click the HandyMenu.sketchplugin bundle to install the plugin.
+1. [Download](https://github.com/sergeishere/HandyMenu-SketchPlugin/archive/master.zip) the archive and unzip it.
+2. Double-click the `HandyMenu.sketchplugin` to install the plugin.
 
 ## Usage
 
