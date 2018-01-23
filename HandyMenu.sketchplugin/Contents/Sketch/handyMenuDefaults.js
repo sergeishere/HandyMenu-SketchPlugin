@@ -1,3 +1,4 @@
+const handyMenuPluginID = "com.sergeishere.plugins.handymenu";
 const menuIdentifier = "com.sergeishere.plugins.handymenu.menuWindow";
 const setupMenuIdentifier = "com.sergeishere.plugins.handymenu.setupWindow";
 

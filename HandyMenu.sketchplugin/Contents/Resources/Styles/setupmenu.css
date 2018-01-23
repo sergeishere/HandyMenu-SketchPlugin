@@ -38,7 +38,7 @@ div#header {
 }
 
 h2 {
-    padding: 20px 0 0 0;
+    padding: 24px 0 0 0;
     margin: 0;
 }
 
@@ -109,7 +109,7 @@ ul {
     border-radius: 3px;
 }
 
-ul li {
+ul li.command {
     background-color: white;
     font-size: 14px;
     padding: 5px 0px 5px 12px;
@@ -120,8 +120,23 @@ ul li {
     text-overflow: ellipsis;
 }
 
-ul li:hover {
+ul li.command:hover {
     cursor: pointer;
+}
+
+ul li.plugin-header {
+    padding-left: 0;
+    margin: 17px 0 9px 0;
+    background-color: transparent ;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.4;
+    cursor: default;
+}
+
+ul li.plugin-header:first-child {
+    margin: 3px 0 9px 0;
 }
 
 i.delete-icon {
