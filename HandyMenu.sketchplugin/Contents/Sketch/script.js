@@ -9,7 +9,7 @@ function onRun(context) {
     const itemsCount = userDefaults.integerForKey(menuCommandsCountKey);
 
     if (itemsCount == 0) {
-        context.document.showMessage("Hadny Menu is empty.");
+        context.document.showMessage("Handy Menu is empty.");
         onSetup(context);
         return;
     }
