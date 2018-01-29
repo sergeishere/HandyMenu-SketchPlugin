@@ -142,14 +142,15 @@ ul li.plugin-header:first-child {
 i.delete-icon {
     display: block;
     float: right;
-    margin-right: 8px;
+    font-size: 11px;
+    margin: 2px 9px 0 0;
     cursor: pointer;
     font-style: normal;
-    color: #dadada;
+    color: #d2d2d2;
 }
 
 i.delete-icon:hover {
-    color: #F40076;
+    color: #606060;
 }
 
 .ghost {

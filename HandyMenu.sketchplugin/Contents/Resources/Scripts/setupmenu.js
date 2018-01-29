@@ -14,7 +14,7 @@ const myCommandsList = new Sortable(document.getElementById('my-command-list'), 
     onAdd: function(event) {
         var deleteIcon = document.createElement('i');
         deleteIcon.className = 'delete-icon';
-        deleteIcon.innerHTML = '✖';
+        deleteIcon.innerHTML = '✕';
 
         event.item.appendChild(deleteIcon);
     }
@@ -92,7 +92,7 @@ function loadMyCommandsList(commandsString) {
 
         var deleteIcon = document.createElement('i');
         deleteIcon.className = 'delete-icon';
-        deleteIcon.innerHTML = '✖';
+        deleteIcon.innerHTML = '✕';
 
         li.appendChild(deleteIcon);
         li.setAttribute('commandid', item.commandID);
