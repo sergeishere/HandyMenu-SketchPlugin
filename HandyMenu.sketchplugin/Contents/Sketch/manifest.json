@@ -2,6 +2,14 @@
   "author" : "Sergey Dmitriev",
   "commands" : [
     {
+      "script": "script.js",
+      "handlers": {
+        "actions": {
+          "Startup" : "onStart"
+        }
+      }
+    },
+    {
       "script" : "script.js",
       "handler" : "onRun",
       "shortcut" : "cmd 4",

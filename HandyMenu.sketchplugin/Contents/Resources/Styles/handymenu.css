@@ -7,7 +7,7 @@ html {
 	font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 	overflow: hidden;
 	-webkit-user-select: none;
-	background-color: #ECECEC;
+	/*background-color: #ECECEC;*/
 	box-sizing: border-box
 }
 
