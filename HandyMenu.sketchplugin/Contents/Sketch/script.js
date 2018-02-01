@@ -126,9 +126,15 @@ var onRun = function(context) {
                         if (key == pluginID && commands[command].metadata().identifier == commandID) {
 
                             handyMenuPanel.orderOut(nil);
-                            commands[command].run_manager(updateContext().doc, pluginManager);
 
+                            try {
+                                commands[command].run_manager(context, pluginManager);
+                            } catch (e) {
+                                log('Plugin running error. \n' + e.name + ':' + e.message + '\n' + e.stack);
+                            }
+                            
                             COScript.currentCOScript().setShouldKeepAround(false);
+                            
                             return;
                         }
                     }
