@@ -215,21 +215,21 @@ function initHandyMenuPanel() {
 
 function initSettingsWindow() {
     // Configuring a window
-    var windowWidth = 640;
+    var windowWidth = 760;
     var menuHeight = 640;
 
     handyMenuSettingsWindow = NSPanel.alloc().init();
 
     handyMenuSettingsWindow.setFrame_display(NSMakeRect(0, 0, windowWidth, menuHeight), false);
-    handyMenuSettingsWindow.setStyleMask(NSTitledWindowMask | NSClosableWindowMask);
-    handyMenuSettingsWindow.setBackgroundColor(NSColor.colorWithRed_green_blue_alpha(0.13, 0.07, 0.33, 1.0));
+    handyMenuSettingsWindow.setStyleMask(NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskTexturedBackground);
+    handyMenuSettingsWindow.setBackgroundColor(NSColor.windowBackgroundColor());
     handyMenuSettingsWindow.standardWindowButton(NSWindowMiniaturizeButton).setHidden(true);
     handyMenuSettingsWindow.standardWindowButton(NSWindowZoomButton).setHidden(true);
-    handyMenuSettingsWindow.setTitlebarAppearsTransparent(true);
+    handyMenuSettingsWindow.setTitle('Handy Menu Settings');
     handyMenuSettingsWindow.setLevel(NSFloatingWindowLevel);
 
     //Add Web View to window
-    var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, windowWidth, menuHeight - 24));
+    var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, windowWidth, menuHeight - 20));
     webView.setAutoresizingMask(NSViewWidthSizable | NSViewHeightSizable);
     var windowObject = webView.windowScriptObject();
     var delegate = new MochaJSDelegate({
@@ -238,8 +238,8 @@ function initSettingsWindow() {
 
             var myCommandsString = userDefaults.stringForKey(PANEL_COMMANDS_KEY);
 
-            windowObject.callWebScriptMethod_withArguments('loadMyCommandsList', [myCommandsString]);
             windowObject.callWebScriptMethod_withArguments('loadAllCommandsList', [allCommandsString]);
+            windowObject.callWebScriptMethod_withArguments('loadMyCommandsList', [myCommandsString]);
 
         }),
 

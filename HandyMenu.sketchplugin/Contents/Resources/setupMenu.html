@@ -7,29 +7,24 @@
 </head>
 
 <body>
-    <div id="header">
-        <img src="./Images/icon_80.png" />
-        <h2>Handy Menu Settings</h2>
-        <p>Drag and drop the commands you need</p>
-    </div>
     <div id="lists">
         <div id="left">
-            <h5>Your Commands</h5>
-            <ul class="baselist" id="my-command-list">
-
+            <h4>All Commands</h4>
+            <ul id="all-commands-list" class="baselist">
             </ul>
         </div>
         <div id="right">
-            <h5>All Commands</h5>
-            <ul id="all-command-list" class="baselist">
+            <h4>Your Commands</h4>
+            <ul id="my-commands-list" class="baselist no-commands" >
             </ul>
         </div>
     </div>
     <div id="footer">
-        <button onclick="closeWindow();">Cancel</button>
+        <div class="details">Version 2</div>
         <button class="main" onclick="saveCommands();">Save</button>
+        <button onclick="closeWindow();">Cancel</button>
     </div>
-    <script type="text/javascript" src="./Scripts/Sortable.min.js"></script>
+    <script type="text/javascript" src="./Scripts/dragula.min.js"></script>
     <script type="text/javascript" src="./Scripts/setupmenu.js"></script>
 </body>
 
