@@ -1,10 +1,10 @@
-window.addEventListener('keydown', function(event) {
-	if (event.keyCode >= 49 && event.keyCode <= 57) {
-		var elementIndex = event.keyCode - 49;
-		var element = document.getElementById("command-list").childNodes[elementIndex];
-		executeCommand(element.getAttribute('commandid'), element.getAttribute('pluginid'));
-	}
-}, false);
+// window.addEventListener('keydown', function(event) {
+// 	if (event.keyCode >= 49 && event.keyCode <= 57) {
+// 		var elementIndex = event.keyCode - 49;
+// 		var element = document.getElementById("command-list").childNodes[elementIndex];
+// 		executeCommand(element.getAttribute('commandid'), element.getAttribute('pluginid'));
+// 	}
+// }, false);
 
 
 function updateHash(hash) {

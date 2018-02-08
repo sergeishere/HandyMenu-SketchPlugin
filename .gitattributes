@@ -1,6 +1,8 @@
 /images export-ignore
 
 appcast.xml export-ignore
-handy_menu.sketch export-ignore
+README.md export-ignore
+
+handy_menu_assets.sketch export-ignore
 
 .gitattributes export-ignore
