@@ -36,8 +36,6 @@ var onRun = function(context) {
         initHandyMenuPanel();
     }
 
-    log('Handy Menu panel is initialized');
-
     var itemsCount = userDefaults.integerForKey(COMMANDS_COUNT_KEY);
 
     if (itemsCount == 0) {
@@ -80,8 +78,6 @@ var onSetup = function(context) {
         log('Initializing settings window');
         initSettingsWindow();
     }
-
-    log('Settings window is initialized');
 
     handyMenuSettingsWindow.contentView().subviews()[0].reload(nil);
 
