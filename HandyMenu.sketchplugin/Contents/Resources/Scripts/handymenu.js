@@ -27,8 +27,12 @@ function updateCommandsList(commandsString) {
         var li = document.createElement("li");
 
         switch (item.type) {
-            case 'command':
-                li.classList.add('command');
+            case 'separator':
+                li.classList.add('separator');
+                li.appendChild(document.createElement('hr'));
+                break;
+            default:
+            	li.classList.add('command');
                 li.appendChild(document.createTextNode(item.name));
                 li.setAttribute("commandid", item.commandID);
                 li.setAttribute("pluginid", item.pluginID);
@@ -36,10 +40,6 @@ function updateCommandsList(commandsString) {
                 li.onclick = function() {
                     executeCommand(li.getAttribute('commandid'), li.getAttribute('pluginid'));
                 };
-                break;
-            case 'separator':
-                li.classList.add('separator');
-                li.appendChild(document.createElement('hr'));
                 break;
         }
 

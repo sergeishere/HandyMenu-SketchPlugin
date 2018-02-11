@@ -136,7 +136,14 @@ function loadMyCommandsList(commandsString) {
         deleteIcon.innerHTML = '✕';
 
         switch (item.type) {
-            case 'command':
+            
+            case 'separator':
+                li.className = 'command separator';
+                deleteIcon.onclick = function() {
+                    li.parentNode.removeChild(li);
+                };
+                break;
+            default:
                 li.className = 'command';
 
                 li.appendChild(document.createTextNode(item.name));
@@ -144,18 +151,13 @@ function loadMyCommandsList(commandsString) {
                 li.setAttribute('commandid', item.commandID);
                 li.setAttribute('pluginid', item.pluginID);
                 li.setAttribute('commandname', item.name);
+                li.setAttribute('itemtype', 'command');
 
                 deleteIcon.onclick = function() {
                     removeItem(li, item.commandID);
                 };
 
                 allCommandList.querySelector('li[commandid="' + item.commandID + '"]').classList.add('checked-command');
-                break;
-            case 'separator':
-                li.className = 'command separator';
-                deleteIcon.onclick = function() {
-                    li.parentNode.removeChild(li);
-                };
                 break;
         }
 
