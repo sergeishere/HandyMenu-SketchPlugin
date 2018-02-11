@@ -47,7 +47,7 @@ var onRun = function(context) {
 
     // Updating menu size and position
 
-    var totalHeight = userDefaults.integerForKey(PANEL_HEIGHT_KEY);
+    var totalHeight = userDefaults.integerForKey(PANEL_HEIGHT_KEY) || (COMMAND_ITEM_HEIGHT * itemsCount);
 
     var mouseLocation = NSEvent.mouseLocation();
 
@@ -56,9 +56,9 @@ var onRun = function(context) {
 
     if (userDefaults.boolForKey(NEEDS_RELOAD_KEY)) {
         log(totalHeight);
-        handyMenuPanel.setContentSize(NSMakeSize(MENU_WIDTH, totalHeight + 16));
+        handyMenuPanel.setContentSize(NSMakeSize(MENU_WIDTH, totalHeight + 6));
         handyMenuPanel.setFrameOrigin(NSMakePoint(xPos, yPos));
-        handyMenuPanel.contentView().subviews()[0].setFrameSize(NSMakeSize(MENU_WIDTH, totalHeight + 12));
+        handyMenuPanel.contentView().subviews()[0].setFrameSize(NSMakeSize(MENU_WIDTH, totalHeight + 3));
         handyMenuPanel.contentView().subviews()[0].reload(nil);
 
         userDefaults.setObject_forKey(false, NEEDS_RELOAD_KEY);
@@ -131,12 +131,12 @@ var onSetup = function(context) {
 function initHandyMenuPanel() {
 
     var itemsCount = userDefaults.integerForKey(COMMANDS_COUNT_KEY);
-    var totalHeight = userDefaults.integerForKey(PANEL_HEIGHT_KEY);
+    var totalHeight = userDefaults.integerForKey(PANEL_HEIGHT_KEY) || (COMMAND_ITEM_HEIGHT * itemsCount);
 
     // Creating a window
     handyMenuPanel = NSPanel.alloc().init();
 
-    handyMenuPanel.setFrame_display(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 16), true);
+    handyMenuPanel.setFrame_display(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 6), true);
     handyMenuPanel.setStyleMask(NSWindowStyleMaskTexturedBackground | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskFullSizeContentView);
     handyMenuPanel.setBackgroundColor(NSColor.windowBackgroundColor());
     handyMenuPanel.standardWindowButton(NSWindowCloseButton).setHidden(true);
@@ -146,7 +146,7 @@ function initHandyMenuPanel() {
     handyMenuPanel.setLevel(NSPopUpMenuWindowLevel);
 
     //Add Web View to window
-    var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 12));
+    var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 3));
     webView.setAutoresizingMask(NSViewWidthSizable | NSViewHeightSizable);
     webView.setDrawsBackground(false);
     handyMenuPanel.contentView().addSubview(webView);

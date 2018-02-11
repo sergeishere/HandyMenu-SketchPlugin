@@ -37,11 +37,14 @@ li.command:hover {
 }
 
 li.separator {
-	display: block;
-	height: 6px;
+	height: 10px;
+	padding-top: 4px;
 	margin: 0;
 }
 
 li.separator > hr{
-	border: 1px solid #dfdfdf;
+	margin: 0;
+	height: 2px;
+	background-color: #dfdfdf;
+	border: none;
 }

@@ -71,7 +71,7 @@ function saveCommands() {
             pluginID: commandsListItems[i].getAttribute('pluginid') || '',
             type: commandsListItems[i].getAttribute('itemtype')
         });
-        totalHeight += (commandsListItems[i].getAttribute('itemtype') == 'command') ? 23 : 6;
+        totalHeight += (commandsListItems[i].getAttribute('itemtype') == 'command') ? 23 : 10;
     }
 
     console.log(totalHeight);
