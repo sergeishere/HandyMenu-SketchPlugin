@@ -11,6 +11,7 @@ var SETUP_MENU_IDENTIFIER = 'com.sergeishere.plugins.handymenu.setupWindow';
 var PANEL_COMMANDS_KEY = 'plugin_sketch_handymenu_my_commands';
 var NEEDS_RELOAD_KEY = 'handymenu_needs_reload';
 var COMMANDS_COUNT_KEY = 'plugin_sketch_handymenu_my_commands_count';
+var PANEL_HEIGHT_KEY = 'plugin_sketch_handymenu_my_commands_panel_height';
 
 // Handy Meny components sizes
 var COMMAND_ITEM_HEIGHT = 23;
@@ -46,16 +47,18 @@ var onRun = function(context) {
 
     // Updating menu size and position
 
-    var menuHeight = itemsCount * COMMAND_ITEM_HEIGHT + 6;
+    var totalHeight = userDefaults.integerForKey(PANEL_HEIGHT_KEY);
+
     var mouseLocation = NSEvent.mouseLocation();
 
     var xPos = mouseLocation.x + 1;
-    var yPos = mouseLocation.y - menuHeight + 6;
+    var yPos = mouseLocation.y - totalHeight + 12;
 
     if (userDefaults.boolForKey(NEEDS_RELOAD_KEY)) {
-        handyMenuPanel.setContentSize(NSMakeSize(MENU_WIDTH, menuHeight));
+        log(totalHeight);
+        handyMenuPanel.setContentSize(NSMakeSize(MENU_WIDTH, totalHeight + 16));
         handyMenuPanel.setFrameOrigin(NSMakePoint(xPos, yPos));
-        handyMenuPanel.contentView().subviews()[0].setFrameSize(NSMakeSize(MENU_WIDTH, menuHeight - 3));
+        handyMenuPanel.contentView().subviews()[0].setFrameSize(NSMakeSize(MENU_WIDTH, totalHeight + 12));
         handyMenuPanel.contentView().subviews()[0].reload(nil);
 
         userDefaults.setObject_forKey(false, NEEDS_RELOAD_KEY);
@@ -128,12 +131,12 @@ var onSetup = function(context) {
 function initHandyMenuPanel() {
 
     var itemsCount = userDefaults.integerForKey(COMMANDS_COUNT_KEY);
-    var menuHeight = itemsCount * COMMAND_ITEM_HEIGHT + 6;
+    var totalHeight = userDefaults.integerForKey(PANEL_HEIGHT_KEY);
 
     // Creating a window
     handyMenuPanel = NSPanel.alloc().init();
 
-    handyMenuPanel.setFrame_display(NSMakeRect(0, 0, MENU_WIDTH, menuHeight), true);
+    handyMenuPanel.setFrame_display(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 16), true);
     handyMenuPanel.setStyleMask(NSWindowStyleMaskTexturedBackground | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskFullSizeContentView);
     handyMenuPanel.setBackgroundColor(NSColor.windowBackgroundColor());
     handyMenuPanel.standardWindowButton(NSWindowCloseButton).setHidden(true);
@@ -143,7 +146,7 @@ function initHandyMenuPanel() {
     handyMenuPanel.setLevel(NSPopUpMenuWindowLevel);
 
     //Add Web View to window
-    var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, MENU_WIDTH, menuHeight - 3));
+    var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 12));
     webView.setAutoresizingMask(NSViewWidthSizable | NSViewHeightSizable);
     webView.setDrawsBackground(false);
     handyMenuPanel.contentView().addSubview(webView);
@@ -248,9 +251,12 @@ function initSettingsWindow() {
             if (hash.hasOwnProperty('saveCommandsList')) {
                 var commandsString = hash.commands;
                 var commandsCount = hash.commandsCount;
+                var totalHeight = hash.totalHeight;
+                log(totalHeight);
 
                 userDefaults.setObject_forKey(commandsString, PANEL_COMMANDS_KEY);
                 userDefaults.setObject_forKey(commandsCount, COMMANDS_COUNT_KEY);
+                userDefaults.setObject_forKey(totalHeight, PANEL_HEIGHT_KEY);
                 userDefaults.synchronize();
 
                 handyMenuSettingsWindow.orderOut(nil);

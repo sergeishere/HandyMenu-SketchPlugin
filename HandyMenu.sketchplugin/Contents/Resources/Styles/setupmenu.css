@@ -18,54 +18,31 @@ html {
 body {
     margin: 0;
     height: 100%;
-    background-color: #F0f5f7;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-end;
-}
-
-div#header {
-    color: white;
-    height: 16px;
-    flex-basis: 16px;
-    flex-grow: 0;
-    flex-shrink: 0;
-}
-
-div#header img {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    float: left;
-    margin-right: 12px;
-}
-
-div#lists {
-    background-color: white;
-    border-top: 1px solid #DFE4E6;
-    border-bottom: 1px solid #DFE4E6;
-    flex-shrink: 0.5;
-    flex-grow: 18;
-    flex-basis: 120px;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-}
-
-div#right {
-    border-left: 1px solid #DFE4E6;
-}
-
-div#lists div {
-    flex-grow: 1;
-    flex-basis: 100px;
     position: relative;
 }
 
-div#lists div h4 {
+
+.list {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 64px;
+}
+
+.left {
+    left: 0;
+    right: 50%;
+}
+
+.right {
+    left: 50%;
+    right: 0;
+    border-left: 1px solid #DFE4E6;
+}
+
+
+.list h4 {
     position: absolute;
     left: 40px;
     right: 40px;
@@ -74,18 +51,35 @@ div#lists div h4 {
 }
 
 ul {
-    padding: 0;
+    position: absolute;
+    top: 96px;
+    left: 40px;
+    right: 16px;
+    padding: 0 24px 64px 0;
     margin: 0;
     overflow-y: auto;
     list-style-type: none;
-    position: absolute;
-    left: 40px;
-    right: 40px;
-    top: 96px;
+}
+
+.right > ul {
+    bottom: 64px;
+}
+
+.left > ul {
     bottom: 0;
 }
 
-ul.no-commands {
+.no-plugins{
+    position: absolute;
+    display: none;
+    left: 0;
+    right: 0;
+    top: 40%;
+    color: #606060;
+    text-align: center;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
 }
 
 ul.no-commands:after {
@@ -120,13 +114,26 @@ ul li.command:hover {
     opacity: 0.65;
 }
 
+ul li.separator:after {
+    position: absolute;
+    display: block;
+    content: ' ';
+    background-color: #DFE4E6;
+    height: 2px;
+    top: 14px;
+    left: 8px;
+    right: 32px;
+}
+
 ul li.checked-command {
-    opacity: 0.4;
+    opacity: 0.2;
     cursor: default;
+    text-decoration:line-through;
+    background-color: transparent;
 }
 
 ul li.checked-command:hover {
-    opacity: 0.4;
+    opacity: 0.2;
 }
 
 ul li.plugin-header {
@@ -158,6 +165,7 @@ i.delete-icon {
     cursor: pointer;
     font-style: normal;
     color: #adc8da;
+    /*color: #adc8da;*/
 }
 
 i.delete-icon:hover {
@@ -165,16 +173,42 @@ i.delete-icon:hover {
     color: #606060;
 }
 
-div#footer {
-    background-color: white;
-    flex-shrink: 1;
+.text-button {
+    border: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    background-color: transparent;
+    color: #adc8da;
+}
+
+.text-button:hover {
+    color: #26c1ff;
+}
+
+.text-button:active {
+    color: #adc8da;
+}
+
+.add-separator-button {
+    position: absolute;
+    bottom: 24px;
+    left: 40px;
+}
+
+#footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
     padding: 16px 40px;
-    flex-basis: 64px;
-    flex-grow: 0;
+    border-top: 1px solid #DFE4E6;
 }
 
 
-div#footer .details {
+#footer .details {
     display: block;
     font-size: 12px;
     opacity: 0.35;
@@ -183,7 +217,7 @@ div#footer .details {
     float: left;
 }
 
-button {
+button.normal {
     cursor: pointer;
     height: 32px;
     font-size: 14px;
@@ -204,11 +238,9 @@ button.main {
     color: white;
 }
 
-button:active {
+button.normal:active {
     background-color: #26c1ff;
 }
-
-
 
 
 /*Dragula script classes*/

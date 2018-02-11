@@ -7,22 +7,24 @@
 </head>
 
 <body>
-    <div id="lists">
-        <div id="left">
-            <h4>All Commands</h4>
-            <ul id="all-commands-list" class="baselist">
-            </ul>
-        </div>
-        <div id="right">
-            <h4>Your Commands</h4>
-            <ul id="my-commands-list" class="baselist no-commands" >
-            </ul>
-        </div>
+    <div class="list left">
+        <h4>All Commands</h4>
+        <ul id="all-commands-list" class="baselist">
+        </ul>
+    </div>
+    <div class="list right">
+        <h4>Your Commands</h4>
+        <ul id="my-commands-list" class="baselist no-commands">
+        </ul>
+        <button class="text-button add-separator-button" onclick="addSeparator();">+ separator</button>
+    </div>
+    <div class="no-plugins">
+        It seems that you do not have installed plugins
     </div>
     <div id="footer">
         <div class="details">Version 2</div>
-        <button class="main" onclick="saveCommands();">Save</button>
-        <button onclick="closeWindow();">Cancel</button>
+        <button class="normal main" onclick="saveCommands();">Save</button>
+        <button class="normal" onclick="closeWindow();">Cancel</button>
     </div>
     <script type="text/javascript" src="./Scripts/dragula.min.js"></script>
     <script type="text/javascript" src="./Scripts/setupmenu.js"></script>

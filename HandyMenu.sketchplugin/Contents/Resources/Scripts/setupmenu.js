@@ -60,78 +60,108 @@ function saveCommands() {
         'list': []
     };
 
+    var totalHeight = 0;
+
     var commandsListItems = document.getElementById('my-commands-list').getElementsByTagName('li');
 
     for (var i = 0; i < commandsListItems.length; i++) {
         commands.list.push({
-            name: commandsListItems[i].getAttribute('commandname'),
-            commandID: commandsListItems[i].getAttribute('commandid'),
-            pluginID: commandsListItems[i].getAttribute('pluginid')
+            name: commandsListItems[i].getAttribute('commandname') || '',
+            commandID: commandsListItems[i].getAttribute('commandid') || '',
+            pluginID: commandsListItems[i].getAttribute('pluginid') || '',
+            type: commandsListItems[i].getAttribute('itemtype')
         });
+        totalHeight += (commandsListItems[i].getAttribute('itemtype') == 'command') ? 23 : 6;
     }
+
+    console.log(totalHeight);
 
     var commandsString = encodeURIComponent(JSON.stringify(commands));
 
-    updateHash('saveCommandsList&commands=' + commandsString + '&commandsCount=' + commands.list.length);
+    updateHash('saveCommandsList&commands=' + commandsString + '&commandsCount=' + commands.list.length + '&totalHeight=' + totalHeight);
 }
 
 function loadAllCommandsList(commandsString) {
 
-    plugins = JSON.parse(commandsString);
+    var plugins = JSON.parse(commandsString);
+    // var plugins = [];
 
-    plugins.forEach(function(plugin, i, arr) {
+    if (plugins.length > 0) {
+        document.body.querySelector('.no-plugins').style.display = 'none';
+        document.body.querySelector('.left').style.display = 'block';
+        document.body.querySelector('.right').style.display = 'block';
 
-        var li = document.createElement('li');
-        li.appendChild(document.createTextNode(plugin.pluginName));
-        li.className = 'plugin-header';
-        allCommandList.appendChild(li);
+        plugins.forEach(function(plugin, i, arr) {
 
-        plugin.commands.forEach(function(command, i, arr) {
             var li = document.createElement('li');
-            li.className = 'command';
-            li.appendChild(document.createTextNode(command.name));
-            li.setAttribute('commandid', command.commandID);
-            li.setAttribute('pluginid', command.pluginID);
-            li.setAttribute('commandName', command.name);
+            li.appendChild(document.createTextNode(plugin.pluginName));
+            li.className = 'plugin-header';
             allCommandList.appendChild(li);
+
+            plugin.commands.forEach(function(command, i, arr) {
+                var li = document.createElement('li');
+                li.className = 'command';
+                li.appendChild(document.createTextNode(command.name));
+                li.setAttribute('commandid', command.commandID);
+                li.setAttribute('pluginid', command.pluginID);
+                li.setAttribute('commandName', command.name);
+                li.setAttribute('itemtype', 'command');
+                allCommandList.appendChild(li);
+            });
+
+
         });
-
-
-    });
+    } else {
+        document.body.querySelector('.no-plugins').style.display = 'block';
+        document.body.querySelector('.left').style.display = 'none';
+        document.body.querySelector('.right').style.display = 'none';
+    }
 }
 
 function loadMyCommandsList(commandsString) {
-    commands = (JSON.parse(decodeURIComponent(commandsString)));
+
+    var commands = (JSON.parse(decodeURIComponent(commandsString)));
 
     if (commands.list.length > 0) {
         myCommandsList.classList.remove('no-commands');
     }
-
+    
     commands.list.forEach(function(item, i, arr) {
         var li = document.createElement('li');
-        li.className = 'command';
 
-        li.appendChild(document.createTextNode(item.name));
-
-        li.setAttribute('commandid', item.commandID);
-        li.setAttribute('pluginid', item.pluginID);
-        li.setAttribute('commandname', item.name);
+        li.setAttribute('itemtype', item.type);
 
         var deleteIcon = document.createElement('i');
         deleteIcon.className = 'delete-icon';
         deleteIcon.innerHTML = '✕';
-        deleteIcon.onclick = function() {
-            removeItem(li, item.commandID)
-        };
+
+        switch (item.type) {
+            case 'command':
+                li.className = 'command';
+
+                li.appendChild(document.createTextNode(item.name));
+
+                li.setAttribute('commandid', item.commandID);
+                li.setAttribute('pluginid', item.pluginID);
+                li.setAttribute('commandname', item.name);
+
+                deleteIcon.onclick = function() {
+                    removeItem(li, item.commandID);
+                };
+
+                allCommandList.querySelector('li[commandid="' + item.commandID + '"]').classList.add('checked-command');
+                break;
+            case 'separator':
+                li.className = 'command separator';
+                deleteIcon.onclick = function() {
+                    li.parentNode.removeChild(li);
+                };
+                break;
+        }
 
         li.appendChild(deleteIcon);
-
         myCommandsList.appendChild(li);
-        try {
-            allCommandList.querySelector('li[commandid="' + item.commandID + '"]').classList.add('checked-command');
-        } catch (e) {
-            console.log(e);
-        }
+
     });
 }
 
@@ -141,6 +171,24 @@ function removeItem(listItem, commandid) {
     if (myCommandsList.children.length == 0) {
         myCommandsList.classList.add('no-commands');
     }
+}
+
+function addSeparator() {
+    var separator = document.createElement('li');
+    separator.classList.add('command');
+    separator.classList.add('separator');
+    separator.setAttribute('itemtype', 'separator');
+
+    var deleteIcon = document.createElement('i');
+    deleteIcon.className = 'delete-icon';
+    deleteIcon.innerHTML = '✕';
+    deleteIcon.onclick = function() {
+        separator.parentNode.removeChild(separator);
+    };
+
+    separator.appendChild(deleteIcon);
+
+    myCommandsList.appendChild(separator);
 }
 
 function closeWindow() {

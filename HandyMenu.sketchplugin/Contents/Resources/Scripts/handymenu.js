@@ -8,27 +8,41 @@
 
 
 function updateHash(hash) {
-	window.location.hash = hash + '&date=' + new Date().getTime();
-	return false
+    window.location.hash = hash + '&date=' + new Date().getTime();
+    return false
 }
 
 function executeCommand(commandID, pluginID) {
-	updateHash('executeCommand&commandID=' + commandID + "&pluginID=" + pluginID);
+    updateHash('executeCommand&commandID=' + commandID + "&pluginID=" + pluginID);
 }
 
 function updateCommandsList(commandsString) {
-	commands = (JSON.parse(decodeURIComponent(commandsString)));
+    commands = (JSON.parse(decodeURIComponent(commandsString)));
 
-	var ul = document.getElementById("command-list");
+    var ul = document.getElementById("command-list");
+    
+    console.log(commands.list);
 
-	commands.list.forEach(function(item, i, arr) {
-		var li = document.createElement("li");
-		li.appendChild(document.createTextNode(item.name));
-		li.setAttribute("commandid", item.commandID);
-		li.setAttribute("pluginid", item.pluginID);
-		li.onclick = function() {
-			executeCommand(li.getAttribute('commandid'), li.getAttribute('pluginid'));
-		};
-		ul.appendChild(li);
-	});
+    commands.list.forEach(function(item, i, arr) {
+        var li = document.createElement("li");
+
+        switch (item.type) {
+            case 'command':
+                li.classList.add('command');
+                li.appendChild(document.createTextNode(item.name));
+                li.setAttribute("commandid", item.commandID);
+                li.setAttribute("pluginid", item.pluginID);
+
+                li.onclick = function() {
+                    executeCommand(li.getAttribute('commandid'), li.getAttribute('pluginid'));
+                };
+                break;
+            case 'separator':
+                li.classList.add('separator');
+                li.appendChild(document.createElement('hr'));
+                break;
+        }
+
+        ul.appendChild(li);
+    });
 }
