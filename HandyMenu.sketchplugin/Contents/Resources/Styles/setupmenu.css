@@ -125,20 +125,21 @@ ul li.separator:after {
 }
 
 ul li.checked-command {
-
+    color: #D7E0E6;
     cursor: default;
     text-decoration:line-through;
     background-color: transparent;
 }
 
 ul li.plugin-header {
+    color: #485E6C;
     padding-left: 0;
     margin: 28px 0 12px 0;
     background-color: transparent;
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    opacity: 0.4;
+    opacity: 0.75;
     cursor: default;
 }
 
@@ -223,19 +224,21 @@ i.delete-icon:hover {
     float: left;
     color: #485E6C;
     cursor: default;
+    opacity: 0.5;
 }
 
 .details span {
     float: left;
     width: 16px;
     height: 16px;
-    margin: 8px 12px 8px 0px;
+    margin: 8px 4px 8px 4px;
     background-size: 16px 16px;
     cursor: pointer;
+    opacity: 0.5;
 }
 
 .details span:hover {
-    opacity: 0.75;
+    opacity: 1.0;
 }
 
 .details .github {
