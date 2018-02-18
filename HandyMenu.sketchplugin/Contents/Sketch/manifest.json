@@ -13,6 +13,14 @@
       "name" : "Setup Handy Menu",
       "identifier" : "setup",
       "shortcut" : "cmd option 4",
+    },
+    {
+      "script": "script.js",
+      "handlers": {
+        "actions": {
+          "Startup" : "onStart"
+        }
+      }
     }
   ],
   "menu" : {

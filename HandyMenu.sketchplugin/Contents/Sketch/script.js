@@ -27,6 +27,13 @@ var handyMenuPanel, handyMenuSettingsWindow;
 var actualContext, allCommandsString;
 
 
+var onStart = function(context) {
+    loadAndRun(context, function() {
+        HMHelper.start();
+    });
+}
+
+
 // Opening Handy Menu
 var onRun = function(context) {
 
@@ -135,7 +142,6 @@ function initHandyMenuPanel() {
 
     // Creating a window
     handyMenuPanel = NSPanel.alloc().init();
-
     handyMenuPanel.setFrame_display(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 6), true);
     handyMenuPanel.setStyleMask(NSWindowStyleMaskTexturedBackground | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskFullSizeContentView);
     handyMenuPanel.setBackgroundColor(NSColor.windowBackgroundColor());
@@ -144,6 +150,11 @@ function initHandyMenuPanel() {
     handyMenuPanel.standardWindowButton(NSWindowZoomButton).setHidden(true);
     handyMenuPanel.setTitlebarAppearsTransparent(true);
     handyMenuPanel.setLevel(NSPopUpMenuWindowLevel);
+    handyMenuPanel.animationBehavior = NSWindowAnimationBehaviorUtilityWindow;
+
+    loadAndRun(actualContext, function() {
+        HMHelper.startWatchingTo(handyMenuPanel);
+    });
 
     //Add Web View to window
     var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 3));
@@ -202,7 +213,6 @@ function initHandyMenuPanel() {
     webView.setMainFrameURL(actualContext.plugin.urlForResourceNamed('handyMenu.html').path());
     userDefaults.setObject_forKey(true, NEEDS_RELOAD_KEY);
 
-    // Define the close window behaviour on the standard red traffic light button
     var closeButton = handyMenuPanel.standardWindowButton(NSWindowCloseButton);
     closeButton.setCOSJSTargetFunction(function(sender) {
         handyMenuPanel.orderOut(nil);
@@ -211,14 +221,12 @@ function initHandyMenuPanel() {
 }
 
 // Initializing Settings Window
-
 function initSettingsWindow() {
     // Configuring a window
     var windowWidth = 760;
     var menuHeight = 640;
 
     handyMenuSettingsWindow = NSPanel.alloc().init();
-
     handyMenuSettingsWindow.setFrame_display(NSMakeRect(0, 0, windowWidth, menuHeight), false);
     handyMenuSettingsWindow.setStyleMask(NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskTexturedBackground);
     handyMenuSettingsWindow.setBackgroundColor(NSColor.windowBackgroundColor());
@@ -252,7 +260,6 @@ function initSettingsWindow() {
                 var commandsString = hash.commands;
                 var commandsCount = hash.commandsCount;
                 var totalHeight = hash.totalHeight;
-                log(totalHeight);
 
                 userDefaults.setObject_forKey(commandsString, PANEL_COMMANDS_KEY);
                 userDefaults.setObject_forKey(commandsCount, COMMANDS_COUNT_KEY);
@@ -265,6 +272,9 @@ function initSettingsWindow() {
 
             } else if (hash.hasOwnProperty('closeWindow')) {
                 handyMenuSettingsWindow.orderOut(nil);
+            } else if (hash.hasOwnProperty('goto')){
+                var url = hash.url;
+                NSWorkspace.sharedWorkspace().openURL(NSURL.URLWithString(url));
             }
         })
     });
@@ -309,4 +319,19 @@ function parseHash(aURL) {
     }
 
     return vars;
+}
+
+var loadAndRun = function(context, callback) {
+    var FRAMEWORK_NAME = "HandyMenuFramework";
+    try {
+        callback();
+    } catch(e) {
+        var pluginBundle = NSBundle.bundleWithURL(context.plugin.url()),
+            mocha = Mocha.sharedRuntime();
+        if(mocha.loadFrameworkWithName_inDirectory(FRAMEWORK_NAME, pluginBundle.resourceURL().path())) {
+            callback();
+        } else {            
+            print("Error while loading framework '"+FRAMEWORK_NAME+"`");
+        }
+    }
 }

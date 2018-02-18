@@ -19,7 +19,6 @@ dragula([allCommandList, myCommandsList], {
         if (el.querySelector('.delete-icon') == null) {
             var deleteIcon = document.createElement('i');
             deleteIcon.className = 'delete-icon';
-            deleteIcon.innerHTML = '✕';
             deleteIcon.onclick = function() {
                 removeItem(el);
             };
@@ -133,12 +132,11 @@ function loadMyCommandsList(commandsString) {
 
         var deleteIcon = document.createElement('i');
         deleteIcon.className = 'delete-icon';
-        deleteIcon.innerHTML = '✕';
 
         switch (item.type) {
             
             case 'separator':
-                li.className = 'command separator';
+                li.className = 'separator';
                 deleteIcon.onclick = function() {
                     li.parentNode.removeChild(li);
                 };
@@ -177,13 +175,11 @@ function removeItem(listItem, commandid) {
 
 function addSeparator() {
     var separator = document.createElement('li');
-    separator.classList.add('command');
     separator.classList.add('separator');
     separator.setAttribute('itemtype', 'separator');
 
     var deleteIcon = document.createElement('i');
     deleteIcon.className = 'delete-icon';
-    deleteIcon.innerHTML = '✕';
     deleteIcon.onclick = function() {
         separator.parentNode.removeChild(separator);
     };
@@ -195,6 +191,11 @@ function addSeparator() {
 
 function closeWindow() {
     updateHash('closeWindow');
+}
+
+function goto(url) {
+    event.preventDefault();
+    updateHash("goto&url=" + url);
 }
 
 function updateHash(hash) {
