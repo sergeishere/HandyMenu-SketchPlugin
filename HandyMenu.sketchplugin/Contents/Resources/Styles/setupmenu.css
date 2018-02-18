@@ -258,7 +258,6 @@ button.normal {
     color: #485E6C;
     height: 32px;
     font-size: 14px;
-    line-height: 32px;
     padding: 0 20px;
     background-color: white;
     border: none;
@@ -277,8 +276,13 @@ button.main {
 
 button.normal:active {
     border: none;
+    padding: 1px 21px;
     background-color: #05A1E0;
     color: white;
+}
+
+button.main:active {
+    padding: 1px 20px;
 }
 
 
