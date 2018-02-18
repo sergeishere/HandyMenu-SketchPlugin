@@ -11,6 +11,7 @@ var SETUP_MENU_IDENTIFIER = 'com.sergeishere.plugins.handymenu.setupWindow';
 var PANEL_COMMANDS_KEY = 'plugin_sketch_handymenu_my_commands';
 var NEEDS_RELOAD_KEY = 'handymenu_needs_reload';
 var COMMANDS_COUNT_KEY = 'plugin_sketch_handymenu_my_commands_count';
+var PANEL_HEIGHT_KEY = 'plugin_sketch_handymenu_my_commands_panel_height';
 
 // Handy Meny components sizes
 var COMMAND_ITEM_HEIGHT = 23;
@@ -24,6 +25,13 @@ var handyMenuPanel, handyMenuSettingsWindow;
 
 // Shared variables
 var actualContext, allCommandsString;
+
+
+var onStart = function(context) {
+    loadAndRun(context, function() {
+        HMHelper.start();
+    });
+}
 
 
 // Opening Handy Menu
@@ -46,16 +54,18 @@ var onRun = function(context) {
 
     // Updating menu size and position
 
-    var menuHeight = itemsCount * COMMAND_ITEM_HEIGHT + 6;
+    var totalHeight = userDefaults.integerForKey(PANEL_HEIGHT_KEY) || (COMMAND_ITEM_HEIGHT * itemsCount);
+
     var mouseLocation = NSEvent.mouseLocation();
 
     var xPos = mouseLocation.x + 1;
-    var yPos = mouseLocation.y - menuHeight + 6;
+    var yPos = mouseLocation.y - totalHeight + 12;
 
     if (userDefaults.boolForKey(NEEDS_RELOAD_KEY)) {
-        handyMenuPanel.setContentSize(NSMakeSize(MENU_WIDTH, menuHeight));
+        log(totalHeight);
+        handyMenuPanel.setContentSize(NSMakeSize(MENU_WIDTH, totalHeight + 6));
         handyMenuPanel.setFrameOrigin(NSMakePoint(xPos, yPos));
-        handyMenuPanel.contentView().subviews()[0].setFrameSize(NSMakeSize(MENU_WIDTH, menuHeight - 3));
+        handyMenuPanel.contentView().subviews()[0].setFrameSize(NSMakeSize(MENU_WIDTH, totalHeight + 3));
         handyMenuPanel.contentView().subviews()[0].reload(nil);
 
         userDefaults.setObject_forKey(false, NEEDS_RELOAD_KEY);
@@ -128,12 +138,11 @@ var onSetup = function(context) {
 function initHandyMenuPanel() {
 
     var itemsCount = userDefaults.integerForKey(COMMANDS_COUNT_KEY);
-    var menuHeight = itemsCount * COMMAND_ITEM_HEIGHT + 6;
+    var totalHeight = userDefaults.integerForKey(PANEL_HEIGHT_KEY) || (COMMAND_ITEM_HEIGHT * itemsCount);
 
     // Creating a window
     handyMenuPanel = NSPanel.alloc().init();
-
-    handyMenuPanel.setFrame_display(NSMakeRect(0, 0, MENU_WIDTH, menuHeight), true);
+    handyMenuPanel.setFrame_display(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 6), true);
     handyMenuPanel.setStyleMask(NSWindowStyleMaskTexturedBackground | NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskFullSizeContentView);
     handyMenuPanel.setBackgroundColor(NSColor.windowBackgroundColor());
     handyMenuPanel.standardWindowButton(NSWindowCloseButton).setHidden(true);
@@ -141,9 +150,14 @@ function initHandyMenuPanel() {
     handyMenuPanel.standardWindowButton(NSWindowZoomButton).setHidden(true);
     handyMenuPanel.setTitlebarAppearsTransparent(true);
     handyMenuPanel.setLevel(NSPopUpMenuWindowLevel);
+    handyMenuPanel.animationBehavior = NSWindowAnimationBehaviorUtilityWindow;
+
+    loadAndRun(actualContext, function() {
+        HMHelper.startWatchingTo(handyMenuPanel);
+    });
 
     //Add Web View to window
-    var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, MENU_WIDTH, menuHeight - 3));
+    var webView = WebView.alloc().initWithFrame(NSMakeRect(0, 0, MENU_WIDTH, totalHeight + 3));
     webView.setAutoresizingMask(NSViewWidthSizable | NSViewHeightSizable);
     webView.setDrawsBackground(false);
     handyMenuPanel.contentView().addSubview(webView);
@@ -199,7 +213,6 @@ function initHandyMenuPanel() {
     webView.setMainFrameURL(actualContext.plugin.urlForResourceNamed('handyMenu.html').path());
     userDefaults.setObject_forKey(true, NEEDS_RELOAD_KEY);
 
-    // Define the close window behaviour on the standard red traffic light button
     var closeButton = handyMenuPanel.standardWindowButton(NSWindowCloseButton);
     closeButton.setCOSJSTargetFunction(function(sender) {
         handyMenuPanel.orderOut(nil);
@@ -208,14 +221,12 @@ function initHandyMenuPanel() {
 }
 
 // Initializing Settings Window
-
 function initSettingsWindow() {
     // Configuring a window
     var windowWidth = 760;
     var menuHeight = 640;
 
     handyMenuSettingsWindow = NSPanel.alloc().init();
-
     handyMenuSettingsWindow.setFrame_display(NSMakeRect(0, 0, windowWidth, menuHeight), false);
     handyMenuSettingsWindow.setStyleMask(NSWindowStyleMaskTitled | NSWindowStyleMaskClosable | NSWindowStyleMaskTexturedBackground);
     handyMenuSettingsWindow.setBackgroundColor(NSColor.windowBackgroundColor());
@@ -248,9 +259,11 @@ function initSettingsWindow() {
             if (hash.hasOwnProperty('saveCommandsList')) {
                 var commandsString = hash.commands;
                 var commandsCount = hash.commandsCount;
+                var totalHeight = hash.totalHeight;
 
                 userDefaults.setObject_forKey(commandsString, PANEL_COMMANDS_KEY);
                 userDefaults.setObject_forKey(commandsCount, COMMANDS_COUNT_KEY);
+                userDefaults.setObject_forKey(totalHeight, PANEL_HEIGHT_KEY);
                 userDefaults.synchronize();
 
                 handyMenuSettingsWindow.orderOut(nil);
@@ -259,6 +272,9 @@ function initSettingsWindow() {
 
             } else if (hash.hasOwnProperty('closeWindow')) {
                 handyMenuSettingsWindow.orderOut(nil);
+            } else if (hash.hasOwnProperty('goto')){
+                var url = hash.url;
+                NSWorkspace.sharedWorkspace().openURL(NSURL.URLWithString(url));
             }
         })
     });
@@ -303,4 +319,19 @@ function parseHash(aURL) {
     }
 
     return vars;
+}
+
+var loadAndRun = function(context, callback) {
+    var FRAMEWORK_NAME = "HandyMenuFramework";
+    try {
+        callback();
+    } catch(e) {
+        var pluginBundle = NSBundle.bundleWithURL(context.plugin.url()),
+            mocha = Mocha.sharedRuntime();
+        if(mocha.loadFrameworkWithName_inDirectory(FRAMEWORK_NAME, pluginBundle.resourceURL().path())) {
+            callback();
+        } else {            
+            print("Error while loading framework '"+FRAMEWORK_NAME+"`");
+        }
+    }
 }
