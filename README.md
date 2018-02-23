@@ -8,7 +8,8 @@
 2. Double-click the `HandyMenu.sketchplugin` to install the plugin.
 
 ## Usage
-Just press ![show menu shortcut](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/dev/images/menu_shortcut.png =121x40)
+
+Just press `cmd` + `4`
 
 #### Set up your list of commands
 
