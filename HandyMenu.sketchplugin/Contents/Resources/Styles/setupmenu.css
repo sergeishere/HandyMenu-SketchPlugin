@@ -88,29 +88,28 @@ ul.no-commands:after {
     font-weight: 700;
 }
 
+ul li {
+    height: 32px;
+    padding: 0px 24px 0px 8px;
+    font-size: 13px;
+    line-height: 32px;
+    margin-bottom: 2px;
+    position: relative;
+}
+
 ul li.command {
     background-color: #F0f5f7;
-    color: #1B374A;
-    font-size: 13px;
-    line-height: 24px;
-    height: 24px;
-    padding: 0px 24px 0px 8px;
+    color: #1B374A;   
     border-radius: 3px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 2px;
-    cursor: grab;
-    position: relative;
+     cursor: grab;
 }
 
 ul li.separator {
-    height: 24px;
-    padding: 0px 24px 0px 8px;
-    margin-bottom: 2px;
-    cursor: grab;
-    position: relative;
     background-color: transparent;
+    cursor: grab;
 }
 
 ul li.separator:after {
@@ -119,9 +118,9 @@ ul li.separator:after {
     content: ' ';
     background-color: #D7E0E6;
     height: 2px;
-    top: 11px;
+    top: 15px;
     left: 8px;
-    right: 28px;
+    right: 32px;
 }
 
 ul li.checked-command {
@@ -134,18 +133,17 @@ ul li.checked-command {
 ul li.plugin-header {
     color: #28BBF5;
     padding-left: 0;
-    margin: 36px 0 10px 0;
+    margin: 32px 0 2px 0;
     background-color: transparent;
     font-size: 0.594em;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    /*opacity: 0.45;*/
     cursor: default;
 }
 
 ul li.plugin-header:first-child {
-    margin: 0 0 10px 0;
+    margin: 0 0 2px 0;
 }
 
 i.delete-icon {
@@ -158,9 +156,8 @@ i.delete-icon {
     opacity: 0.3;
     right: 0px;
     top: 0px;
-    width: 24px;
-    height: 24px;
-    font-size: 12px;
+    width: 32px;
+    height: 32px;
     cursor: pointer;
     font-style: normal;
     color: #D7E0E6;
@@ -171,34 +168,34 @@ i.delete-icon:hover {
     opacity: 1.0;
 }
 
-.text-button {
-    height: 32px;
-    text-align: left;
-    margin: 0;
-    padding: 0;
-    font-size: 13px;
-    line-height: 32px;
-    background-color: transparent;
-    border-radius: 5px;
-    border: none;
-    color: #28BBF5;
-    cursor: pointer;
-}
 
-.text-button:hover {
+.add-separator-button:hover {
+    line-height: 24px;
+    border: none;
+    padding: 0 7px;
     background-color: #F0f5f7;
 }
 
-.text-button:active {
+.add-separator-button:active {
     background-color: #28BBF5;
     color: white;
 }
 
 .add-separator-button {
     position: absolute;
-    top: 40px;
+    top: 46px;
     right: 40px;
-    padding: 0 8px;
+    height: 24px;
+    text-align: left;
+    margin: 0;
+    font-size: 13px;
+    line-height: 22px;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid #D7E0E6;
+    color: #28BBF5;
+    cursor: pointer;
+    padding: 0 6px;
 }
 
 #footer {
@@ -230,7 +227,7 @@ i.delete-icon:hover {
 .details > p {
     margin: 0;
     line-height: 32px;
-    font-size: 12px;
+    font-size: 13px;
     float: left;
     color: #1B374A;
 }
@@ -250,7 +247,7 @@ i.delete-icon:hover {
 #footer button {
    cursor: pointer;
    height: 32px;
-   font-size: 14px;
+   font-size: 13px;
    border-radius: 5px;
    margin-left: 8px;
    float: right;
@@ -297,9 +294,9 @@ button.second:active {
     background-color: rgba(240, 245, 247, .9);
     box-shadow: 0 4px 6px rgba(27, 55, 74, 0.4);
     font-size: 13px;
-    line-height: 24px;
-    height: 24px;
-    padding: 0 24px 0 8px;
+    line-height: 32px;
+    height: 32px;
+    padding: 0 32px 0 8px;
     border-radius: 3px;
     white-space: nowrap;
     overflow: hidden;
@@ -316,7 +313,7 @@ button.second:active {
     content: ' ';
     background-color: #D7E0E6;
     height: 2px;
-    top: 11px;
+    top: 15px;
     left: 8px;
     right: 8px;
 }
