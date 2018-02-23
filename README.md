@@ -1,7 +1,6 @@
-# Handy Menu Sketch Plugin
-
 ![Cover](images/cover_image.png)
 
+# Handy Menu Sketch Plugin
 ## Instalation
 
 1. [Download](https://github.com/sergeishere/HandyMenu-SketchPlugin/archive/master.zip) the archive and unzip it.
