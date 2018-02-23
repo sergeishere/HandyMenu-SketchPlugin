@@ -1,6 +1,6 @@
 # Handy Menu Sketch Plugin
 
-![Cover](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/master/images/cover_image.png)
+![Cover](images/cover_image.png)
 
 ## Instalation
 
@@ -16,7 +16,7 @@ Just press `cmd` + `4`
 1. Open setting `Plugins` > `Handy Menu` > `Setup Handy Menu` or press `cmd` + `option` + 4
 2. Choose commands you need quick access to using drag and drop.
 
-![Settings](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/master/images/settings.png)
+![Settings](images/settings.png)
 
 ## Details
 
