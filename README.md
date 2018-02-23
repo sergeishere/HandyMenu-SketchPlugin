@@ -19,6 +19,6 @@ Just press `cmd` + `4`
 
 ## Details
 
-Plugin uses framework Dragula by Nicolás Bevacqua: [https://github.com/bevacqua/dragula](https://github.com/bevacqua/dragula)
+The Handy Menu plugin uses framework Dragula by Nicolás Bevacqua: [https://github.com/bevacqua/dragula](https://github.com/bevacqua/dragula) 
 
-Feel free to send me your feedback and ideas: [Twitter — Serge D](https://twitter.com/sergehere)
+Feel free to send me your feedback and ideas: [Twitter](https://twitter.com/sergehere)
