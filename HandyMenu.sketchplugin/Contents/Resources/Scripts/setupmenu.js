@@ -89,6 +89,8 @@ function loadAllCommandsList(commandsString) {
         document.body.querySelector('.no-plugins').style.display = 'none';
         document.body.querySelector('.left').style.display = 'block';
         document.body.querySelector('.right').style.display = 'block';
+        
+        plugins.sort((a,b) => a.pluginName >= b.pluginName);
 
         plugins.forEach(function(plugin, i, arr) {
 
@@ -96,6 +98,8 @@ function loadAllCommandsList(commandsString) {
             li.appendChild(document.createTextNode(plugin.pluginName));
             li.className = 'plugin-header';
             allCommandList.appendChild(li);
+
+            plugin.commands.sort((a,b) => a.name >= b.name);
 
             plugin.commands.forEach(function(command, i, arr) {
                 var li = document.createElement('li');

@@ -47,7 +47,7 @@ body {
     right: 40px;
     top: 48px;
     margin: 0;
-    color: #485E6C;
+    color: #1B374A;
 }
 
 ul {
@@ -68,7 +68,7 @@ ul {
     left: 0;
     right: 0;
     top: 40%;
-    color: #485E6C;
+    color: #1B374A;
     text-align: center;
     font-size: 20px;
     line-height: 24px;
@@ -90,24 +90,24 @@ ul.no-commands:after {
 
 ul li.command {
     background-color: #F0f5f7;
-    color: #485E6C;
+    color: #1B374A;
     font-size: 13px;
-    line-height: 28px;
-    height: 28px;
+    line-height: 24px;
+    height: 24px;
     padding: 0px 24px 0px 8px;
     border-radius: 3px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     cursor: grab;
     position: relative;
 }
 
 ul li.separator {
-    height: 28px;
+    height: 24px;
     padding: 0px 24px 0px 8px;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     cursor: grab;
     position: relative;
     background-color: transparent;
@@ -119,7 +119,7 @@ ul li.separator:after {
     content: ' ';
     background-color: #D7E0E6;
     height: 2px;
-    top: 12px;
+    top: 11px;
     left: 8px;
     right: 28px;
 }
@@ -132,19 +132,20 @@ ul li.checked-command {
 }
 
 ul li.plugin-header {
-    color: #485E6C;
+    color: #28BBF5;
     padding-left: 0;
-    margin: 28px 0 12px 0;
+    margin: 36px 0 10px 0;
     background-color: transparent;
-    font-size: 11px;
+    font-size: 0.594em;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    opacity: 0.75;
+    letter-spacing: 0.1em;
+    /*opacity: 0.45;*/
     cursor: default;
 }
 
 ul li.plugin-header:first-child {
-    margin: 3px 0 9px 0;
+    margin: 0 0 10px 0;
 }
 
 i.delete-icon {
@@ -157,11 +158,9 @@ i.delete-icon {
     opacity: 0.3;
     right: 0px;
     top: 0px;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     font-size: 12px;
-    text-align: center;
-    line-height: 32px;
     cursor: pointer;
     font-style: normal;
     color: #D7E0E6;
@@ -173,31 +172,33 @@ i.delete-icon:hover {
 }
 
 .text-button {
-    border: none;
+    height: 32px;
     text-align: left;
-    margin: 0 -8px 0 0;
+    margin: 0;
     padding: 0;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 32px;
     background-color: transparent;
+    border-radius: 5px;
+    border: none;
     color: #28BBF5;
     cursor: pointer;
 }
 
 .text-button:hover {
-    color: #05A1E0;
+    background-color: #F0f5f7;
 }
 
 .text-button:active {
-    color: #485E6C;
+    background-color: #28BBF5;
+    color: white;
 }
 
 .add-separator-button {
     position: absolute;
-    height: 20px;
-    top: 48px;
+    top: 40px;
     right: 40px;
-    padding: 0 6px;
+    padding: 0 8px;
 }
 
 #footer {
@@ -215,68 +216,73 @@ i.delete-icon:hover {
     display: block;
     height: 32px;
     float: left;
+    cursor: pointer;
+    opacity: 0.5;
+    padding: 0 8px;
+    border-radius: 5px;
+}
+
+#footer .details:hover {
+    opacity: 1.0;
+    background-color: #F0f5f7;
 }
 
 .details > p {
-    margin: 0 8px 0 0;
+    margin: 0;
     line-height: 32px;
     font-size: 12px;
     float: left;
-    color: #485E6C;
-    cursor: default;
-    opacity: 0.5;
+    color: #1B374A;
 }
 
 .details span {
     float: left;
     width: 16px;
     height: 16px;
-    margin: 8px 4px 8px 4px;
+    margin: 8px 6px 8px 0;
     background-size: 16px 16px;
-    cursor: pointer;
-    opacity: 0.5;
-}
-
-.details span:hover {
-    opacity: 1.0;
 }
 
 .details .github {
     background-image: url(../Images/github_logo.svg);
 }
-.details .twitter {
-    background-image: url(../Images/twitter_logo.svg);
+
+#footer button {
+   cursor: pointer;
+   height: 32px;
+   font-size: 14px;
+   border-radius: 5px;
+   margin-left: 8px;
+   float: right;
+   padding: 0 20px;
 }
 
-.details  a {
-    float: left;
-    display: block;
-}
-
-button.normal {
-    cursor: pointer;
-    color: #485E6C;
-    height: 32px;
-    font-size: 14px;
-    line-height: 32px;
-    padding: 0 20px;
+button.second {
     background-color: white;
-    border: none;
-    border-radius: 5px;
-    margin-left: 8px;
+    color: #1B374A;
+    line-height: 30px;
     border: 1px solid #D7E0E6;
-    float: right;
+    
 }
 
 button.main {
     background-color: #28BBF5;
     border: none;
+    line-height: 32px;
     font-weight: 700;
     color: white;
 }
 
-button.normal:active {
+button.main:active {
     border: none;
+    background-color: #05A1E0;
+    color: white;
+}
+
+button.second:active {
+    border: none;
+    line-height: 32px;
+    padding: 0 21px;
     background-color: #05A1E0;
     color: white;
 }
@@ -288,28 +294,20 @@ button.normal:active {
     position: fixed !important;
     margin: 0 !important;
     z-index: 9999 !important;
-    opacity: 0.9;
-    background-color: #F0f5f7;
-    font-size: 14px;
+    background-color: rgba(240, 245, 247, .9);
+    box-shadow: 0 4px 6px rgba(27, 55, 74, 0.4);
+    font-size: 13px;
     line-height: 24px;
-    height: 32px;
-    padding: 4px 24px 4px 8px;
-    border-radius: 5px;
+    height: 24px;
+    padding: 0 24px 0 8px;
+    border-radius: 3px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .gu-mirror.separator {
-    position: absolute;
-    display: block;
-    content: ' ';
-    background-color: transparent;
-    border: 1px solid #D7E0E6;
-    height: 2px;
-    top: 14px;
-    left: 8px;
-    right: 32px;
+    background-color: white;
 }
 
 .gu-mirror.separator:after {
@@ -318,10 +316,15 @@ button.normal:active {
     content: ' ';
     background-color: #D7E0E6;
     height: 2px;
-    top: 14px;
+    top: 11px;
     left: 8px;
-    right: 32px;
+    right: 8px;
 }
+
+.gu-mirror i.delete-icon {
+    opacity: 0;
+}
+
 
 .gu-hide {
     display: none !important;
@@ -334,6 +337,20 @@ button.normal:active {
     user-select: none !important;
 }
 
-.gu-transit {
-    opacity: 0.5;
+.gu-transit.separator {
+    background-color: white !important;
 }
+
+.gu-transit.separator:after {
+    right: 8px;
+}
+
+.gu-transit {
+    background-color: #28BBF5 !important;
+    color: white !important;
+}
+
+.gu-transit i.delete-icon {
+    opacity: 0 !important;
+}
+
