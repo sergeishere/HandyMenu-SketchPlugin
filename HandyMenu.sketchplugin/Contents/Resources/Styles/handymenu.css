@@ -45,6 +45,7 @@ li.separator {
 li.separator > hr{
 	margin: 0;
 	height: 2px;
-	background-color: #dfdfdf;
+	background-color: #000000;
+	opacity: 0.1;
 	border: none;
 }

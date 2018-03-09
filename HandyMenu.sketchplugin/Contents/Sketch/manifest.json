@@ -12,13 +12,13 @@
       "handler" : "onSetup",
       "name" : "Setup Handy Menu",
       "identifier" : "setup",
-      "shortcut" : "cmd option 4",
+      "shortcut" : "cmd option 4"
     },
     {
-      "script": "script.js",
+      "script":"script.js",
       "handlers": {
         "actions": {
-          "Startup" : "onStart"
+          "Startup": "onStart"
         }
       }
     }
