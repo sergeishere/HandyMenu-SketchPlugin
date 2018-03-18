@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
-#import <objc/message.h>
 #import <HMSettingsWindowController.h>
+#import <HMPluginsDataController.h>
+#import <HMMenuManager.h>
 
 #define HMLog(fmt, ...) NSLog((@"HandyMenu (Sketch Plugin) %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 
@@ -17,7 +18,6 @@
 
 + (void) initializePlugin;
 + (void) showMenu;
-+ (void) runCommand:(NSMenuItem *)sender;
 + (void) showSettings;
 
 @end

@@ -9,11 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 #import <HMShortcutField.h>
+#import <HMPluginsDataController.h>
 
 #define HMLog(fmt, ...) NSLog((@"HandyMenu (Sketch Plugin) %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 
-@interface HMSettingsWindowController : NSWindowController<NSTextFieldDelegate, NSWindowDelegate>
+@interface HMSettingsWindowController : NSWindowController<NSTextFieldDelegate, NSWindowDelegate,  NSOutlineViewDataSource, NSOutlineViewDelegate>
 
 @property (weak) IBOutlet HMShortcutField *shortcutTextField;
+@property (weak) IBOutlet NSOutlineView *allCommandsList;
 
 @end
