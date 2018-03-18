@@ -1,4 +1,4 @@
-![Cover](images/cover_Image.png)
+![Cover](Images/cover_Image.png)
 
 # Handy Menu Sketch Plugin
 ## Instalation
