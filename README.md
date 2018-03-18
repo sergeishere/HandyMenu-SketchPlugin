@@ -1,4 +1,4 @@
-![Cover](images/cover_image.png)
+![Cover](images/cover_Image.png)
 
 # Handy Menu Sketch Plugin
 ## Instalation
@@ -15,10 +15,8 @@ Just press `cmd` + `4`
 1. Open setting `Plugins` > `Handy Menu` > `Setup Handy Menu` or press `cmd` + `option` + 4
 2. Choose commands you need quick access to using drag and drop.
 
-![Settings](images/settings.png)
+![Settings](Images/settings.png)
 
 ## Details
-
-The Handy Menu plugin uses framework Dragula by Nicolás Bevacqua: [https://github.com/bevacqua/dragula](https://github.com/bevacqua/dragula) 
 
 Feel free to send me your feedback and ideas: [Twitter](https://twitter.com/sergehere)
