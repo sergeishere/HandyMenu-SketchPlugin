@@ -21,6 +21,7 @@ unsigned long shortcutModifierFlag = NSEventModifierFlagCommand; // + NSEventMod
 
 + (void) initializePlugin {
     menuManager = [[HMMenuManager alloc] init];
+    [HMUserPluginsDataController loadPlugins];
     [menuManager initializeMenu];
     
     NSEvent * (^handleKeyDown)(NSEvent*) = ^(NSEvent *event){

@@ -82,7 +82,7 @@ NSArray *allPlugins;
 
 -(void)showWindow:(id)sender{
     [super showWindow:sender];
-    allPlugins = [HMPluginsDataController getSortedListOfPlugins];
+    allPlugins = [HMUserPluginsDataController getSortedListOfAllPlugins];
     [_allCommandsList reloadData];
     [_allCommandsList expandItem:nil expandChildren:YES];
 }

@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 #import <HMShortcutField.h>
-#import <HMPluginsDataController.h>
+#import <HMUserPluginsDataController.h>
 
 #define HMLog(fmt, ...) NSLog((@"HandyMenu (Sketch Plugin) %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 

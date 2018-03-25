@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
-#import <HMPluginsDataController.h>
+#import <HMUserPluginsDataController.h>
 #import <objc/message.h>
 
 @interface HMMenuManager : NSObject
