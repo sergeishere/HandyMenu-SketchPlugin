@@ -8,12 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
-#import <HMUserPluginsDataController.h>
 #import <objc/message.h>
 
-@interface HMMenuManager : NSObject
+#define HMLog(fmt, ...) NSLog((@"HandyMenu (Sketch Plugin) %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 
+@interface HMMenu : NSMenu
+
+@property (nonatomic) BOOL groupComands;
+
+-(id)init;
 -(void)showMenu;
--(void)initializeMenu;
+-(void)updateMenuFromCommandsList:(NSArray *)commands;
+
 
 @end

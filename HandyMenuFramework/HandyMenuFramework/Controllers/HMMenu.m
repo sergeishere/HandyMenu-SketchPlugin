@@ -6,41 +6,52 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-#import "HMMenuManager.h"
+#import "HMMenu.h"
 
-@implementation HMMenuManager
+@implementation HMMenu
 
-NSMenu *menu;
-
--(void)initializeMenu {
-    menu = [[NSMenu alloc] init];
-    [self updateMenu];
+-(id)init {
+    self = [super init];
+    
+    return self;
 }
 
 -(void)showMenu {
-    [menu popUpMenuPositioningItem:nil atLocation:[NSEvent mouseLocation] inView:nil];
+    [self popUpMenuPositioningItem:nil atLocation:[NSEvent mouseLocation] inView:nil];
 }
 
--(void)updateMenu {
-    NSArray *commands = [HMUserPluginsDataController getListOfUserPlugins];
-    HMLog(@"%@", commands);
-    for (id command in commands){
+-(void)updateMenuFromCommandsList:(NSArray *)commands {
+    
+    [self removeAllItems];
+    
+    NSString *lastPluginIdentifier = nil;
+    
+    for (id command in commands) {
         if ([command respondsToSelector:NSSelectorFromString(@"hasRunHandler")]) {
             if ((BOOL)objc_msgSend(command, NSSelectorFromString(@"hasRunHandler")) == YES) {
-
+                
+                if (_groupComands) {
+                    NSString *pluginIdentifier = [command valueForKeyPath:@"pluginBundle.identifier"];
+                    if(lastPluginIdentifier != nil && lastPluginIdentifier != pluginIdentifier){
+                       [self addItem:[NSMenuItem separatorItem]];
+                    }
+                    lastPluginIdentifier = pluginIdentifier;
+                }
+                
+                
+                
                 NSString *commandName = [command valueForKey:@"name"];
 
                 NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:commandName action:@selector(runCommand:) keyEquivalent:@""];
                 menuItem.target = self;
                 menuItem.representedObject = command;
 
-                [menu addItem:menuItem];
+                [self addItem:menuItem];
             }
         }
     }
     
-//    for (id plugin in sortedPlugins)
-//    {
+//    for (id plugin in commands) {
 //        NSString *pluginName = [plugin valueForKey:@"name"];
 //
 //        if ([pluginName isEqualToString:@"HandyMenu"]) {
@@ -50,7 +61,7 @@ NSMenu *menu;
 //        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:pluginName action:nil keyEquivalent:@""];
 //        NSMenu *subMenu = [[NSMenu alloc] init];
 //        menuItem.submenu = subMenu;
-//        [menu addItem:menuItem];
+//        [self addItem:menuItem];
 //
 //        NSDictionary *commands = [plugin valueForKey:@"commands"];
 //
@@ -93,5 +104,7 @@ NSMenu *menu;
     //      methodToCall = (MethodType)[delegate methodForSelector:a_selector];
     //      methodToCall(delegate, a_selector, command, YES, context);
 }
+
+
 
 @end

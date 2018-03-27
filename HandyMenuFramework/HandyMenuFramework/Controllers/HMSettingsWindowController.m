@@ -15,21 +15,28 @@
 
 @implementation HMSettingsWindowController
 
-id shortcutHandlingEventMonitor;
-NSArray *allPlugins;
 
+id shortcutHandlingEventMonitor;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    
     [self.window setLevel:NSModalPanelWindowLevel];
     [self.window setBackgroundColor:NSColor.whiteColor];
     
-    [_shortcutTextField setDelegate:self];
+    [[self window] center];
+}
+
+-(void)updatePluginsLists:(NSArray *)plugins {
     
-    [_allCommandsList setDataSource:self];
-    [_allCommandsList setDelegate:self];
+    _pluginList = plugins;
+
+    [_allCommandsList reloadData];
+    [_allCommandsList expandItem:nil expandChildren:YES];
     
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
+    HMLog(@"Loaded plugins: %@", _pluginList);
+    HMLog(@"%@", _allCommandsList);
+    
 }
 
 -(NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item{
@@ -38,7 +45,7 @@ NSArray *allPlugins;
         return children.count;
     }
     
-    return allPlugins.count;
+    return _pluginList.count;
 }
 
 -(id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item{
@@ -46,7 +53,7 @@ NSArray *allPlugins;
         NSArray *children = [[item valueForKey:@"commands"] allValues];
         return children[index];
     }
-    return allPlugins[index];
+    return _pluginList[index];
 }
 
 -(BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
@@ -78,13 +85,6 @@ NSArray *allPlugins;
     HMLog(@"%@", (NSString *)[item valueForKey:@"name"]);
     
     return tableCellView;
-}
-
--(void)showWindow:(id)sender{
-    [super showWindow:sender];
-    allPlugins = [HMUserPluginsDataController getSortedListOfAllPlugins];
-    [_allCommandsList reloadData];
-    [_allCommandsList expandItem:nil expandChildren:YES];
 }
 
 //-(void)mouseDown:(NSEvent *)event {

@@ -11,25 +11,20 @@
 
 @implementation HandyMenu
 
-HMSettingsWindowController *settingsWindowController;
-HMMenuManager *menuManager;
+HMPluginController *pluginController;
 
 unsigned short shortcutKeyCode = 21;
 unsigned long shortcutModifierFlag = NSEventModifierFlagCommand; // + NSEventModifierFlagOption;
 
-
-
 + (void) initializePlugin {
-    menuManager = [[HMMenuManager alloc] init];
-    [HMUserPluginsDataController loadPlugins];
-    [menuManager initializeMenu];
+    pluginController = [[HMPluginController alloc] init];
     
     NSEvent * (^handleKeyDown)(NSEvent*) = ^(NSEvent *event){
         
         if ((event.keyCode == shortcutKeyCode) &&
             ([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) == shortcutModifierFlag) {
             
-            [HandyMenu showMenu];
+            [pluginController showMenu];
             
             return (NSEvent *)nil;
         }
@@ -38,24 +33,15 @@ unsigned long shortcutModifierFlag = NSEventModifierFlagCommand; // + NSEventMod
     
     [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown handler:handleKeyDown];
     
-    [HandyMenu initSettingsWindowController];
-    
 }
 
 + (void) showMenu {
-    [menuManager showMenu];
+    [pluginController showMenu];
 }
-
 
 
 + (void) showSettings {
-    [[settingsWindowController window] center];
-    [settingsWindowController showWindow:nil];
-    HMLog(@"Settings is launched");
-}
-
-+ (void) initSettingsWindowController {
-    settingsWindowController = [[HMSettingsWindowController alloc] initWithWindowNibName:@"HMSettingsWindowController"];
+    [pluginController showSettings];
 }
 
 
