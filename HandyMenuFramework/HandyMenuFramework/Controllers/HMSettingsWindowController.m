@@ -19,7 +19,7 @@ id shortcutHandlingEventMonitor;
     [super windowDidLoad];
     
     [self.window setLevel:NSModalPanelWindowLevel];
-    [self.window setBackgroundColor:NSColor.whiteColor];
+//    [self.window setBackgroundColor:NSColor.whiteColor];
     
     [[self window] center];
     
@@ -168,7 +168,8 @@ id shortcutHandlingEventMonitor;
     return YES;
 }
 
-#pragma mark - Mouse Events
+//#pragma mark - Mouse Events
+
 //-(void)mouseDown:(NSEvent *)event {
 //    [[self window] makeFirstResponder:nil];
 //    [super mouseDown:event];
@@ -182,16 +183,19 @@ id shortcutHandlingEventMonitor;
 //    }
 //    [super keyDown:event];
 //}
+//
+//-(BOOL)windowShouldClose:(NSWindow *)sender {
+//    HMLog(@"Settings window should be closed");
+//    [[self window] makeFirstResponder:nil];
+//    return YES;
+//}
 
--(void)showWindow:(id)sender {
-    [super showWindow:sender];
+#pragma mark - HMTableView Delegate
 
-}
-
--(BOOL)windowShouldClose:(NSWindow *)sender {
-    HMLog(@"Settings window should be closed");
-    [[self window] makeFirstResponder:nil];
-    return YES;
+-(void)deleteIsPressedInTableView:(id)tableView{
+    HMLog(@"Delete is pressed");
+    [commandsSchemes removeObjectAtIndex:[_userCommandsTableView selectedRow]];
+    [_userCommandsTableView reloadData];
 }
 
 #pragma mark - IBActions

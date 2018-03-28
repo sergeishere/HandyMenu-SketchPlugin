@@ -11,8 +11,7 @@
 #import <HMMenu.h>
 #import <HMSettingsWindowController.h>
 #import <HMDataProvider.h>
-
-#define HMLog(fmt, ...) NSLog((@"HandyMenu (Sketch Plugin) %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#import "HMLog.h"
 
 @interface HMPluginController : NSObject<HMDataProviderDelegate, HMSettingsWindowControllerDelegate>
 

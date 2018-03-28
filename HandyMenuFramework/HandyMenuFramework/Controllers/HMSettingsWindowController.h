@@ -12,21 +12,20 @@
 #import <HMDataProvider.h>
 #import <HMCommandScheme.h>
 #import <HMPluginScheme.h>
+#import <HMTableView.h>
+#import "HMLog.h"
 
-#define HMLog(fmt, ...) NSLog((@"HandyMenu (Sketch Plugin) %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 
 @protocol HMSettingsWindowControllerDelegate<NSObject>
-@required
-
+@optional
 -(void)settingsWindowController:(id)settingsWindowController didUpdateCommandsSchemes:(NSArray *)newCommandsSchemes;
-
 @end
 
-@interface HMSettingsWindowController : NSWindowController<NSTextFieldDelegate, NSWindowDelegate,  NSOutlineViewDataSource, NSOutlineViewDelegate, NSTableViewDataSource, NSTableViewDelegate>
 
-@property (weak) IBOutlet HMShortcutField *shortcutTextField;
+@interface HMSettingsWindowController : NSWindowController<NSOutlineViewDataSource, NSOutlineViewDelegate, NSTableViewDataSource, NSTableViewDelegate, HMTableViewDelegate>
+
 @property (weak) IBOutlet NSOutlineView *allCommandsOutlineView;
-@property (weak) IBOutlet NSTableView *userCommandsTableView;
+@property (weak) IBOutlet HMTableView *userCommandsTableView;
 
 @property (weak) id<HMSettingsWindowControllerDelegate> delegate;
 

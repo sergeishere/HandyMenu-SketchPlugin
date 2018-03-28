@@ -17,7 +17,7 @@ NSUserDefaults *pluginUserDefaults;
 
 -(id)init{
     self = [super init];
-    pluginUserDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"com.sergeishere.plugins.handymenu"];
+    pluginUserDefaults = [[NSUserDefaults alloc] initWithSuiteName:@_SUIT_IDENTIFIER_];
 //    HMLog(@"Plugin's user defaults keys: %@", [[pluginUserDefaults dictionaryRepresentation] allKeys]);
 
 //    [pluginUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_user_commands"];
@@ -39,7 +39,7 @@ NSUserDefaults *pluginUserDefaults;
     
     userCommandsSchemes = nil;
 
-    NSData *userCommandsArchivedSchemes = [pluginUserDefaults objectForKey:@"plugin_sketch_handymenu_user_commands"];
+    NSData *userCommandsArchivedSchemes = [pluginUserDefaults objectForKey:@_USER_COMMANDS_KEY_];
     
     if(userCommandsArchivedSchemes != nil) {
         
@@ -49,7 +49,7 @@ NSUserDefaults *pluginUserDefaults;
     } else {
         
         NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-        NSString *userCommandsString = [standardUserDefaults stringForKey:@"plugin_sketch_handymenu_my_commands"];
+        NSString *userCommandsString = [standardUserDefaults stringForKey:@_OLD_USER_COMMANDS_KEY_];
         
         if (userCommandsString != nil) {
             HMLog(@"Migrating from: %@", userCommandsString);
@@ -61,7 +61,7 @@ NSUserDefaults *pluginUserDefaults;
             [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_my_commands_count"];
             [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_my_commands_panel_height"];
             [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_all_commands_string"];
-//            [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_my_commands"];
+//            [standardUserDefaults removeObjectForKey:@_OLD_USER_COMMANDS_KEY_];
             [standardUserDefaults synchronize];
         } else {
             HMLog(@"No commands are found");
@@ -77,7 +77,7 @@ NSUserDefaults *pluginUserDefaults;
     @try {
         HMLog(@"Saving: %@", schemes);
         NSData *userCommandsArchivedSchemes = [NSKeyedArchiver archivedDataWithRootObject:schemes];
-        [pluginUserDefaults setObject:userCommandsArchivedSchemes forKey:@"plugin_sketch_handymenu_user_commands"];
+        [pluginUserDefaults setObject:userCommandsArchivedSchemes forKey:@_USER_COMMANDS_KEY_];
         [pluginUserDefaults synchronize];
     } @catch (NSException *exeption) {
         HMLog(@"%@", exeption);

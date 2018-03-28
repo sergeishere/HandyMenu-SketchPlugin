@@ -7,7 +7,7 @@
 //
 
 #import "HandyMenu.h"
-
+#import "HMLog.h"
 
 @implementation HandyMenu
 

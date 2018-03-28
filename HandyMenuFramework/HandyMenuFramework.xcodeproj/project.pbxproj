@@ -27,6 +27,8 @@
 		A5BAF5BE205EDBBB00E5183F /* HMMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BAF5BC205EDBBB00E5183F /* HMMenu.m */; };
 		A5C3AA6B206BB05600A5475C /* HMPluginScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA69206BB05600A5475C /* HMPluginScheme.h */; };
 		A5C3AA6C206BB05600A5475C /* HMPluginScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3AA6A206BB05600A5475C /* HMPluginScheme.m */; };
+		A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA76206C495E00A5475C /* HMTableView.h */; };
+		A5C3AA79206C495E00A5475C /* HMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3AA77206C495E00A5475C /* HMTableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -64,6 +66,10 @@
 		A5BAF5BC205EDBBB00E5183F /* HMMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMMenu.m; sourceTree = "<group>"; };
 		A5C3AA69206BB05600A5475C /* HMPluginScheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMPluginScheme.h; sourceTree = "<group>"; };
 		A5C3AA6A206BB05600A5475C /* HMPluginScheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMPluginScheme.m; sourceTree = "<group>"; };
+		A5C3AA76206C495E00A5475C /* HMTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMTableView.h; sourceTree = "<group>"; };
+		A5C3AA77206C495E00A5475C /* HMTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMTableView.m; sourceTree = "<group>"; };
+		A5C3AA7B206C501F00A5475C /* HMLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMLog.h; sourceTree = "<group>"; };
+		A5C3AA7C206C503000A5475C /* HMConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,26 +120,29 @@
 				A5DAB55A2060F50F0041BD69 /* Controllers */,
 				A5089DC92069A266006866D0 /* Models */,
 				A5DAB5592060F5050041BD69 /* Views */,
+				A5C3AA7A206C501000A5475C /* Utils */,
 				A5BAF5B5205EBA2A00E5183F /* assets.xcassets */,
 			);
 			path = HandyMenuFramework;
 			sourceTree = "<group>";
 		};
-		A5C3AA75206BE45000A5475C /* Settings */ = {
+		A5C3AA7A206C501000A5475C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */,
-				A52897FF205BF90D009AB2D2 /* HMSettingsWindowController.m */,
+				A5C3AA7B206C501F00A5475C /* HMLog.h */,
+				A5C3AA7C206C503000A5475C /* HMConstants.h */,
 			);
-			path = Settings;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		A5DAB5592060F5050041BD69 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A5289800205BF90D009AB2D2 /* HMSettingsWindowController.xib */,
+				A5C3AA76206C495E00A5475C /* HMTableView.h */,
+				A5C3AA77206C495E00A5475C /* HMTableView.m */,
 				A5BAF556205DA7D000E5183F /* HMShortcutField.h */,
 				A5BAF557205DA7D000E5183F /* HMShortcutField.m */,
+				A5289800205BF90D009AB2D2 /* HMSettingsWindowController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -141,7 +150,8 @@
 		A5DAB55A2060F50F0041BD69 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A5C3AA75206BE45000A5475C /* Settings */,
+				A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */,
+				A52897FF205BF90D009AB2D2 /* HMSettingsWindowController.m */,
 				A5BAF5B7205ED7A000E5183F /* HMDataProvider.h */,
 				A5BAF5B8205ED7A000E5183F /* HMDataProvider.m */,
 				A5BAF5BB205EDBBB00E5183F /* HMMenu.h */,
@@ -164,6 +174,7 @@
 				A5C3AA6B206BB05600A5475C /* HMPluginScheme.h in Headers */,
 				A5343A7D2069491C0090844C /* HMPluginController.h in Headers */,
 				A560E81520584CBE00DCFF87 /* HandyMenu.h in Headers */,
+				A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */,
 				A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */,
 				A5BAF5B9205ED7A000E5183F /* HMDataProvider.h in Headers */,
 				A560E80D20584CAD00DCFF87 /* HandyMenuFramework.h in Headers */,
@@ -242,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C3AA79206C495E00A5475C /* HMTableView.m in Sources */,
 				A560E81620584CBE00DCFF87 /* HandyMenu.m in Sources */,
 				A5BAF5BE205EDBBB00E5183F /* HMMenu.m in Sources */,
 				A5BAF5BA205ED7A000E5183F /* HMDataProvider.m in Sources */,
