@@ -12,5 +12,6 @@
 
 @property (nonatomic) NSString* pluginID;
 @property (nonatomic) NSString* commandID;
+@property (nonatomic) NSString* name;
 
 @end

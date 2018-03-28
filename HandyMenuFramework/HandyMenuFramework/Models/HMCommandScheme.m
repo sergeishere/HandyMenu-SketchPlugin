@@ -14,6 +14,7 @@
 {
     [encoder encodeObject:self.pluginID forKey:@"pluginID"];
     [encoder encodeObject:self.commandID forKey:@"commandID"];
+    [encoder encodeObject:self.name forKey:@"name"];
 }
 
 - (id)initWithCoder:(NSCoder *)decoder
@@ -21,8 +22,15 @@
     if((self = [super init])) {
         self.pluginID = [decoder decodeObjectForKey:@"pluginID"];
         self.commandID  = [decoder decodeObjectForKey:@"commandID"];
+        self.name  = [decoder decodeObjectForKey:@"name"];
     }
     return self;
+}
+
+-(NSString *)description
+{
+    return [NSString stringWithFormat:@"<HMCommandScheme: %@, pluginID: %@, commandID: %@>",
+            [self name], [self pluginID], [self commandID]];
 }
 
 @end

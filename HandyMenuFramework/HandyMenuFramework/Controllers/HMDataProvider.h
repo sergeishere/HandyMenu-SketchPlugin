@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <HMCommandScheme.h>
+#import <HMPluginScheme.h>
 
 #define HMLog(fmt, ...) NSLog((@"HandyMenu (Sketch Plugin) %s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
 
 @protocol HMDataProviderDelegate<NSObject>
 @required
 
--(void)dataProviderWasUpdated:(id)dataProvider withNewCommands:(id)commands;
+-(void)dataProviderWasUpdated:(id)dataProvider withNewCommandsSchemes:(id)schemes;
 
 @end
 
@@ -23,7 +24,12 @@
 -(id)init;
 -(void)loadData;
 
--(NSArray *)getSortedListOfAllPlugins;
+-(NSArray *)getPluginsSchemes;
+-(NSArray *)getUserCommandsSchemes;
+
+-(void)updatedUserCommandsSchemes:(NSArray *)newCommandSchemes;
+
+-(NSArray *)getUserCommands;
 
 @property (weak) id<HMDataProviderDelegate> delegate;
 

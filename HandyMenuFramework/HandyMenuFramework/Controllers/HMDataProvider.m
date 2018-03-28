@@ -11,14 +11,14 @@
 @implementation HMDataProvider
 
 NSDictionary *allPlugins;
-NSArray *userCommands;
+NSArray *userCommandsSchemes;
 
 NSUserDefaults *pluginUserDefaults;
 
 -(id)init{
     self = [super init];
     pluginUserDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"com.sergeishere.plugins.handymenu"];
-    HMLog(@"Plugin's user defaults keys: %@", [[pluginUserDefaults dictionaryRepresentation] allKeys]);
+//    HMLog(@"Plugin's user defaults keys: %@", [[pluginUserDefaults dictionaryRepresentation] allKeys]);
 
 //    [pluginUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_user_commands"];
     
@@ -37,15 +37,14 @@ NSUserDefaults *pluginUserDefaults;
 
 -(void)loadUserPlugins{
     
-    userCommands = nil;
+    userCommandsSchemes = nil;
 
     NSData *userCommandsArchivedSchemes = [pluginUserDefaults objectForKey:@"plugin_sketch_handymenu_user_commands"];
     
     if(userCommandsArchivedSchemes != nil) {
         
         // If a user has the last version
-        NSArray *userCommandSchemes = [NSKeyedUnarchiver unarchiveObjectWithData:userCommandsArchivedSchemes];
-        userCommands = [self getCommandsMatchingSchemes:userCommandSchemes];
+        userCommandsSchemes = [NSKeyedUnarchiver unarchiveObjectWithData:userCommandsArchivedSchemes];
         
     } else {
         
@@ -55,39 +54,42 @@ NSUserDefaults *pluginUserDefaults;
         if (userCommandsString != nil) {
             HMLog(@"Migrating from: %@", userCommandsString);
             // If a user has the previous version
-            userCommands = [self getCommandsMatchingSchemes:[self convertFromPreviousFormat:userCommandsString]];
+            userCommandsSchemes = [self convertFromPreviousFormat:userCommandsString];
             
             // Removing unnecessary data
             [standardUserDefaults removeObjectForKey:@"handymenu_needs_reload"];
             [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_my_commands_count"];
             [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_my_commands_panel_height"];
             [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_all_commands_string"];
-            [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_my_commands"];
+//            [standardUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_my_commands"];
             [standardUserDefaults synchronize];
+        } else {
+            HMLog(@"No commands are found");
         }
     }
     
     if (_delegate != nil && [_delegate conformsToProtocol:@protocol(HMDataProviderDelegate)]){
-        [_delegate dataProviderWasUpdated:self withNewCommands:userCommands];
+        [_delegate dataProviderWasUpdated:self withNewCommandsSchemes:userCommandsSchemes];
     }
 }
 
 -(void)saveUserCommandsSchemes:(NSArray *)schemes{
     @try {
+        HMLog(@"Saving: %@", schemes);
         NSData *userCommandsArchivedSchemes = [NSKeyedArchiver archivedDataWithRootObject:schemes];
         [pluginUserDefaults setObject:userCommandsArchivedSchemes forKey:@"plugin_sketch_handymenu_user_commands"];
         [pluginUserDefaults synchronize];
     } @catch (NSException *exeption) {
         HMLog(@"%@", exeption);
     }
-
 }
 
--(NSArray *)getCommandsMatchingSchemes:(NSArray *)schemes{
+
+-(NSArray *)getUserCommands{
     
     NSMutableArray* commands = [[NSMutableArray alloc] init];
     
-    for (HMCommandScheme *commandScheme in schemes){
+    for (HMCommandScheme *commandScheme in userCommandsSchemes){
         
         id command = [[[allPlugins valueForKey:commandScheme.pluginID] valueForKey:@"commands"] valueForKey:commandScheme.commandID];
         
@@ -102,7 +104,7 @@ NSUserDefaults *pluginUserDefaults;
 
 -(NSArray *)convertFromPreviousFormat:(NSString *)userCommandsString{
     
-    NSMutableArray *userCommandSchemes = [[NSMutableArray alloc] init];
+    NSMutableArray *temporaryUserCommandSchemes = [[NSMutableArray alloc] init];
     
     NSData *decodedUserCommands = [[userCommandsString stringByRemovingPercentEncoding] dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -117,28 +119,75 @@ NSUserDefaults *pluginUserDefaults;
             HMCommandScheme *commandScheme = [[HMCommandScheme alloc] init];
             commandScheme.pluginID = [oldCommand valueForKey:@"pluginID"];
             commandScheme.commandID = [oldCommand valueForKey:@"commandID"];
-            [userCommandSchemes addObject:commandScheme];
+            commandScheme.name = [oldCommand valueForKey:@"name"];
+            [temporaryUserCommandSchemes addObject:commandScheme];
         }
         
     }
     
     // Saving new data
-    [self saveUserCommandsSchemes:[userCommandSchemes copy]];
-    return [userCommandSchemes copy];
+    [self saveUserCommandsSchemes:[temporaryUserCommandSchemes copy]];
+    return [temporaryUserCommandSchemes copy];
 }
 
-
--(NSArray *)getSortedListOfAllPlugins {
-    NSArray * sortedPlugins = [[allPlugins allValues] sortedArrayUsingComparator:^(id first, id second) {
+-(NSArray *)getPluginsSchemes {
+    
+    NSMutableArray *unsortedPluginsSchemes = [[NSMutableArray alloc] init];
+    
+    for (NSString *key in allPlugins){
         
-        NSString *firstName = [first valueForKey:@"name"];
-        NSString *secondName = [second valueForKey:@"name"];
+        id plugin = [allPlugins objectForKey:key]; // Plugin
+        NSDictionary *pluginCommands = [plugin valueForKey:@"commands"]; // Dictionary of the plugin's commands
+        
+        HMPluginScheme *newPluginScheme = [[HMPluginScheme alloc] init];
+        newPluginScheme.identifier = [plugin valueForKey:@"identifier"];
+        newPluginScheme.name = [plugin valueForKey:@"name"];
+        
+        NSMutableArray *pluginSchemeCommands = [[NSMutableArray alloc] init]; // Temporary mutable array for plugin's commands
+        
+        for (NSString *commandID in pluginCommands){
+            
+            HMCommandScheme *newCommandScheme = [[HMCommandScheme alloc] init];
+            
+            id command = pluginCommands[commandID];
+            
+            newCommandScheme.name = [command valueForKey:@"name"];
+            newCommandScheme.commandID = [command valueForKey:@"identifier"];
+            newCommandScheme.pluginID = [plugin valueForKey:@"identifier"];
+            
+            [pluginSchemeCommands addObject:newCommandScheme];
+        }
+        
+        newPluginScheme.commands = [pluginSchemeCommands copy];
+        [unsortedPluginsSchemes addObject:newPluginScheme];
+    }
+    
+    // Sorting plugins alphabetically
+    NSArray *sortedPluginSchemes = [unsortedPluginsSchemes sortedArrayUsingComparator:^(id first, id second) {
+        
+        NSString *firstName = [(HMPluginScheme*)first name];
+        NSString *secondName = [(HMPluginScheme*)second name];
         
         return [firstName compare:secondName];
         
     }];
-    return sortedPlugins;
+    
+    return sortedPluginSchemes;
 }
+
+-(NSArray *)getUserCommandsSchemes{
+    return userCommandsSchemes;
+}
+
+-(void)updatedUserCommandsSchemes:(NSArray *)newCommandSchemes {
+    userCommandsSchemes = newCommandSchemes;
+    [self saveUserCommandsSchemes:newCommandSchemes];
+    
+    if (_delegate != nil && [_delegate conformsToProtocol:@protocol(HMDataProviderDelegate)]){
+        [_delegate dataProviderWasUpdated:self withNewCommandsSchemes:userCommandsSchemes];
+    }
+}
+
 
 
 @end

@@ -25,6 +25,8 @@
 		A5BAF5BA205ED7A000E5183F /* HMDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BAF5B8205ED7A000E5183F /* HMDataProvider.m */; };
 		A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BAF5BB205EDBBB00E5183F /* HMMenu.h */; };
 		A5BAF5BE205EDBBB00E5183F /* HMMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BAF5BC205EDBBB00E5183F /* HMMenu.m */; };
+		A5C3AA6B206BB05600A5475C /* HMPluginScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA69206BB05600A5475C /* HMPluginScheme.h */; };
+		A5C3AA6C206BB05600A5475C /* HMPluginScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3AA6A206BB05600A5475C /* HMPluginScheme.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -60,6 +62,8 @@
 		A5BAF5B8205ED7A000E5183F /* HMDataProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMDataProvider.m; sourceTree = "<group>"; };
 		A5BAF5BB205EDBBB00E5183F /* HMMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMMenu.h; sourceTree = "<group>"; };
 		A5BAF5BC205EDBBB00E5183F /* HMMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMMenu.m; sourceTree = "<group>"; };
+		A5C3AA69206BB05600A5475C /* HMPluginScheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMPluginScheme.h; sourceTree = "<group>"; };
+		A5C3AA6A206BB05600A5475C /* HMPluginScheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMPluginScheme.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 			children = (
 				A5089DCA2069A27E006866D0 /* HMCommandScheme.h */,
 				A5089DCB2069A27E006866D0 /* HMCommandScheme.m */,
+				A5C3AA69206BB05600A5475C /* HMPluginScheme.h */,
+				A5C3AA6A206BB05600A5475C /* HMPluginScheme.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -113,6 +119,15 @@
 			path = HandyMenuFramework;
 			sourceTree = "<group>";
 		};
+		A5C3AA75206BE45000A5475C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */,
+				A52897FF205BF90D009AB2D2 /* HMSettingsWindowController.m */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		A5DAB5592060F5050041BD69 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -126,8 +141,7 @@
 		A5DAB55A2060F50F0041BD69 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */,
-				A52897FF205BF90D009AB2D2 /* HMSettingsWindowController.m */,
+				A5C3AA75206BE45000A5475C /* Settings */,
 				A5BAF5B7205ED7A000E5183F /* HMDataProvider.h */,
 				A5BAF5B8205ED7A000E5183F /* HMDataProvider.m */,
 				A5BAF5BB205EDBBB00E5183F /* HMMenu.h */,
@@ -147,6 +161,7 @@
 			files = (
 				A5089DCC2069A27E006866D0 /* HMCommandScheme.h in Headers */,
 				A5BAF558205DA7D000E5183F /* HMShortcutField.h in Headers */,
+				A5C3AA6B206BB05600A5475C /* HMPluginScheme.h in Headers */,
 				A5343A7D2069491C0090844C /* HMPluginController.h in Headers */,
 				A560E81520584CBE00DCFF87 /* HandyMenu.h in Headers */,
 				A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */,
@@ -231,6 +246,7 @@
 				A5BAF5BE205EDBBB00E5183F /* HMMenu.m in Sources */,
 				A5BAF5BA205ED7A000E5183F /* HMDataProvider.m in Sources */,
 				A5289802205BF90D009AB2D2 /* HMSettingsWindowController.m in Sources */,
+				A5C3AA6C206BB05600A5475C /* HMPluginScheme.m in Sources */,
 				A5BAF559205DA7D000E5183F /* HMShortcutField.m in Sources */,
 				A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */,
 				A5343A7E2069491C0090844C /* HMPluginController.m in Sources */,

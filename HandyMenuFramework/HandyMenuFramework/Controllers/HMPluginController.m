@@ -26,7 +26,10 @@ HMDataProvider *dataProvider;
     [dataProvider loadData];
     
     settingsWindowController = [[HMSettingsWindowController alloc] initWithWindowNibName:@"HMSettingsWindowController"];
-    [settingsWindowController updatePluginsLists:[dataProvider getSortedListOfAllPlugins]];
+
+    [settingsWindowController updatePlugins:[dataProvider getPluginsSchemes]];
+    [settingsWindowController updateUserCommands:[dataProvider getUserCommandsSchemes]];
+    [settingsWindowController setDelegate:self];
     
     return self;
 }
@@ -36,12 +39,21 @@ HMDataProvider *dataProvider;
 }
 
 -(void)showSettings{
-
+    
     [settingsWindowController showWindow:nil];
 }
 
--(void)dataProviderWasUpdated:(id)dataProvider withNewCommands:(id)commands{
-    [menu updateMenuFromCommandsList:commands];
+#pragma mark - HMDataProvider Delegate
+
+-(void)dataProviderWasUpdated:(id)dataProvider withNewCommandsSchemes:(id)commands{
+    HMLog(@"Data provider was updated");
+    [menu updateMenuFromCommandsList:[dataProvider getUserCommands]];
+}
+
+#pragma mark - HMSettingsWindowController Delegate
+
+-(void)settingsWindowController:(id)settingsWindowController didUpdateCommandsSchemes:(NSArray *)newCommandsSchemes{
+    [dataProvider updatedUserCommandsSchemes:newCommandsSchemes];
 }
 
 @end

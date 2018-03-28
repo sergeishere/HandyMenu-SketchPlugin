@@ -33,7 +33,7 @@
                 if (_groupComands) {
                     NSString *pluginIdentifier = [command valueForKeyPath:@"pluginBundle.identifier"];
                     if(lastPluginIdentifier != nil && lastPluginIdentifier != pluginIdentifier){
-                       [self addItem:[NSMenuItem separatorItem]];
+                        [self addItem:[NSMenuItem separatorItem]];
                     }
                     lastPluginIdentifier = pluginIdentifier;
                 }
@@ -41,48 +41,48 @@
                 
                 
                 NSString *commandName = [command valueForKey:@"name"];
-
+                
                 NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:commandName action:@selector(runCommand:) keyEquivalent:@""];
                 menuItem.target = self;
                 menuItem.representedObject = command;
-
+                
                 [self addItem:menuItem];
             }
         }
     }
     
-//    for (id plugin in commands) {
-//        NSString *pluginName = [plugin valueForKey:@"name"];
-//
-//        if ([pluginName isEqualToString:@"HandyMenu"]) {
-//            continue;
-//        }
-//
-//        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:pluginName action:nil keyEquivalent:@""];
-//        NSMenu *subMenu = [[NSMenu alloc] init];
-//        menuItem.submenu = subMenu;
-//        [self addItem:menuItem];
-//
-//        NSDictionary *commands = [plugin valueForKey:@"commands"];
-//
-//        for(NSString *commandKey in commands){
-//
-//            id command = [commands objectForKey:commandKey];
-//            if ([command respondsToSelector:NSSelectorFromString(@"hasRunHandler")]) {
-//                if ((BOOL)objc_msgSend(command, NSSelectorFromString(@"hasRunHandler")) == YES) {
-//
-//                    NSString *commandName = [command valueForKey:@"name"];
-//
-//                    NSMenuItem *subMenuItem = [[NSMenuItem alloc] initWithTitle:commandName action:@selector(runCommand:) keyEquivalent:@""];
-//                    subMenuItem.target = self;
-//                    subMenuItem.representedObject = command;
-//                    //                [menu addItem:menuItem];
-//
-//                    [subMenu addItem:subMenuItem];
-//                }
-//            }
-//        }
-//    }
+    //    for (id plugin in commands) {
+    //        NSString *pluginName = [plugin valueForKey:@"name"];
+    //
+    //        if ([pluginName isEqualToString:@"HandyMenu"]) {
+    //            continue;
+    //        }
+    //
+    //        NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:pluginName action:nil keyEquivalent:@""];
+    //        NSMenu *subMenu = [[NSMenu alloc] init];
+    //        menuItem.submenu = subMenu;
+    //        [self addItem:menuItem];
+    //
+    //        NSDictionary *commands = [plugin valueForKey:@"commands"];
+    //
+    //        for(NSString *commandKey in commands){
+    //
+    //            id command = [commands objectForKey:commandKey];
+    //            if ([command respondsToSelector:NSSelectorFromString(@"hasRunHandler")]) {
+    //                if ((BOOL)objc_msgSend(command, NSSelectorFromString(@"hasRunHandler")) == YES) {
+    //
+    //                    NSString *commandName = [command valueForKey:@"name"];
+    //
+    //                    NSMenuItem *subMenuItem = [[NSMenuItem alloc] initWithTitle:commandName action:@selector(runCommand:) keyEquivalent:@""];
+    //                    subMenuItem.target = self;
+    //                    subMenuItem.representedObject = command;
+    //                    //                [menu addItem:menuItem];
+    //
+    //                    [subMenu addItem:subMenuItem];
+    //                }
+    //            }
+    //        }
+    //    }
 }
 
 -(void) runCommand:(NSMenuItem *)sender {
@@ -103,6 +103,10 @@
     //      MethodType methodToCall;
     //      methodToCall = (MethodType)[delegate methodForSelector:a_selector];
     //      methodToCall(delegate, a_selector, command, YES, context);
+}
+
+-(void)showSettings {
+    
 }
 
 
