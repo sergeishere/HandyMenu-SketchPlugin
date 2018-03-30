@@ -172,7 +172,7 @@ NSUserDefaults *pluginUserDefaults;
         
     }];
     
-    return sortedPluginSchemes;
+    return [sortedPluginSchemes copy];
 }
 
 -(NSArray *)getUserCommandsSchemes{

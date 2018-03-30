@@ -11,15 +11,21 @@
 @implementation HMSettingsWindowController
 
 NSArray *pluginsSchemes;
+NSMutableArray *filteredPluginsSchemes;
 NSMutableArray *commandsSchemes;
+
+NSTimer *searchDelayTimer;
 
 id shortcutHandlingEventMonitor;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    [self.window setLevel:NSModalPanelWindowLevel];
-//    [self.window setBackgroundColor:NSColor.whiteColor];
+    // Setting up the window
+    [[self window] setLevel:NSModalPanelWindowLevel];
+    [[[self window] standardWindowButton:NSWindowZoomButton] setHidden:YES];
+    [[[self window] standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
+    [[self window] setStyleMask:[[self window] styleMask] | NSWindowStyleMaskResizable];
     
     [[self window] center];
     
@@ -30,13 +36,16 @@ id shortcutHandlingEventMonitor;
     [_userCommandsTableView setDraggingSourceOperationMask:NSDragOperationLink forLocal:NO];
     [_userCommandsTableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
     [_userCommandsTableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
+    
+    [_userCommandsTableView setDraggingDestinationFeedbackStyle:NSTableViewDraggingDestinationFeedbackStyleSourceList];
+
 }
 
 -(void)updatePlugins:(NSArray *)schemes{
     pluginsSchemes = schemes;
-    [_allCommandsOutlineView reloadData];
-    [_allCommandsOutlineView expandItem:nil expandChildren:YES];
+    filteredPluginsSchemes = [pluginsSchemes mutableCopy];
     
+    [_allCommandsOutlineView reloadData];
 }
 
 -(void)updateUserCommands:(NSArray *)schemes{
@@ -52,7 +61,7 @@ id shortcutHandlingEventMonitor;
         return commands.count;
     }
     
-    return pluginsSchemes.count;
+    return filteredPluginsSchemes.count;
 }
 
 -(id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item{
@@ -60,7 +69,7 @@ id shortcutHandlingEventMonitor;
         NSArray *commands = [(HMPluginScheme*)item commands];
         return commands[index];
     }
-    return pluginsSchemes[index];
+    return filteredPluginsSchemes[index];
 }
 
 -(BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
@@ -113,10 +122,13 @@ id shortcutHandlingEventMonitor;
 #pragma mark - Drag & Drop Delegates
 
 -(BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pasteboard{
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:items];
-    [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:self];
-    [pasteboard setData:data forType:NSStringPboardType];
-    return YES;
+    if([[items objectAtIndex:0] isKindOfClass:[HMCommandScheme class]]) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:items];
+        [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:self];
+        [pasteboard setData:data forType:NSStringPboardType];
+        return YES;
+    }
+    return NO;
 }
 
 -(BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard{
@@ -134,7 +146,7 @@ id shortcutHandlingEventMonitor;
     
     NSData *data = [[info draggingPasteboard] dataForType:NSPasteboardTypeString];
     NSArray *selectedItems;
-
+    
     //REORDERING IN THE SAME TABLE VIEW BY DRAG & DROP
     if (([info draggingSource] == _userCommandsTableView) & (tableView == _userCommandsTableView))
     {
@@ -147,7 +159,7 @@ id shortcutHandlingEventMonitor;
     else if (([info draggingSource] == _allCommandsOutlineView) & (tableView == _userCommandsTableView))
     {
         selectedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-
+        
     }
     
     if (row > commandsSchemes.count)
@@ -166,6 +178,18 @@ id shortcutHandlingEventMonitor;
     HMLog(@"%@", commandsSchemes);
     
     return YES;
+}
+
+-(void)tableView:(NSTableView *)tableView draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation {
+    
+    if([tableView isEqual:_userCommandsTableView] && operation == NSDragOperationNone) {
+        NSData *data = [[session draggingPasteboard] dataForType:NSPasteboardTypeString];
+        NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        [commandsSchemes removeObjectsAtIndexes:rowIndexes];
+        [_userCommandsTableView reloadData];
+        
+    }
+    
 }
 
 //#pragma mark - Mouse Events
@@ -209,6 +233,37 @@ id shortcutHandlingEventMonitor;
         [_delegate settingsWindowController:self didUpdateCommandsSchemes:commandsSchemes];
     }
     [self close];
+}
+
+-(IBAction)changedSearchText:(id)sender {
+    // Debouncing
+    [searchDelayTimer invalidate];
+    [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(filterAllCommandsList) userInfo:nil repeats:NO];
+}
+
+// Debouncing method
+-(void)filterAllCommandsList {
+
+    NSString *stringValue = [_searchField stringValue];
+    NSMutableArray *temporaryArray = [[NSMutableArray alloc] initWithArray:pluginsSchemes copyItems:YES];
+
+    if ([stringValue length] >= 2) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SUBQUERY(commands, $command, $command.name CONTAINS[c] %@).@count > 0", stringValue];
+        NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", stringValue];
+
+        [temporaryArray filterUsingPredicate:predicate];
+
+        for (HMPluginScheme *scheme in temporaryArray) {
+            NSMutableArray *temporaryCommands = [[scheme commands] mutableCopy];
+            [temporaryCommands filterUsingPredicate:commandPredicate];
+            [scheme setCommands:temporaryCommands];
+        }
+    }
+    filteredPluginsSchemes = [temporaryArray mutableCopy];
+
+    [_allCommandsOutlineView reloadData];
+    [_allCommandsOutlineView expandItem:nil expandChildren:YES];
+
 }
 
 

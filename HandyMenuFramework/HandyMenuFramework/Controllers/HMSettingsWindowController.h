@@ -26,6 +26,7 @@
 
 @property (weak) IBOutlet NSOutlineView *allCommandsOutlineView;
 @property (weak) IBOutlet HMTableView *userCommandsTableView;
+@property (weak) IBOutlet NSSearchField *searchField;
 
 @property (weak) id<HMSettingsWindowControllerDelegate> delegate;
 

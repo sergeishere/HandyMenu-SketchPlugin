@@ -9,11 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <HMCommandScheme.h>
 
-@interface HMPluginScheme : NSObject
+@interface HMPluginScheme : NSObject<NSCopying>
 
 @property (nonatomic) NSString* identifier;
 @property (nonatomic) NSString* name;
 
-@property (nonatomic) NSArray* commands;
+@property (nonatomic) NSMutableArray* commands;
 
 @end

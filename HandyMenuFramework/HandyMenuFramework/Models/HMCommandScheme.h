@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface HMCommandScheme : NSObject
+@interface HMCommandScheme : NSObject<NSCopying>
 
 @property (nonatomic) NSString* pluginID;
 @property (nonatomic) NSString* commandID;
