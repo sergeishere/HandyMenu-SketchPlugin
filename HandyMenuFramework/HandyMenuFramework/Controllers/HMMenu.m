@@ -69,7 +69,7 @@
     //
     //            id command = [commands objectForKey:commandKey];
     //            if ([command respondsToSelector:NSSelectorFromString(@"hasRunHandler")]) {
-    //                if ((BOOL)objc_msgSend(command, NSSelectorFromString(@"hasRunHandler")) == YES) {
+//                    if ((BOOL)objc_msgSend(command, NSSelectorFromString(@"hasRunHandler")) == YES) {
     //
     //                    NSString *commandName = [command valueForKey:@"name"];
     //

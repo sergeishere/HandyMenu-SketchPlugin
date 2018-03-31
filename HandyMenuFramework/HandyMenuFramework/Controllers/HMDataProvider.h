@@ -11,6 +11,7 @@
 #import <HMPluginScheme.h>
 #import "HMConstants.h"
 #import "HMLog.h"
+#import <objc/message.h>
 
 
 @protocol HMDataProviderDelegate<NSObject>

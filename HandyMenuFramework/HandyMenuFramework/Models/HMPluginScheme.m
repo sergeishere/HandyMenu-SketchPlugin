@@ -13,14 +13,14 @@
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"<HMPluginScheme: %@, ID: %@, commands: %@>",
-            [self name], [self identifier], [self commands]];
+            [self name], [self identifier], [self pluginCommands]];
 }
 
 - (nonnull id)copyWithZone:(nullable NSZone *)zone {
     id copy = [[[self class] alloc] init];
     [copy setName:[self name]];
     [copy setIdentifier:[self identifier]];
-    [copy setCommands:[[self commands] copy]];
+    [copy setPluginCommands:[[self pluginCommands] copy]];
     return copy;
 }
 

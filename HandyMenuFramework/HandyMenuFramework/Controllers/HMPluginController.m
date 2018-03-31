@@ -39,7 +39,7 @@ HMDataProvider *dataProvider;
 }
 
 -(void)showSettings{
-    
+    [settingsWindowController updateUserCommands:[dataProvider getUserCommandsSchemes]];
     [settingsWindowController showWindow:nil];
 }
 
@@ -52,7 +52,8 @@ HMDataProvider *dataProvider;
 
 #pragma mark - HMSettingsWindowController Delegate
 
--(void)settingsWindowController:(id)settingsWindowController didUpdateCommandsSchemes:(NSArray *)newCommandsSchemes{
+-(void)settingsWindowController:(id)settingsWindowController didUpdateCommandsSchemes:(NSArray *)newCommandsSchemes andGroupOption:(BOOL)group{
+    [menu setGroupComands:group];
     [dataProvider updatedUserCommandsSchemes:newCommandsSchemes];
 }
 

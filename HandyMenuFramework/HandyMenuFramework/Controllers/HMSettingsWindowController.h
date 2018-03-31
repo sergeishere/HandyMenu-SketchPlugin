@@ -14,11 +14,14 @@
 #import <HMPluginScheme.h>
 #import <HMTableView.h>
 #import "HMLog.h"
+#import <CoreGraphics/CoreGraphics.h>
 
 
 @protocol HMSettingsWindowControllerDelegate<NSObject>
 @optional
--(void)settingsWindowController:(id)settingsWindowController didUpdateCommandsSchemes:(NSArray *)newCommandsSchemes;
+
+-(void)settingsWindowController:(id)settingsWindowController didUpdateCommandsSchemes:(NSArray *)newCommandsSchemes andGroupOption:(BOOL)group;
+
 @end
 
 

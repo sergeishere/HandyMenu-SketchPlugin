@@ -32,4 +32,15 @@
     [super keyDown:event];
 }
 
+-(void)draggingSession:(NSDraggingSession *)session movedToPoint:(NSPoint)screenPoint{
+    NSRect rectInWindow =  NSInsetRect([self convertRect:[self bounds] toView:nil], -10.0, -10.0);
+    NSRect screenRect = [[self window] convertRectToScreen:rectInWindow];
+    
+    if(!NSPointInRect(screenPoint, screenRect)) {
+        [[NSCursor disappearingItemCursor] set];
+    } else {
+        [[NSCursor arrowCursor] set];
+    }
+}
+
 @end

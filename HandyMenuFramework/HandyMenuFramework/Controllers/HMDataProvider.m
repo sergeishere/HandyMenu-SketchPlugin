@@ -18,8 +18,8 @@ NSUserDefaults *pluginUserDefaults;
 -(id)init{
     self = [super init];
     pluginUserDefaults = [[NSUserDefaults alloc] initWithSuiteName:@_SUIT_IDENTIFIER_];
+    
 //    HMLog(@"Plugin's user defaults keys: %@", [[pluginUserDefaults dictionaryRepresentation] allKeys]);
-
 //    [pluginUserDefaults removeObjectForKey:@"plugin_sketch_handymenu_user_commands"];
     
     return self;
@@ -147,10 +147,20 @@ NSUserDefaults *pluginUserDefaults;
         
         for (NSString *commandID in pluginCommands){
             
-            HMCommandScheme *newCommandScheme = [[HMCommandScheme alloc] init];
-            
             id command = pluginCommands[commandID];
             
+            // Skipping non-command scripts
+            if (!(BOOL)objc_msgSend(command, NSSelectorFromString(@"hasRunHandler"))) {
+                continue;
+            }
+            
+            // Skipping "Show Menu" command
+            if ([[plugin valueForKey:@"name"] isEqualToString:@"Handy Menu"] && [[command name] isEqualToString:@"Show Menu"]) {
+                continue;
+            }
+            
+            HMCommandScheme *newCommandScheme = [[HMCommandScheme alloc] init];
+
             newCommandScheme.name = [command valueForKey:@"name"];
             newCommandScheme.commandID = [command valueForKey:@"identifier"];
             newCommandScheme.pluginID = [plugin valueForKey:@"identifier"];
@@ -158,7 +168,7 @@ NSUserDefaults *pluginUserDefaults;
             [pluginSchemeCommands addObject:newCommandScheme];
         }
         
-        newPluginScheme.commands = [pluginSchemeCommands copy];
+        newPluginScheme.pluginCommands = [pluginSchemeCommands copy];
         [unsortedPluginsSchemes addObject:newPluginScheme];
     }
     

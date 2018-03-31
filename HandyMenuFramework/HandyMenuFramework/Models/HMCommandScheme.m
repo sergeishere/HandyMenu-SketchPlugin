@@ -41,4 +41,30 @@
     return copy;
 }
 
+-(NSUInteger)hash{
+    return [self.name hash] ^ [self.commandID hash] ^ [self.pluginID hash];
+}
+
+-(BOOL)isEqualTo:(id)object{
+    if([object isKindOfClass:[self class]]) {
+        if ([self.name isEqualToString:[object valueForKey:@"name"]] &&
+            [self.commandID isEqualToString:[object valueForKey:@"commandID"]] &&
+            [self.pluginID isEqualToString:[object valueForKey:@"pluginID"]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL)isEqual:(id)object{
+    if([object isKindOfClass:[self class]]) {
+        if ([self.name isEqualToString:[object valueForKey:@"name"]] &&
+            [self.commandID isEqualToString:[object valueForKey:@"commandID"]] &&
+            [self.pluginID isEqualToString:[object valueForKey:@"pluginID"]]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
 @end

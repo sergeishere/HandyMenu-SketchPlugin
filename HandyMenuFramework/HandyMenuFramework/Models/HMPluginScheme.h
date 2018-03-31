@@ -14,6 +14,6 @@
 @property (nonatomic) NSString* identifier;
 @property (nonatomic) NSString* name;
 
-@property (nonatomic) NSMutableArray* commands;
+@property (nonatomic) NSMutableArray* pluginCommands;
 
 @end
