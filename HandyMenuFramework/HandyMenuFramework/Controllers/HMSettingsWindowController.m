@@ -330,7 +330,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     NSMutableArray *temporaryArray = [[NSMutableArray alloc] initWithArray:pluginsSchemes copyItems:YES];
 
     if ([stringValue length] >= 2) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR SUBQUERY(commands, $command, $command.name CONTAINS[c] %@).@count > 0", stringValue, stringValue];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR SUBQUERY(pluginCommands, $command, $command.name CONTAINS[c] %@).@count > 0", stringValue, stringValue];
         NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", stringValue];
 
         [temporaryArray filterUsingPredicate:predicate];
