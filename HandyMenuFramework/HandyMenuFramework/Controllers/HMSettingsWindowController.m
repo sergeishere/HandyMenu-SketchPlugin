@@ -85,8 +85,10 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         NSArray *commands = [(HMPluginScheme*)item pluginCommands];
         return commands.count;
     }
-    
-    return filteredPluginsSchemes.count;
+    if (filteredPluginsSchemes.count > 0) {
+        return filteredPluginsSchemes.count;
+    }
+    return 1;
 }
 
 -(id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item{
@@ -94,7 +96,10 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         NSArray *commands = [(HMPluginScheme*)item pluginCommands];
         return commands[index];
     }
-    return filteredPluginsSchemes[index];
+    if (filteredPluginsSchemes.count > 0) {
+        return filteredPluginsSchemes[index];
+    }
+    return [NSNull null];
 }
 
 -(BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
@@ -141,7 +146,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
             [tableCellView.textField setTextColor:[NSColor disabledControlTextColor]];
         }
         
-    } else {
+    } else if ([item isKindOfClass:[HMCommandScheme class]]){
         tableCellView = [_allCommandsOutlineView makeViewWithIdentifier:@"CommandCell" owner:self];
         tableCellView.textField.stringValue = (NSString *)[item valueForKey:@"name"];
         
@@ -151,6 +156,8 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         } else {
             [tableCellView.textField setTextColor:[NSColor controlTextColor]];
         }
+    } else if ([item isEqual:[NSNull null]]) {
+        tableCellView = [_allCommandsOutlineView makeViewWithIdentifier:@"Nothing" owner:self];
     }
     
     return tableCellView;
