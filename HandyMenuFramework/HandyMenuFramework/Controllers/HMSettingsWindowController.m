@@ -23,14 +23,6 @@ id shortcutHandlingEventMonitor;
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    // Setting up the window
-    [[self window] setLevel:NSModalPanelWindowLevel];
-    [[[self window] standardWindowButton:NSWindowZoomButton] setHidden:YES];
-    [[[self window] standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
-    [[self window] setStyleMask:[[self window] styleMask] | NSWindowStyleMaskResizable];
-    
-    [[self window] center];
-    
     [_allCommandsOutlineView setDraggingSourceOperationMask:NSDragOperationLink forLocal:NO];
     [_allCommandsOutlineView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
     [_allCommandsOutlineView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
@@ -42,7 +34,7 @@ id shortcutHandlingEventMonitor;
     [_userCommandsTableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
     
     [_userCommandsTableView setDoubleAction:@selector(doubleClickInTableView)];
-
+    
 }
 
 -(void)updatePlugins:(NSArray *)schemes{
@@ -144,7 +136,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         tableCellView.textField.stringValue = [(NSString *)[item valueForKey:@"name"] uppercaseString];
         
         if([[NSSet setWithArray:[item pluginCommands]] intersectsSet:[NSSet setWithArray:commandsSchemes]]){
-            [tableCellView.textField setTextColor:[NSColor colorWithCalibratedRed:0.16 green:0.73 blue:0.96 alpha:1.0]];
+            [tableCellView.textField setTextColor:[NSColor colorWithRed:0.16 green:0.73 blue:0.96 alpha:1.0]];
         } else {
             [tableCellView.textField setTextColor:[NSColor disabledControlTextColor]];
         }
@@ -271,7 +263,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 -(void)tableView:(NSTableView *)tableView draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation {
     
     NSRect rectInWindow =  NSInsetRect([_userCommandsTableView convertRect:[_userCommandsTableView bounds] toView:nil], -10.0, -10.0);
-    NSRect screenRect = [[self window] convertRectToScreen:rectInWindow];
+    NSRect screenRect = [self.window convertRectToScreen:rectInWindow];
     
     if(!NSPointInRect(screenPoint, screenRect) && operation == NSDragOperationNone) {
         NSData *data = [[session draggingPasteboard] dataForType:NSPasteboardTypeString];
@@ -285,7 +277,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 //#pragma mark - Mouse Events
 
 //-(void)mouseDown:(NSEvent *)event {
-//    [[self window] makeFirstResponder:nil];
+//    [self.window makeFirstResponder:nil];
 //    [super mouseDown:event];
 //}
 //
@@ -293,14 +285,14 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 //
 //    HMLog(@"%d", event.keyCode);
 //    if (event.keyCode == 23) {
-//        [[self window] makeFirstResponder:nil];
+//        [self.window makeFirstResponder:nil];
 //    }
 //    [super keyDown:event];
 //}
 //
 //-(BOOL)windowShouldClose:(NSWindow *)sender {
 //    HMLog(@"Settings window should be closed");
-//    [[self window] makeFirstResponder:nil];
+//    [self.window makeFirstResponder:nil];
 //    return YES;
 //}
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50132C520705B640042922E /* HMSettingsWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132C320705B640042922E /* HMSettingsWindow.h */; };
+		A50132C620705B640042922E /* HMSettingsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A50132C420705B640042922E /* HMSettingsWindow.m */; };
 		A5089DCC2069A27E006866D0 /* HMCommandScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A5089DCA2069A27E006866D0 /* HMCommandScheme.h */; };
 		A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A5089DCB2069A27E006866D0 /* HMCommandScheme.m */; };
 		A5289801205BF90D009AB2D2 /* HMSettingsWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */; };
@@ -45,6 +47,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A50132C320705B640042922E /* HMSettingsWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSettingsWindow.h; sourceTree = "<group>"; };
+		A50132C420705B640042922E /* HMSettingsWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMSettingsWindow.m; sourceTree = "<group>"; };
 		A5089DCA2069A27E006866D0 /* HMCommandScheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMCommandScheme.h; sourceTree = "<group>"; };
 		A5089DCB2069A27E006866D0 /* HMCommandScheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
 		A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSettingsWindowController.h; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				A5BAF556205DA7D000E5183F /* HMShortcutField.h */,
 				A5BAF557205DA7D000E5183F /* HMShortcutField.m */,
 				A5289800205BF90D009AB2D2 /* HMSettingsWindowController.xib */,
+				A50132C320705B640042922E /* HMSettingsWindow.h */,
+				A50132C420705B640042922E /* HMSettingsWindow.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -177,6 +183,7 @@
 				A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */,
 				A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */,
 				A5BAF5B9205ED7A000E5183F /* HMDataProvider.h in Headers */,
+				A50132C520705B640042922E /* HMSettingsWindow.h in Headers */,
 				A560E80D20584CAD00DCFF87 /* HandyMenuFramework.h in Headers */,
 				A5289801205BF90D009AB2D2 /* HMSettingsWindowController.h in Headers */,
 			);
@@ -258,6 +265,7 @@
 				A5BAF5BE205EDBBB00E5183F /* HMMenu.m in Sources */,
 				A5BAF5BA205ED7A000E5183F /* HMDataProvider.m in Sources */,
 				A5289802205BF90D009AB2D2 /* HMSettingsWindowController.m in Sources */,
+				A50132C620705B640042922E /* HMSettingsWindow.m in Sources */,
 				A5C3AA6C206BB05600A5475C /* HMPluginScheme.m in Sources */,
 				A5BAF559205DA7D000E5183F /* HMShortcutField.m in Sources */,
 				A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */,
