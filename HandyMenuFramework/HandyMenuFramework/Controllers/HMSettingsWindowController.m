@@ -18,6 +18,8 @@ NSTimer *searchDelayTimer;
 
 BOOL groupCommands = YES;
 
+NSString *searchString = @"";
+
 id shortcutHandlingEventMonitor;
 
 - (void)windowDidLoad {
@@ -145,7 +147,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         } else {
             [tableCellView.textField setTextColor:[NSColor disabledControlTextColor]];
         }
-        
+    
     } else if ([item isKindOfClass:[HMCommandScheme class]]){
         tableCellView = [_allCommandsOutlineView makeViewWithIdentifier:@"CommandCell" owner:self];
         tableCellView.textField.stringValue = (NSString *)[item valueForKey:@"name"];
@@ -158,6 +160,15 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         }
     } else if ([item isEqual:[NSNull null]]) {
         tableCellView = [_allCommandsOutlineView makeViewWithIdentifier:@"Nothing" owner:self];
+    }
+    
+    if (searchString.length > 1) {
+        NSRange searchRange = [tableCellView.textField.stringValue rangeOfString:searchString options:NSCaseInsensitiveSearch];
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:tableCellView.textField.stringValue];
+        [attributedString addAttribute:NSBackgroundColorAttributeName value:[[NSColor systemYellowColor] colorWithAlphaComponent:0.25] range:searchRange];
+//        CGFloat fontSize = tableCellView.textField.font.pointSize;
+//        [attributedString addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:fontSize weight:NSFontWeightMedium] range:searchRange];
+        [tableCellView.textField setAttributedStringValue:attributedString];
     }
     
     return tableCellView;
@@ -184,12 +195,14 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 
 -(BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pasteboard{
     if(!itemHasAlreadyAdded([items objectAtIndex:0])) {
-        NSIndexSet* indexSets = [NSIndexSet indexSetWithIndex:[_allCommandsOutlineView rowForItem:[items objectAtIndex:0]]];
-        [_allCommandsOutlineView selectRowIndexes:indexSets byExtendingSelection:NO];
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:items];
-        [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:self];
-        [pasteboard setData:data forType:NSStringPboardType];
-        return YES;
+        if([[items objectAtIndex:0] isKindOfClass:[HMCommandScheme class]]) {
+            NSIndexSet* indexSets = [NSIndexSet indexSetWithIndex:[_allCommandsOutlineView rowForItem:[items objectAtIndex:0]]];
+            [_allCommandsOutlineView selectRowIndexes:indexSets byExtendingSelection:NO];
+            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:items];
+            [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:self];
+            [pasteboard setData:data forType:NSStringPboardType];
+            return YES;
+        }
     }
     return NO;
 }
@@ -333,12 +346,12 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 // Debouncing method
 -(void)filterAllCommandsList {
 
-    NSString *stringValue = [_searchField stringValue];
+    searchString = [_searchField stringValue];
     NSMutableArray *temporaryArray = [[NSMutableArray alloc] initWithArray:pluginsSchemes copyItems:YES];
 
-    if ([stringValue length] >= 2) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR SUBQUERY(pluginCommands, $command, $command.name CONTAINS[c] %@).@count > 0", stringValue, stringValue];
-        NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", stringValue];
+    if ([searchString length] > 1) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR SUBQUERY(pluginCommands, $command, $command.name CONTAINS[c] %@).@count > 0", searchString, searchString];
+        NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchString];
 
         [temporaryArray filterUsingPredicate:predicate];
 
