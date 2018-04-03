@@ -22,6 +22,7 @@ NSString *searchString = @"";
 
 id shortcutHandlingEventMonitor;
 
+
 - (void)windowDidLoad {
     [super windowDidLoad];
     
@@ -36,8 +37,15 @@ id shortcutHandlingEventMonitor;
     [_userCommandsTableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
     
     [_userCommandsTableView setDoubleAction:@selector(doubleClickInTableView)];
-    
+    _noCommandsNotificationLabel.alphaValue = (commandsSchemes.count > 0) ? 0.0 : 1.0;
 }
+
+-(void)showWindow:(id)sender {
+    [super showWindow:sender];
+    [_allCommandsOutlineView reloadData];
+}
+
+#pragma mark - Plugins updating methods
 
 -(void)updatePlugins:(NSArray *)schemes{
     pluginsSchemes = schemes;
@@ -48,37 +56,38 @@ id shortcutHandlingEventMonitor;
 
 -(void)updateUserCommands:(NSArray *)schemes{
     commandsSchemes = [NSMutableArray arrayWithArray:schemes];
+    
     [_userCommandsTableView reloadData];
+    
 }
 
 static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     return [commandsSchemes containsObject:item];
 }
 
--(void)showWindow:(id)sender {
-    [super showWindow:sender];
+- (void)addCommand:(id)command atIndex:(NSUInteger)index {
+    [commandsSchemes insertObject:command atIndex:index];
+    [_userCommandsTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:index] withAnimation:NSTableViewAnimationEffectFade];
+    [self toggleNoCommandsLabel];
     [_allCommandsOutlineView reloadData];
 }
 
-
-
--(void)doubleClickInOutlineView {
-    NSInteger clickedRow = [_allCommandsOutlineView clickedRow];
-    id clickedObject = [_allCommandsOutlineView itemAtRow:clickedRow];
-    if ([clickedObject isKindOfClass:[HMCommandScheme class]] && !itemHasAlreadyAdded(clickedObject)) {
-        NSUInteger index = [commandsSchemes count];
-        [commandsSchemes insertObject:clickedObject atIndex:index];
-        [_userCommandsTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:index] withAnimation:NSTableViewAnimationEffectFade];
-        [_allCommandsOutlineView reloadData];
-    }
-}
-
--(void)doubleClickInTableView {
-    NSInteger clickedRow = [_userCommandsTableView clickedRow];
-    [commandsSchemes removeObjectAtIndex:clickedRow];
-    [_userCommandsTableView removeRowsAtIndexes:[NSIndexSet indexSetWithIndex:clickedRow] withAnimation:NSTableViewAnimationEffectFade];
+- (void)removeCommandsAt:(NSIndexSet *)rowIndexes {
+    [commandsSchemes removeObjectsAtIndexes:rowIndexes];
+    [_userCommandsTableView removeRowsAtIndexes:rowIndexes withAnimation:NSTableViewAnimationEffectFade];
+    [self toggleNoCommandsLabel];
     [_allCommandsOutlineView reloadData];
 }
+
+- (void)toggleNoCommandsLabel {
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        context.duration = 0.3;
+        self.noCommandsNotificationLabel.animator.alphaValue = (commandsSchemes.count > 0) ? 0.0 : 1.0;
+    } completionHandler:nil];
+    
+}
+
+
 
 #pragma mark - NSOutlineView Delegate and DataSource
 
@@ -181,12 +190,13 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 }
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSTableCellView *tableCellView;
+    HMTableCellView *tableCellView;
     
     HMCommandScheme *command = commandsSchemes[row];
     
     tableCellView = [_userCommandsTableView makeViewWithIdentifier:@"CommandCell" owner:self];
-    tableCellView.textField.stringValue = [command valueForKey:@"name"];
+    tableCellView.commandName.stringValue = command.name;
+    tableCellView.pluginName.stringValue =  [[[pluginsSchemes filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.identifier = %@", command.pluginID]] objectAtIndex:0] valueForKey:@"name"];
     
     return tableCellView;
 }
@@ -255,6 +265,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         }
         
         [commandsSchemes insertObject:[selectedItems objectAtIndex:0] atIndex:toIndex];
+        [_noCommandsNotificationLabel setHidden:(commandsSchemes.count > 0)];
         
         if(itemFromAllCommandsList) {
             [_allCommandsOutlineView reloadData];
@@ -280,6 +291,8 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     [session setAnimatesToStartingPositionsOnCancelOrFail:NO];
 }
 
+
+
 -(void)tableView:(NSTableView *)tableView draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation {
     
     NSRect rectInWindow =  NSInsetRect([_userCommandsTableView convertRect:[_userCommandsTableView bounds] toView:nil], -10.0, -10.0);
@@ -288,18 +301,11 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     if(!NSPointInRect(screenPoint, screenRect) && operation == NSDragOperationNone) {
         NSData *data = [[session draggingPasteboard] dataForType:NSPasteboardTypeString];
         NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-        [commandsSchemes removeObjectsAtIndexes:rowIndexes];
-        [_userCommandsTableView reloadData];
-        [_allCommandsOutlineView reloadData];
+        [self removeCommandsAt:rowIndexes];
     }
 }
 
-//#pragma mark - Mouse Events
-
-//-(void)mouseDown:(NSEvent *)event {
-//    [self.window makeFirstResponder:nil];
-//    [super mouseDown:event];
-//}
+#pragma mark - Mouse Events
 //
 //-(void)keyDown:(NSEvent *)event {
 //
@@ -316,11 +322,36 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 //    return YES;
 //}
 
+-(void)mouseDown:(NSEvent *)event{
+    [self.window makeFirstResponder:nil];
+    [_allCommandsOutlineView deselectAll:nil];
+    [_userCommandsTableView deselectAll:nil];
+    [super mouseDown:event];
+}
+
+
+
+-(void)doubleClickInOutlineView {
+    NSInteger clickedRow = [_allCommandsOutlineView clickedRow];
+    id clickedObject = [_allCommandsOutlineView itemAtRow:clickedRow];
+    if ([clickedObject isKindOfClass:[HMCommandScheme class]] && !itemHasAlreadyAdded(clickedObject)) {
+        NSUInteger index = [commandsSchemes count];
+        [self addCommand:clickedObject atIndex:index];
+    }
+}
+
+-(void)doubleClickInTableView {
+    NSInteger clickedRow = [_userCommandsTableView clickedRow];
+    if (clickedRow >= 0) {
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:(NSUInteger)clickedRow];
+        [self removeCommandsAt:indexSet];
+    }
+}
+
 #pragma mark - HMTableView Delegate
 
 -(void)deleteIsPressedInTableView:(id)tableView{
-    [commandsSchemes removeObjectAtIndex:[_userCommandsTableView selectedRow]];
-    [_userCommandsTableView reloadData];
+    [self removeCommandsAt:[NSIndexSet indexSetWithIndex:[_userCommandsTableView selectedRow]]];
     [_allCommandsOutlineView reloadData];
 }
 
@@ -366,7 +397,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     filteredPluginsSchemes = [temporaryArray mutableCopy];
 
     [_allCommandsOutlineView reloadData];
-    [_allCommandsOutlineView expandItem:nil expandChildren:YES];
+
 
 }
 

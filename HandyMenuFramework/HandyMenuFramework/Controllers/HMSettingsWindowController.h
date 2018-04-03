@@ -15,6 +15,7 @@
 #import <HMTableView.h>
 #import "HMLog.h"
 #import <CoreGraphics/CoreGraphics.h>
+#import <HMTableCellView.h>
 
 
 @protocol HMSettingsWindowControllerDelegate<NSObject>
@@ -30,6 +31,7 @@
 @property (weak) IBOutlet NSOutlineView *allCommandsOutlineView;
 @property (weak) IBOutlet HMTableView *userCommandsTableView;
 @property (weak) IBOutlet NSSearchField *searchField;
+@property (weak) IBOutlet NSTextField *noCommandsNotificationLabel;
 
 @property (weak) id<HMSettingsWindowControllerDelegate> delegate;
 

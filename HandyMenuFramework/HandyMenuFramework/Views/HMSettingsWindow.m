@@ -15,9 +15,12 @@
     
     // Setting up the window
     [self setLevel:NSModalPanelWindowLevel];
-    [[self standardWindowButton:NSWindowZoomButton] setHidden:YES];
-    [[self standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
+//    [[self standardWindowButton:NSWindowZoomButton] setHidden:YES];
+//    [[self standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
+    
     [self setStyleMask:[self styleMask] | NSWindowStyleMaskResizable];
+    [[self standardWindowButton:NSWindowZoomButton] setEnabled:NO];
+    
     [self setMovableByWindowBackground:YES];
     
     [self setFrameAutosaveName:@"HandyMenu Settings Window"];
@@ -25,5 +28,7 @@
         [self center];
     }
 }
+
+
 
 @end

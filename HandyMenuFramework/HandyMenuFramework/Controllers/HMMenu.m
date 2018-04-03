@@ -24,31 +24,48 @@
     
     [self removeAllItems];
     
-    NSString *lastPluginIdentifier = nil;
-    
-    for (id command in commands) {
-        if ([command respondsToSelector:NSSelectorFromString(@"hasRunHandler")]) {
-            if ((BOOL)objc_msgSend(command, NSSelectorFromString(@"hasRunHandler")) == YES) {
-                
-                if (_groupComands) {
-                    NSString *pluginIdentifier = [command valueForKeyPath:@"pluginBundle.identifier"];
-                    if(lastPluginIdentifier != nil && lastPluginIdentifier != pluginIdentifier){
-                        [self addItem:[NSMenuItem separatorItem]];
+    // Checking if a user has added commands
+    if (commands.count > 0) {
+        
+        NSString *lastPluginIdentifier = nil;
+        
+        for (id command in commands) {
+            if ([command respondsToSelector:NSSelectorFromString(@"hasRunHandler")]) {
+                if ((BOOL)objc_msgSend(command, NSSelectorFromString(@"hasRunHandler")) == YES) {
+                    
+                    if (_groupComands) {
+                        NSString *pluginIdentifier = [command valueForKeyPath:@"pluginBundle.identifier"];
+                        if(lastPluginIdentifier != nil && lastPluginIdentifier != pluginIdentifier){
+                            [self addItem:[NSMenuItem separatorItem]];
+                        }
+                        lastPluginIdentifier = pluginIdentifier;
                     }
-                    lastPluginIdentifier = pluginIdentifier;
+                    
+                    
+                    
+                    NSString *commandName = [command valueForKey:@"name"];
+                    
+                    NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:commandName action:@selector(runCommand:) keyEquivalent:@""];
+                    menuItem.target = self;
+                    menuItem.representedObject = command;
+                    
+                    [self addItem:menuItem];
                 }
-                
-                
-                
-                NSString *commandName = [command valueForKey:@"name"];
-                
-                NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:commandName action:@selector(runCommand:) keyEquivalent:@""];
-                menuItem.target = self;
-                menuItem.representedObject = command;
-                
-                [self addItem:menuItem];
             }
         }
+    } else {
+        
+        // If a user doesn't have added commands we show hint
+        
+        NSMenuItem *hintItem = [[NSMenuItem alloc] initWithTitle:@"No added plugins" action:nil keyEquivalent:@""];
+        [self addItem:hintItem];
+        
+        [self addItem:[NSMenuItem separatorItem]];
+        
+        NSMenuItem *settingsItem = [[NSMenuItem alloc] initWithTitle:@"Settings" action:@selector(showSettings) keyEquivalent:@""];
+        settingsItem.target = self;
+        [self addItem:settingsItem];
+        
     }
     
     //    for (id plugin in commands) {
@@ -106,7 +123,7 @@
 }
 
 -(void)showSettings {
-    
+    [HandyMenu showSettings];
 }
 
 

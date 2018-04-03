@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		A50132C520705B640042922E /* HMSettingsWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132C320705B640042922E /* HMSettingsWindow.h */; };
 		A50132C620705B640042922E /* HMSettingsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A50132C420705B640042922E /* HMSettingsWindow.m */; };
+		A50132C9207236F80042922E /* HMBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132C7207236F80042922E /* HMBackgroundView.h */; };
+		A50132CA207236F80042922E /* HMBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50132C8207236F80042922E /* HMBackgroundView.m */; };
+		A50132CD2072CA300042922E /* HMTableCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132CB2072CA300042922E /* HMTableCellView.h */; };
+		A50132CE2072CA300042922E /* HMTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50132CC2072CA300042922E /* HMTableCellView.m */; };
 		A5089DCC2069A27E006866D0 /* HMCommandScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A5089DCA2069A27E006866D0 /* HMCommandScheme.h */; };
 		A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A5089DCB2069A27E006866D0 /* HMCommandScheme.m */; };
 		A5289801205BF90D009AB2D2 /* HMSettingsWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */; };
@@ -49,6 +53,10 @@
 /* Begin PBXFileReference section */
 		A50132C320705B640042922E /* HMSettingsWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSettingsWindow.h; sourceTree = "<group>"; };
 		A50132C420705B640042922E /* HMSettingsWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMSettingsWindow.m; sourceTree = "<group>"; };
+		A50132C7207236F80042922E /* HMBackgroundView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMBackgroundView.h; sourceTree = "<group>"; };
+		A50132C8207236F80042922E /* HMBackgroundView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMBackgroundView.m; sourceTree = "<group>"; };
+		A50132CB2072CA300042922E /* HMTableCellView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMTableCellView.h; sourceTree = "<group>"; };
+		A50132CC2072CA300042922E /* HMTableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMTableCellView.m; sourceTree = "<group>"; };
 		A5089DCA2069A27E006866D0 /* HMCommandScheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMCommandScheme.h; sourceTree = "<group>"; };
 		A5089DCB2069A27E006866D0 /* HMCommandScheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
 		A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSettingsWindowController.h; sourceTree = "<group>"; };
@@ -149,6 +157,10 @@
 				A5289800205BF90D009AB2D2 /* HMSettingsWindowController.xib */,
 				A50132C320705B640042922E /* HMSettingsWindow.h */,
 				A50132C420705B640042922E /* HMSettingsWindow.m */,
+				A50132C7207236F80042922E /* HMBackgroundView.h */,
+				A50132C8207236F80042922E /* HMBackgroundView.m */,
+				A50132CB2072CA300042922E /* HMTableCellView.h */,
+				A50132CC2072CA300042922E /* HMTableCellView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,7 +194,9 @@
 				A560E81520584CBE00DCFF87 /* HandyMenu.h in Headers */,
 				A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */,
 				A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */,
+				A50132CD2072CA300042922E /* HMTableCellView.h in Headers */,
 				A5BAF5B9205ED7A000E5183F /* HMDataProvider.h in Headers */,
+				A50132C9207236F80042922E /* HMBackgroundView.h in Headers */,
 				A50132C520705B640042922E /* HMSettingsWindow.h in Headers */,
 				A560E80D20584CAD00DCFF87 /* HandyMenuFramework.h in Headers */,
 				A5289801205BF90D009AB2D2 /* HMSettingsWindowController.h in Headers */,
@@ -217,7 +231,7 @@
 		A560E7FF20584CAD00DCFF87 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Sergey Dmitriev";
 				TargetAttributes = {
 					A560E80720584CAD00DCFF87 = {
@@ -268,6 +282,8 @@
 				A50132C620705B640042922E /* HMSettingsWindow.m in Sources */,
 				A5C3AA6C206BB05600A5475C /* HMPluginScheme.m in Sources */,
 				A5BAF559205DA7D000E5183F /* HMShortcutField.m in Sources */,
+				A50132CE2072CA300042922E /* HMTableCellView.m in Sources */,
+				A50132CA207236F80042922E /* HMBackgroundView.m in Sources */,
 				A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */,
 				A5343A7E2069491C0090844C /* HMPluginController.m in Sources */,
 			);
@@ -290,6 +306,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -297,6 +314,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -348,6 +366,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -355,6 +374,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
