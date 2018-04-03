@@ -13,6 +13,7 @@
 NSArray *pluginsSchemes;
 NSMutableArray *filteredPluginsSchemes;
 NSMutableArray *commandsSchemes;
+HMSettingsWindowViewController *windowViewController;
 
 NSTimer *searchDelayTimer;
 
@@ -26,11 +27,21 @@ id shortcutHandlingEventMonitor;
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    [_allCommandsOutlineView setDraggingSourceOperationMask:NSDragOperationLink forLocal:NO];
-    [_allCommandsOutlineView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
-    [_allCommandsOutlineView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
+    windowViewController = [[HMSettingsWindowViewController alloc] init];
+    windowViewController.delegate = self;
+    windowViewController.view = self.window.contentView;
+    [self.window setContentViewController:windowViewController];
     
-    [_allCommandsOutlineView setDoubleAction:@selector(doubleClickInOutlineView)];
+    NSCollectionViewFlowLayout *flowLayout = [[NSCollectionViewFlowLayout alloc] init];
+    flowLayout.sectionInset = NSEdgeInsetsMake(8.0, 0, 24.0, 0);
+    flowLayout.minimumLineSpacing = 0.0;
+//    flowLayout.sectionHeadersPinToVisibleBounds = YES;
+    [_allCommandsCollectionView setCollectionViewLayout:flowLayout];
+    
+    [_allCommandsCollectionView setDraggingSourceOperationMask:NSDragOperationLink forLocal:NO];
+    [_allCommandsCollectionView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
+    [_allCommandsCollectionView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
+    
     
     [_userCommandsTableView setDraggingSourceOperationMask:NSDragOperationLink forLocal:NO];
     [_userCommandsTableView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
@@ -40,9 +51,13 @@ id shortcutHandlingEventMonitor;
     _noCommandsNotificationLabel.alphaValue = (commandsSchemes.count > 0) ? 0.0 : 1.0;
 }
 
+-(void)settingsWindowViewController:(id)settingsWindowViewController viewWillLayout:(NSView *)view{
+    [_allCommandsCollectionView.collectionViewLayout invalidateLayout];
+}
+
 -(void)showWindow:(id)sender {
     [super showWindow:sender];
-    [_allCommandsOutlineView reloadData];
+    [_allCommandsCollectionView reloadData];
 }
 
 #pragma mark - Plugins updating methods
@@ -51,7 +66,7 @@ id shortcutHandlingEventMonitor;
     pluginsSchemes = schemes;
     filteredPluginsSchemes = [pluginsSchemes mutableCopy];
     
-    [_allCommandsOutlineView reloadData];
+    [_allCommandsCollectionView reloadData];
 }
 
 -(void)updateUserCommands:(NSArray *)schemes{
@@ -69,14 +84,14 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     [commandsSchemes insertObject:command atIndex:index];
     [_userCommandsTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:index] withAnimation:NSTableViewAnimationEffectFade];
     [self toggleNoCommandsLabel];
-    [_allCommandsOutlineView reloadData];
+    [_allCommandsCollectionView reloadData];
 }
 
 - (void)removeCommandsAt:(NSIndexSet *)rowIndexes {
     [commandsSchemes removeObjectsAtIndexes:rowIndexes];
     [_userCommandsTableView removeRowsAtIndexes:rowIndexes withAnimation:NSTableViewAnimationEffectFade];
     [self toggleNoCommandsLabel];
-    [_allCommandsOutlineView reloadData];
+    [_allCommandsCollectionView reloadData];
 }
 
 - (void)toggleNoCommandsLabel {
@@ -89,98 +104,86 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 
 
 
-#pragma mark - NSOutlineView Delegate and DataSource
+#pragma mark - NSCollectionView Delegate and DataSource
 
--(NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item{
-    if ([item isKindOfClass: [HMPluginScheme class]]){
-        NSArray *commands = [(HMPluginScheme*)item pluginCommands];
-        return commands.count;
-    }
-    if (filteredPluginsSchemes.count > 0) {
-        return filteredPluginsSchemes.count;
-    }
-    return 1;
+-(NSInteger)numberOfSectionsInCollectionView:(NSCollectionView *)collectionView{
+    return filteredPluginsSchemes.count;
 }
 
--(id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item{
-    if ([item isKindOfClass:[HMPluginScheme class]]){
-        NSArray *commands = [(HMPluginScheme*)item pluginCommands];
-        return commands[index];
-    }
-    if (filteredPluginsSchemes.count > 0) {
-        return filteredPluginsSchemes[index];
-    }
-    return [NSNull null];
+-(NSInteger)collectionView:(NSCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return [[(HMPluginScheme *)filteredPluginsSchemes[section] pluginCommands] count];
 }
 
--(BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item {
-    if ([item isKindOfClass:[HMPluginScheme class]]){
-        return YES;
-    }
-    return NO;
-}
-
-
--(BOOL)outlineView:(NSOutlineView *)outlineView shouldSelectItem:(id)item{
-
-    if ([item isKindOfClass:[HMPluginScheme class]]){
-        if([_allCommandsOutlineView isItemExpanded:item]) {
-            if ([NSEvent modifierFlags] & NSEventModifierFlagCommand) {
-                [[_allCommandsOutlineView animator] collapseItem:nil collapseChildren:YES];
-            } else {
-                [[_allCommandsOutlineView animator] collapseItem:item];
-            }
-        } else {
-            if ([NSEvent modifierFlags] & NSEventModifierFlagCommand) {
-                [[_allCommandsOutlineView animator] expandItem:nil expandChildren:YES];
-            } else {
-                [[_allCommandsOutlineView animator] expandItem:item];
-            }
-        }
-        return NO;
-    }
+-(NSCollectionViewItem *)collectionView:(NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath{
     
-    return !itemHasAlreadyAdded(item);
-}
+    HMCommandCollectionViewItem *collectionViewItem = [_allCommandsCollectionView makeItemWithIdentifier:@"HMCommandCollectionViewItem" forIndexPath:indexPath];
+    HMPluginScheme *pluginScheme = filteredPluginsSchemes[indexPath.section];
+    HMCommandScheme *commandScheme = [[pluginScheme pluginCommands] objectAtIndex:indexPath.item];
 
--(NSView *)outlineView:(NSOutlineView *)outlineView viewForTableColumn:(NSTableColumn *)tableColumn item:(id)item{
-    
-    NSTableCellView *tableCellView;
-    
-    if ([item isKindOfClass:[HMPluginScheme class]]){
-        tableCellView = [_allCommandsOutlineView makeViewWithIdentifier:@"PluginCell" owner:self];
-        tableCellView.textField.stringValue = [(NSString *)[item valueForKey:@"name"] uppercaseString];
+    collectionViewItem.representedObject = commandScheme;
+    collectionViewItem.textField.stringValue = commandScheme.name;
+
+    if (itemHasAlreadyAdded(commandScheme)) {
+        collectionViewItem.textField.stringValue = [NSString stringWithFormat:@"✓ %@",collectionViewItem.textField.stringValue];
+        [collectionViewItem.textField setTextColor:[NSColor colorWithCalibratedRed:0.55 green:0.6 blue:0.65 alpha:1.0]];
+    } else {
+        [collectionViewItem.textField setTextColor:[NSColor controlTextColor]];
+
         
-        if([[NSSet setWithArray:[item pluginCommands]] intersectsSet:[NSSet setWithArray:commandsSchemes]]){
-            [tableCellView.textField setTextColor:[NSColor colorWithRed:0.16 green:0.73 blue:0.96 alpha:1.0]];
-        } else {
-            [tableCellView.textField setTextColor:[NSColor disabledControlTextColor]];
-        }
-    
-    } else if ([item isKindOfClass:[HMCommandScheme class]]){
-        tableCellView = [_allCommandsOutlineView makeViewWithIdentifier:@"CommandCell" owner:self];
-        tableCellView.textField.stringValue = (NSString *)[item valueForKey:@"name"];
-        
-        if (itemHasAlreadyAdded(item)) {
-            tableCellView.textField.stringValue = [NSString stringWithFormat:@"✓ %@",tableCellView.textField.stringValue];
-            [tableCellView.textField setTextColor:[NSColor colorWithWhite:0 alpha:0.2]];
-        } else {
-            [tableCellView.textField setTextColor:[NSColor controlTextColor]];
-        }
-    } else if ([item isEqual:[NSNull null]]) {
-        tableCellView = [_allCommandsOutlineView makeViewWithIdentifier:@"Nothing" owner:self];
     }
+
+    if (searchString.length > 1) {
+        NSRange searchRange = [collectionViewItem.textField.stringValue rangeOfString:searchString options:NSCaseInsensitiveSearch];
+        if (searchRange.location != NSNotFound) {
+            NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:collectionViewItem.textField.stringValue];
+            [attributedString addAttribute:NSBackgroundColorAttributeName value:[NSColor selectedTextBackgroundColor] range:searchRange];
+            //        CGFloat fontSize = tableCellView.textField.font.pointSize;
+            //        [attributedString addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:fontSize weight:NSFontWeightMedium] range:searchRange];
+            [collectionViewItem.textField setAttributedStringValue:attributedString];
+        }
+    }
+    
+    return collectionViewItem;
+}
+
+-(NSSize)collectionView:(NSCollectionView *)collectionView layout:(NSCollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    return CGSizeMake(collectionView.bounds.size.width, 24.0);
+}
+
+-(NSSize)collectionView:(NSCollectionView *)collectionView layout:(NSCollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    return CGSizeMake(collectionView.bounds.size.width, 40.0);
+}
+
+-(NSView *)collectionView:(NSCollectionView *)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind)kind atIndexPath:(NSIndexPath *)indexPath{
+    HMPluginSectionHeaderView *headerView = [_allCommandsCollectionView makeSupplementaryViewOfKind:NSCollectionElementKindSectionHeader withIdentifier:@"HMPluginSectionHeaderView" forIndexPath:indexPath];
+    headerView.pluginNameTextField.stringValue = [filteredPluginsSchemes[indexPath.section] valueForKey:@"name"];
     
     if (searchString.length > 1) {
-        NSRange searchRange = [tableCellView.textField.stringValue rangeOfString:searchString options:NSCaseInsensitiveSearch];
-        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:tableCellView.textField.stringValue];
-        [attributedString addAttribute:NSBackgroundColorAttributeName value:[[NSColor systemYellowColor] colorWithAlphaComponent:0.25] range:searchRange];
-//        CGFloat fontSize = tableCellView.textField.font.pointSize;
-//        [attributedString addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:fontSize weight:NSFontWeightMedium] range:searchRange];
-        [tableCellView.textField setAttributedStringValue:attributedString];
+        NSRange searchRange = [headerView.pluginNameTextField.stringValue rangeOfString:searchString options:NSCaseInsensitiveSearch];
+        if (searchRange.location != NSNotFound) {
+            NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:headerView.pluginNameTextField.stringValue];
+            [attributedString addAttribute:NSBackgroundColorAttributeName value:[NSColor selectedTextBackgroundColor] range:searchRange];
+            //        CGFloat fontSize = tableCellView.textField.font.pointSize;
+            //        [attributedString addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:fontSize weight:NSFontWeightMedium] range:searchRange];
+            [headerView.pluginNameTextField setAttributedStringValue:attributedString];
+        }
     }
     
-    return tableCellView;
+    return headerView;
+}
+
+-(NSSet<NSIndexPath *> *)collectionView:(NSCollectionView *)collectionView shouldSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths{
+    
+    NSMutableSet *newSet = [NSMutableSet setWithSet:indexPaths];
+
+    for (NSIndexPath *indexPath in indexPaths) {
+        HMLog(@"checking an item");
+        if(itemHasAlreadyAdded([[_allCommandsCollectionView itemAtIndexPath:indexPath] representedObject])) {
+            [newSet removeObject:indexPath];
+        }
+    }
+    
+    return [newSet copy];
 }
 
 #pragma mark - NSTableView Delegate and DataSource
@@ -203,18 +206,18 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 
 #pragma mark - Drag & Drop Delegates
 
--(BOOL)outlineView:(NSOutlineView *)outlineView writeItems:(NSArray *)items toPasteboard:(NSPasteboard *)pasteboard{
-    if(!itemHasAlreadyAdded([items objectAtIndex:0])) {
-        if([[items objectAtIndex:0] isKindOfClass:[HMCommandScheme class]]) {
-            NSIndexSet* indexSets = [NSIndexSet indexSetWithIndex:[_allCommandsOutlineView rowForItem:[items objectAtIndex:0]]];
-            [_allCommandsOutlineView selectRowIndexes:indexSets byExtendingSelection:NO];
-            NSData *data = [NSKeyedArchiver archivedDataWithRootObject:items];
-            [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:self];
-            [pasteboard setData:data forType:NSStringPboardType];
-            return YES;
-        }
+
+-(BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths toPasteboard:(NSPasteboard *)pasteboard{
+    NSMutableArray *arrayOfItems = [[NSMutableArray alloc] init];
+    for (NSIndexPath *indexPath in indexPaths) {
+        HMCommandScheme *scheme = [[collectionView itemAtIndexPath:indexPath] representedObject];
+        [arrayOfItems addObject:scheme];
+        
     }
-    return NO;
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arrayOfItems];
+    [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:self];
+    [pasteboard setData:data forType:NSStringPboardType];
+    return YES;
 }
 
 -(BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard{
@@ -232,7 +235,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 
 -(BOOL)tableView:(NSTableView *)tableView acceptDrop:(id<NSDraggingInfo>)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation{
 
-    if([info draggingSource] == _userCommandsTableView || [info draggingSource] == _allCommandsOutlineView) {
+    if([info draggingSource] == _userCommandsTableView || [info draggingSource] == _allCommandsCollectionView) {
         
         NSData *data = [[info draggingPasteboard] dataForType:NSPasteboardTypeString];
         NSArray *selectedItems;
@@ -240,7 +243,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         NSInteger fromIndex = 0;
         NSInteger toIndex = 0;
         
-        //REORDERING IN THE SAME TABLE VIEW BY DRAG & DROP
+        //Reordering In The Same Table View By Drag & Drop
         if (([info draggingSource] == _userCommandsTableView) && (tableView == _userCommandsTableView))
         {
             NSIndexSet *rowIndexes = [NSKeyedUnarchiver unarchiveObjectWithData:data];
@@ -249,8 +252,8 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
             [commandsSchemes removeObjectsAtIndexes:rowIndexes];
         }
         
-        //DRAG AND DROP ACROSS THE TABLES
-        else if (([info draggingSource] == _allCommandsOutlineView) && (tableView == _userCommandsTableView))
+        //Drag And Drop Across The Tables
+        else if (([info draggingSource] == _allCommandsCollectionView) && (tableView == _userCommandsTableView))
         {
             selectedItems = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             fromIndex = [commandsSchemes count];
@@ -268,7 +271,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         [_noCommandsNotificationLabel setHidden:(commandsSchemes.count > 0)];
         
         if(itemFromAllCommandsList) {
-            [_allCommandsOutlineView reloadData];
+            [_allCommandsCollectionView reloadData];
             [_userCommandsTableView insertRowsAtIndexes:[NSIndexSet indexSetWithIndex:toIndex] withAnimation:NSTableViewAnimationEffectFade];
         } else {
             [_userCommandsTableView beginUpdates];
@@ -277,7 +280,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
             [_userCommandsTableView endUpdates];
         }
         
-        [_allCommandsOutlineView deselectAll:nil];
+        [_allCommandsCollectionView deselectAll:nil];
         [_userCommandsTableView deselectAll:nil];
         
         return YES;
@@ -324,16 +327,16 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 
 -(void)mouseDown:(NSEvent *)event{
     [self.window makeFirstResponder:nil];
-    [_allCommandsOutlineView deselectAll:nil];
+    [_allCommandsCollectionView deselectAll:nil];
     [_userCommandsTableView deselectAll:nil];
     [super mouseDown:event];
 }
 
 
 
--(void)doubleClickInOutlineView {
-    NSInteger clickedRow = [_allCommandsOutlineView clickedRow];
-    id clickedObject = [_allCommandsOutlineView itemAtRow:clickedRow];
+-(void)doubleClickInCollectionView:(id)sender {
+    id clickedObject = [sender representedObject];
+    HMLog(@"%@", clickedObject);
     if ([clickedObject isKindOfClass:[HMCommandScheme class]] && !itemHasAlreadyAdded(clickedObject)) {
         NSUInteger index = [commandsSchemes count];
         [self addCommand:clickedObject atIndex:index];
@@ -352,7 +355,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 
 -(void)deleteIsPressedInTableView:(id)tableView{
     [self removeCommandsAt:[NSIndexSet indexSetWithIndex:[_userCommandsTableView selectedRow]]];
-    [_allCommandsOutlineView reloadData];
+    [_allCommandsCollectionView reloadData];
 }
 
 #pragma mark - IBActions
@@ -371,34 +374,40 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 -(IBAction)changedSearchText:(id)sender {
     // Debouncing
     [searchDelayTimer invalidate];
-    [NSTimer scheduledTimerWithTimeInterval:0.4 target:self selector:@selector(filterAllCommandsList) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(filterAllCommandsList) userInfo:nil repeats:NO];
+
 }
 
 // Debouncing method
 -(void)filterAllCommandsList {
-
-    searchString = [_searchField stringValue];
-    NSMutableArray *temporaryArray = [[NSMutableArray alloc] initWithArray:pluginsSchemes copyItems:YES];
-
-    if ([searchString length] > 1) {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR SUBQUERY(pluginCommands, $command, $command.name CONTAINS[c] %@).@count > 0", searchString, searchString];
-        NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchString];
-
-        [temporaryArray filterUsingPredicate:predicate];
-
-        for (HMPluginScheme *pluginScheme in temporaryArray) {
-            NSMutableArray *temporaryCommands = [[pluginScheme pluginCommands] mutableCopy];
-            [temporaryCommands filterUsingPredicate:commandPredicate];
-            if([temporaryCommands count] != 0) {
-                [pluginScheme setPluginCommands:temporaryCommands];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        
+        searchString = [self->_searchField stringValue];
+        
+        NSMutableArray *temporaryArray = [[NSMutableArray alloc] initWithArray:pluginsSchemes copyItems:YES];
+        
+        if ([searchString length] > 1) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR ANY SELF.pluginCommands.name CONTAINS[c] %@", searchString, searchString];
+            NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchString];
+            
+            [temporaryArray filterUsingPredicate:predicate];
+            
+            for (HMPluginScheme *pluginScheme in temporaryArray) {
+                NSMutableArray *temporaryCommands = [[pluginScheme pluginCommands] mutableCopy];
+                [temporaryCommands filterUsingPredicate:commandPredicate];
+                if([temporaryCommands count] != 0) {
+                    [pluginScheme setPluginCommands:temporaryCommands];
+                }
             }
+            
         }
-    }
-    filteredPluginsSchemes = [temporaryArray mutableCopy];
-
-    [_allCommandsOutlineView reloadData];
-
-
+        filteredPluginsSchemes = [temporaryArray mutableCopy];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self->_allCommandsCollectionView reloadData];
+        });
+        
+    });
 }
 
 

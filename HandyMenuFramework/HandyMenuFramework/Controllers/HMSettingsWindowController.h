@@ -16,6 +16,9 @@
 #import "HMLog.h"
 #import <CoreGraphics/CoreGraphics.h>
 #import <HMTableCellView.h>
+#import <HMCommandCollectionViewItem.h>
+#import <HMSettingsWindowViewController.h>
+#import <HMPluginSectionHeaderView.h>
 
 
 @protocol HMSettingsWindowControllerDelegate<NSObject>
@@ -26,9 +29,9 @@
 @end
 
 
-@interface HMSettingsWindowController : NSWindowController<NSOutlineViewDataSource, NSOutlineViewDelegate, NSTableViewDataSource, NSTableViewDelegate, HMTableViewDelegate>
+@interface HMSettingsWindowController : NSWindowController<NSCollectionViewDataSource, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout, NSTableViewDataSource, NSTableViewDelegate, HMTableViewDelegate, HMSettingsWindowViewControllerDelegate, HMCommandCollectionViewItemDelegate>
 
-@property (weak) IBOutlet NSOutlineView *allCommandsOutlineView;
+@property (weak) IBOutlet NSCollectionView *allCommandsCollectionView;
 @property (weak) IBOutlet HMTableView *userCommandsTableView;
 @property (weak) IBOutlet NSSearchField *searchField;
 @property (weak) IBOutlet NSTextField *noCommandsNotificationLabel;

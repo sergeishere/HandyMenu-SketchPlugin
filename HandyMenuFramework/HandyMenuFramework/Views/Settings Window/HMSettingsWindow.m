@@ -14,7 +14,7 @@
     [super awakeFromNib];
     
     // Setting up the window
-    [self setLevel:NSModalPanelWindowLevel];
+    [self setLevel:NSNormalWindowLevel];
 //    [[self standardWindowButton:NSWindowZoomButton] setHidden:YES];
 //    [[self standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
     
@@ -27,8 +27,7 @@
     if(![self setFrameUsingName:@"HandyMenu Settings Window"]) {
         [self center];
     }
+
 }
-
-
 
 @end

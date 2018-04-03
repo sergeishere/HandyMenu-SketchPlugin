@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe" customClass="HMPluginSectionHeaderView">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="24"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aOy-dN-nc9">
+                    <rect key="frame" x="18" y="0.0" width="86" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Plugin Name" id="nwQ-vf-0hP">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="F6N-ym-bfT">
+                    <rect key="frame" x="20" y="21" width="460" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="pBE-PH-JSY"/>
+                    </constraints>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="aOy-dN-nc9" secondAttribute="bottom" id="909-dk-JzA"/>
+                <constraint firstItem="aOy-dN-nc9" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="HaH-wG-wll"/>
+                <constraint firstItem="F6N-ym-bfT" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="QM6-9p-jTW"/>
+                <constraint firstItem="F6N-ym-bfT" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="cWx-ky-eRh"/>
+                <constraint firstAttribute="trailing" secondItem="F6N-ym-bfT" secondAttribute="trailing" id="qro-a6-7tl"/>
+            </constraints>
+            <connections>
+                <outlet property="pluginNameTextField" destination="aOy-dN-nc9" id="gMW-eI-j4n"/>
+            </connections>
+            <point key="canvasLocation" x="171" y="282"/>
+        </customView>
+    </objects>
+</document>

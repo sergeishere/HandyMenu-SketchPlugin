@@ -35,6 +35,14 @@
 		A5C3AA6C206BB05600A5475C /* HMPluginScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3AA6A206BB05600A5475C /* HMPluginScheme.m */; };
 		A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA76206C495E00A5475C /* HMTableView.h */; };
 		A5C3AA79206C495E00A5475C /* HMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3AA77206C495E00A5475C /* HMTableView.m */; };
+		A5CFD4EC2073B438005C3BB2 /* HMCommandCollectionViewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4E92073B438005C3BB2 /* HMCommandCollectionViewItem.h */; };
+		A5CFD4ED2073B438005C3BB2 /* HMCommandCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD4EA2073B438005C3BB2 /* HMCommandCollectionViewItem.m */; };
+		A5CFD4EE2073B438005C3BB2 /* HMCommandCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5CFD4EB2073B438005C3BB2 /* HMCommandCollectionViewItem.xib */; };
+		A5CFD4F42073BE34005C3BB2 /* HMSettingsWindowViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4F22073BE34005C3BB2 /* HMSettingsWindowViewController.h */; };
+		A5CFD4F52073BE34005C3BB2 /* HMSettingsWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD4F32073BE34005C3BB2 /* HMSettingsWindowViewController.m */; };
+		A5CFD4FD2073F95E005C3BB2 /* HMPluginSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5CFD4FC2073F95E005C3BB2 /* HMPluginSectionHeaderView.xib */; };
+		A5CFD5002073F9FA005C3BB2 /* HMPluginSectionHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4FE2073F9FA005C3BB2 /* HMPluginSectionHeaderView.h */; };
+		A5CFD5012073F9FA005C3BB2 /* HMPluginSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD4FF2073F9FA005C3BB2 /* HMPluginSectionHeaderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -82,6 +90,14 @@
 		A5C3AA77206C495E00A5475C /* HMTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMTableView.m; sourceTree = "<group>"; };
 		A5C3AA7B206C501F00A5475C /* HMLog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMLog.h; sourceTree = "<group>"; };
 		A5C3AA7C206C503000A5475C /* HMConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMConstants.h; sourceTree = "<group>"; };
+		A5CFD4E92073B438005C3BB2 /* HMCommandCollectionViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMCommandCollectionViewItem.h; sourceTree = "<group>"; };
+		A5CFD4EA2073B438005C3BB2 /* HMCommandCollectionViewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMCommandCollectionViewItem.m; sourceTree = "<group>"; };
+		A5CFD4EB2073B438005C3BB2 /* HMCommandCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMCommandCollectionViewItem.xib; sourceTree = "<group>"; };
+		A5CFD4F22073BE34005C3BB2 /* HMSettingsWindowViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSettingsWindowViewController.h; sourceTree = "<group>"; };
+		A5CFD4F32073BE34005C3BB2 /* HMSettingsWindowViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMSettingsWindowViewController.m; sourceTree = "<group>"; };
+		A5CFD4FC2073F95E005C3BB2 /* HMPluginSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMPluginSectionHeaderView.xib; sourceTree = "<group>"; };
+		A5CFD4FE2073F9FA005C3BB2 /* HMPluginSectionHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMPluginSectionHeaderView.h; sourceTree = "<group>"; };
+		A5CFD4FF2073F9FA005C3BB2 /* HMPluginSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMPluginSectionHeaderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,20 +163,52 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		A5DAB5592060F5050041BD69 /* Views */ = {
+		A5CFD4E82073B3F8005C3BB2 /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				A5C3AA76206C495E00A5475C /* HMTableView.h */,
-				A5C3AA77206C495E00A5475C /* HMTableView.m */,
-				A5BAF556205DA7D000E5183F /* HMShortcutField.h */,
-				A5BAF557205DA7D000E5183F /* HMShortcutField.m */,
+				A5CFD4E92073B438005C3BB2 /* HMCommandCollectionViewItem.h */,
+				A5CFD4EA2073B438005C3BB2 /* HMCommandCollectionViewItem.m */,
+				A5CFD4EB2073B438005C3BB2 /* HMCommandCollectionViewItem.xib */,
+				A5CFD4FC2073F95E005C3BB2 /* HMPluginSectionHeaderView.xib */,
+				A5CFD4FE2073F9FA005C3BB2 /* HMPluginSectionHeaderView.h */,
+				A5CFD4FF2073F9FA005C3BB2 /* HMPluginSectionHeaderView.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		A5CFD4EF2073BDF2005C3BB2 /* Settings Window */ = {
+			isa = PBXGroup;
+			children = (
 				A5289800205BF90D009AB2D2 /* HMSettingsWindowController.xib */,
 				A50132C320705B640042922E /* HMSettingsWindow.h */,
 				A50132C420705B640042922E /* HMSettingsWindow.m */,
 				A50132C7207236F80042922E /* HMBackgroundView.h */,
 				A50132C8207236F80042922E /* HMBackgroundView.m */,
+				A5CFD4F22073BE34005C3BB2 /* HMSettingsWindowViewController.h */,
+				A5CFD4F32073BE34005C3BB2 /* HMSettingsWindowViewController.m */,
+			);
+			path = "Settings Window";
+			sourceTree = "<group>";
+		};
+		A5CFD4F12073BE11005C3BB2 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				A5C3AA76206C495E00A5475C /* HMTableView.h */,
+				A5C3AA77206C495E00A5475C /* HMTableView.m */,
 				A50132CB2072CA300042922E /* HMTableCellView.h */,
 				A50132CC2072CA300042922E /* HMTableCellView.m */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		A5DAB5592060F5050041BD69 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A5CFD4E82073B3F8005C3BB2 /* CollectionView */,
+				A5CFD4EF2073BDF2005C3BB2 /* Settings Window */,
+				A5CFD4F12073BE11005C3BB2 /* TableView */,
+				A5BAF556205DA7D000E5183F /* HMShortcutField.h */,
+				A5BAF557205DA7D000E5183F /* HMShortcutField.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,9 +244,12 @@
 				A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */,
 				A50132CD2072CA300042922E /* HMTableCellView.h in Headers */,
 				A5BAF5B9205ED7A000E5183F /* HMDataProvider.h in Headers */,
+				A5CFD4EC2073B438005C3BB2 /* HMCommandCollectionViewItem.h in Headers */,
 				A50132C9207236F80042922E /* HMBackgroundView.h in Headers */,
 				A50132C520705B640042922E /* HMSettingsWindow.h in Headers */,
+				A5CFD4F42073BE34005C3BB2 /* HMSettingsWindowViewController.h in Headers */,
 				A560E80D20584CAD00DCFF87 /* HandyMenuFramework.h in Headers */,
+				A5CFD5002073F9FA005C3BB2 /* HMPluginSectionHeaderView.h in Headers */,
 				A5289801205BF90D009AB2D2 /* HMSettingsWindowController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,6 +315,8 @@
 			files = (
 				A5BAF5B6205EBA2A00E5183F /* assets.xcassets in Resources */,
 				A5289803205BF90D009AB2D2 /* HMSettingsWindowController.xib in Resources */,
+				A5CFD4EE2073B438005C3BB2 /* HMCommandCollectionViewItem.xib in Resources */,
+				A5CFD4FD2073F95E005C3BB2 /* HMPluginSectionHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,8 +328,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5C3AA79206C495E00A5475C /* HMTableView.m in Sources */,
+				A5CFD4ED2073B438005C3BB2 /* HMCommandCollectionViewItem.m in Sources */,
 				A560E81620584CBE00DCFF87 /* HandyMenu.m in Sources */,
 				A5BAF5BE205EDBBB00E5183F /* HMMenu.m in Sources */,
+				A5CFD4F52073BE34005C3BB2 /* HMSettingsWindowViewController.m in Sources */,
 				A5BAF5BA205ED7A000E5183F /* HMDataProvider.m in Sources */,
 				A5289802205BF90D009AB2D2 /* HMSettingsWindowController.m in Sources */,
 				A50132C620705B640042922E /* HMSettingsWindow.m in Sources */,
@@ -285,6 +340,7 @@
 				A50132CE2072CA300042922E /* HMTableCellView.m in Sources */,
 				A50132CA207236F80042922E /* HMBackgroundView.m in Sources */,
 				A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */,
+				A5CFD5012073F9FA005C3BB2 /* HMPluginSectionHeaderView.m in Sources */,
 				A5343A7E2069491C0090844C /* HMPluginController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

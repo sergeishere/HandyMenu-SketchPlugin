@@ -62,7 +62,7 @@
         
         [self addItem:[NSMenuItem separatorItem]];
         
-        NSMenuItem *settingsItem = [[NSMenuItem alloc] initWithTitle:@"Settings" action:@selector(showSettings) keyEquivalent:@""];
+        NSMenuItem *settingsItem = [[NSMenuItem alloc] initWithTitle:@"Configure Handy Menu" action:@selector(showSettings) keyEquivalent:@""];
         settingsItem.target = self;
         [self addItem:settingsItem];
         

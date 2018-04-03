@@ -10,7 +10,7 @@
     },
     {
       "script" : "script.js",
-      "name" : "Settings",
+      "name" : "Configure Handy Menu",
       "handlers" : {
         "run" : "onSetup"
       },
