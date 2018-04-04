@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 ![Cover](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/master/images/cover_image.png)
 # Handy Menu Sketch Plugin
+=======
+![Cover](Images/cover_image.png)
+>>>>>>> dev
 
+# Handy Menu Sketch Plugin
 ## Instalation
 
 1. [Download](https://github.com/sergeishere/HandyMenu-SketchPlugin/archive/master.zip) the archive and unzip it.
@@ -10,15 +15,13 @@
 
 Just press `cmd` + `4`
 
-#### Set up your list of commands
+#### Configure the menu
 
-1. Open setting `Plugins` > `Handy Menu` > `Setup Handy Menu` or press `cmd` + `option` + 4
-2. Choose commands you need quick access to using drag and drop.
+1. Open setting `Plugins` > `Handy Menu` > `Configure Handy Menu`
+2. Select the required plugins and drag them to the menu list (or double-click them).
 
-![Settings](https://github.com/sergeishere/HandyMenu-SketchPlugin/raw/master/images/settings.png)
+![Settings](Images/settings.png)
 
 ## Details
 
-Plugin uses framework Dragula by Nicolás Bevacqua: [https://github.com/bevacqua/dragula](https://github.com/bevacqua/dragula)
-
-Feel free to send me your feedback and ideas: [Twitter — Serge D](https://twitter.com/sergehere)
+Feel free to send me your feedback and ideas: [Twitter](https://twitter.com/sergehere)
