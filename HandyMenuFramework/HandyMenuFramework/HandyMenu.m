@@ -22,7 +22,8 @@ unsigned long shortcutModifierFlag = NSEventModifierFlagCommand; // + NSEventMod
     NSEvent * (^handleKeyDown)(NSEvent*) = ^(NSEvent *event){
         
         if ((event.keyCode == shortcutKeyCode) &&
-            ([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) == shortcutModifierFlag) {
+            ([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) == shortcutModifierFlag &&
+            [[[NSDocumentController sharedDocumentController] documents] count] > 0) {
             
             [pluginController showMenu];
             
