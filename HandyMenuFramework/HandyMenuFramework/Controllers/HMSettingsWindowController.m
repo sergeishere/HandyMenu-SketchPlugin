@@ -367,6 +367,9 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     [self close];
 }
 
+-(IBAction)goToGitHub:(id)sender{
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://github.com/sergeishere/HandyMenu-SketchPlugin"]];
+}
 
 #pragma mark - Searching & TextField Delegate
 

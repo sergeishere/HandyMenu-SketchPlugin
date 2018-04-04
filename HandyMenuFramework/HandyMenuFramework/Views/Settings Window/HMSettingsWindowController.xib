@@ -74,7 +74,7 @@
                                                     <constraint firstAttribute="width" constant="16" id="Kgp-vF-oyT"/>
                                                     <constraint firstAttribute="height" constant="16" id="xDY-Qm-Qes"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_clear" imagePosition="only" alignment="center" inset="2" id="axl-ct-OAX">
+                                                <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="icon_clear" imagePosition="only" alignment="center" alternateImage="icon_clear_pressed" inset="2" id="axl-ct-OAX">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
@@ -321,31 +321,47 @@ DQ
                                     <action selector="cancelAction:" target="-2" id="mwS-Pz-6Q1"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ycJ-26-dld">
-                                <rect key="frame" x="30" y="24" width="58" height="16"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Version 4" id="A4D-Mh-zUq">
-                                    <font key="font" metaFont="cellTitle"/>
-                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="78l-wW-BSQ">
                                 <rect key="frame" x="0.0" y="61" width="830" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="Xcn-xl-yyx"/>
                                 </constraints>
                             </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QbJ-Ke-3cE">
+                                <rect key="frame" x="58" y="25" width="54" height="14"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 4" id="B1z-Yi-OLe">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tPq-vm-d0T">
+                                <rect key="frame" x="32" y="22" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="1WB-SM-qFB"/>
+                                    <constraint firstAttribute="width" constant="20" id="7TM-ic-oHu"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="icon_github" imagePosition="only" alignment="center" alternateImage="icon_github_pressed" state="on" inset="2" id="n7C-0C-lje">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="goToGitHub:" target="-2" id="GuF-8W-mT8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="78l-wW-BSQ" secondAttribute="trailing" id="2E3-Dk-oDF"/>
                             <constraint firstItem="dbm-iy-9wx" firstAttribute="leading" secondItem="U3t-1a-oXG" secondAttribute="trailing" constant="12" id="3wm-0k-Zdi"/>
                             <constraint firstAttribute="height" constant="64" id="Eas-lT-aKE"/>
                             <constraint firstAttribute="trailing" secondItem="dbm-iy-9wx" secondAttribute="trailing" constant="32" id="JqN-Co-8OF"/>
+                            <constraint firstItem="tPq-vm-d0T" firstAttribute="leading" secondItem="rnD-tt-vOe" secondAttribute="leading" constant="32" id="MAK-3F-fw5"/>
+                            <constraint firstItem="QbJ-Ke-3cE" firstAttribute="centerY" secondItem="rnD-tt-vOe" secondAttribute="centerY" id="NGz-KU-THa"/>
                             <constraint firstItem="78l-wW-BSQ" firstAttribute="leading" secondItem="rnD-tt-vOe" secondAttribute="leading" id="QNo-9W-2PV"/>
-                            <constraint firstItem="ycJ-26-dld" firstAttribute="centerY" secondItem="rnD-tt-vOe" secondAttribute="centerY" id="TAA-T9-OXS"/>
+                            <constraint firstItem="QbJ-Ke-3cE" firstAttribute="leading" secondItem="tPq-vm-d0T" secondAttribute="trailing" constant="8" id="Xxy-zP-5IO"/>
                             <constraint firstItem="U3t-1a-oXG" firstAttribute="centerY" secondItem="rnD-tt-vOe" secondAttribute="centerY" id="iBX-W4-pkZ"/>
-                            <constraint firstItem="ycJ-26-dld" firstAttribute="leading" secondItem="rnD-tt-vOe" secondAttribute="leading" constant="32" id="iVu-9s-Dgv"/>
                             <constraint firstItem="dbm-iy-9wx" firstAttribute="centerY" secondItem="rnD-tt-vOe" secondAttribute="centerY" id="pSv-xI-XPh"/>
+                            <constraint firstItem="tPq-vm-d0T" firstAttribute="centerY" secondItem="rnD-tt-vOe" secondAttribute="centerY" id="wZi-LD-5v3"/>
                             <constraint firstItem="78l-wW-BSQ" firstAttribute="top" secondItem="rnD-tt-vOe" secondAttribute="top" id="yoJ-sh-6uP"/>
                         </constraints>
                     </customView>
@@ -368,5 +384,8 @@ DQ
     </objects>
     <resources>
         <image name="icon_clear" width="16" height="16"/>
+        <image name="icon_clear_pressed" width="16" height="16"/>
+        <image name="icon_github" width="20" height="20"/>
+        <image name="icon_github_pressed" width="20" height="20"/>
     </resources>
 </document>

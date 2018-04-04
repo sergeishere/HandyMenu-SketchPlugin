@@ -57,7 +57,7 @@
         
         // If a user doesn't have added commands we show hint
         
-        NSMenuItem *hintItem = [[NSMenuItem alloc] initWithTitle:@"No added plugins" action:nil keyEquivalent:@""];
+        NSMenuItem *hintItem = [[NSMenuItem alloc] initWithTitle:@"No plugins are added" action:nil keyEquivalent:@""];
         [self addItem:hintItem];
         
         [self addItem:[NSMenuItem separatorItem]];
