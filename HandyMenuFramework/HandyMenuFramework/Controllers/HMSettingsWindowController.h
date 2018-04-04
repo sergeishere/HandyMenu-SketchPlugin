@@ -35,6 +35,7 @@
 @property (weak) IBOutlet HMTableView *userCommandsTableView;
 @property (weak) IBOutlet NSTextField *searchField;
 @property (weak) IBOutlet NSTextField *noCommandsNotificationLabel;
+@property (weak) IBOutlet NSTextField *noPluginsNotificationLabel;
 @property (weak) IBOutlet NSButton *clearButton;
 
 @property (weak) id<HMSettingsWindowControllerDelegate> delegate;

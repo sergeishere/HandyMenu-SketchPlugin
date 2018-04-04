@@ -32,12 +32,6 @@ id shortcutHandlingEventMonitor;
     windowViewController.view = self.window.contentView;
     [self.window setContentViewController:windowViewController];
     
-    NSCollectionViewFlowLayout *flowLayout = [[NSCollectionViewFlowLayout alloc] init];
-    flowLayout.sectionInset = NSEdgeInsetsMake(8.0, 0, 24.0, 0);
-    flowLayout.minimumLineSpacing = 0.0;
-//    flowLayout.sectionHeadersPinToVisibleBounds = YES;
-    [_allCommandsCollectionView setCollectionViewLayout:flowLayout];
-    
     [_allCommandsCollectionView setDraggingSourceOperationMask:NSDragOperationLink forLocal:NO];
     [_allCommandsCollectionView setDraggingSourceOperationMask:NSDragOperationMove forLocal:YES];
     [_allCommandsCollectionView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
@@ -48,7 +42,9 @@ id shortcutHandlingEventMonitor;
     [_userCommandsTableView registerForDraggedTypes:[NSArray arrayWithObject:NSStringPboardType]];
     
     [_userCommandsTableView setDoubleAction:@selector(doubleClickInTableView)];
+    
     _noCommandsNotificationLabel.alphaValue = (commandsSchemes.count > 0) ? 0.0 : 1.0;
+    _noPluginsNotificationLabel.alphaValue = (filteredPluginsSchemes.count > 0) ? 0.0 : 1.0;
     
     [_clearButton setEnabled:NO];
     [_clearButton setHidden:YES];
@@ -105,11 +101,20 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     
 }
 
+- (void)toggleNoPluginsLabel {
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
+        context.duration = 0.3;
+        self.noPluginsNotificationLabel.animator.alphaValue = (filteredPluginsSchemes.count > 0) ? 0.0 : 1.0;
+    } completionHandler:nil];
+    
+}
+
 
 
 #pragma mark - NSCollectionView Delegate and DataSource
 
 -(NSInteger)numberOfSectionsInCollectionView:(NSCollectionView *)collectionView{
+    [self toggleNoPluginsLabel];
     return filteredPluginsSchemes.count;
 }
 
@@ -140,8 +145,6 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         if (searchRange.location != NSNotFound) {
             NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:collectionViewItem.textField.stringValue];
             [attributedString addAttribute:NSBackgroundColorAttributeName value:[NSColor selectedTextBackgroundColor] range:searchRange];
-            //        CGFloat fontSize = tableCellView.textField.font.pointSize;
-            //        [attributedString addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:fontSize weight:NSFontWeightMedium] range:searchRange];
             [collectionViewItem.textField setAttributedStringValue:attributedString];
         }
     }
@@ -170,8 +173,6 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
         if (searchRange.location != NSNotFound) {
             NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:headerView.pluginNameTextField.stringValue];
             [attributedString addAttribute:NSBackgroundColorAttributeName value:[NSColor selectedTextBackgroundColor] range:searchRange];
-            //        CGFloat fontSize = tableCellView.textField.font.pointSize;
-            //        [attributedString addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:fontSize weight:NSFontWeightMedium] range:searchRange];
             [headerView.pluginNameTextField setAttributedStringValue:attributedString];
         }
     }
@@ -200,6 +201,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 }
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
+    
     HMTableCellView *tableCellView;
     
     HMCommandScheme *command = commandsSchemes[row];
@@ -316,21 +318,6 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 }
 
 #pragma mark - Mouse Events
-//
-//-(void)keyDown:(NSEvent *)event {
-//
-//    HMLog(@"%d", event.keyCode);
-//    if (event.keyCode == 23) {
-//        [self.window makeFirstResponder:nil];
-//    }
-//    [super keyDown:event];
-//}
-//
-//-(BOOL)windowShouldClose:(NSWindow *)sender {
-//    HMLog(@"Settings window should be closed");
-//    [self.window makeFirstResponder:nil];
-//    return YES;
-//}
 
 -(void)mouseDown:(NSEvent *)event{
     [self.window makeFirstResponder:nil];
@@ -339,7 +326,9 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     [super mouseDown:event];
 }
 
-
+- (void)cancelOperation:(id)sender{
+    [[self window] makeFirstResponder:nil];
+}
 
 -(void)doubleClickInCollectionView:(id)sender {
     id clickedObject = [sender representedObject];
@@ -367,7 +356,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 
 #pragma mark - IBActions
 
--(IBAction)cancel:(id)sender{
+-(IBAction)cancelAction:(id)sender{
     [self close];
 }
 

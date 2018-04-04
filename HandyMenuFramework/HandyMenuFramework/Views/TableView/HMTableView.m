@@ -43,4 +43,9 @@
     }
 }
 
+-(BOOL)resignFirstResponder{
+    [self deselectAll:nil];
+    return [super resignFirstResponder];
+}
+
 @end

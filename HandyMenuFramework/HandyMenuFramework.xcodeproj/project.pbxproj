@@ -45,6 +45,10 @@
 		A5CFD5012073F9FA005C3BB2 /* HMPluginSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD4FF2073F9FA005C3BB2 /* HMPluginSectionHeaderView.m */; };
 		A5CFD509207535AB005C3BB2 /* HMSearchFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD507207535AB005C3BB2 /* HMSearchFieldCell.h */; };
 		A5CFD50A207535AB005C3BB2 /* HMSearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD508207535AB005C3BB2 /* HMSearchFieldCell.m */; };
+		A5DA95E720754F0E00ACED2C /* HMCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DA95E520754F0E00ACED2C /* HMCollectionView.h */; };
+		A5DA95E820754F0E00ACED2C /* HMCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DA95E620754F0E00ACED2C /* HMCollectionView.m */; };
+		A5DA95EB2075576B00ACED2C /* HMSearchField.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DA95E92075576B00ACED2C /* HMSearchField.h */; };
+		A5DA95EC2075576B00ACED2C /* HMSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DA95EA2075576B00ACED2C /* HMSearchField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -102,6 +106,10 @@
 		A5CFD4FF2073F9FA005C3BB2 /* HMPluginSectionHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMPluginSectionHeaderView.m; sourceTree = "<group>"; };
 		A5CFD507207535AB005C3BB2 /* HMSearchFieldCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSearchFieldCell.h; sourceTree = "<group>"; };
 		A5CFD508207535AB005C3BB2 /* HMSearchFieldCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMSearchFieldCell.m; sourceTree = "<group>"; };
+		A5DA95E520754F0E00ACED2C /* HMCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMCollectionView.h; sourceTree = "<group>"; };
+		A5DA95E620754F0E00ACED2C /* HMCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMCollectionView.m; sourceTree = "<group>"; };
+		A5DA95E92075576B00ACED2C /* HMSearchField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSearchField.h; sourceTree = "<group>"; };
+		A5DA95EA2075576B00ACED2C /* HMSearchField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMSearchField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +184,8 @@
 				A5CFD4FC2073F95E005C3BB2 /* HMPluginSectionHeaderView.xib */,
 				A5CFD4FE2073F9FA005C3BB2 /* HMPluginSectionHeaderView.h */,
 				A5CFD4FF2073F9FA005C3BB2 /* HMPluginSectionHeaderView.m */,
+				A5DA95E520754F0E00ACED2C /* HMCollectionView.h */,
+				A5DA95E620754F0E00ACED2C /* HMCollectionView.m */,
 			);
 			path = CollectionView;
 			sourceTree = "<group>";
@@ -210,6 +220,8 @@
 			children = (
 				A5CFD507207535AB005C3BB2 /* HMSearchFieldCell.h */,
 				A5CFD508207535AB005C3BB2 /* HMSearchFieldCell.m */,
+				A5DA95E92075576B00ACED2C /* HMSearchField.h */,
+				A5DA95EA2075576B00ACED2C /* HMSearchField.m */,
 			);
 			path = SearchField;
 			sourceTree = "<group>";
@@ -252,6 +264,7 @@
 				A5089DCC2069A27E006866D0 /* HMCommandScheme.h in Headers */,
 				A5BAF558205DA7D000E5183F /* HMShortcutField.h in Headers */,
 				A5C3AA6B206BB05600A5475C /* HMPluginScheme.h in Headers */,
+				A5DA95EB2075576B00ACED2C /* HMSearchField.h in Headers */,
 				A5343A7D2069491C0090844C /* HMPluginController.h in Headers */,
 				A560E81520584CBE00DCFF87 /* HandyMenu.h in Headers */,
 				A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */,
@@ -259,6 +272,7 @@
 				A50132CD2072CA300042922E /* HMTableCellView.h in Headers */,
 				A5BAF5B9205ED7A000E5183F /* HMDataProvider.h in Headers */,
 				A5CFD509207535AB005C3BB2 /* HMSearchFieldCell.h in Headers */,
+				A5DA95E720754F0E00ACED2C /* HMCollectionView.h in Headers */,
 				A5CFD4EC2073B438005C3BB2 /* HMCommandCollectionViewItem.h in Headers */,
 				A50132C9207236F80042922E /* HMBackgroundView.h in Headers */,
 				A50132C520705B640042922E /* HMSettingsWindow.h in Headers */,
@@ -349,9 +363,11 @@
 				A5CFD4F52073BE34005C3BB2 /* HMSettingsWindowViewController.m in Sources */,
 				A5BAF5BA205ED7A000E5183F /* HMDataProvider.m in Sources */,
 				A5289802205BF90D009AB2D2 /* HMSettingsWindowController.m in Sources */,
+				A5DA95EC2075576B00ACED2C /* HMSearchField.m in Sources */,
 				A50132C620705B640042922E /* HMSettingsWindow.m in Sources */,
 				A5C3AA6C206BB05600A5475C /* HMPluginScheme.m in Sources */,
 				A5BAF559205DA7D000E5183F /* HMShortcutField.m in Sources */,
+				A5DA95E820754F0E00ACED2C /* HMCollectionView.m in Sources */,
 				A50132CE2072CA300042922E /* HMTableCellView.m in Sources */,
 				A50132CA207236F80042922E /* HMBackgroundView.m in Sources */,
 				A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */,
