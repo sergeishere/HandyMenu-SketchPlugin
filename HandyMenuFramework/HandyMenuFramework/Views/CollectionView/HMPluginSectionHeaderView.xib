@@ -35,6 +35,7 @@
                 <constraint firstAttribute="trailing" secondItem="F6N-ym-bfT" secondAttribute="trailing" id="qro-a6-7tl"/>
             </constraints>
             <connections>
+                <outlet property="horizontalLine" destination="F6N-ym-bfT" id="MwI-0R-7i0"/>
                 <outlet property="pluginNameTextField" destination="aOy-dN-nc9" id="gMW-eI-j4n"/>
             </connections>
             <point key="canvasLocation" x="171" y="282"/>

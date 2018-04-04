@@ -29,12 +29,13 @@
 @end
 
 
-@interface HMSettingsWindowController : NSWindowController<NSCollectionViewDataSource, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout, NSTableViewDataSource, NSTableViewDelegate, HMTableViewDelegate, HMSettingsWindowViewControllerDelegate, HMCommandCollectionViewItemDelegate>
+@interface HMSettingsWindowController : NSWindowController<NSCollectionViewDataSource, NSCollectionViewDelegate, NSCollectionViewDelegateFlowLayout, NSTableViewDataSource, NSTableViewDelegate, HMTableViewDelegate, HMSettingsWindowViewControllerDelegate, HMCommandCollectionViewItemDelegate, NSTextFieldDelegate>
 
 @property (weak) IBOutlet NSCollectionView *allCommandsCollectionView;
 @property (weak) IBOutlet HMTableView *userCommandsTableView;
-@property (weak) IBOutlet NSSearchField *searchField;
+@property (weak) IBOutlet NSTextField *searchField;
 @property (weak) IBOutlet NSTextField *noCommandsNotificationLabel;
+@property (weak) IBOutlet NSButton *clearButton;
 
 @property (weak) id<HMSettingsWindowControllerDelegate> delegate;
 

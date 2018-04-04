@@ -49,6 +49,9 @@ id shortcutHandlingEventMonitor;
     
     [_userCommandsTableView setDoubleAction:@selector(doubleClickInTableView)];
     _noCommandsNotificationLabel.alphaValue = (commandsSchemes.count > 0) ? 0.0 : 1.0;
+    
+    [_clearButton setEnabled:NO];
+    [_clearButton setHidden:YES];
 }
 
 -(void)settingsWindowViewController:(id)settingsWindowViewController viewWillLayout:(NSView *)view{
@@ -155,8 +158,12 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 }
 
 -(NSView *)collectionView:(NSCollectionView *)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind)kind atIndexPath:(NSIndexPath *)indexPath{
+    
     HMPluginSectionHeaderView *headerView = [_allCommandsCollectionView makeSupplementaryViewOfKind:NSCollectionElementKindSectionHeader withIdentifier:@"HMPluginSectionHeaderView" forIndexPath:indexPath];
     headerView.pluginNameTextField.stringValue = [filteredPluginsSchemes[indexPath.section] valueForKey:@"name"];
+    if (indexPath.section == 0) {
+        [headerView.horizontalLine setHidden:YES];
+    }
     
     if (searchString.length > 1) {
         NSRange searchRange = [headerView.pluginNameTextField.stringValue rangeOfString:searchString options:NSCaseInsensitiveSearch];
@@ -371,43 +378,75 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     [self close];
 }
 
--(IBAction)changedSearchText:(id)sender {
-    // Debouncing
-    [searchDelayTimer invalidate];
-    [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(filterAllCommandsList) userInfo:nil repeats:NO];
 
+#pragma mark - Searching & TextField Delegate
+
+
+-(IBAction)clearSearchField:(id)sender{
+    [_searchField setStringValue:@""];
+    [self filterAllCommandsList];
+    [self checkClearButton];
+}
+
+
+- (void)checkClearButton {
+    BOOL hasText = ![_searchField.stringValue isEqualToString:@""];
+    [_clearButton setEnabled:hasText];
+    [_clearButton setHidden:!hasText];
+}
+
+-(void)controlTextDidBeginEditing:(NSNotification *)obj{
+    [self checkClearButton];
+}
+
+-(void)controlTextDidEndEditing:(NSNotification *)obj{
+    [self checkClearButton];
+}
+
+- (void)controlTextDidChange:(NSNotification *)obj{
+    [self checkClearButton];
+    [self filterAllCommandsList];
+    
+   
 }
 
 // Debouncing method
 -(void)filterAllCommandsList {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+    
+    // Debouncing
+    [searchDelayTimer invalidate];
+    searchDelayTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 repeats:NO block:^(NSTimer * _Nonnull timer) {
         
-        searchString = [self->_searchField stringValue];
-        
-        NSMutableArray *temporaryArray = [[NSMutableArray alloc] initWithArray:pluginsSchemes copyItems:YES];
-        
-        if ([searchString length] > 1) {
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR ANY SELF.pluginCommands.name CONTAINS[c] %@", searchString, searchString];
-            NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchString];
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
             
-            [temporaryArray filterUsingPredicate:predicate];
+            searchString = [self->_searchField stringValue];
             
-            for (HMPluginScheme *pluginScheme in temporaryArray) {
-                NSMutableArray *temporaryCommands = [[pluginScheme pluginCommands] mutableCopy];
-                [temporaryCommands filterUsingPredicate:commandPredicate];
-                if([temporaryCommands count] != 0) {
-                    [pluginScheme setPluginCommands:temporaryCommands];
+            NSMutableArray *temporaryArray = [[NSMutableArray alloc] initWithArray:pluginsSchemes copyItems:YES];
+            
+            if ([searchString length] > 1) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR ANY SELF.pluginCommands.name CONTAINS[c] %@", searchString, searchString];
+                NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchString];
+                
+                [temporaryArray filterUsingPredicate:predicate];
+                
+                for (HMPluginScheme *pluginScheme in temporaryArray) {
+                    NSMutableArray *temporaryCommands = [[pluginScheme pluginCommands] mutableCopy];
+                    [temporaryCommands filterUsingPredicate:commandPredicate];
+                    if([temporaryCommands count] != 0) {
+                        [pluginScheme setPluginCommands:temporaryCommands];
+                    }
                 }
+                
             }
+            filteredPluginsSchemes = [temporaryArray mutableCopy];
             
-        }
-        filteredPluginsSchemes = [temporaryArray mutableCopy];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self->_allCommandsCollectionView reloadData];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self->_allCommandsCollectionView reloadData];
+            });
+            
         });
         
-    });
+    }];
 }
 
 

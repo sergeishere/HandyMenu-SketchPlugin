@@ -11,5 +11,6 @@
 @interface HMPluginSectionHeaderView : NSView
 
 @property (weak) IBOutlet NSTextField *pluginNameTextField;
+@property (weak) IBOutlet NSBox *horizontalLine;
 
 @end
