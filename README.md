@@ -10,10 +10,10 @@
 
 Just press `cmd` + `4`
 
-#### Set up your list of commands
+#### Configure your you menu
 
-1. Open setting `Plugins` > `Handy Menu` > `Setup Handy Menu` or press `cmd` + `option` + 4
-2. Choose commands you need quick access to using drag and drop.
+1. Open setting `Plugins` > `Handy Menu` > `Configure Handy Menu`
+2. Select the required plugins and drag them to the menu list (or double-click them).
 
 ![Settings](Images/settings.png)
 
