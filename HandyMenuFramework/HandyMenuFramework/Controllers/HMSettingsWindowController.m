@@ -416,18 +416,8 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
             NSMutableArray *temporaryArray = [[NSMutableArray alloc] initWithArray:pluginsSchemes copyItems:YES];
             
             if ([searchString length] > 1) {
-                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR ANY SELF.pluginCommands.name CONTAINS[c] %@", searchString, searchString];
-                NSPredicate *commandPredicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@", searchString];
-                
-                [temporaryArray filterUsingPredicate:predicate];
-                
-                for (HMPluginScheme *pluginScheme in temporaryArray) {
-                    NSMutableArray *temporaryCommands = [[pluginScheme pluginCommands] mutableCopy];
-                    [temporaryCommands filterUsingPredicate:commandPredicate];
-                    if([temporaryCommands count] != 0) {
-                        [pluginScheme setPluginCommands:temporaryCommands];
-                    }
-                }
+                    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR ANY SELF.pluginCommands.name CONTAINS[c] %@", searchString, searchString];
+                    [temporaryArray filterUsingPredicate:predicate];
                 
             }
             filteredPluginsSchemes = [temporaryArray mutableCopy];
