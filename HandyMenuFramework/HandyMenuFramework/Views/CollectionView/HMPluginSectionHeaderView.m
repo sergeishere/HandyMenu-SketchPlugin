@@ -12,7 +12,10 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
+}
+
+- (void)prepareForReuse{
+    [self.horizontalLine setHidden:NO];
 }
 
 @end

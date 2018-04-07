@@ -55,7 +55,7 @@
 		A560E81720584E4700DCFF87 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = "/Users/Sergey/Dropbox/Development Center/Handy Menu/HandyMenu.sketchplugin/Contents/Resources";
+			dstPath = "/Users/Sergey/Development Center/HandyMenu-SketchPlugin/HandyMenu.sketchplugin/Contents/Resources";
 			dstSubfolderSpec = 0;
 			files = (
 				A560E81820584E5F00DCFF87 /* HandyMenuFramework.framework in CopyFiles */,
