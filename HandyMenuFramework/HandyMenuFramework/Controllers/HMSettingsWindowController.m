@@ -217,13 +217,12 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
 
 
 -(BOOL)collectionView:(NSCollectionView *)collectionView writeItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths toPasteboard:(NSPasteboard *)pasteboard{
-    NSMutableArray *arrayOfItems = [[NSMutableArray alloc] init];
-    for (NSIndexPath *indexPath in indexPaths) {
-        HMCommandScheme *scheme = [[collectionView itemAtIndexPath:indexPath] representedObject];
-        [arrayOfItems addObject:scheme];
-        
+    
+    HMCommandScheme *scheme = [[collectionView itemAtIndexPath:indexPaths.anyObject] representedObject];
+    if (itemHasAlreadyAdded(scheme)) {
+        return NO;
     }
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:arrayOfItems];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:[NSArray arrayWithObject:scheme]];
     [pasteboard declareTypes:[NSArray arrayWithObject:NSPasteboardTypeString] owner:self];
     [pasteboard setData:data forType:NSStringPboardType];
     return YES;
@@ -317,6 +316,7 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     }
 }
 
+
 #pragma mark - Mouse Events
 
 -(void)mouseDown:(NSEvent *)event{
@@ -407,9 +407,9 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
     
     // Debouncing
     [searchDelayTimer invalidate];
-    searchDelayTimer = [NSTimer scheduledTimerWithTimeInterval:0.2 repeats:NO block:^(NSTimer * _Nonnull timer) {
+    searchDelayTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             searchString = [self->_searchField stringValue];
             
@@ -418,7 +418,6 @@ static BOOL itemHasAlreadyAdded(id  _Nonnull item) {
             if ([searchString length] > 1) {
                     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.name CONTAINS[c] %@ OR ANY SELF.pluginCommands.name CONTAINS[c] %@", searchString, searchString];
                     [temporaryArray filterUsingPredicate:predicate];
-                
             }
             filteredPluginsSchemes = [temporaryArray mutableCopy];
             

@@ -50,9 +50,9 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uuv-35-BK8" customClass="HMSearchField">
-                                                <rect key="frame" x="0.0" y="456" width="371" height="24"/>
+                                                <rect key="frame" x="0.0" y="458" width="371" height="28"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="hsI-HV-QFU"/>
+                                                    <constraint firstAttribute="height" constant="28" id="hsI-HV-QFU"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Search plugins" drawsBackground="YES" id="GGn-rv-Lhg" customClass="HMSearchFieldCell">
                                                     <font key="font" metaFont="system"/>
@@ -69,7 +69,7 @@
                                                 </connections>
                                             </textField>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="a5N-eG-Quu">
-                                                <rect key="frame" x="351" y="460" width="16" height="16"/>
+                                                <rect key="frame" x="349" y="464" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="Kgp-vF-oyT"/>
                                                     <constraint firstAttribute="height" constant="16" id="xDY-Qm-Qes"/>
@@ -125,7 +125,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="cdQ-wD-zUa" secondAttribute="trailing" id="1Bw-iq-6D0"/>
-                                            <constraint firstAttribute="trailing" secondItem="a5N-eG-Quu" secondAttribute="trailing" constant="4" id="8Xn-Zt-EfB"/>
+                                            <constraint firstAttribute="trailing" secondItem="a5N-eG-Quu" secondAttribute="trailing" constant="6" id="8Xn-Zt-EfB"/>
                                             <constraint firstItem="ryQ-9U-W2u" firstAttribute="top" secondItem="Qd0-AN-0Mo" secondAttribute="top" id="8Z0-H8-vOA"/>
                                             <constraint firstAttribute="trailing" secondItem="uuv-35-BK8" secondAttribute="trailing" id="Ics-Bf-UJt"/>
                                             <constraint firstItem="cdQ-wD-zUa" firstAttribute="leading" secondItem="Qd0-AN-0Mo" secondAttribute="leading" id="Jv0-uE-yJq"/>
@@ -135,8 +135,8 @@
                                             <constraint firstAttribute="bottom" secondItem="cdQ-wD-zUa" secondAttribute="bottom" id="aYY-4H-LJR"/>
                                             <constraint firstItem="OxM-Vj-zAV" firstAttribute="centerY" secondItem="cdQ-wD-zUa" secondAttribute="centerY" constant="-10" id="ez9-RZ-oAP"/>
                                             <constraint firstItem="a5N-eG-Quu" firstAttribute="centerY" secondItem="uuv-35-BK8" secondAttribute="centerY" id="hZE-3L-tKJ"/>
-                                            <constraint firstItem="cdQ-wD-zUa" firstAttribute="top" secondItem="uuv-35-BK8" secondAttribute="bottom" constant="4" id="iGY-TJ-0xi"/>
-                                            <constraint firstItem="uuv-35-BK8" firstAttribute="top" secondItem="ryQ-9U-W2u" secondAttribute="bottom" constant="18" id="ie0-P0-bEX"/>
+                                            <constraint firstItem="cdQ-wD-zUa" firstAttribute="top" secondItem="uuv-35-BK8" secondAttribute="bottom" constant="6" id="iGY-TJ-0xi"/>
+                                            <constraint firstItem="uuv-35-BK8" firstAttribute="top" secondItem="ryQ-9U-W2u" secondAttribute="bottom" constant="12" id="ie0-P0-bEX"/>
                                         </constraints>
                                     </customView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="CcS-t3-upo">
@@ -225,7 +225,7 @@
                                                     <nil key="backgroundColor"/>
                                                     <edgeInsets key="contentInsets" left="0.0" right="0.0" top="20" bottom="20"/>
                                                 </clipView>
-                                                <edgeInsets key="contentInsets" left="10" right="10" top="15" bottom="10"/>
+                                                <edgeInsets key="contentInsets" left="0.0" right="0.0" top="15" bottom="10"/>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="3C3-z5-qhx">
                                                     <rect key="frame" x="-100" y="-100" width="263" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
@@ -316,6 +316,9 @@ DQ
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0s8-2o-mS3">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="cancelAction:" target="-2" id="mwS-Pz-6Q1"/>
