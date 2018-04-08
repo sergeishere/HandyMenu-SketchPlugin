@@ -8,22 +8,17 @@
 
 #import "HMSearchFieldCell.h"
 
+
 @implementation HMSearchFieldCell
 
 - (NSRect)drawingRectForBounds:(NSRect)rect{
     NSRect originalRect = [super drawingRectForBounds:rect];
     NSRect rectInset = NSMakeRect(originalRect.origin.x + _leftPadding - 2,
-                                  originalRect.origin.y,
+                                  originalRect.origin.y + 2,
                                   originalRect.size.width-_leftPadding-24,
-                                  originalRect.size.height);
+                                  originalRect.size.height-4);
     return rectInset;
 }
-
-//- (void)drawInteriorWithFrame:(NSRect)cellFrame inView:(NSView *)controlView{
-//    NSRect newRect = cellFrame;
-//    newRect.size.width -= 24;
-//    [super drawInteriorWithFrame:newRect inView:controlView];
-//}
 
 - (void)resetCursorRect:(NSRect)cellFrame inView:(NSView *)controlView{
     NSRect newRect = cellFrame;

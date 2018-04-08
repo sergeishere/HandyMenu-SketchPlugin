@@ -34,4 +34,9 @@
     }
 }
 
+-(void)prepareForReuse{
+    self.view.layer.backgroundColor = [[NSColor whiteColor] CGColor];
+    self.textField.textColor = [NSColor controlTextColor];
+}
+
 @end
