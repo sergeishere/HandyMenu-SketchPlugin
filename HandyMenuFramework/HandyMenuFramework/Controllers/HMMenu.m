@@ -12,7 +12,6 @@
 
 -(id)init {
     self = [super init];
-    
     return self;
 }
 
@@ -123,9 +122,8 @@
 }
 
 -(void)showSettings {
-    [HandyMenu showSettings];
+//    [HandyMenu showSettings];
 }
-
 
 
 @end

@@ -4,3 +4,8 @@ framework module HandyMenuFramework {
   export *
   module * { export * }
 }
+
+module HandyMenuFramework.Swift {
+    header "HandyMenuFramework-Swift.h"
+    requires objc
+}

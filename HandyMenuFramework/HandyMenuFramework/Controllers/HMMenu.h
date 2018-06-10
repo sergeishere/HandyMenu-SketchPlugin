@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <AppKit/AppKit.h>
 #import <objc/message.h>
-#import "HMLog.h"
-#import <HandyMenu.h>
 
 @interface HMMenu : NSMenu
 

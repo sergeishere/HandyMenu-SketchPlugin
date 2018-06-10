@@ -7,47 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A50132C520705B640042922E /* HMSettingsWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132C320705B640042922E /* HMSettingsWindow.h */; };
+		A50132C520705B640042922E /* HMSettingsWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132C320705B640042922E /* HMSettingsWindow.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A50132C620705B640042922E /* HMSettingsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = A50132C420705B640042922E /* HMSettingsWindow.m */; };
-		A50132C9207236F80042922E /* HMBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132C7207236F80042922E /* HMBackgroundView.h */; };
+		A50132C9207236F80042922E /* HMBackgroundView.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132C7207236F80042922E /* HMBackgroundView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A50132CA207236F80042922E /* HMBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50132C8207236F80042922E /* HMBackgroundView.m */; };
-		A50132CD2072CA300042922E /* HMTableCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132CB2072CA300042922E /* HMTableCellView.h */; };
+		A50132CD2072CA300042922E /* HMTableCellView.h in Headers */ = {isa = PBXBuildFile; fileRef = A50132CB2072CA300042922E /* HMTableCellView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A50132CE2072CA300042922E /* HMTableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = A50132CC2072CA300042922E /* HMTableCellView.m */; };
-		A5089DCC2069A27E006866D0 /* HMCommandScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A5089DCA2069A27E006866D0 /* HMCommandScheme.h */; };
+		A5089DCC2069A27E006866D0 /* HMCommandScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A5089DCA2069A27E006866D0 /* HMCommandScheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A5089DCB2069A27E006866D0 /* HMCommandScheme.m */; };
-		A5289801205BF90D009AB2D2 /* HMSettingsWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */; };
+		A50EC18E20CDA7B600BAA8C0 /* HMPluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50EC18D20CDA7B600BAA8C0 /* HMPluginController.swift */; };
+		A50EC19420CDBEFB00BAA8C0 /* HMLog.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA7B206C501F00A5475C /* HMLog.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A50EC19520CDBEFE00BAA8C0 /* HMConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA7C206C503000A5475C /* HMConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A50EC19720CDC59000BAA8C0 /* HMDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50EC19620CDC59000BAA8C0 /* HMDataProvider.swift */; };
+		A5289801205BF90D009AB2D2 /* HMSettingsWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5289802205BF90D009AB2D2 /* HMSettingsWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52897FF205BF90D009AB2D2 /* HMSettingsWindowController.m */; };
 		A5289803205BF90D009AB2D2 /* HMSettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5289800205BF90D009AB2D2 /* HMSettingsWindowController.xib */; };
-		A5343A7D2069491C0090844C /* HMPluginController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5343A7B2069491C0090844C /* HMPluginController.h */; };
+		A5343A7D2069491C0090844C /* HMPluginController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5343A7B2069491C0090844C /* HMPluginController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5343A7E2069491C0090844C /* HMPluginController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5343A7C2069491C0090844C /* HMPluginController.m */; };
 		A560E80D20584CAD00DCFF87 /* HandyMenuFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A560E80B20584CAD00DCFF87 /* HandyMenuFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A560E81520584CBE00DCFF87 /* HandyMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A560E81320584CBE00DCFF87 /* HandyMenu.h */; };
-		A560E81620584CBE00DCFF87 /* HandyMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A560E81420584CBE00DCFF87 /* HandyMenu.m */; };
 		A560E81820584E5F00DCFF87 /* HandyMenuFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A560E80820584CAD00DCFF87 /* HandyMenuFramework.framework */; };
-		A5BAF558205DA7D000E5183F /* HMShortcutField.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BAF556205DA7D000E5183F /* HMShortcutField.h */; };
+		A5BAF558205DA7D000E5183F /* HMShortcutField.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BAF556205DA7D000E5183F /* HMShortcutField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5BAF559205DA7D000E5183F /* HMShortcutField.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BAF557205DA7D000E5183F /* HMShortcutField.m */; };
 		A5BAF5B6205EBA2A00E5183F /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5BAF5B5205EBA2A00E5183F /* assets.xcassets */; };
-		A5BAF5B9205ED7A000E5183F /* HMDataProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BAF5B7205ED7A000E5183F /* HMDataProvider.h */; };
+		A5BAF5B9205ED7A000E5183F /* HMDataProvider.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BAF5B7205ED7A000E5183F /* HMDataProvider.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5BAF5BA205ED7A000E5183F /* HMDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BAF5B8205ED7A000E5183F /* HMDataProvider.m */; };
-		A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BAF5BB205EDBBB00E5183F /* HMMenu.h */; };
+		A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A5BAF5BB205EDBBB00E5183F /* HMMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5BAF5BE205EDBBB00E5183F /* HMMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5BAF5BC205EDBBB00E5183F /* HMMenu.m */; };
-		A5C3AA6B206BB05600A5475C /* HMPluginScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA69206BB05600A5475C /* HMPluginScheme.h */; };
+		A5C3AA6B206BB05600A5475C /* HMPluginScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA69206BB05600A5475C /* HMPluginScheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5C3AA6C206BB05600A5475C /* HMPluginScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3AA6A206BB05600A5475C /* HMPluginScheme.m */; };
-		A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA76206C495E00A5475C /* HMTableView.h */; };
+		A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5C3AA76206C495E00A5475C /* HMTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5C3AA79206C495E00A5475C /* HMTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C3AA77206C495E00A5475C /* HMTableView.m */; };
-		A5CFD4EC2073B438005C3BB2 /* HMCommandCollectionViewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4E92073B438005C3BB2 /* HMCommandCollectionViewItem.h */; };
+		A5CFD4EC2073B438005C3BB2 /* HMCommandCollectionViewItem.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4E92073B438005C3BB2 /* HMCommandCollectionViewItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5CFD4ED2073B438005C3BB2 /* HMCommandCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD4EA2073B438005C3BB2 /* HMCommandCollectionViewItem.m */; };
 		A5CFD4EE2073B438005C3BB2 /* HMCommandCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5CFD4EB2073B438005C3BB2 /* HMCommandCollectionViewItem.xib */; };
-		A5CFD4F42073BE34005C3BB2 /* HMSettingsWindowViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4F22073BE34005C3BB2 /* HMSettingsWindowViewController.h */; };
+		A5CFD4F42073BE34005C3BB2 /* HMSettingsWindowViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4F22073BE34005C3BB2 /* HMSettingsWindowViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5CFD4F52073BE34005C3BB2 /* HMSettingsWindowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD4F32073BE34005C3BB2 /* HMSettingsWindowViewController.m */; };
 		A5CFD4FD2073F95E005C3BB2 /* HMPluginSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5CFD4FC2073F95E005C3BB2 /* HMPluginSectionHeaderView.xib */; };
-		A5CFD5002073F9FA005C3BB2 /* HMPluginSectionHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4FE2073F9FA005C3BB2 /* HMPluginSectionHeaderView.h */; };
+		A5CFD5002073F9FA005C3BB2 /* HMPluginSectionHeaderView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD4FE2073F9FA005C3BB2 /* HMPluginSectionHeaderView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5CFD5012073F9FA005C3BB2 /* HMPluginSectionHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD4FF2073F9FA005C3BB2 /* HMPluginSectionHeaderView.m */; };
-		A5CFD509207535AB005C3BB2 /* HMSearchFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD507207535AB005C3BB2 /* HMSearchFieldCell.h */; };
+		A5CFD509207535AB005C3BB2 /* HMSearchFieldCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A5CFD507207535AB005C3BB2 /* HMSearchFieldCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5CFD50A207535AB005C3BB2 /* HMSearchFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CFD508207535AB005C3BB2 /* HMSearchFieldCell.m */; };
-		A5DA95E720754F0E00ACED2C /* HMCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DA95E520754F0E00ACED2C /* HMCollectionView.h */; };
+		A5DA95E720754F0E00ACED2C /* HMCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DA95E520754F0E00ACED2C /* HMCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5DA95E820754F0E00ACED2C /* HMCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DA95E620754F0E00ACED2C /* HMCollectionView.m */; };
-		A5DA95EB2075576B00ACED2C /* HMSearchField.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DA95E92075576B00ACED2C /* HMSearchField.h */; };
+		A5DA95EB2075576B00ACED2C /* HMSearchField.h in Headers */ = {isa = PBXBuildFile; fileRef = A5DA95E92075576B00ACED2C /* HMSearchField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5DA95EC2075576B00ACED2C /* HMSearchField.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DA95EA2075576B00ACED2C /* HMSearchField.m */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +75,8 @@
 		A50132CC2072CA300042922E /* HMTableCellView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMTableCellView.m; sourceTree = "<group>"; };
 		A5089DCA2069A27E006866D0 /* HMCommandScheme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMCommandScheme.h; sourceTree = "<group>"; };
 		A5089DCB2069A27E006866D0 /* HMCommandScheme.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
+		A50EC18D20CDA7B600BAA8C0 /* HMPluginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMPluginController.swift; sourceTree = "<group>"; };
+		A50EC19620CDC59000BAA8C0 /* HMDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMDataProvider.swift; sourceTree = "<group>"; };
 		A52897FE205BF90D009AB2D2 /* HMSettingsWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMSettingsWindowController.h; sourceTree = "<group>"; };
 		A52897FF205BF90D009AB2D2 /* HMSettingsWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMSettingsWindowController.m; sourceTree = "<group>"; };
 		A5289800205BF90D009AB2D2 /* HMSettingsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HMSettingsWindowController.xib; sourceTree = "<group>"; };
@@ -81,8 +85,6 @@
 		A560E80820584CAD00DCFF87 /* HandyMenuFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyMenuFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A560E80B20584CAD00DCFF87 /* HandyMenuFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandyMenuFramework.h; sourceTree = "<group>"; };
 		A560E80C20584CAD00DCFF87 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A560E81320584CBE00DCFF87 /* HandyMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandyMenu.h; sourceTree = "<group>"; };
-		A560E81420584CBE00DCFF87 /* HandyMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HandyMenu.m; sourceTree = "<group>"; };
 		A5BAF556205DA7D000E5183F /* HMShortcutField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HMShortcutField.h; sourceTree = "<group>"; };
 		A5BAF557205DA7D000E5183F /* HMShortcutField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HMShortcutField.m; sourceTree = "<group>"; };
 		A5BAF5B5205EBA2A00E5183F /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
@@ -153,15 +155,14 @@
 		A560E80A20584CAD00DCFF87 /* HandyMenuFramework */ = {
 			isa = PBXGroup;
 			children = (
-				A560E80B20584CAD00DCFF87 /* HandyMenuFramework.h */,
-				A560E80C20584CAD00DCFF87 /* Info.plist */,
-				A560E81320584CBE00DCFF87 /* HandyMenu.h */,
-				A560E81420584CBE00DCFF87 /* HandyMenu.m */,
-				A5DAB55A2060F50F0041BD69 /* Controllers */,
-				A5089DC92069A266006866D0 /* Models */,
-				A5DAB5592060F5050041BD69 /* Views */,
-				A5C3AA7A206C501000A5475C /* Utils */,
 				A5BAF5B5205EBA2A00E5183F /* assets.xcassets */,
+				A5DAB55A2060F50F0041BD69 /* Controllers */,
+				A560E80B20584CAD00DCFF87 /* HandyMenuFramework.h */,
+				A50EC18D20CDA7B600BAA8C0 /* HMPluginController.swift */,
+				A560E80C20584CAD00DCFF87 /* Info.plist */,
+				A5089DC92069A266006866D0 /* Models */,
+				A5C3AA7A206C501000A5475C /* Utils */,
+				A5DAB5592060F5050041BD69 /* Views */,
 			);
 			path = HandyMenuFramework;
 			sourceTree = "<group>";
@@ -246,6 +247,7 @@
 				A52897FF205BF90D009AB2D2 /* HMSettingsWindowController.m */,
 				A5BAF5B7205ED7A000E5183F /* HMDataProvider.h */,
 				A5BAF5B8205ED7A000E5183F /* HMDataProvider.m */,
+				A50EC19620CDC59000BAA8C0 /* HMDataProvider.swift */,
 				A5BAF5BB205EDBBB00E5183F /* HMMenu.h */,
 				A5BAF5BC205EDBBB00E5183F /* HMMenu.m */,
 				A5343A7B2069491C0090844C /* HMPluginController.h */,
@@ -262,11 +264,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5089DCC2069A27E006866D0 /* HMCommandScheme.h in Headers */,
+				A50EC19420CDBEFB00BAA8C0 /* HMLog.h in Headers */,
 				A5BAF558205DA7D000E5183F /* HMShortcutField.h in Headers */,
 				A5C3AA6B206BB05600A5475C /* HMPluginScheme.h in Headers */,
 				A5DA95EB2075576B00ACED2C /* HMSearchField.h in Headers */,
 				A5343A7D2069491C0090844C /* HMPluginController.h in Headers */,
-				A560E81520584CBE00DCFF87 /* HandyMenu.h in Headers */,
 				A5C3AA78206C495E00A5475C /* HMTableView.h in Headers */,
 				A5BAF5BD205EDBBB00E5183F /* HMMenu.h in Headers */,
 				A50132CD2072CA300042922E /* HMTableCellView.h in Headers */,
@@ -274,6 +276,7 @@
 				A5CFD509207535AB005C3BB2 /* HMSearchFieldCell.h in Headers */,
 				A5DA95E720754F0E00ACED2C /* HMCollectionView.h in Headers */,
 				A5CFD4EC2073B438005C3BB2 /* HMCommandCollectionViewItem.h in Headers */,
+				A50EC19520CDBEFE00BAA8C0 /* HMConstants.h in Headers */,
 				A50132C9207236F80042922E /* HMBackgroundView.h in Headers */,
 				A50132C520705B640042922E /* HMSettingsWindow.h in Headers */,
 				A5CFD4F42073BE34005C3BB2 /* HMSettingsWindowViewController.h in Headers */,
@@ -316,6 +319,7 @@
 				TargetAttributes = {
 					A560E80720584CAD00DCFF87 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -358,7 +362,7 @@
 			files = (
 				A5C3AA79206C495E00A5475C /* HMTableView.m in Sources */,
 				A5CFD4ED2073B438005C3BB2 /* HMCommandCollectionViewItem.m in Sources */,
-				A560E81620584CBE00DCFF87 /* HandyMenu.m in Sources */,
+				A50EC18E20CDA7B600BAA8C0 /* HMPluginController.swift in Sources */,
 				A5BAF5BE205EDBBB00E5183F /* HMMenu.m in Sources */,
 				A5CFD4F52073BE34005C3BB2 /* HMSettingsWindowViewController.m in Sources */,
 				A5BAF5BA205ED7A000E5183F /* HMDataProvider.m in Sources */,
@@ -369,6 +373,7 @@
 				A5BAF559205DA7D000E5183F /* HMShortcutField.m in Sources */,
 				A5DA95E820754F0E00ACED2C /* HMCollectionView.m in Sources */,
 				A50132CE2072CA300042922E /* HMTableCellView.m in Sources */,
+				A50EC19720CDC59000BAA8C0 /* HMDataProvider.swift in Sources */,
 				A50132CA207236F80042922E /* HMBackgroundView.m in Sources */,
 				A5089DCD2069A27E006866D0 /* HMCommandScheme.m in Sources */,
 				A5CFD50A207535AB005C3BB2 /* HMSearchFieldCell.m in Sources */,
@@ -496,6 +501,9 @@
 		A560E81120584CAD00DCFF87 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -512,12 +520,18 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergeishere.HandyMenuFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		A560E81220584CAD00DCFF87 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -534,6 +548,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sergeishere.HandyMenuFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
