@@ -1,5 +1,5 @@
 var onStart = function(context) {
-    loadAndRun(context,function(){
+    loadAndRun(context, function(){
         HandyMenu.shared().prepare();
     })
 }

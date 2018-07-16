@@ -9,22 +9,22 @@
 import Foundation
 import os.log
 
-@objc(HandyMenu) class HMPluginController:NSObject {
+@objc(HandyMenu) class PluginController:NSObject {
     
     // MARK: - Singletone instance
-    static let shared = HMPluginController()
+    static let shared = PluginController()
     
     // MARK: - Properties
-    private let settingsWindowController = HMSettingsWindowController()
-    private let menu = HMMenu()
-    private let dataProvider = HMDataProvider()
+//    private let settingsWindowController = HMSettingsWindowController()
+//    private let menu = HMMenu()
+    private let dataController = PluginDataController()
     
     private override init() {
         super.init()
-
-        self.menu?.groupComands = true
-        self.dataProvider.delegate = self
-        self.dataProvider.loadData()
+        os_log("[Handy Menu] Init")
+//        self.menu?.groupComands = true
+        self.dataController.delegate = self
+        self.dataController.loadData()
         
 //        self.settingsWindowController = HMSettingsWindowController(nibName)
         
@@ -63,7 +63,7 @@ import os.log
     
     @objc public func showMenu(){
         os_log("[Handy Menu] Showing the menu")
-        self.menu?.show()
+//        self.menu?.show()
     }
     
     @objc public func showSettings() {
@@ -73,9 +73,9 @@ import os.log
     
 }
 
-extension HMPluginController: HMDataProviderDelegate {
+extension PluginController: PluginDataControllerDelegate {
     
-    func dataProvider(_ dataProvider: HMDataProvider, didUpdate commandSchemes: Any) {
+    func dataController(_ dataController: PluginDataController, didUpdate data: PluginData) {
         os_log("[Handy Menu] Data Provider updated schemes")
     }
     
