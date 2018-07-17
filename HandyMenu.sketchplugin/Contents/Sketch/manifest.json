@@ -26,7 +26,6 @@
   "menu" : {
     "title" : "Handy Menu",
     "items" : [
-      "com.sergeishere.plugins.handymenu.showmenu",
       "com.sergeishere.plugins.handymenu.setup"
     ]
   },

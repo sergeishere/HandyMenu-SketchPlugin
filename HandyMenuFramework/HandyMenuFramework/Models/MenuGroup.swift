@@ -8,5 +8,6 @@
 
 public struct MenuGroup:Codable {
     public var menuElements:[MenuElement]
-    public var shortcut: Shortcut
+    public var shortcut: Shortcut?
+    public var manualGrouping: Bool = false
 }

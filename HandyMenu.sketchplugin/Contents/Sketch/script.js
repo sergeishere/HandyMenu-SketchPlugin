@@ -1,14 +1,8 @@
 var onStart = function(context) {
     loadAndRun(context, function(){
-        HandyMenu.shared().prepare();
+        HandyMenu.shared().wakeUp();
     })
 }
-
-var onShowMenu = function(context) {
-    loadAndRun(context, function(){
-        HandyMenu.shared().showMenu();
-    })
-};
 
 var onSetup = function(context) {
     loadAndRun(context, function(){

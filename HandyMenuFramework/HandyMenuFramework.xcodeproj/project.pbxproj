@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A521562720FD3A0B002A5816 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521562620FD3A0B002A5816 /* MenuController.swift */; };
+		A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52A317D20FEB6A900E64617 /* ShortcutController.swift */; };
 		A5A65C6320FBFECB00BBB6A8 /* HandyMenuFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */; };
 		A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A521562620FD3A0B002A5816 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuController.swift; path = HandyMenuFramework/Controllers/MenuController.swift; sourceTree = SOURCE_ROOT; };
+		A52A317D20FEB6A900E64617 /* ShortcutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutController.swift; sourceTree = "<group>"; };
 		A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyMenuFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandyMenuFramework.h; sourceTree = "<group>"; };
 		A5A65C6220FBFECB00BBB6A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,7 +100,6 @@
 		A5A65C6A20FBFF2700BBB6A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A5A65C7020FBFF7900BBB6A8 /* PluginDataController.swift */,
 				A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */,
 				A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */,
 				A5A65C8C20FCD94700BBB6A8 /* MenuGroup.swift */,
@@ -110,6 +113,9 @@
 			isa = PBXGroup;
 			children = (
 				A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */,
+				A521562620FD3A0B002A5816 /* MenuController.swift */,
+				A5A65C7020FBFF7900BBB6A8 /* PluginDataController.swift */,
+				A52A317D20FEB6A900E64617 /* ShortcutController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -203,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5A65C8F20FCD95100BBB6A8 /* MenuElement.swift in Sources */,
+				A521562720FD3A0B002A5816 /* MenuController.swift in Sources */,
 				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
 				A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */,
 				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
@@ -210,6 +217,7 @@
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* MenuGroup.swift in Sources */,
 				A5A65C7220FBFF7900BBB6A8 /* PluginDataCaretaker.swift in Sources */,
+				A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

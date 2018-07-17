@@ -7,65 +7,39 @@
 //
 
 import Foundation
+import AppKit
 import os.log
 
 @objc(HandyMenu) class PluginController:NSObject {
     
     // MARK: - Singletone instance
-    static let shared = PluginController()
+    @objc static let shared = PluginController()
     
     // MARK: - Properties
 //    private let settingsWindowController = HMSettingsWindowController()
-//    private let menu = HMMenu()
     private let dataController = PluginDataController()
+    private let menuController = MenuController()
+    private let shortcutController = ShortcutController()
     
     private override init() {
         super.init()
+        
         os_log("[Handy Menu] Init")
-//        self.menu?.groupComands = true
         self.dataController.delegate = self
         self.dataController.loadData()
         
+        self.shortcutController.delegate = self
+
 //        self.settingsWindowController = HMSettingsWindowController(nibName)
-        
 //        [settingsWindowController updatePlugins:[dataProvider getPluginsSchemes]];
 //        [settingsWindowController updateUserCommands:[dataProvider getUserCommandsSchemes]];
 //        [settingsWindowController setDelegate:self];
-        
-//        return self;
-        
-        
-//        unsigned short shortcutKeyCode = 21;
-//        unsigned long shortcutModifierFlag = NSEventModifierFlagCommand; // + NSEventModifierFlagOption;
-//
-//        + (void) initializePlugin {
-//            pluginController = [[HMPluginController alloc] init];
-//
-//            NSEvent * (^handleKeyDown)(NSEvent*) = ^(NSEvent *event){
-//
-//                if ((event.keyCode == shortcutKeyCode) &&
-//                    ([event modifierFlags] & NSEventModifierFlagDeviceIndependentFlagsMask) == shortcutModifierFlag &&
-//                    [[[NSDocumentController sharedDocumentController] documents] count] > 0) {
-//
-//                    [pluginController showMenu];
-//
-//                    return (NSEvent *)nil;
-//                }
-//                return event;
-//            };
-//
-//            [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskKeyDown handler:handleKeyDown];
     }
     
-    @objc public func prepare() {
-        os_log("[Handy Menu] Prepared")
+    @objc public func wakeUp() {
+        os_log("[Handy Menu] Configured")
     }
-    
-    @objc public func showMenu(){
-        os_log("[Handy Menu] Showing the menu")
-//        self.menu?.show()
-    }
-    
+
     @objc public func showSettings() {
         os_log("[Handy Menu] Showing the settings")
 //        pluginController.showSettings()
@@ -73,10 +47,19 @@ import os.log
     
 }
 
+
+// MARK: - PluginDataControllerDelegate
 extension PluginController: PluginDataControllerDelegate {
     
     func dataController(_ dataController: PluginDataController, didUpdate data: PluginData) {
         os_log("[Handy Menu] Data Provider updated schemes")
     }
     
+}
+
+// MARK: - ShortcutControllerDelegate
+extension PluginController: ShortcutControllerDelegate {
+    func shortcutContoller(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut) {
+        menuController.show(for: shortcut)
+    }
 }
