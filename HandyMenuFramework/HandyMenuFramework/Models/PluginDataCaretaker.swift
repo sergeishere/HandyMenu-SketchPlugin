@@ -38,14 +38,19 @@ public class PluginDataCaretaker {
         if let encodedData = userDefaults.data(forKey: DataVersion.v5.key()),
             let data = try? decoder.decode(PluginData.self, from: encodedData) {
             return data
-        } else if let encodedData = userDefaults.data(forKey: DataVersion.v4.key()) {
-            //        guard let data = userDefaults?.object(forKey: Keys.userCommands) as? Data,
-            //            let objects = NSKeyedUnarchiver.unarchiveObject(with: data)
-            //            else { return }
-            //        let commandsData = UserDefaults.standard.string(forKey: Keys.oldUserCommands)!.removingPercentEncoding?.data(using: .utf8)
-            //        let commandsString = try! JSONSerialization.jsonObject(with: commandsData!, options: .mutableContainers)
-            //        NSLog("[Handy Menu] %@", String(describing: commandsString))
+        } else if let encodedData = userDefaults.data(forKey: DataVersion.v4.key()),
+            let objects = NSKeyedUnarchiver.unarchiveObject(with: encodedData) as? [HMCommandScheme] {
+            var newItems: [MenuItemData] = []
+            for object in objects {
+                let newItemData = PluginCommandData(name: object.name, commandID: object.commandID, pluginID: object.pluginID)
+                newItems.append(.command(newItemData))
+            }
+            let shortcut = Shortcut(commandIsPressed: true, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode: 21)
+            var newData = PluginData()
+            newData.collections.append(MenuData(items: newItems, shortcut: shortcut, manualGrouping: false))
+            return newData
         }
         return PluginData()
     }
+    
 }

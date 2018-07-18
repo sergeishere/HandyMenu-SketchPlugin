@@ -12,6 +12,6 @@ public struct PluginData: Codable {
     
     public var userID: UUID = UUID()
     public var pluginVersion:Double = 5.0
-    public var menuGroups: [MenuData] = []
+    public var collections: [MenuData] = []
     
 }

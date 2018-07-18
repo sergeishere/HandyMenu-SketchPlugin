@@ -51,7 +51,7 @@ import os.log
 extension PluginController: PluginDataControllerDelegate {
     
     func dataController(_ dataController: PluginDataController, didUpdate data: PluginData) {
-        os_log("[Handy Menu] Data Provider updated schemes")
+        self.menuController.configure(for: data.collections)
     }
     
 }
@@ -59,6 +59,6 @@ extension PluginController: PluginDataControllerDelegate {
 // MARK: - ShortcutControllerDelegate
 extension PluginController: ShortcutControllerDelegate {
     func shortcutContoller(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut) {
-        menuController.show(for: shortcut)
+        self.menuController.show(for: shortcut)
     }
 }

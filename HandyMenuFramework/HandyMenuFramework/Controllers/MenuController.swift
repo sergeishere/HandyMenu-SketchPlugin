@@ -16,7 +16,9 @@ public class MenuController {
     
     public func configure(for data:[MenuData]) {
         for menuData in data {
-            menus[menuData.shortcut.hashValue] = HandyMenu.configure(for: menuData)
+            let newMenu = HandyMenu()
+            newMenu.configure(for: menuData)
+            menus[menuData.shortcut.hashValue] = newMenu
         }
     }
     

@@ -44,8 +44,4 @@ extension MenuItemData: Decodable {
     }
 }
 
-public struct PluginCommandData:Codable {
-    public var name:String
-    public var commandID:String
-    public var pluginID:String
-}
+

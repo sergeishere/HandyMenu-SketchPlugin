@@ -7,6 +7,8 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "HMCommandScheme.h"
+#import "SketchAppBridge.h"
 
 //! Project version number for HandyMenuFramework.
 FOUNDATION_EXPORT double HandyMenuFrameworkVersionNumber;

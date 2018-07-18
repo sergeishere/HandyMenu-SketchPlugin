@@ -10,16 +10,20 @@
 		A521562720FD3A0B002A5816 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521562620FD3A0B002A5816 /* MenuController.swift */; };
 		A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52A317D20FEB6A900E64617 /* ShortcutController.swift */; };
 		A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A829420FF726600FD83FA /* HandyMenu.swift */; };
+		A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */; };
+		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
+		A58FC0E220FF87F2004730BB /* HMCommandScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A58FC0E020FF87F2004730BB /* HMCommandScheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5A65C6320FBFECB00BBB6A8 /* HandyMenuFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */; };
 		A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */; };
 		A5A65C7220FBFF7900BBB6A8 /* PluginDataCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6F20FBFF7900BBB6A8 /* PluginDataCaretaker.swift */; };
 		A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C7020FBFF7900BBB6A8 /* PluginDataController.swift */; };
 		A5A65C7520FC00C800BBB6A8 /* HandyMenuFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */; };
-		A5A65C8B20FC0F4200BBB6A8 /* SketchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C8A20FC0F4200BBB6A8 /* SketchApp.swift */; };
 		A5A65C8D20FCD94700BBB6A8 /* MenuData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C8C20FCD94700BBB6A8 /* MenuData.swift */; };
 		A5A65C8F20FCD95100BBB6A8 /* MenuItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C8E20FCD95100BBB6A8 /* MenuItemData.swift */; };
 		A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */; };
+		A5AA666D20FFB10B0027BC45 /* SketchAppBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = A5AA666B20FFB10B0027BC45 /* SketchAppBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5AA666E20FFB10B0027BC45 /* SketchAppBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +43,9 @@
 		A521562620FD3A0B002A5816 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuController.swift; path = HandyMenuFramework/Controllers/MenuController.swift; sourceTree = SOURCE_ROOT; };
 		A52A317D20FEB6A900E64617 /* ShortcutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutController.swift; sourceTree = "<group>"; };
 		A53A829420FF726600FD83FA /* HandyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyMenu.swift; sourceTree = "<group>"; };
+		A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginCommandData.swift; sourceTree = "<group>"; };
+		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
+		A58FC0E020FF87F2004730BB /* HMCommandScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCommandScheme.h; sourceTree = "<group>"; };
 		A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyMenuFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandyMenuFramework.h; sourceTree = "<group>"; };
 		A5A65C6220FBFECB00BBB6A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,10 +53,11 @@
 		A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginData.swift; sourceTree = "<group>"; };
 		A5A65C6F20FBFF7900BBB6A8 /* PluginDataCaretaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginDataCaretaker.swift; sourceTree = "<group>"; };
 		A5A65C7020FBFF7900BBB6A8 /* PluginDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginDataController.swift; sourceTree = "<group>"; };
-		A5A65C8A20FC0F4200BBB6A8 /* SketchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SketchApp.swift; sourceTree = "<group>"; };
 		A5A65C8C20FCD94700BBB6A8 /* MenuData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuData.swift; sourceTree = "<group>"; };
 		A5A65C8E20FCD95100BBB6A8 /* MenuItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemData.swift; sourceTree = "<group>"; };
 		A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
+		A5AA666B20FFB10B0027BC45 /* SketchAppBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SketchAppBridge.h; sourceTree = "<group>"; };
+		A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SketchAppBridge.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,11 +79,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A53A829620FF7DDB00FD83FA /* Headers */ = {
+		A58FC0DE20FF87DD004730BB /* OldVersion */ = {
 			isa = PBXGroup;
 			children = (
+				A58FC0E020FF87F2004730BB /* HMCommandScheme.h */,
+				A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */,
 			);
-			path = Headers;
+			path = OldVersion;
 			sourceTree = "<group>";
 		};
 		A5A65C5420FBFECB00BBB6A8 = {
@@ -97,7 +107,6 @@
 		A5A65C6020FBFECB00BBB6A8 /* HandyMenuFramework */ = {
 			isa = PBXGroup;
 			children = (
-				A53A829620FF7DDB00FD83FA /* Headers */,
 				A5A65C8920FC0F2C00BBB6A8 /* Bridges */,
 				A5A65C6B20FBFF2C00BBB6A8 /* Controllers */,
 				A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */,
@@ -111,10 +120,12 @@
 		A5A65C6A20FBFF2700BBB6A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A58FC0DE20FF87DD004730BB /* OldVersion */,
 				A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */,
 				A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */,
 				A5A65C8C20FCD94700BBB6A8 /* MenuData.swift */,
 				A5A65C8E20FCD95100BBB6A8 /* MenuItemData.swift */,
+				A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */,
 				A5A65C6F20FBFF7900BBB6A8 /* PluginDataCaretaker.swift */,
 			);
 			path = Models;
@@ -134,7 +145,8 @@
 		A5A65C8920FC0F2C00BBB6A8 /* Bridges */ = {
 			isa = PBXGroup;
 			children = (
-				A5A65C8A20FC0F4200BBB6A8 /* SketchApp.swift */,
+				A5AA666B20FFB10B0027BC45 /* SketchAppBridge.h */,
+				A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */,
 			);
 			path = Bridges;
 			sourceTree = "<group>";
@@ -146,7 +158,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58FC0E220FF87F2004730BB /* HMCommandScheme.h in Headers */,
 				A5A65C6320FBFECB00BBB6A8 /* HandyMenuFramework.h in Headers */,
+				A5AA666D20FFB10B0027BC45 /* SketchAppBridge.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,13 +233,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */,
 				A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */,
+				A5AA666E20FFB10B0027BC45 /* SketchAppBridge.m in Sources */,
 				A5A65C8F20FCD95100BBB6A8 /* MenuItemData.swift in Sources */,
 				A521562720FD3A0B002A5816 /* MenuController.swift in Sources */,
 				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
 				A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */,
 				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
-				A5A65C8B20FC0F4200BBB6A8 /* SketchApp.swift in Sources */,
+				A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */,
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* MenuData.swift in Sources */,
 				A5A65C7220FBFF7900BBB6A8 /* PluginDataCaretaker.swift in Sources */,

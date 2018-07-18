@@ -7,9 +7,9 @@
 //
 
 public struct Shortcut: Codable, Hashable {
-    public var commandIsPressed: Bool
-    public var optionIsPressed: Bool
-    public var controlIsPressed: Bool
-    public var shiftIsPressed: Bool
-    public var keyCode: Int
+    public var commandIsPressed: Bool = false
+    public var optionIsPressed: Bool = false
+    public var controlIsPressed: Bool = false
+    public var shiftIsPressed: Bool = false
+    public var keyCode: Int = 0
 }
