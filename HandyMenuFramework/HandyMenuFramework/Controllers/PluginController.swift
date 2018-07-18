@@ -10,7 +10,7 @@ import Foundation
 import AppKit
 import os.log
 
-@objc(HandyMenu) class PluginController:NSObject {
+@objc(HandyMenuPlugin) class PluginController:NSObject {
     
     // MARK: - Singletone instance
     @objc static let shared = PluginController()
@@ -37,11 +37,10 @@ import os.log
     }
     
     @objc public func wakeUp() {
-        os_log("[Handy Menu] Configured")
+        os_log("[Handy Menu] Has been woken up")
     }
 
     @objc public func showSettings() {
-        os_log("[Handy Menu] Showing the settings")
 //        pluginController.showSettings()
     }
     

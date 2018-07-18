@@ -6,8 +6,8 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-public struct MenuGroup:Codable {
-    public var menuElements:[MenuElement]
-    public var shortcut: Shortcut?
+public struct MenuData:Codable {
+    public var items:[MenuItemData]
+    public var shortcut: Shortcut
     public var manualGrouping: Bool = false
 }

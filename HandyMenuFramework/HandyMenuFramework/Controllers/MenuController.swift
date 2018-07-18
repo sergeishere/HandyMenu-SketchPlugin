@@ -12,15 +12,16 @@ import os.log
 public class MenuController {
     
     // MARK: - Private Variables
-    private var menuGroups: [Int:NSMenu] = [:]
+    private var menus: [Int:NSMenu] = [:]
     
-    
-    public func configure(for groups:[MenuGroup]) {
-        
+    public func configure(for data:[MenuData]) {
+        for menuData in data {
+            menus[menuData.shortcut.hashValue] = HandyMenu.configure(for: menuData)
+        }
     }
     
     public func show(for shortcut: Shortcut) {
-        if let menu = self.menuGroups[shortcut.hashValue] {
+        if let menu = self.menus[shortcut.hashValue] {
             menu.popUp(positioning: nil, at: NSEvent.mouseLocation, in: nil)
         }
     }
