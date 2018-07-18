@@ -11,10 +11,12 @@ import Cocoa
 class HandyMenu: NSMenu {
     
     public func configure(for data: MenuData) {
+        
+        let titleItem = NSMenuItem(title: data.title, action: nil, keyEquivalent: "")
+        self.addItem(titleItem)
+
         for item in data.items {
-            
             var newMenuItem:NSMenuItem
-            
             switch item {
             case .separator:
                 newMenuItem = NSMenuItem.separator()
@@ -26,6 +28,8 @@ class HandyMenu: NSMenu {
             
             self.addItem(newMenuItem)
         }
+        
+        
     }
     
     @objc private func runPluginCommand(sender: NSMenuItem) {

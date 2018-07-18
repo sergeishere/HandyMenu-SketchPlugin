@@ -7,7 +7,8 @@
 //
 
 public struct MenuData:Codable {
-    public var items:[MenuItemData]
+    public var title: String
     public var shortcut: Shortcut
+    public var items:[MenuItemData]
     public var manualGrouping: Bool = false
 }

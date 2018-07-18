@@ -17,8 +17,13 @@ public protocol PluginDataControllerDelegate: class {
 public class PluginDataController {
     
     // MARK: - Private Properties
-    private var pluginData: PluginData!
+    private var pluginData: PluginData?
     private var dataCaretaker = PluginDataCaretaker()
+    
+    // MARK: - Public Properties
+    public var reservedShortcuts: [Shortcut] {
+        return pluginData?.collections.map{$0.shortcut} ?? []
+    }
     
     // MARK: - Public Properties
     public weak var delegate: PluginDataControllerDelegate?
@@ -28,7 +33,7 @@ public class PluginDataController {
     
     // MARK: - Instance Methods
     public func loadData(){
-        pluginData = dataCaretaker.retrieve()
-        delegate?.dataController(self, didUpdate: pluginData)
+        self.pluginData = dataCaretaker.retrieve() ?? PluginData()
+        delegate?.dataController(self, didUpdate: pluginData!)
     }
 }

@@ -34,7 +34,7 @@ public class PluginDataCaretaker {
         userDefaults = UserDefaults(suiteName: suiteName)!
     }
     
-    public func retrieve() -> PluginData {
+    public func retrieve() -> PluginData? {
         if let encodedData = userDefaults.data(forKey: DataVersion.v5.key()),
             let data = try? decoder.decode(PluginData.self, from: encodedData) {
             return data
@@ -47,10 +47,10 @@ public class PluginDataCaretaker {
             }
             let shortcut = Shortcut(commandIsPressed: true, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode: 21)
             var newData = PluginData()
-            newData.collections.append(MenuData(items: newItems, shortcut: shortcut, manualGrouping: false))
+            newData.collections.append(MenuData(title: "Main", shortcut: shortcut, items: newItems, manualGrouping: false))
             return newData
         }
-        return PluginData()
+        return nil
     }
     
 }

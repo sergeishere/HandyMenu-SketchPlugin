@@ -29,7 +29,8 @@ import os.log
         self.dataController.loadData()
         
         self.shortcutController.delegate = self
-
+        self.shortcutController.register(shortcuts: self.dataController.reservedShortcuts)
+        
 //        self.settingsWindowController = HMSettingsWindowController(nibName)
 //        [settingsWindowController updatePlugins:[dataProvider getPluginsSchemes]];
 //        [settingsWindowController updateUserCommands:[dataProvider getUserCommandsSchemes]];

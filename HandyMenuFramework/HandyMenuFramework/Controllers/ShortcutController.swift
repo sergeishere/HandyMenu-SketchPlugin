@@ -17,7 +17,9 @@ public class ShortcutController {
     // MARK: - Private Variables
     private var keyDownMonitor:Any?
     private var flagsChangeMonitor:Any?
-    private var shortcut: Shortcut
+    private var currentShortcut: Shortcut
+    
+    private var registeredShortcuts: Set<Int> = []
     
     // MARK: - Public Variables
     public weak var delegate: ShortcutControllerDelegate?
@@ -26,14 +28,14 @@ public class ShortcutController {
     
     public init() {
         // Handling changing flags
-        shortcut = Shortcut(commandIsPressed: false, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode:0)
+        currentShortcut = Shortcut(commandIsPressed: false, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode:0)
         
         flagsChangeMonitor = NSEvent.addLocalMonitorForEvents(matching: .flagsChanged, handler: { [weak self] (event) -> NSEvent? in
             if let strongSelf = self {
-                strongSelf.shortcut.commandIsPressed = event.modifierFlags.contains(.command)
-                strongSelf.shortcut.optionIsPressed = event.modifierFlags.contains(.option)
-                strongSelf.shortcut.controlIsPressed = event.modifierFlags.contains(.control)
-                strongSelf.shortcut.shiftIsPressed = event.modifierFlags.contains(.shift)
+                strongSelf.currentShortcut.commandIsPressed = event.modifierFlags.contains(.command)
+                strongSelf.currentShortcut.optionIsPressed = event.modifierFlags.contains(.option)
+                strongSelf.currentShortcut.controlIsPressed = event.modifierFlags.contains(.control)
+                strongSelf.currentShortcut.shiftIsPressed = event.modifierFlags.contains(.shift)
             }
             
             return event
@@ -44,13 +46,21 @@ public class ShortcutController {
             let keyCode = Int(event.keyCode)
             
             if let strongSelf = self {
-                strongSelf.shortcut.keyCode = keyCode
-                strongSelf.delegate?.shortcutContoller(strongSelf, didRecognize: strongSelf.shortcut)
+                strongSelf.currentShortcut.keyCode = keyCode
+                if strongSelf.registeredShortcuts.contains(strongSelf.currentShortcut.hashValue) {
+                    strongSelf.delegate?.shortcutContoller(strongSelf, didRecognize: strongSelf.currentShortcut)
+                    return nil
+                }
             }
-            
             return event
         }
         
+    }
+    
+    public func register(shortcuts: [Shortcut]) {
+        for shortcut in shortcuts {
+            self.registeredShortcuts.insert(shortcut.hashValue)
+        }
     }
     
     deinit {
