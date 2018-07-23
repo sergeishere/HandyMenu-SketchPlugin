@@ -12,4 +12,17 @@ public struct Shortcut: Codable, Hashable {
     public var controlIsPressed: Bool = false
     public var shiftIsPressed: Bool = false
     public var keyCode: Int = 0
+    public var character: String = ""
+    
+    public var stringRepresentation: String {
+        get {
+            var s = ""
+            s.append(self.controlIsPressed ? "⌃" : "")
+            s.append(self.optionIsPressed ? "⌥" : "")
+            s.append(self.shiftIsPressed ? "⇧" : "")
+            s.append(self.commandIsPressed ? "⌘" : "")
+            s.append(self.character)
+            return s
+        }
+    }
 }

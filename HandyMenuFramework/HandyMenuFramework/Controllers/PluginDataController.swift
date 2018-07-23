@@ -21,8 +21,11 @@ public class PluginDataController {
     private var dataCaretaker = PluginDataCaretaker()
     
     // MARK: - Public Properties
-    public var reservedShortcuts: [Shortcut] {
-        return pluginData?.collections.map{$0.shortcut} ?? []
+    public var usedShortcuts: Set<Int> {
+        if let shortcutHashes = pluginData?.collections.compactMap({$0.shortcut.hashValue}) {
+          return Set(shortcutHashes)
+        }
+        return []
     }
     
     // MARK: - Public Properties

@@ -24,6 +24,8 @@
 		A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */; };
 		A5AA666D20FFB10B0027BC45 /* SketchAppBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = A5AA666B20FFB10B0027BC45 /* SketchAppBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5AA666E20FFB10B0027BC45 /* SketchAppBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */; };
+		A5AA667120FFD1A10027BC45 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */; };
+		A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,6 +60,8 @@
 		A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
 		A5AA666B20FFB10B0027BC45 /* SketchAppBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SketchAppBridge.h; sourceTree = "<group>"; };
 		A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SketchAppBridge.m; sourceTree = "<group>"; };
+		A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
+		A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				A53A829420FF726600FD83FA /* HandyMenu.swift */,
+				A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 		A5A65C6B20FBFF2C00BBB6A8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */,
 				A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */,
 				A521562620FD3A0B002A5816 /* MenuController.swift */,
 				A5A65C7020FBFF7900BBB6A8 /* PluginDataController.swift */,
@@ -223,6 +229,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +248,7 @@
 				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
 				A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */,
 				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
+				A5AA667120FFD1A10027BC45 /* SettingsWindowController.swift in Sources */,
 				A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */,
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* MenuData.swift in Sources */,

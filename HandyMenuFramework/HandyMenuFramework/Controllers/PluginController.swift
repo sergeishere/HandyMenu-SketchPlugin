@@ -16,33 +16,30 @@ import os.log
     @objc static let shared = PluginController()
     
     // MARK: - Properties
-//    private let settingsWindowController = HMSettingsWindowController()
     private let dataController = PluginDataController()
     private let menuController = MenuController()
     private let shortcutController = ShortcutController()
+    private var settingsWindowController = SettingsWindowController(windowNibName: NSNib.Name(rawValue: "SettingsWindowController"))
     
     private override init() {
         super.init()
         
-        os_log("[Handy Menu] Init")
         self.dataController.delegate = self
-        self.dataController.loadData()
-        
         self.shortcutController.delegate = self
-        self.shortcutController.register(shortcuts: self.dataController.reservedShortcuts)
+        self.settingsWindowController.delegate = self
+//        self.settingsWindowController =
+        //        [settingsWindowController updatePlugins:[dataProvider getPluginsSchemes]];
+        //        [settingsWindowController updateUserCommands:[dataProvider getUserCommandsSchemes]];
         
-//        self.settingsWindowController = HMSettingsWindowController(nibName)
-//        [settingsWindowController updatePlugins:[dataProvider getPluginsSchemes]];
-//        [settingsWindowController updateUserCommands:[dataProvider getUserCommandsSchemes]];
-//        [settingsWindowController setDelegate:self];
+        self.dataController.loadData()
     }
     
     @objc public func wakeUp() {
         os_log("[Handy Menu] Has been woken up")
     }
-
+    
     @objc public func showSettings() {
-//        pluginController.showSettings()
+        settingsWindowController.showWindow(nil)
     }
     
 }
@@ -52,6 +49,7 @@ import os.log
 extension PluginController: PluginDataControllerDelegate {
     
     func dataController(_ dataController: PluginDataController, didUpdate data: PluginData) {
+        self.shortcutController.start()
         self.menuController.configure(for: data.collections)
     }
     
@@ -59,7 +57,16 @@ extension PluginController: PluginDataControllerDelegate {
 
 // MARK: - ShortcutControllerDelegate
 extension PluginController: ShortcutControllerDelegate {
-    func shortcutContoller(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut) {
+    func shortcutContoller(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut, in event: NSEvent) -> NSEvent? {
+        guard self.dataController.usedShortcuts.contains(shortcut.hashValue) else { return event }
         self.menuController.show(for: shortcut)
+        return nil
+    }
+}
+
+// MARK: - SettingsWindowControllerDelegate
+extension PluginController: SettingsWindowControllerDelegate {
+    func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData: [MenuData]) {
+        
     }
 }
