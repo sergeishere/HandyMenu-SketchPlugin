@@ -10,6 +10,9 @@
 		A521562720FD3A0B002A5816 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521562620FD3A0B002A5816 /* MenuController.swift */; };
 		A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52A317D20FEB6A900E64617 /* ShortcutController.swift */; };
 		A5380530210A49C60026E4A5 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A538052F210A49C60026E4A5 /* assets.xcassets */; };
+		A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */; };
+		A5380535210A6DBF0026E4A5 /* CommandCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */; };
+		A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380536210A75CA0026E4A5 /* InstalledPluginData.swift */; };
 		A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A829420FF726600FD83FA /* HandyMenu.swift */; };
 		A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */; };
 		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
@@ -46,6 +49,9 @@
 		A521562620FD3A0B002A5816 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuController.swift; path = HandyMenuFramework/Controllers/MenuController.swift; sourceTree = SOURCE_ROOT; };
 		A52A317D20FEB6A900E64617 /* ShortcutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutController.swift; sourceTree = "<group>"; };
 		A538052F210A49C60026E4A5 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCollectionViewItem.swift; sourceTree = "<group>"; };
+		A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommandCollectionViewItem.xib; sourceTree = "<group>"; };
+		A5380536210A75CA0026E4A5 /* InstalledPluginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledPluginData.swift; sourceTree = "<group>"; };
 		A53A829420FF726600FD83FA /* HandyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyMenu.swift; sourceTree = "<group>"; };
 		A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginCommandData.swift; sourceTree = "<group>"; };
 		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
@@ -85,11 +91,21 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		A5380531210A63010026E4A5 /* Settings Window */ = {
+			isa = PBXGroup;
+			children = (
+				A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */,
+				A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */,
+				A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */,
+			);
+			path = "Settings Window";
+			sourceTree = "<group>";
+		};
 		A53A829320FF725A00FD83FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				A53A829420FF726600FD83FA /* HandyMenu.swift */,
-				A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */,
+				A5380531210A63010026E4A5 /* Settings Window */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -138,6 +154,7 @@
 			children = (
 				A58FC0DE20FF87DD004730BB /* OldVersion */,
 				A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */,
+				A5380536210A75CA0026E4A5 /* InstalledPluginData.swift */,
 				A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */,
 				A5A65C8C20FCD94700BBB6A8 /* MenuData.swift */,
 				A5A65C8E20FCD95100BBB6A8 /* MenuItemData.swift */,
@@ -240,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5380535210A6DBF0026E4A5 /* CommandCollectionViewItem.xib in Resources */,
 				A5380530210A49C60026E4A5 /* assets.xcassets in Resources */,
 				A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */,
 			);
@@ -259,11 +277,13 @@
 				A521562720FD3A0B002A5816 /* MenuController.swift in Sources */,
 				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
 				A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */,
+				A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */,
 				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
 				A5AA667120FFD1A10027BC45 /* SettingsWindowController.swift in Sources */,
 				A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */,
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* MenuData.swift in Sources */,
+				A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */,
 				A5A65C7220FBFF7900BBB6A8 /* PluginDataCaretaker.swift in Sources */,
 				A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */,
 			);

@@ -30,7 +30,8 @@ import os.log
         self.shortcutController.delegate = self
         self.settingsWindowController.delegate = self
         
-        self.dataController.loadData()
+        self.dataController.loadInstalledPluginsData()
+        self.dataController.loadPluginData()
     }
     
     @objc public func wakeUp() {
@@ -46,18 +47,20 @@ import os.log
 
 // MARK: - PluginDataControllerDelegate
 extension PluginController: PluginDataControllerDelegate {
-    
     func dataController(_ dataController: PluginDataController, didUpdate data: PluginData) {
         self.shortcutController.start()
         self.menuController.configure(for: data.collections)
     }
-    
+    func dataController(_ dataController: PluginDataController, didLoad installedPlugins: [InstalledPluginData]) {
+        self.settingsWindowController.installedPlugins = installedPlugins
+    }
 }
 
 // MARK: - ShortcutControllerDelegate
 extension PluginController: ShortcutControllerDelegate {
     func shortcutContoller(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut, in event: NSEvent) -> NSEvent? {
-        guard self.dataController.usedShortcuts.contains(shortcut.hashValue) else { return event }
+        guard NSDocumentController.shared.documents.count > 0,
+            self.dataController.usedShortcuts.contains(shortcut.hashValue) else { return event }
         self.menuController.show(for: shortcut)
         return nil
     }
