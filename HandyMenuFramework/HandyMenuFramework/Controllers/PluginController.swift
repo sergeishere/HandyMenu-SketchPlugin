@@ -15,21 +15,20 @@ import os.log
     // MARK: - Singletone instance
     @objc static let shared = PluginController()
     
-    // MARK: - Properties
+    // MARK: - Private Properties
     private let dataController = PluginDataController()
     private let menuController = MenuController()
     private let shortcutController = ShortcutController()
     private var settingsWindowController = SettingsWindowController(windowNibName: NSNib.Name(rawValue: "SettingsWindowController"))
     
+    
+    // MARK: - Plugin Lifecycle
     private override init() {
         super.init()
         
         self.dataController.delegate = self
         self.shortcutController.delegate = self
         self.settingsWindowController.delegate = self
-//        self.settingsWindowController =
-        //        [settingsWindowController updatePlugins:[dataProvider getPluginsSchemes]];
-        //        [settingsWindowController updateUserCommands:[dataProvider getUserCommandsSchemes]];
         
         self.dataController.loadData()
     }

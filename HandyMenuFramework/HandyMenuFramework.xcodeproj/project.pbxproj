@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		A521562720FD3A0B002A5816 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521562620FD3A0B002A5816 /* MenuController.swift */; };
 		A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52A317D20FEB6A900E64617 /* ShortcutController.swift */; };
+		A5380530210A49C60026E4A5 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A538052F210A49C60026E4A5 /* assets.xcassets */; };
 		A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A829420FF726600FD83FA /* HandyMenu.swift */; };
 		A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */; };
 		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		A521562620FD3A0B002A5816 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuController.swift; path = HandyMenuFramework/Controllers/MenuController.swift; sourceTree = SOURCE_ROOT; };
 		A52A317D20FEB6A900E64617 /* ShortcutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutController.swift; sourceTree = "<group>"; };
+		A538052F210A49C60026E4A5 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		A53A829420FF726600FD83FA /* HandyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyMenu.swift; sourceTree = "<group>"; };
 		A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginCommandData.swift; sourceTree = "<group>"; };
 		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
@@ -75,6 +77,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A538052E210A49B20026E4A5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A538052F210A49C60026E4A5 /* assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		A53A829320FF725A00FD83FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +122,7 @@
 		A5A65C6020FBFECB00BBB6A8 /* HandyMenuFramework */ = {
 			isa = PBXGroup;
 			children = (
+				A538052E210A49B20026E4A5 /* Assets */,
 				A5A65C8920FC0F2C00BBB6A8 /* Bridges */,
 				A5A65C6B20FBFF2C00BBB6A8 /* Controllers */,
 				A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */,
@@ -229,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5380530210A49C60026E4A5 /* assets.xcassets in Resources */,
 				A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

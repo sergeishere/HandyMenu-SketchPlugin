@@ -191,6 +191,8 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
 #endif
