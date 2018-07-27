@@ -165,6 +165,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_feature(modules)
 @import AppKit;
 @import Foundation;
+@import CoreGraphics;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -193,18 +194,24 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 @end
 
 
-@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDelegate>
-@end
-
-
 
 @class NSCollectionView;
+@class NSCollectionViewLayout;
+
+@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDelegateFlowLayout>
+- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class NSCollectionViewItem;
+@class NSView;
 
 @interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)collectionView:(NSCollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (NSCollectionViewItem * _Nonnull)collectionView:(NSCollectionView * _Nonnull)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (NSView * _Nonnull)collectionView:(NSCollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 #if __has_attribute(external_source_symbol)

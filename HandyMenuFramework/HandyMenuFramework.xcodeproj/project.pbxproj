@@ -13,6 +13,10 @@
 		A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */; };
 		A5380535210A6DBF0026E4A5 /* CommandCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */; };
 		A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380536210A75CA0026E4A5 /* InstalledPluginData.swift */; };
+		A5380539210B9A240026E4A5 /* PluginSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380538210B9A240026E4A5 /* PluginSectionHeaderView.swift */; };
+		A538053B210B9A3C0026E4A5 /* PluginSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A538053A210B9A3C0026E4A5 /* PluginSectionHeaderView.xib */; };
+		A538053D210BB0780026E4A5 /* PluginSectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */; };
+		A538053F210BB3AB0026E4A5 /* SettingsWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */; };
 		A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A829420FF726600FD83FA /* HandyMenu.swift */; };
 		A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */; };
 		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
@@ -52,6 +56,10 @@
 		A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCollectionViewItem.swift; sourceTree = "<group>"; };
 		A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommandCollectionViewItem.xib; sourceTree = "<group>"; };
 		A5380536210A75CA0026E4A5 /* InstalledPluginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledPluginData.swift; sourceTree = "<group>"; };
+		A5380538210B9A240026E4A5 /* PluginSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginSectionHeaderView.swift; sourceTree = "<group>"; };
+		A538053A210B9A3C0026E4A5 /* PluginSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PluginSectionHeaderView.xib; sourceTree = "<group>"; };
+		A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PluginSectionFooterView.xib; sourceTree = "<group>"; };
+		A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowViewController.swift; sourceTree = "<group>"; };
 		A53A829420FF726600FD83FA /* HandyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyMenu.swift; sourceTree = "<group>"; };
 		A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginCommandData.swift; sourceTree = "<group>"; };
 		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
@@ -91,21 +99,49 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		A5380531210A63010026E4A5 /* Settings Window */ = {
+		A5380531210A63010026E4A5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A5380542210BB9820026E4A5 /* TableView */,
+				A5380541210BB9760026E4A5 /* CollectionView */,
+				A5380540210BB95F0026E4A5 /* Window */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A5380540210BB95F0026E4A5 /* Window */ = {
 			isa = PBXGroup;
 			children = (
 				A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */,
+				A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */,
+			);
+			path = Window;
+			sourceTree = "<group>";
+		};
+		A5380541210BB9760026E4A5 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
 				A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */,
 				A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */,
+				A5380538210B9A240026E4A5 /* PluginSectionHeaderView.swift */,
+				A538053A210B9A3C0026E4A5 /* PluginSectionHeaderView.xib */,
+				A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */,
 			);
-			path = "Settings Window";
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		A5380542210BB9820026E4A5 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		A53A829320FF725A00FD83FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				A53A829420FF726600FD83FA /* HandyMenu.swift */,
-				A5380531210A63010026E4A5 /* Settings Window */,
+				A5380531210A63010026E4A5 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -257,7 +293,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A538053B210B9A3C0026E4A5 /* PluginSectionHeaderView.xib in Resources */,
 				A5380535210A6DBF0026E4A5 /* CommandCollectionViewItem.xib in Resources */,
+				A538053D210BB0780026E4A5 /* PluginSectionFooterView.xib in Resources */,
 				A5380530210A49C60026E4A5 /* assets.xcassets in Resources */,
 				A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */,
 			);
@@ -283,9 +321,11 @@
 				A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */,
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* MenuData.swift in Sources */,
+				A5380539210B9A240026E4A5 /* PluginSectionHeaderView.swift in Sources */,
 				A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */,
 				A5A65C7220FBFF7900BBB6A8 /* PluginDataCaretaker.swift in Sources */,
 				A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */,
+				A538053F210BB3AB0026E4A5 /* SettingsWindowViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

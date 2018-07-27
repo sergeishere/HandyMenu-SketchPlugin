@@ -31,7 +31,7 @@
             </constraints>
             <point key="canvasLocation" x="139" y="49"/>
         </customView>
-        <collectionViewItem id="IfF-Sg-hG3">
+        <collectionViewItem id="IfF-Sg-hG3" customClass="CommandCollectionViewItem" customModule="HandyMenuFramework" customModuleProvider="target">
             <connections>
                 <outlet property="textField" destination="eRB-kw-3t5" id="VhP-tm-HJ8"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="z0I-sm-kiY"/>

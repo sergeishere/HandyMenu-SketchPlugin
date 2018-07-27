@@ -13,13 +13,17 @@ public protocol SettingsWindowControllerDelegate: class {
     func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData:[MenuData])
 }
 
-public class SettingsWindowController: NSWindowController {
+public class SettingsWindowController: NSWindowController, SettingsWindowViewControllerDelegate {
     
     // MARK: - Private Properties
     
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
     
-    private let commandHeight:CGFloat = 20.0
+    private let windowViewController = SettingsWindowViewController()
+    
+    private let commandHeight:CGFloat = 24.0
+    private let headerHeight:CGFloat = 48.0
+    private let footerHeight: CGFloat = 20.0    
     
     // MARK: - Public Properties
     public weak var delegate: SettingsWindowControllerDelegate?
@@ -28,10 +32,17 @@ public class SettingsWindowController: NSWindowController {
     // MARK: - Lifecycle
     override public func windowDidLoad() {
         super.windowDidLoad()
-        
-        self.installedPluginsCollectionView.dataSource = self
         self.installedPluginsCollectionView.delegate = self
+        self.installedPluginsCollectionView.dataSource = self
         
+        self.windowViewController.delegate = self
+        self.windowViewController.view = self.window!.contentView!
+        self.window?.contentViewController = self.windowViewController
+    }
+    
+    func viewWillLayout() {
+        os_log("[Handy Menu] ...Resizing...")
+        self.installedPluginsCollectionView.collectionViewLayout?.invalidateLayout()
     }
 }
 
@@ -51,12 +62,38 @@ extension SettingsWindowController: NSCollectionViewDataSource {
         collectionViewItem.textField?.stringValue = "\(command.name)"
         return collectionViewItem
     }
+    
+    public func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
+        
+        switch kind {
+        case .sectionHeader:
+            let suppementaryHeaderView = self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionHeader,
+                                                                                                   withIdentifier: NSUserInterfaceItemIdentifier("PluginSectionHeaderView"),
+                                                                                                   for: indexPath) as! PluginSectionHeaderView
+            suppementaryHeaderView.pluginNameTextField.stringValue = installedPlugins[indexPath.section].title
+            return suppementaryHeaderView
+        case .sectionFooter:
+            return self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionFooter,
+                                                                             withIdentifier: NSUserInterfaceItemIdentifier("PluginSectionFooterView"),
+                                                                             for: indexPath)
+        default:
+            return NSView()
+        }
+        
+    }
 }
 
 // MARK: - NSCollectionViewDelegate
-extension SettingsWindowController: NSCollectionViewDelegate {
+extension SettingsWindowController: NSCollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> NSSize {
-        return NSMakeSize(collectionView.bounds.width, self.commandHeight)
+        return NSSize(width: collectionView.bounds.width, height: self.commandHeight)
+    }
+    public func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> NSSize {
+        return NSSize(width: collectionView.bounds.width, height: self.headerHeight)
+    }
+    
+    public func collectionView(_ collectionView: NSCollectionView, layout collectionViewLayout: NSCollectionViewLayout, referenceSizeForFooterInSection section: Int) -> NSSize {
+        return NSSize(width: collectionView.bounds.width, height: self.footerHeight)
     }
 }
 

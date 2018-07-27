@@ -8,7 +8,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindowController" customModule="HandyMenuFramework" customModuleProvider="target">
             <connections>
-                <outlet property="installedPluginsCollectionView" destination="J3I-JX-xAN" id="q47-Qt-kMl"/>
+                <outlet property="installedPluginsCollectionView" destination="J3I-JX-xAN" id="bb5-rC-R49"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -27,10 +27,10 @@
                         <rect key="frame" x="32" y="96" width="815" height="535"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-ta-d3Q" userLabel="Installed Plugins Stack">
-                                <rect key="frame" x="0.0" y="46" width="391" height="489"/>
+                                <rect key="frame" x="0.0" y="0.0" width="392" height="535"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjP-w2-Njt">
-                                        <rect key="frame" x="-2" y="472" width="103" height="17"/>
+                                        <rect key="frame" x="-2" y="518" width="103" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Installed Plugins" id="qTc-Sr-gRh">
                                             <font key="font" metaFont="titleBar"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -38,7 +38,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <searchField wantsLayer="YES" verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ENv-y6-3C7">
-                                        <rect key="frame" x="0.0" y="442" width="391" height="22"/>
+                                        <rect key="frame" x="0.0" y="488" width="392" height="22"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="NpZ-jE-zTn">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -46,15 +46,15 @@
                                         </searchFieldCell>
                                     </searchField>
                                     <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4W-Hx-wVA">
-                                        <rect key="frame" x="0.0" y="0.0" width="391" height="434"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="392" height="480"/>
                                         <clipView key="contentView" drawsBackground="NO" id="JVY-hp-lWl">
-                                            <rect key="frame" x="1" y="1" width="389" height="432"/>
+                                            <rect key="frame" x="1" y="1" width="390" height="478"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView selectable="YES" id="J3I-JX-xAN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="389" height="158"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="390" height="158"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="fzp-Se-jep">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" id="fzp-Se-jep">
                                                         <size key="itemSize" width="50" height="24"/>
                                                     </collectionViewFlowLayout>
                                                     <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -84,10 +84,10 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nok-l7-CZj" userLabel="Choosen Plugins Stack">
-                                <rect key="frame" x="423" y="45" width="392" height="490"/>
+                                <rect key="frame" x="424" y="0.0" width="391" height="535"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-b0-JPK">
-                                        <rect key="frame" x="-2" y="473" width="106" height="17"/>
+                                        <rect key="frame" x="-2" y="518" width="106" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Choosen Plugins" id="Tcg-O9-wz5">
                                             <font key="font" metaFont="titleBar"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -95,10 +95,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
-                                        <rect key="frame" x="0.0" y="443" width="392" height="22"/>
+                                        <rect key="frame" x="0.0" y="488" width="391" height="22"/>
                                         <subviews>
                                             <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2lR-EM-D7j">
-                                                <rect key="frame" x="0.0" y="-4" width="365" height="26"/>
+                                                <rect key="frame" x="0.0" y="-4" width="364" height="26"/>
                                                 <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="cEV-2b-Joq">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -106,7 +106,7 @@
                                                 </comboBoxCell>
                                             </comboBox>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-Uo-pr8">
-                                                <rect key="frame" x="370" y="0.0" width="22" height="22"/>
+                                                <rect key="frame" x="369" y="0.0" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="22" id="LV4-NV-xf3"/>
                                                     <constraint firstAttribute="height" constant="22" id="kun-eX-HQo"/>
@@ -130,13 +130,13 @@
                                         </customSpacing>
                                     </stackView>
                                     <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQG-R1-rbD">
-                                        <rect key="frame" x="0.0" y="26" width="391" height="409"/>
+                                        <rect key="frame" x="0.0" y="26" width="391" height="454"/>
                                         <clipView key="contentView" id="yBL-Sd-aVS">
-                                            <rect key="frame" x="1" y="1" width="389" height="407"/>
+                                            <rect key="frame" x="1" y="1" width="389" height="452"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="yP6-CO-ubM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="389" height="407"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="389" height="452"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
