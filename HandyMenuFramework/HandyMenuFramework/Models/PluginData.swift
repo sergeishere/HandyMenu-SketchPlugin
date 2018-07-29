@@ -9,9 +9,14 @@
 import Foundation
 
 public struct PluginData: Codable {
+    public var userID: UUID
+    public var pluginVersion:Double
+    public var collections: [MenuData]
     
-    public var userID: UUID = UUID()
-    public var pluginVersion:Double = 5.0
-    public var collections: [MenuData] = []
-    
+}
+
+extension PluginData {
+    public static var empty: PluginData {
+        return PluginData(userID: UUID(), pluginVersion: 5.0, collections: [.emptyCollection])
+    }
 }

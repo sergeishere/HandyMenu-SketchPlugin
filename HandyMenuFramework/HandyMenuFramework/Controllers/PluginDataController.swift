@@ -37,7 +37,7 @@ public class PluginDataController {
     
     // MARK: - Instance Methods
     public func loadPluginData(){
-        self.pluginData = dataCaretaker.retrieve() ?? PluginData()
+        self.pluginData = dataCaretaker.retrieve() ?? PluginData.empty
         delegate?.dataController(self, didUpdate: pluginData!)
     }
     

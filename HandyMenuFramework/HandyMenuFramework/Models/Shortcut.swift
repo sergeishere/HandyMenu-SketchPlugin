@@ -31,4 +31,8 @@ extension Shortcut {
     public static var empty: Shortcut {
         return Shortcut(commandIsPressed: false, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode: 0, character: "")
     }
+    
+    public static var legacyShortcut: Shortcut {
+        return Shortcut(commandIsPressed: true, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode: 21, character: "4")
+    }
 }

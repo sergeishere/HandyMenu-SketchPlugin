@@ -193,8 +193,6 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-
 @class NSCollectionView;
 @class NSCollectionViewLayout;
 
@@ -213,6 +211,8 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (CGFloat)tableView:(NSTableView * _Nonnull)tableView heightOfRow:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
 - (NSView * _Nullable)tableView:(NSTableView * _Nonnull)tableView viewForTableColumn:(NSTableColumn * _Nullable)tableColumn row:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 @class NSCollectionViewItem;
 

@@ -112,6 +112,9 @@
                                                         </items>
                                                     </menu>
                                                 </popUpButtonCell>
+                                                <connections>
+                                                    <action selector="popUpButtonDidChangeColllection:" target="-2" id="OH5-A1-9r3"/>
+                                                </connections>
                                             </popUpButton>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-Uo-pr8">
                                                 <rect key="frame" x="79" y="0.0" width="22" height="22"/>

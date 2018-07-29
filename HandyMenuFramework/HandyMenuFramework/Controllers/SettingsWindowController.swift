@@ -157,6 +157,11 @@ extension SettingsWindowController: NSCollectionViewDelegateFlowLayout {
 // MARK: - Actions Handling
 extension SettingsWindowController {
     
+    @IBAction func popUpButtonDidChangeColllection(_ sender: Any) {
+        self.currentCollectionIndex = self.collectionsPopUpButton.indexOfSelectedItem
+        self.collectionsTableView.reloadData()
+    }
+    
     @IBAction func save(_ sender: Any) {
         self.delegate?.settingsWindowController(self, didUpdate: [])
         self.window?.close()

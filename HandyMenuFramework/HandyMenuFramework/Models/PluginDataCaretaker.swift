@@ -40,14 +40,13 @@ public class PluginDataCaretaker {
             return data
         } else if let encodedData = userDefaults.data(forKey: DataVersion.v4.key()),
             let objects = NSKeyedUnarchiver.unarchiveObject(with: encodedData) as? [HMCommandScheme] {
+            var newData = PluginData.empty
             var newItems: [MenuItemData] = []
             for object in objects {
                 let newItemData = PluginCommandData(name: object.name, commandID: object.commandID, pluginID: object.pluginID)
                 newItems.append(.command(newItemData))
             }
-            let shortcut = Shortcut(commandIsPressed: true, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode: 21, character: "4")
-            var newData = PluginData()
-            newData.collections.append(MenuData(title: "New Collection", shortcut: shortcut, items: newItems, manualGrouping: false))
+            newData.collections = [MenuData(title: "Main", shortcut: .legacyShortcut, items: newItems, manualGrouping: false)]
             return newData
         }
         return nil
