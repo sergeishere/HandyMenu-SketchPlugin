@@ -212,8 +212,6 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (NSView * _Nullable)tableView:(NSTableView * _Nonnull)tableView viewForTableColumn:(NSTableColumn * _Nullable)tableColumn row:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
 @end
 
-
-
 @class NSCollectionViewItem;
 
 @interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDataSource>
@@ -222,6 +220,8 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (NSCollectionViewItem * _Nonnull)collectionView:(NSCollectionView * _Nonnull)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (NSView * _Nonnull)collectionView:(NSCollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop

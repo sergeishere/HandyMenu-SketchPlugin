@@ -10,7 +10,16 @@ import Cocoa
 
 class PluginSectionHeaderView: NSView {
     
-    @IBOutlet weak var pluginNameTextField: NSTextField!
+    @IBOutlet private weak var pluginNameTextField: NSTextField!
+    
+    public var title: String {
+        set {
+            self.pluginNameTextField.stringValue = newValue
+        }
+        get {
+            return self.title
+        }
+    }
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)

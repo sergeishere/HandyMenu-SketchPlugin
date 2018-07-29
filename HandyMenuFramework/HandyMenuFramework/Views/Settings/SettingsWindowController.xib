@@ -8,9 +8,11 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindowController" customModule="HandyMenuFramework" customModuleProvider="target">
             <connections>
+                <outlet property="collectionSettingsMenu" destination="6kd-9G-3aK" id="aqL-IW-3H2"/>
                 <outlet property="collectionsPopUpButton" destination="7SF-t5-biH" id="0yM-jz-FIV"/>
                 <outlet property="collectionsTableView" destination="yP6-CO-ubM" id="lrd-hT-ge9"/>
                 <outlet property="installedPluginsCollectionView" destination="J3I-JX-xAN" id="bb5-rC-R49"/>
+                <outlet property="removeMenuItem" destination="ffe-If-1sm" id="Phf-cZ-RNW"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -96,11 +98,11 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
-                                        <rect key="frame" x="0.0" y="488" width="101" height="22"/>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
+                                        <rect key="frame" x="0.0" y="488" width="97" height="22"/>
                                         <subviews>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7SF-t5-biH">
-                                                <rect key="frame" x="-2" y="-3" width="76" height="26"/>
+                                                <rect key="frame" x="-2" y="-2" width="76" height="26"/>
                                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="A10-rY-jJ4" id="9hu-G2-As4">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -113,19 +115,22 @@
                                                     </menu>
                                                 </popUpButtonCell>
                                                 <connections>
-                                                    <action selector="popUpButtonDidChangeColllection:" target="-2" id="OH5-A1-9r3"/>
+                                                    <action selector="popUpButtonDidChangeCollection:" target="-2" id="Dmv-yS-uqQ"/>
                                                 </connections>
                                             </popUpButton>
-                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-Uo-pr8">
-                                                <rect key="frame" x="79" y="0.0" width="22" height="22"/>
+                                            <button translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-cH-Zlj">
+                                                <rect key="frame" x="79" y="2" width="18" height="18"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="22" id="LV4-NV-xf3"/>
-                                                    <constraint firstAttribute="height" constant="22" id="kun-eX-HQo"/>
+                                                    <constraint firstAttribute="height" constant="18" id="9kJ-Q4-sgb"/>
+                                                    <constraint firstAttribute="width" constant="18" id="aeX-cb-gXA"/>
                                                 </constraints>
-                                                <buttonCell key="cell" type="bevel" title="Settings" bezelStyle="rounded" image="NSAdvanced" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="Gd8-0r-tcq">
+                                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSAdvanced" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="YM1-oO-9ZN">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system"/>
                                                 </buttonCell>
+                                                <connections>
+                                                    <action selector="openCollectionSettings:" target="-2" id="UBW-xC-nZT"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -351,6 +356,31 @@ DQ
             </connections>
             <point key="canvasLocation" x="104.5" y="145.5"/>
         </window>
+        <menu autoenablesItems="NO" id="6kd-9G-3aK">
+            <items>
+                <menuItem title="Rename" id="wDL-es-iG8">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="renameCollection:" target="-2" id="LKx-n6-ZfM"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="Q9C-Uq-xrr"/>
+                <menuItem title="Add New" id="QhG-vV-OsW">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="addNewCollection:" target="-2" id="ZmP-Ux-wZf"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="F9b-JG-pbI"/>
+                <menuItem title="Remove" enabled="NO" id="ffe-If-1sm">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="removeCollection:" target="-2" id="VQh-7w-8Ep"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="687.5" y="-108.5"/>
+        </menu>
     </objects>
     <resources>
         <image name="NSAdvanced" width="32" height="32"/>

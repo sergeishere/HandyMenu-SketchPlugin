@@ -19,11 +19,15 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
     @IBOutlet private weak var collectionsTableView: NSTableView!
+    
     @IBOutlet private weak var collectionsPopUpButton: NSPopUpButton!
+    
+    @IBOutlet private weak var collectionSettingsMenu: NSMenu!
+    @IBOutlet private weak var removeMenuItem: NSMenuItem!
     
     private let windowViewController = SettingsWindowViewController()
     
-    private var currentCollectionIndex: Int?
+    private var currentCollectionIndex: Int = 0
     private var collections: [MenuData] = []
     
     private let commandHeight:CGFloat = 24.0
@@ -57,26 +61,43 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     public func configure(_ collections:[MenuData]) {
         self.collections = collections
+        
         if self.collections.count == 0 {
             self.collections.append(.emptyCollection)
         }
-        self.currentCollectionIndex = collections.startIndex
         
         if self.isWindowLoaded {
             self.collectionsTableView.reloadData()
-            
-            self.collectionsPopUpButton.removeAllItems()
-            self.collectionsPopUpButton.addItems(withTitles: self.collections.compactMap({$0.title}))
-            self.collectionsPopUpButton.selectItem(at: 0)
+            self.configureCollectionsPopUpButton()
+            self.selectCollection(at: self.collections.startIndex)
         }
+    }
+    
+    private func configureCollectionsPopUpButton() {
+        self.collectionsPopUpButton.removeAllItems()
+        self.collectionsPopUpButton.addItems(withTitles: self.collections.map({$0.title}))
+    }
+    
+    private func selectCollection(at index: Int) {
+        self.currentCollectionIndex = index
+        self.collectionsPopUpButton.selectItem(at: index)
+        self.collectionsTableView.reloadData()
+    }
+    
+    private func uniqueCollectionTitle() -> String {
+        var newTitle = ""
+        for freeIndex in 0...self.collections.endIndex {
+            newTitle = "New Collection \(freeIndex + 1)"
+            guard self.collectionsPopUpButton.itemTitles.contains(newTitle) else { break }
+        }
+        return newTitle
     }
 }
 
 // MARK: - NSTableViewDataSource & NSTableViewDelegate
 extension SettingsWindowController: NSTableViewDataSource, NSTableViewDelegate {
     public func numberOfRows(in tableView: NSTableView) -> Int {
-        guard let currentIndex = currentCollectionIndex else { return 0 }
-        return self.collections[currentIndex].items.count
+        return self.collections[currentCollectionIndex].items.count
     }
     
     public func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
@@ -84,8 +105,7 @@ extension SettingsWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
     
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let currentIndex = currentCollectionIndex else { return nil }
-        let item = collections[currentIndex].items[row]
+        let item = collections[currentCollectionIndex].items[row]
         switch item {
         case .command(let commandData):
             guard let commandCell = collectionsTableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommandCell"), owner: self) as? CommandTableViewItem else { return nil }
@@ -123,7 +143,7 @@ extension SettingsWindowController: NSCollectionViewDataSource {
             let suppementaryHeaderView = self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionHeader,
                                                                                                    withIdentifier: NSUserInterfaceItemIdentifier("PluginSectionHeaderView"),
                                                                                                    for: indexPath) as! PluginSectionHeaderView
-            suppementaryHeaderView.pluginNameTextField.stringValue = installedPlugins[indexPath.section].title
+            suppementaryHeaderView.title = installedPlugins[indexPath.section].title
             return suppementaryHeaderView
         case .sectionFooter:
             return self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionFooter,
@@ -153,9 +173,38 @@ extension SettingsWindowController: NSCollectionViewDelegateFlowLayout {
 // MARK: - Actions Handling
 extension SettingsWindowController {
     
-    @IBAction func popUpButtonDidChangeColllection(_ sender: Any) {
-        self.currentCollectionIndex = self.collectionsPopUpButton.indexOfSelectedItem
-        self.collectionsTableView.reloadData()
+    // Managing Selected Collection
+    @IBAction func openCollectionSettings(_ sender: Any) {
+        self.removeMenuItem.isEnabled = self.collections.count > 1 ? true : false
+        if let sender = sender as? NSButton {
+            let point = NSPoint(x: 0, y: sender.bounds.height)
+            self.collectionSettingsMenu.popUp(positioning: nil, at: point, in: sender)
+        }
+    }
+    
+    @IBAction func renameCollection(_ sender: Any) {
+        
+    }
+    
+    @IBAction func removeCollection(_ sender: Any) {
+        self.collections.remove(at: self.currentCollectionIndex)
+        let lastIndex = self.collections.index(before: self.collections.endIndex)
+        let newIndex = (self.currentCollectionIndex > lastIndex) ? lastIndex : currentCollectionIndex
+        self.configureCollectionsPopUpButton()
+        self.selectCollection(at: newIndex)
+    }
+    
+    @IBAction func addNewCollection(_ sender: Any) {
+        let newIndex = self.collections.endIndex
+        var newCollection = MenuData.emptyCollection
+        newCollection.title = uniqueCollectionTitle()
+        self.collections.insert(newCollection, at: newIndex)
+        self.configureCollectionsPopUpButton()
+        self.selectCollection(at:newIndex)
+    }
+    
+    @IBAction func popUpButtonDidChangeCollection(_ sender: Any) {
+        self.selectCollection(at: self.collectionsPopUpButton.indexOfSelectedItem)
     }
     
     @IBAction func save(_ sender: Any) {
