@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindowController" customModule="HandyMenuFramework" customModuleProvider="target">
             <connections>
+                <outlet property="collectionsPopUpButton" destination="7SF-t5-biH" id="0yM-jz-FIV"/>
+                <outlet property="collectionsTableView" destination="yP6-CO-ubM" id="lrd-hT-ge9"/>
                 <outlet property="installedPluginsCollectionView" destination="J3I-JX-xAN" id="bb5-rC-R49"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -95,18 +97,24 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
-                                        <rect key="frame" x="0.0" y="488" width="391" height="22"/>
+                                        <rect key="frame" x="0.0" y="488" width="101" height="22"/>
                                         <subviews>
-                                            <comboBox verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2lR-EM-D7j">
-                                                <rect key="frame" x="0.0" y="-4" width="364" height="26"/>
-                                                <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" usesDataSource="YES" numberOfVisibleItems="5" id="cEV-2b-Joq">
-                                                    <font key="font" metaFont="system"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </comboBoxCell>
-                                            </comboBox>
+                                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7SF-t5-biH">
+                                                <rect key="frame" x="-2" y="-3" width="76" height="26"/>
+                                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="A10-rY-jJ4" id="9hu-G2-As4">
+                                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="menu"/>
+                                                    <menu key="menu" id="QKT-aU-saR">
+                                                        <items>
+                                                            <menuItem title="Item 1" state="on" id="A10-rY-jJ4"/>
+                                                            <menuItem title="Item 2" id="qYT-gk-3uw"/>
+                                                            <menuItem title="Item 3" id="Ciy-s8-tGJ"/>
+                                                        </items>
+                                                    </menu>
+                                                </popUpButtonCell>
+                                            </popUpButton>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Ey-Uo-pr8">
-                                                <rect key="frame" x="369" y="0.0" width="22" height="22"/>
+                                                <rect key="frame" x="79" y="0.0" width="22" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="22" id="LV4-NV-xf3"/>
                                                     <constraint firstAttribute="height" constant="22" id="kun-eX-HQo"/>
@@ -129,7 +137,7 @@
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
-                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQG-R1-rbD">
+                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQG-R1-rbD">
                                         <rect key="frame" x="0.0" y="26" width="391" height="454"/>
                                         <clipView key="contentView" id="yBL-Sd-aVS">
                                             <rect key="frame" x="1" y="1" width="389" height="452"/>
@@ -138,7 +146,6 @@
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="yP6-CO-ubM">
                                                     <rect key="frame" x="0.0" y="0.0" width="389" height="452"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
@@ -155,14 +162,14 @@
                                                             </textFieldCell>
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
-                                                                <tableCellView id="L8e-jz-0QP">
-                                                                    <rect key="frame" x="1" y="1" width="386" height="17"/>
+                                                                <tableCellView identifier="CommandCell" id="fbj-I1-20E" customClass="CommandTableViewItem" customModule="HandyMenuFramework" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="386" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
-                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4bC-W8-2Jl">
+                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cHt-fw-50K">
                                                                             <rect key="frame" x="0.0" y="0.0" width="386" height="17"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="kRf-bC-drF">
+                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Command Name" id="qua-av-kdJ">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -170,7 +177,8 @@
                                                                         </textField>
                                                                     </subviews>
                                                                     <connections>
-                                                                        <outlet property="textField" destination="4bC-W8-2Jl" id="FTX-yv-cV8"/>
+                                                                        <outlet property="textField" destination="cHt-fw-50K" id="ja0-8u-Ng5"/>
+                                                                        <outlet property="titleTextField" destination="cHt-fw-50K" id="ZGF-RM-kng"/>
                                                                     </connections>
                                                                 </tableCellView>
                                                             </prototypeCellViews>

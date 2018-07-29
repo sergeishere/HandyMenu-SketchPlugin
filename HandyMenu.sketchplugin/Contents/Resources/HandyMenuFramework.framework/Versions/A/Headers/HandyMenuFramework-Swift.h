@@ -204,8 +204,17 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class NSCollectionViewItem;
+@class NSTableView;
+@class NSTableColumn;
 @class NSView;
+
+@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDataSource, NSTableViewDelegate>
+- (NSInteger)numberOfRowsInTableView:(NSTableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (CGFloat)tableView:(NSTableView * _Nonnull)tableView heightOfRow:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
+- (NSView * _Nullable)tableView:(NSTableView * _Nonnull)tableView viewForTableColumn:(NSTableColumn * _Nullable)tableColumn row:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class NSCollectionViewItem;
 
 @interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;

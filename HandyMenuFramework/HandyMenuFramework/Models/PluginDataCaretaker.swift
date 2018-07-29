@@ -47,7 +47,7 @@ public class PluginDataCaretaker {
             }
             let shortcut = Shortcut(commandIsPressed: true, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode: 21, character: "4")
             var newData = PluginData()
-            newData.collections.append(MenuData(title: "Main", shortcut: shortcut, items: newItems, manualGrouping: false))
+            newData.collections.append(MenuData(title: "New Collection", shortcut: shortcut, items: newItems, manualGrouping: false))
             return newData
         }
         return nil

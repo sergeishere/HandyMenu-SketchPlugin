@@ -16,20 +16,20 @@ import os.log
     @objc static let shared = PluginController()
     
     // MARK: - Private Properties
+    private let settingsWindowController = SettingsWindowController(windowNibName: NSNib.Name(rawValue: "SettingsWindowController"))
     private let dataController = PluginDataController()
     private let menuController = MenuController()
     private let shortcutController = ShortcutController()
-    private var settingsWindowController = SettingsWindowController(windowNibName: NSNib.Name(rawValue: "SettingsWindowController"))
-    
     
     // MARK: - Plugin Lifecycle
     private override init() {
         super.init()
         
-        self.dataController.delegate = self
-        self.shortcutController.delegate = self
         self.settingsWindowController.delegate = self
         
+        self.shortcutController.delegate = self
+
+        self.dataController.delegate = self
         self.dataController.loadInstalledPluginsData()
         self.dataController.loadPluginData()
     }
@@ -47,10 +47,13 @@ import os.log
 
 // MARK: - PluginDataControllerDelegate
 extension PluginController: PluginDataControllerDelegate {
+    
     func dataController(_ dataController: PluginDataController, didUpdate data: PluginData) {
         self.shortcutController.start()
         self.menuController.configure(for: data.collections)
+        self.settingsWindowController.configure(data.collections)
     }
+    
     func dataController(_ dataController: PluginDataController, didLoad installedPlugins: [InstalledPluginData]) {
         self.settingsWindowController.installedPlugins = installedPlugins
     }

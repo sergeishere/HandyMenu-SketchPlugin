@@ -17,6 +17,7 @@
 		A538053B210B9A3C0026E4A5 /* PluginSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A538053A210B9A3C0026E4A5 /* PluginSectionHeaderView.xib */; };
 		A538053D210BB0780026E4A5 /* PluginSectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */; };
 		A538053F210BB3AB0026E4A5 /* SettingsWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */; };
+		A5380544210DDCD30026E4A5 /* CommandTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */; };
 		A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A829420FF726600FD83FA /* HandyMenu.swift */; };
 		A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */; };
 		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
@@ -60,6 +61,7 @@
 		A538053A210B9A3C0026E4A5 /* PluginSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PluginSectionHeaderView.xib; sourceTree = "<group>"; };
 		A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PluginSectionFooterView.xib; sourceTree = "<group>"; };
 		A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowViewController.swift; sourceTree = "<group>"; };
+		A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandTableViewItem.swift; sourceTree = "<group>"; };
 		A53A829420FF726600FD83FA /* HandyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyMenu.swift; sourceTree = "<group>"; };
 		A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginCommandData.swift; sourceTree = "<group>"; };
 		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
@@ -102,20 +104,12 @@
 		A5380531210A63010026E4A5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A5380542210BB9820026E4A5 /* TableView */,
-				A5380541210BB9760026E4A5 /* CollectionView */,
-				A5380540210BB95F0026E4A5 /* Window */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		A5380540210BB95F0026E4A5 /* Window */ = {
-			isa = PBXGroup;
-			children = (
 				A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */,
 				A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */,
+				A5380542210BB9820026E4A5 /* TableView */,
+				A5380541210BB9760026E4A5 /* CollectionView */,
 			);
-			path = Window;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		A5380541210BB9760026E4A5 /* CollectionView */ = {
@@ -133,6 +127,7 @@
 		A5380542210BB9820026E4A5 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
+				A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -309,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */,
+				A5380544210DDCD30026E4A5 /* CommandTableViewItem.swift in Sources */,
 				A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */,
 				A5AA666E20FFB10B0027BC45 /* SketchAppBridge.m in Sources */,
 				A5A65C8F20FCD95100BBB6A8 /* MenuItemData.swift in Sources */,

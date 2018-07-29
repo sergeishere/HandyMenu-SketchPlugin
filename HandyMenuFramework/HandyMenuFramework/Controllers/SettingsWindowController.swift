@@ -18,12 +18,17 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     // MARK: - Private Properties
     
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
+    @IBOutlet private weak var collectionsTableView: NSTableView!
+    @IBOutlet private weak var collectionsPopUpButton: NSPopUpButton!
     
     private let windowViewController = SettingsWindowViewController()
     
+    private var currentCollectionIndex: Int?
+    private var collections: [MenuData] = []
+    
     private let commandHeight:CGFloat = 24.0
     private let headerHeight:CGFloat = 48.0
-    private let footerHeight: CGFloat = 20.0    
+    private let footerHeight: CGFloat = 20.0
     
     // MARK: - Public Properties
     public weak var delegate: SettingsWindowControllerDelegate?
@@ -35,14 +40,66 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         self.installedPluginsCollectionView.delegate = self
         self.installedPluginsCollectionView.dataSource = self
         
+        self.collectionsTableView.delegate = self
+        self.collectionsTableView.dataSource = self
+        self.collectionsTableView.reloadData()
+        
         self.windowViewController.delegate = self
         self.windowViewController.view = self.window!.contentView!
         self.window?.contentViewController = self.windowViewController
+        
+        self.configure(collections)
+        
+        os_log("[Handy Menu] Window Did Load")
     }
     
-    func viewWillLayout() {
+    public func viewWillLayout() {
         os_log("[Handy Menu] ...Resizing...")
         self.installedPluginsCollectionView.collectionViewLayout?.invalidateLayout()
+    }
+    
+    public func configure(_ collections:[MenuData]) {
+        self.collections = collections
+        if self.collections.count == 0 {
+            self.collections.append(.emptyCollection)
+        }
+        self.currentCollectionIndex = collections.startIndex
+        
+        if self.isWindowLoaded {
+            self.collectionsTableView.reloadData()
+            
+            self.collectionsPopUpButton.removeAllItems()
+            self.collectionsPopUpButton.addItems(withTitles: self.collections.compactMap({$0.title}))
+            self.collectionsPopUpButton.selectItem(at: 0)
+        }
+    }
+}
+
+// MARK: - NSTableViewDataSource & NSTableViewDelegate
+extension SettingsWindowController: NSTableViewDataSource, NSTableViewDelegate {
+    public func numberOfRows(in tableView: NSTableView) -> Int {
+        guard let currentIndex = currentCollectionIndex else { return 0 }
+        return self.collections[currentIndex].items.count
+    }
+    
+    public func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        return self.commandHeight
+    }
+    
+    public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        os_log("[Handy Menu] Creating view")
+        guard let currentIndex = currentCollectionIndex else { return nil }
+        let item = collections[currentIndex].items[row]
+        switch item {
+        case .command(let commandData):
+            guard let commandCell = collectionsTableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommandCell"), owner: self) as? CommandTableViewItem else { return nil }
+            commandCell.title = commandData.name
+            return commandCell
+        default:
+            break
+        }
+        
+        return nil
     }
 }
 

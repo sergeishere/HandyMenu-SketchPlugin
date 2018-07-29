@@ -26,3 +26,9 @@ public struct Shortcut: Codable, Hashable {
         }
     }
 }
+
+extension Shortcut {
+    public static var empty: Shortcut {
+        return Shortcut(commandIsPressed: false, optionIsPressed: false, controlIsPressed: false, shiftIsPressed: false, keyCode: 0, character: "")
+    }
+}

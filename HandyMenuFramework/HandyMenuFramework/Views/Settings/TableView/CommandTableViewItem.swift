@@ -1,0 +1,25 @@
+//
+//  CommandView.swift
+//  HandyMenuFramework
+//
+//  Created by Sergey Dmitriev on 29/07/2018.
+//  Copyright © 2018 Sergey Dmitriev. All rights reserved.
+//
+
+import Foundation
+
+class CommandTableViewItem: NSTableCellView {
+    
+    @IBOutlet private weak var titleTextField: NSTextField!
+    
+    public var title: String {
+        get {
+            return self.title
+        }
+        set {
+            self.titleTextField.stringValue = newValue
+        }
+    }
+    
+    
+}
