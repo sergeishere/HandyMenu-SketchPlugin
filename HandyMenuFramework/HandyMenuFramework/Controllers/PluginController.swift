@@ -35,7 +35,7 @@ import os.log
     }
     
     @objc public func wakeUp() {
-        os_log("[Handy Menu] Has been woken up")
+        os_log("Has been woken up", log: .handyMenuLog, type: .default)
     }
     
     @objc public func showSettings() {

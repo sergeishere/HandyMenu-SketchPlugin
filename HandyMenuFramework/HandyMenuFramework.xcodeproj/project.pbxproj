@@ -22,6 +22,7 @@
 		A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */; };
 		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
 		A58FC0E220FF87F2004730BB /* HMCommandScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A58FC0E020FF87F2004730BB /* HMCommandScheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5905865210E0AF700B6079A /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5905864210E0AF700B6079A /* OSLog.swift */; };
 		A5A65C6320FBFECB00BBB6A8 /* HandyMenuFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */; };
 		A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */; };
@@ -66,6 +67,7 @@
 		A58FC0DC20FF83B1004730BB /* PluginCommandData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginCommandData.swift; sourceTree = "<group>"; };
 		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
 		A58FC0E020FF87F2004730BB /* HMCommandScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCommandScheme.h; sourceTree = "<group>"; };
+		A5905864210E0AF700B6079A /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
 		A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyMenuFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandyMenuFramework.h; sourceTree = "<group>"; };
 		A5A65C6220FBFECB00BBB6A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,6 +152,14 @@
 			path = OldVersion;
 			sourceTree = "<group>";
 		};
+		A5905863210E0AE700B6079A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5905864210E0AF700B6079A /* OSLog.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A5A65C5420FBFECB00BBB6A8 = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +179,7 @@
 		A5A65C6020FBFECB00BBB6A8 /* HandyMenuFramework */ = {
 			isa = PBXGroup;
 			children = (
+				A5905863210E0AE700B6079A /* Extensions */,
 				A538052E210A49B20026E4A5 /* Assets */,
 				A5A65C8920FC0F2C00BBB6A8 /* Bridges */,
 				A5A65C6B20FBFF2C00BBB6A8 /* Controllers */,
@@ -317,6 +328,7 @@
 				A58FC0DD20FF83B1004730BB /* PluginCommandData.swift in Sources */,
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* MenuData.swift in Sources */,
+				A5905865210E0AF700B6079A /* OSLog.swift in Sources */,
 				A5380539210B9A240026E4A5 /* PluginSectionHeaderView.swift in Sources */,
 				A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */,
 				A5A65C7220FBFF7900BBB6A8 /* PluginDataCaretaker.swift in Sources */,

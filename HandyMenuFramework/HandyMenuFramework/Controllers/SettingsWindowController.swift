@@ -49,12 +49,9 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         self.window?.contentViewController = self.windowViewController
         
         self.configure(collections)
-        
-        os_log("[Handy Menu] Window Did Load")
     }
     
     public func viewWillLayout() {
-        os_log("[Handy Menu] ...Resizing...")
         self.installedPluginsCollectionView.collectionViewLayout?.invalidateLayout()
     }
     
@@ -87,7 +84,6 @@ extension SettingsWindowController: NSTableViewDataSource, NSTableViewDelegate {
     }
     
     public func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        os_log("[Handy Menu] Creating view")
         guard let currentIndex = currentCollectionIndex else { return nil }
         let item = collections[currentIndex].items[row]
         switch item {
