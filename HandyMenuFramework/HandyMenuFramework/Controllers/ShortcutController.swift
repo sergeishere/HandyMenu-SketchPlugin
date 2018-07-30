@@ -17,6 +17,7 @@ public class ShortcutController {
     
     // MARK: - Private Variables
     private var keyDownMonitor:Any?
+    private var keyUpMonitor:Any?
     
     // MARK: - Public Variables
     public var currentShortcut = Shortcut()
@@ -42,12 +43,22 @@ public class ShortcutController {
             
             return event
         }
+        
+        keyUpMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyUp) { [weak self](event) -> NSEvent? in
+            self?.currentShortcut.keyCode = 0
+            self?.currentShortcut.character = ""
+            return event
+        }
     }
     
     public func stop() {
         if let keyDownMonitor = self.keyDownMonitor {
             NSEvent.removeMonitor(keyDownMonitor)
             self.keyDownMonitor = nil
+        }
+        if let keyUpMonitor = self.keyUpMonitor {
+            NSEvent.removeMonitor(keyUpMonitor)
+            self.keyUpMonitor = nil
         }
     }
 }
