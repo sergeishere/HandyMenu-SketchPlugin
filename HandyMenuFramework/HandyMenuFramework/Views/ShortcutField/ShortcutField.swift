@@ -25,27 +25,22 @@ class ShortcutField: NSView {
     @IBOutlet private weak var shortcutText:NSTextField!
     
     // MARK: - Private Variables
-    private var shortcutController: ShortcutController?
-    private let stoppingKeyCodes:Set<UInt16> = [36, 51, 53, 76] // enter, delete, esc, return
+    private var shortcutController: ShortcutController = ShortcutController()
+    private var mouseDownMonitor: Any?
+    
+    private let stoppingKeyCodes:Set<UInt16> = [36, 53, 76] // Enter, Esc, Return keys codes
+    private let deleteKeyCode:UInt16 = 51 // Delete key code
     
     // MARK: - Public Variables
     public weak var delegate: ShortcutFieldDelegate?
     
-    public var shortcut: Shortcut {
-        set(newShortcut) {
-            shortcutText.stringValue = newShortcut.stringRepresentation
-        }
-        get {
-            return self.shortcut
+    public var shortcut: Shortcut = .empty {
+        didSet(newShortcut) {
+            shortcutText.stringValue = shortcut.stringRepresentation
         }
     }
     
-    // MARK: - Instance Lifecycle
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        self.prepare()
-    }
-    
+    // MARK: - Lifecycle
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         let nibName = type(of: self).className().components(separatedBy: ".").last!
@@ -53,55 +48,64 @@ class ShortcutField: NSView {
             nib.instantiate(withOwner: self, topLevelObjects: nil)
             self.prepare()
         }
-        
-        
     }
     
+    // MARK: - Instance Methods
     private func prepare() {
         self.addSubview(self.contentView)
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.width,.height]
         
-        self.shortcut = .empty
+        self.contentView.wantsLayer = true
+        self.contentView.layer?.cornerRadius = self.bounds.height / 2
         
-        self.wantsLayer = true
-        self.layer?.cornerRadius = self.bounds.height / 2
+        
+        self.shortcutController.delegate = self
+        
         self.configureForState(.inactive)
-        
-        self.shortcutController = ShortcutController()
-        self.shortcutController?.delegate = self
-    }
-    
-    override func awakeFromNib() {
-        self.prepare()
     }
     
     private func configureForState(_ state: State) {
         switch state {
         case .active:
-            self.layer?.backgroundColor = NSColor.highlightColor.cgColor
-            self.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
-            self.layer?.borderWidth = 2.0
+            self.contentView.layer?.backgroundColor = NSColor.highlightColor.cgColor
+            self.contentView.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
+            self.contentView.layer?.borderWidth = 2.0
         case .inactive:
-            self.layer?.backgroundColor = NSColor.controlColor.cgColor
-            self.layer?.borderColor = NSColor.gridColor.cgColor
-            self.layer?.borderWidth = 1
+            self.contentView.layer?.backgroundColor = NSColor.controlColor.cgColor
+            self.contentView.layer?.borderColor = NSColor.gridColor.cgColor
+            self.contentView.layer?.borderWidth = 1
         }
     }
     
     override func mouseDown(with event: NSEvent) {
-        self.shortcutController?.start()
+        self.shortcutController.start()
         self.configureForState(.active)
+    }
+    
+    public func finish(with shortcut:Shortcut?) {
+        self.shortcutController.stop()
+        self.configureForState(.inactive)
+        if let shortcut = shortcut {
+            self.shortcut = shortcut
+        }
     }
     
 }
 
 extension ShortcutField: ShortcutControllerDelegate {
     func shortcutController(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut, in event: NSEvent) -> NSEvent? {
-        shortcutController.stop()
-        self.configureForState(.inactive)
-        self.shortcut = stoppingKeyCodes.contains(event.keyCode) ?  .empty : shortcut
-        self.delegate?.shortcutField(self, didChange: shortcut)
+        let newShortcut: Shortcut
+        switch event.keyCode {
+        case self.deleteKeyCode:
+            newShortcut = .empty
+        case let code where stoppingKeyCodes.contains(code):
+            newShortcut = self.shortcut
+        default:
+            newShortcut = shortcut
+        }
+        self.finish(with: newShortcut)
+        self.delegate?.shortcutField(self, didChange: newShortcut)
         return nil
     }
 }

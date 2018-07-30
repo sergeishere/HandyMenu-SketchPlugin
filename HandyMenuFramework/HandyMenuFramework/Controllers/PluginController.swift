@@ -35,7 +35,7 @@ import os.log
     }
     
     @objc public func wakeUp() {
-        os_log("Plugin has been woken up", log: .handyMenuLog, type: .default)
+        plugin_log("Plugin has been woken up")
     }
     
     @objc public func showSettings() {

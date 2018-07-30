@@ -61,6 +61,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     public override func close() {
         super.close()
+        self.shortcutField.finish(with: nil)
         delegate?.settingsWindowController(didClose: self)
     }
     
