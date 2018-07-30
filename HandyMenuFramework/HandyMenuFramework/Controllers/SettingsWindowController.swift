@@ -11,20 +11,21 @@ import os.log
 
 public protocol SettingsWindowControllerDelegate: class {
     func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData:[MenuData])
+    func settingsWindowController(didClose settingsWindowController: SettingsWindowController)
 }
 
 public class SettingsWindowController: NSWindowController, SettingsWindowViewControllerDelegate {
     
-    // MARK: - Private Properties
     
+    // MARK: - Outlets
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
     @IBOutlet private weak var collectionsTableView: NSTableView!
-    
     @IBOutlet private weak var collectionsPopUpButton: NSPopUpButton!
-    
     @IBOutlet private weak var collectionSettingsMenu: NSMenu!
     @IBOutlet private weak var removeMenuItem: NSMenuItem!
+    @IBOutlet private weak var shortcutField: ShortcutField!
     
+    // MARK: - Private Properties
     private let windowViewController = SettingsWindowViewController()
     
     private var currentCollectionIndex: Int = 0
@@ -41,6 +42,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     // MARK: - Lifecycle
     override public func windowDidLoad() {
         super.windowDidLoad()
+
         self.installedPluginsCollectionView.delegate = self
         self.installedPluginsCollectionView.dataSource = self
         
@@ -52,7 +54,14 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         self.windowViewController.view = self.window!.contentView!
         self.window?.contentViewController = self.windowViewController
         
+        self.shortcutField.delegate = self
+        
         self.configure(collections)
+    }
+    
+    public override func close() {
+        super.close()
+        delegate?.settingsWindowController(didClose: self)
     }
     
     public func viewWillLayout() {
@@ -82,6 +91,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         self.currentCollectionIndex = index
         self.collectionsPopUpButton.selectItem(at: index)
         self.collectionsTableView.reloadData()
+        self.shortcutField.shortcut = self.collections[self.currentCollectionIndex].shortcut
     }
     
     private func uniqueCollectionTitle() -> String {
@@ -209,11 +219,11 @@ extension SettingsWindowController {
     
     @IBAction func save(_ sender: Any) {
         self.delegate?.settingsWindowController(self, didUpdate: [])
-        self.window?.close()
+        self.close()
     }
     
     @IBAction func cancel(_ sender: Any) {
-        self.window?.close()
+        self.close()
     }
     
     @IBAction func github(_ sender: Any) {
@@ -221,4 +231,11 @@ extension SettingsWindowController {
         NSWorkspace.shared.open(githubPageUrl)
     }
     
+}
+
+// MARK: - ShortcutFieldDelegate
+extension SettingsWindowController: ShortcutFieldDelegate {
+    func shortcutField(_ shortcutField: ShortcutField, didChange shortcut: Shortcut) {
+        self.collections[self.currentCollectionIndex].shortcut = shortcut
+    }
 }

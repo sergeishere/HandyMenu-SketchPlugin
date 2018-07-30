@@ -10,7 +10,7 @@ import Foundation
 import os.log
 
 public protocol ShortcutControllerDelegate: class {
-    func shortcutContoller(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut, in event: NSEvent) -> NSEvent?
+    func shortcutController(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut, in event: NSEvent) -> NSEvent?
 }
 
 public class ShortcutController {
@@ -40,7 +40,7 @@ public class ShortcutController {
                 strongSelf.currentShortcut.optionIsPressed = event.modifierFlags.contains(.option)
                 strongSelf.currentShortcut.controlIsPressed = event.modifierFlags.contains(.control)
                 strongSelf.currentShortcut.shiftIsPressed = event.modifierFlags.contains(.shift)
-                return delegate.shortcutContoller(strongSelf, didRecognize: strongSelf.currentShortcut, in: event)
+                return delegate.shortcutController(strongSelf, didRecognize: strongSelf.currentShortcut, in: event)
             }
             
             return event

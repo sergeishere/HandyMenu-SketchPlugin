@@ -189,9 +189,12 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 @interface SettingsWindowController : NSWindowController
 - (void)windowDidLoad;
+- (void)close;
 - (nonnull instancetype)initWithWindow:(NSWindow * _Nullable)window OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 @class NSCollectionView;
 @class NSCollectionViewLayout;

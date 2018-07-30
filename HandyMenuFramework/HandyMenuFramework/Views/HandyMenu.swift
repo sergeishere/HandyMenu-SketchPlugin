@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import os.log
 
 class HandyMenu: NSMenu {
     

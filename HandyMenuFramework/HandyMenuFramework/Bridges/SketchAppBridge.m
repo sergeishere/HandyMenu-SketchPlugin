@@ -8,6 +8,7 @@
 
 #import "SketchAppBridge.h"
 #import "AppKit/Appkit.h"
+#import "os/log.h"
 
 @implementation SketchAppBridge
 
@@ -32,20 +33,25 @@
 }
 
 -(void)runSketchPluginCommand:(NSString*)commandID from:(NSString*)pluginID {
-    
-    id command = [[[installedPlugins valueForKey:pluginID] valueForKey:@"commands"] valueForKey:commandID];
-    
-    id MSDocument = NSClassFromString(@"MSDocument");
-    id pluginContext = [MSDocument valueForKeyPath:@"currentDocument.pluginContext"];
-    
-    SEL a_selector = NSSelectorFromString(@"runPluginCommand:fromMenu:context:");
-    id delegate = [NSApp delegate];
-    
-    if ([delegate respondsToSelector:a_selector]) {
-        typedef void (*MethodType)(id, SEL, id, BOOL, id);
-        MethodType methodToCall;
-        methodToCall = (MethodType)[delegate methodForSelector:a_selector];
-        methodToCall(delegate, a_selector, command, YES, pluginContext);
+    @try {
+        id command = [[[installedPlugins valueForKey:pluginID] valueForKey:@"commands"] valueForKey:commandID];
+        
+        id MSDocument = NSClassFromString(@"MSDocument");
+        id pluginContext = [MSDocument valueForKeyPath:@"currentDocument.pluginContext"];
+        
+        SEL a_selector = NSSelectorFromString(@"runPluginCommand:fromMenu:context:");
+        id delegate = [NSApp delegate];
+        
+        if ([delegate respondsToSelector:a_selector]) {
+            typedef void (*MethodType)(id, SEL, id, BOOL, id);
+            MethodType methodToCall;
+            methodToCall = (MethodType)[delegate methodForSelector:a_selector];
+            
+            methodToCall(delegate, a_selector, command, YES, pluginContext);
+        }
+    }
+    @catch (NSException *e) {
+        NSLog(@"[Handy Menu] Cannot run plugin %@", e);
     }
 }
 

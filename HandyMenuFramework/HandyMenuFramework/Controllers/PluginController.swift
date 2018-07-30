@@ -16,7 +16,7 @@ import os.log
     @objc static let shared = PluginController()
     
     // MARK: - Private Properties
-    private let settingsWindowController = SettingsWindowController(windowNibName: NSNib.Name(rawValue: "SettingsWindowController"))
+    private let settingsWindowController = SettingsWindowController(windowNibName: NSNib.Name(rawValue: String(describing: SettingsWindowController.self)))
     private let dataController = PluginDataController()
     private let menuController = MenuController()
     private let shortcutController = ShortcutController()
@@ -40,6 +40,7 @@ import os.log
     
     @objc public func showSettings() {
         settingsWindowController.showWindow(nil)
+        shortcutController.stop()
     }
     
 }
@@ -61,7 +62,7 @@ extension PluginController: PluginDataControllerDelegate {
 
 // MARK: - ShortcutControllerDelegate
 extension PluginController: ShortcutControllerDelegate {
-    func shortcutContoller(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut, in event: NSEvent) -> NSEvent? {
+    func shortcutController(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut, in event: NSEvent) -> NSEvent? {
         guard NSDocumentController.shared.documents.count > 0,
             self.dataController.usedShortcuts.contains(shortcut.hashValue) else { return event }
         self.menuController.show(for: shortcut)
@@ -73,5 +74,9 @@ extension PluginController: ShortcutControllerDelegate {
 extension PluginController: SettingsWindowControllerDelegate {
     func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData: [MenuData]) {
         
+    }
+    
+    func settingsWindowController(didClose settingsWindowController: SettingsWindowController) {
+        self.shortcutController.start()
     }
 }
