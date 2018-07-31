@@ -6,7 +6,7 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-public enum MenuItemData {
+public enum MenuItemData: Equatable {
     case command(PluginCommandData)
     case separator
     
@@ -43,5 +43,7 @@ extension MenuItemData: Decodable {
         }
     }
 }
+
+
 
 

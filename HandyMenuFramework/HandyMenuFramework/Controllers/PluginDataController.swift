@@ -65,6 +65,7 @@ public class PluginDataController {
             }
             installedPluginsData.append(installedPluginData)
         }
+        installedPluginsData.sort { $0.title < $1.title }
         self.delegate?.dataController(self, didLoad: installedPluginsData)
     }
 }

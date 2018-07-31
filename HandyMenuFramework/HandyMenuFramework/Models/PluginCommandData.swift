@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct PluginCommandData:Codable {
+public struct PluginCommandData:Codable, Equatable {
     public var name:String
     public var commandID:String
     public var pluginID:String

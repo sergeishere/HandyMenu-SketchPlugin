@@ -183,6 +183,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+
+
 @class NSWindow;
 @class NSCoder;
 
@@ -194,28 +196,17 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class NSTableView;
+
+@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDataSource>
+- (NSInteger)numberOfRowsInTableView:(NSTableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+@end
+
 
 
 @class NSCollectionView;
-@class NSCollectionViewLayout;
-
-@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDelegateFlowLayout>
-- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class NSTableView;
-@class NSTableColumn;
-@class NSView;
-
-@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDataSource, NSTableViewDelegate>
-- (NSInteger)numberOfRowsInTableView:(NSTableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
-- (CGFloat)tableView:(NSTableView * _Nonnull)tableView heightOfRow:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
-- (NSView * _Nullable)tableView:(NSTableView * _Nonnull)tableView viewForTableColumn:(NSTableColumn * _Nullable)tableColumn row:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @class NSCollectionViewItem;
+@class NSView;
 
 @interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
@@ -224,7 +215,37 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (NSView * _Nonnull)collectionView:(NSCollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class NSTableColumn;
+@protocol NSDraggingInfo;
+@class NSPasteboard;
+@class NSDraggingSession;
 
+@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDelegate>
+- (CGFloat)tableView:(NSTableView * _Nonnull)tableView heightOfRow:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
+- (NSView * _Nullable)tableView:(NSTableView * _Nonnull)tableView viewForTableColumn:(NSTableColumn * _Nullable)tableColumn row:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
+- (NSDragOperation)tableView:(NSTableView * _Nonnull)tableView validateDrop:(id <NSDraggingInfo> _Nonnull)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)tableView:(NSTableView * _Nonnull)tableView writeRowsWithIndexes:(NSIndexSet * _Nonnull)rowIndexes toPasteboard:(NSPasteboard * _Nonnull)pboard SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)tableView:(NSTableView * _Nonnull)tableView acceptDrop:(id <NSDraggingInfo> _Nonnull)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session willBeginAtPoint:(NSPoint)screenPoint forRowIndexes:(NSIndexSet * _Nonnull)rowIndexes;
+- (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation;
+@end
+
+
+
+@class NSCollectionViewLayout;
+@class NSEvent;
+
+@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDelegateFlowLayout>
+- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)collectionView:(NSCollectionView * _Nonnull)collectionView canDragItemsAtIndexes:(NSIndexSet * _Nonnull)indexes withEvent:(NSEvent * _Nonnull)event SWIFT_WARN_UNUSED_RESULT;
+- (NSSet<NSIndexPath *> * _Nonnull)collectionView:(NSCollectionView * _Nonnull)collectionView shouldSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> * _Nonnull)indexPaths SWIFT_WARN_UNUSED_RESULT;
+- (void)collectionView:(NSCollectionView * _Nonnull)collectionView didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> * _Nonnull)indexPaths;
+- (void)collectionView:(NSCollectionView * _Nonnull)collectionView didDeselectItemsAtIndexPaths:(NSSet<NSIndexPath *> * _Nonnull)indexPaths;
+- (BOOL)collectionView:(NSCollectionView * _Nonnull)collectionView writeItemsAtIndexPaths:(NSSet<NSIndexPath *> * _Nonnull)indexPaths toPasteboard:(NSPasteboard * _Nonnull)pasteboard SWIFT_WARN_UNUSED_RESULT;
+- (void)collectionView:(NSCollectionView * _Nonnull)collectionView draggingSession:(NSDraggingSession * _Nonnull)session willBeginAtPoint:(NSPoint)screenPoint forItemsAtIndexes:(NSIndexSet * _Nonnull)indexes;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop

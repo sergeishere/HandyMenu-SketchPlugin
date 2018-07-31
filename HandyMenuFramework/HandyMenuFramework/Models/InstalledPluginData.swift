@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct InstalledPluginData {
+public struct InstalledPluginData: Equatable {
     public var title: String
     public var commands: [PluginCommandData]
 }

@@ -2,14 +2,6 @@
   "commands" : [
     {
       "script" : "script.js",
-      "name" : "Show Menu",
-      "handlers" : {
-        "run" : "onShowMenu"
-      },
-      "identifier" : "com.sergeishere.plugins.handymenu.showmenu"
-    },
-    {
-      "script" : "script.js",
       "name" : "Configure Handy Menu",
       "handlers" : {
         "run" : "onSetup"
