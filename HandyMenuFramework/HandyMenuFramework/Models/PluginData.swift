@@ -11,7 +11,7 @@ import Foundation
 public struct PluginData: Codable {
     public var userID: UUID
     public var pluginVersion:Double
-    public var collections: [MenuData]
+    public var collections: [Collection]
     
 }
 

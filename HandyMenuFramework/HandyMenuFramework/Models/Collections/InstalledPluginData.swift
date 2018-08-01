@@ -11,5 +11,5 @@ import Foundation
 public struct InstalledPluginData: Equatable {
     public var pluginName: String
     public var image: NSImage?
-    public var commands: [PluginCommandData]
+    public var commands: [Command]
 }

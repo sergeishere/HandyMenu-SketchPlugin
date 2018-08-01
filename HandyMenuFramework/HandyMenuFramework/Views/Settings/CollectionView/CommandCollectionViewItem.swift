@@ -27,7 +27,6 @@ class CommandCollectionViewItem: NSCollectionViewItem {
     }
     
     public func configure(_ commandName: String, isUsed:Bool) {
-        plugin_log("%@ isUsed: %@", commandName, isUsed)
         self.commandName = commandName
         self.isUsed = isUsed
     }

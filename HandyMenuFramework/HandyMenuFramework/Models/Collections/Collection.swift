@@ -6,15 +6,15 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-public struct MenuData:Codable {
+public struct Collection:Codable {
     public var title: String
     public var shortcut: Shortcut
-    public var items:[MenuItemData]
+    public var items:[CollectionItem]
     public var autoGrouping: Bool
 }
 
-extension MenuData {
-    public static var emptyCollection:MenuData {
-        return MenuData(title: "New Collection", shortcut: .empty, items: [], autoGrouping: true)
+extension Collection {
+    public static var emptyCollection:Collection {
+        return Collection(title: "New Collection", shortcut: .empty, items: [], autoGrouping: true)
     }
 }

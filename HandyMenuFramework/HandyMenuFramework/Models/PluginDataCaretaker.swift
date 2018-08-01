@@ -41,15 +41,15 @@ public class PluginDataCaretaker {
         } else if let encodedData = userDefaults.data(forKey: DataVersion.v4.key()),
             let objects = NSKeyedUnarchiver.unarchiveObject(with: encodedData) as? [HMCommandScheme] {
             var newData = PluginData.empty
-            var newItems: [MenuItemData] = []
+            var newItems: [CollectionItem] = []
             for object in objects {
                 guard let installedPlugins = SketchAppBridge.sharedInstance().installedPlugins as? [String:NSObject],
                     let pluginBundle = installedPlugins[object.pluginID],
                     let pluginName = pluginBundle.value(forKey: "name") as? String else { continue }
-                let newItemData = PluginCommandData(name: object.name, commandID: object.commandID, pluginName: pluginName, pluginID: object.pluginID)
+                let newItemData = Command(name: object.name, commandID: object.commandID, pluginName: pluginName, pluginID: object.pluginID)
                 newItems.append(.command(newItemData))
             }
-            newData.collections = [MenuData(title: "Main", shortcut: .legacyShortcut, items: newItems, autoGrouping: true)]
+            newData.collections = [Collection(title: "Main", shortcut: .legacyShortcut, items: newItems, autoGrouping: true)]
             return newData
         }
         return nil

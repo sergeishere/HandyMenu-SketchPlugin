@@ -11,7 +11,7 @@ import os.log
 
 class HandyMenu: NSMenu {
     
-    public func configure(for data: MenuData) {
+    public func configure(for data: Collection) {
         
         let titleItem = NSMenuItem(title: data.title, action: nil, keyEquivalent: "")
         self.addItem(titleItem)
@@ -34,7 +34,7 @@ class HandyMenu: NSMenu {
     }
     
     @objc private func runPluginCommand(sender: NSMenuItem) {
-        guard let itemData = sender.representedObject as? PluginCommandData else { return }
+        guard let itemData = sender.representedObject as? Command else { return }
         SketchAppBridge.sharedInstance().runSketchPluginCommand(itemData.commandID, from: itemData.pluginID)
     }
 }

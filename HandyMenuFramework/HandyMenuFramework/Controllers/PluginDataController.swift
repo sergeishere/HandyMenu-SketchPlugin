@@ -8,7 +8,6 @@
 
 import Foundation
 import AppKit
-import os.log
 
 public protocol PluginDataControllerDelegate: class {
     func dataController(_ dataController: PluginDataController, didUpdate data:PluginData)
@@ -38,10 +37,20 @@ public class PluginDataController {
     // MARK: - Instance Methods
     public func loadPluginData(){
         self.pluginData = dataCaretaker.retrieve() ?? PluginData.empty
+        self.checkUserCollections()
         delegate?.dataController(self, didUpdate: pluginData!)
     }
     
-    public func saveCollections(_ collections: [MenuData]) {
+    private func checkUserCollections() {
+        // TODO:  - Implement this
+    }
+    
+    private func commandIsAvailable(_ command: Command) -> Bool {
+        // TODO:  - Implement this
+        return false
+    }
+    
+    public func saveCollections(_ collections: [Collection]) {
         self.pluginData?.collections = collections
         // TODO: Implement this!!!
         self.delegate?.dataController(self, didUpdate: self.pluginData!)
@@ -52,11 +61,9 @@ public class PluginDataController {
         var installedPluginsData:[InstalledPluginData] = []
         
         for (pluginKey, pluginBundle) in installedPlugins {
-            
             // Checking if the plugin exists and has name
             guard let pluginName = pluginBundle.value(forKey: "name") as? String else { continue }
             let pluginImage: NSImage? = pluginBundle.value(forKeyPath: "iconInfo.image") as? NSImage
-            plugin_log("Image url: ", String(describing: pluginImage))
             var installedPluginData = InstalledPluginData(pluginName: pluginName, image: pluginImage, commands: [])
             
             // Checking if the plugin has commands
@@ -67,7 +74,7 @@ public class PluginDataController {
                     let commandName = commandBundle.value(forKey: "name") as? String,
                     let commandID = commandBundle.value(forKey: "identifier") as? String {
                     
-                    let installedPluginCommand = PluginCommandData(name: commandName, commandID: commandID, pluginName: pluginName, pluginID: pluginKey)
+                    let installedPluginCommand = Command(name: commandName, commandID: commandID, pluginName: pluginName, pluginID: pluginKey)
                     installedPluginData.commands.append(installedPluginCommand)
                 }
             }

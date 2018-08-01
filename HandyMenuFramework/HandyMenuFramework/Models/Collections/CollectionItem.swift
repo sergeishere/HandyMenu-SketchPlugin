@@ -6,8 +6,8 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-public enum MenuItemData: Equatable {
-    case command(PluginCommandData)
+public enum CollectionItem: Equatable {
+    case command(Command)
     case separator
     
     private enum CodingKeys:String, CodingKey {
@@ -16,7 +16,7 @@ public enum MenuItemData: Equatable {
     }
 }
 
-extension MenuItemData: Encodable {
+extension CollectionItem: Encodable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         switch self {
@@ -29,14 +29,14 @@ extension MenuItemData: Encodable {
     }
 }
 
-extension MenuItemData: Decodable {
+extension CollectionItem: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let type = try container.decode(String.self, forKey: .type)
         
         switch type {
         case "command":
-            let data = try container.decode(PluginCommandData.self, forKey: .data)
+            let data = try container.decode(Command.self, forKey: .data)
             self = .command(data)
         default:
             self = .separator

@@ -14,11 +14,12 @@ public class MenuController {
     // MARK: - Private Variables
     private var menus: [Int:NSMenu] = [:]
     
-    public func configure(for data:[MenuData]) {
-        for menuData in data {
+    public func configure(for collections:[Collection]) {
+        self.menus = [:]
+        for collectionData in collections {
             let newMenu = HandyMenu()
-            newMenu.configure(for: menuData)
-            menus[menuData.shortcut.hashValue] = newMenu
+            newMenu.configure(for: collectionData)
+            menus[collectionData.shortcut.hashValue] = newMenu
         }
     }
     

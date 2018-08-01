@@ -10,7 +10,7 @@ import Cocoa
 import os.log
 
 public protocol SettingsWindowControllerDelegate: class {
-    func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData:[MenuData])
+    func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData:[Collection])
     func settingsWindowController(didClose settingsWindowController: SettingsWindowController)
 }
 
@@ -28,7 +28,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     @IBOutlet private weak var autoGroupingCheckboxButton: NSButton!
     @IBOutlet private weak var collectionsTableView: NSTableView! {
         didSet {
-            // Fixing first column width
+            // Fixing the first column width
             self.collectionsTableView.sizeToFit()
         }
     }
@@ -37,9 +37,9 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     private let windowViewController = SettingsWindowViewController()
     
     private var currentCollectionIndex: Int = 0
-    private var collections: [MenuData] = []
+    private var collections: [Collection] = []
     
-    private var currentCollection: MenuData {
+    private var currentCollection: Collection {
         get {
             return self.collections[self.currentCollectionIndex]
         }
@@ -91,7 +91,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     }
     
     // Public Methods
-    public func configure(_ collections:[MenuData]) {
+    public func configure(_ collections:[Collection]) {
         self.collections = collections
         
         if self.collections.count == 0 {
@@ -111,10 +111,22 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         self.collectionsPopUpButton.addItems(withTitles: self.collections.map({$0.title}))
     }
     
-    private func configureAutoGrouping(for state: Bool) {
-        self.currentCollection.autoGrouping = state
-        self.insertSeparatorButton.isEnabled = !state
-        self.autoGroupingCheckboxButton.state = state ? .on : .off
+    private func configureAutoGrouping(for autoGroupingOn: Bool) {
+        self.currentCollection.autoGrouping = autoGroupingOn
+        self.insertSeparatorButton.isEnabled = !autoGroupingOn
+        self.autoGroupingCheckboxButton.state = autoGroupingOn ? .on : .off
+        
+        if autoGroupingOn, self.currentCollection.items.contains(.separator) {
+            var separatorIndexes: IndexSet = []
+            for (index, item) in self.currentCollection.items.enumerated() {
+                if case CollectionItem.separator = item {
+                    separatorIndexes.insert(index)
+                }
+            }
+            self.currentCollection.items = self.currentCollection.items.filter{ $0 != .separator }
+            plugin_log("Filtered array: %@", String(describing: self.currentCollection.items))
+            self.collectionsTableView.removeRows(at: separatorIndexes, withAnimation: .effectFade)
+        }
     }
     
     private func selectCollection(at index: Int) {
@@ -134,7 +146,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         return newTitle
     }
     
-    private func pluginCommandAtIndexPath(_ indexPath: IndexPath) -> PluginCommandData {
+    private func pluginCommandAtIndexPath(_ indexPath: IndexPath) -> Command {
         return self.installedPlugins[indexPath.section].commands[indexPath.item]
     }
 }
@@ -179,7 +191,7 @@ extension SettingsWindowController: NSTableViewDelegate {
         return NSDragOperation.link
     }
     
-    // Writing indexes into pasteboard at the begining of the drag
+    // Writing moving item index into pasteboard at the begining of the drag
     public func tableView(_ tableView: NSTableView, writeRowsWith rowIndexes: IndexSet, to pboard: NSPasteboard) -> Bool {
         let data = NSKeyedArchiver.archivedData(withRootObject: rowIndexes)
         pboard.declareTypes([.string], owner: self)
@@ -194,7 +206,7 @@ extension SettingsWindowController: NSTableViewDelegate {
         if self.installedPluginsCollectionView.isEqual(info.draggingSource())  {
             guard let sourceIndexPath = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)) as? IndexPath else { return false }
             let pluginCommandData = self.pluginCommandAtIndexPath(sourceIndexPath)
-            let newCommand = MenuItemData.command(pluginCommandData)
+            let newCommand = CollectionItem.command(pluginCommandData)
             self.collections[currentCollectionIndex].items.insert(newCommand, at: row)
             self.collectionsTableView.insertRows(at: IndexSet(integer: row), withAnimation: .effectFade)
             self.installedPluginsCollectionView.reloadItems(at: [sourceIndexPath])
@@ -359,7 +371,7 @@ extension SettingsWindowController {
     
     @IBAction func addNewCollection(_ sender: Any) {
         let newIndex = self.collections.endIndex
-        var newCollection = MenuData.emptyCollection
+        var newCollection = Collection.emptyCollection
         newCollection.title = uniqueCollectionTitle()
         self.collections.insert(newCollection, at: newIndex)
         self.configureCollectionsPopUpButton()

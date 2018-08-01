@@ -72,7 +72,7 @@ extension PluginController: ShortcutControllerDelegate {
 
 // MARK: - SettingsWindowControllerDelegate
 extension PluginController: SettingsWindowControllerDelegate {
-    func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData: [MenuData]) {
+    func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData: [Collection]) {
         self.dataController.saveCollections(menuData)
     }
     
