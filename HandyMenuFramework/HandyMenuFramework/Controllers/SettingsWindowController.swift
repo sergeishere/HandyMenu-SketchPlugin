@@ -214,8 +214,9 @@ extension SettingsWindowController: NSTableViewDelegate {
         } else if self.collectionsTableView.isEqual(info.draggingSource()) {
             guard let indexes = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)) as? IndexSet,
                 let fromRow = indexes.first else { return false }
-            let toRow = (row >= self.currentCollection.items.endIndex || fromRow < row) ? row - 1 : row
-            self.currentCollection.items.swapAt(fromRow, toRow)
+            let toRow = (fromRow > row) ? row : row - 1
+            let movingItem = self.currentCollection.items.remove(at: fromRow)
+            self.currentCollection.items.insert(movingItem, at: toRow)
             self.collectionsTableView.moveRow(at: fromRow, to: toRow)
             return true
         }
@@ -322,7 +323,8 @@ extension SettingsWindowController: NSCollectionViewDelegateFlowLayout {
         item.setHighlight(false)
     }
     
-    // Drag And Drop
+    // Drag & Drop
+    // Writing dragging item's indexPath to pasteboard
     public func collectionView(_ collectionView: NSCollectionView, writeItemsAt indexPaths: Set<IndexPath>, to pasteboard: NSPasteboard) -> Bool {
         guard let indexPath = indexPaths.first,
             let item = self.installedPluginsCollectionView.item(at: indexPath) as? CommandCollectionViewItem,
@@ -333,6 +335,7 @@ extension SettingsWindowController: NSCollectionViewDelegateFlowLayout {
         return true
     }
     
+    // Preventing animation when cancel dragging
     public func collectionView(_ collectionView: NSCollectionView, draggingSession session: NSDraggingSession, willBeginAt screenPoint: NSPoint, forItemsAt indexes: IndexSet) {
         session.animatesToStartingPositionsOnCancelOrFail = false
     }

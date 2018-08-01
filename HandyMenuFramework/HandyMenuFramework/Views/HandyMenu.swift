@@ -15,6 +15,7 @@ class HandyMenu: NSMenu {
         
         let titleItem = NSMenuItem(title: data.title, action: nil, keyEquivalent: "")
         self.addItem(titleItem)
+        self.addItem(NSMenuItem.separator())
 
         for item in data.items {
             var newMenuItem:NSMenuItem
