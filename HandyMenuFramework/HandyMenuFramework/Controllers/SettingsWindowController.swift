@@ -19,11 +19,17 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     // MARK: - Outlets
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
-    @IBOutlet private weak var collectionsTableView: NSTableView!
     @IBOutlet private weak var collectionsPopUpButton: NSPopUpButton!
     @IBOutlet private weak var collectionSettingsMenu: NSMenu!
     @IBOutlet private weak var removeMenuItem: NSMenuItem!
     @IBOutlet private weak var shortcutField: ShortcutField!
+    @IBOutlet private weak var deleteItemButton: NSButton!
+    @IBOutlet private weak var collectionsTableView: NSTableView! {
+        didSet {
+            // Fixing first column width
+            self.collectionsTableView.sizeToFit()
+        }
+    }
     
     // MARK: - Private Properties
     private let windowViewController = SettingsWindowViewController()
@@ -147,11 +153,15 @@ extension SettingsWindowController: NSTableViewDelegate {
             guard let commandCell = collectionsTableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommandCell"), owner: self) as? CommandTableViewItem else { return nil }
             commandCell.title = commandData.name
             return commandCell
-        default:
-            break
+        case .separator:
+            guard let separatorCell = collectionsTableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SeparatorCell"), owner: self) else { return nil }
+            return separatorCell
         }
-        
-        return nil
+    }
+    
+    // Handling Selection
+    public func tableViewSelectionDidChange(_ notification: Notification) {
+        self.deleteItemButton.isEnabled = self.collectionsTableView.selectedRowIndexes.count != 0
     }
     
     // Drag And Drop
@@ -167,7 +177,7 @@ extension SettingsWindowController: NSTableViewDelegate {
         return true
     }
     
-    // Handling drop
+    // Handling Drop
     public func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
         guard let data = info.draggingPasteboard().data(forType: .string), dropOperation == .above else { return false }
         
@@ -305,6 +315,13 @@ extension SettingsWindowController: NSCollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - ShortcutFieldDelegate
+extension SettingsWindowController: ShortcutFieldDelegate {
+    func shortcutField(_ shortcutField: ShortcutField, didChange shortcut: Shortcut) {
+        self.currentCollection.shortcut = shortcut
+    }
+}
+
 // MARK: - Actions Handling
 extension SettingsWindowController {
     
@@ -318,7 +335,7 @@ extension SettingsWindowController {
     }
     
     @IBAction func renameCollection(_ sender: Any) {
-        
+        // TODO: Implement this
     }
     
     @IBAction func removeCollection(_ sender: Any) {
@@ -342,6 +359,21 @@ extension SettingsWindowController {
         self.selectCollection(at: self.collectionsPopUpButton.indexOfSelectedItem)
     }
     
+    // Managing Collection's Items
+    @IBAction func deleteSelectedItem(_ sender: Any) {
+        let row = self.collectionsTableView.selectedRow
+        self.currentCollection.items.remove(at: row)
+        self.collectionsTableView.removeRows(at: [row], withAnimation: .effectFade)
+    }
+    
+    @IBAction func insertSeparator(_ sender: Any) {
+        let index = self.currentCollection.items.endIndex
+        self.currentCollection.items.insert(.separator, at: index)
+        self.collectionsTableView.insertRows(at: [index], withAnimation: .effectFade)
+    }
+    
+
+    // Save/Cancel Buttons Actions
     @IBAction func save(_ sender: Any) {
         self.delegate?.settingsWindowController(self, didUpdate: [])
         self.close()
@@ -358,9 +390,4 @@ extension SettingsWindowController {
     
 }
 
-// MARK: - ShortcutFieldDelegate
-extension SettingsWindowController: ShortcutFieldDelegate {
-    func shortcutField(_ shortcutField: ShortcutField, didChange shortcut: Shortcut) {
-        self.currentCollection.shortcut = shortcut
-    }
-}
+

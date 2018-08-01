@@ -196,13 +196,13 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
 @class NSTableView;
 
 @interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDataSource>
 - (NSInteger)numberOfRowsInTableView:(NSTableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 @class NSCollectionView;
 @class NSCollectionViewItem;
@@ -223,14 +223,13 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 @interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDelegate>
 - (CGFloat)tableView:(NSTableView * _Nonnull)tableView heightOfRow:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
 - (NSView * _Nullable)tableView:(NSTableView * _Nonnull)tableView viewForTableColumn:(NSTableColumn * _Nullable)tableColumn row:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
+- (void)tableViewSelectionDidChange:(NSNotification * _Nonnull)notification;
 - (NSDragOperation)tableView:(NSTableView * _Nonnull)tableView validateDrop:(id <NSDraggingInfo> _Nonnull)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)tableView:(NSTableView * _Nonnull)tableView writeRowsWithIndexes:(NSIndexSet * _Nonnull)rowIndexes toPasteboard:(NSPasteboard * _Nonnull)pboard SWIFT_WARN_UNUSED_RESULT;
 - (BOOL)tableView:(NSTableView * _Nonnull)tableView acceptDrop:(id <NSDraggingInfo> _Nonnull)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation SWIFT_WARN_UNUSED_RESULT;
 - (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session willBeginAtPoint:(NSPoint)screenPoint forRowIndexes:(NSIndexSet * _Nonnull)rowIndexes;
 - (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation;
 @end
-
-
 
 @class NSCollectionViewLayout;
 @class NSEvent;
@@ -246,6 +245,8 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (BOOL)collectionView:(NSCollectionView * _Nonnull)collectionView writeItemsAtIndexPaths:(NSSet<NSIndexPath *> * _Nonnull)indexPaths toPasteboard:(NSPasteboard * _Nonnull)pasteboard SWIFT_WARN_UNUSED_RESULT;
 - (void)collectionView:(NSCollectionView * _Nonnull)collectionView draggingSession:(NSDraggingSession * _Nonnull)session willBeginAtPoint:(NSPoint)screenPoint forItemsAtIndexes:(NSIndexSet * _Nonnull)indexes;
 @end
+
+
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
