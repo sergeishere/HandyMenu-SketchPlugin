@@ -41,6 +41,12 @@ public class PluginDataController {
         delegate?.dataController(self, didUpdate: pluginData!)
     }
     
+    public func saveCollections(_ collections: [MenuData]) {
+        self.pluginData?.collections = collections
+        // TODO: Implement this!!!
+        self.delegate?.dataController(self, didUpdate: self.pluginData!)
+    }
+    
     public func loadInstalledPluginsData() {
         guard let installedPlugins = SketchAppBridge.sharedInstance().installedPlugins as? [String: NSObject] else { return }
         var installedPluginsData:[InstalledPluginData] = []

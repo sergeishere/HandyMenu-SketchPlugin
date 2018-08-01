@@ -49,7 +49,7 @@ public class PluginDataCaretaker {
                 let newItemData = PluginCommandData(name: object.name, commandID: object.commandID, pluginName: pluginName, pluginID: object.pluginID)
                 newItems.append(.command(newItemData))
             }
-            newData.collections = [MenuData(title: "Main", shortcut: .legacyShortcut, items: newItems, manualGrouping: false)]
+            newData.collections = [MenuData(title: "Main", shortcut: .legacyShortcut, items: newItems, autoGrouping: true)]
             return newData
         }
         return nil

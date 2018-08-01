@@ -8,10 +8,12 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindowController" customModule="HandyMenuFramework" customModuleProvider="target">
             <connections>
+                <outlet property="autoGroupingCheckboxButton" destination="hMJ-Hp-gnc" id="eJN-8a-i8f"/>
                 <outlet property="collectionSettingsMenu" destination="6kd-9G-3aK" id="aqL-IW-3H2"/>
                 <outlet property="collectionsPopUpButton" destination="7SF-t5-biH" id="0yM-jz-FIV"/>
                 <outlet property="collectionsTableView" destination="yP6-CO-ubM" id="lrd-hT-ge9"/>
                 <outlet property="deleteItemButton" destination="aHB-oK-ulr" id="v3P-2H-lVy"/>
+                <outlet property="insertSeparatorButton" destination="QrG-ll-9LE" id="Uwf-M4-l6H"/>
                 <outlet property="installedPluginsCollectionView" destination="J3I-JX-xAN" id="bb5-rC-R49"/>
                 <outlet property="removeMenuItem" destination="ffe-If-1sm" id="Phf-cZ-RNW"/>
                 <outlet property="shortcutField" destination="Alm-vU-z38" id="Jnr-X7-Way"/>
@@ -244,19 +246,6 @@
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="zuT-gs-0vd" customClass="BorderedView" customModule="HandyMenuFramework" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="431" height="32"/>
                                                 <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QrG-ll-9LE">
-                                                        <rect key="frame" x="8" y="5" width="106" height="21"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="hQl-71-f6g"/>
-                                                        </constraints>
-                                                        <buttonCell key="cell" type="roundRect" title="Insert Separator" bezelStyle="roundedRect" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ip-Sn-Zzo">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="cellTitle"/>
-                                                        </buttonCell>
-                                                        <connections>
-                                                            <action selector="insertSeparator:" target="-2" id="guq-T3-hEh"/>
-                                                        </connections>
-                                                    </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aHB-oK-ulr">
                                                         <rect key="frame" x="372" y="5" width="51" height="21"/>
                                                         <constraints>
@@ -270,11 +259,37 @@
                                                             <action selector="deleteSelectedItem:" target="-2" id="hrP-UW-8sY"/>
                                                         </connections>
                                                     </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hMJ-Hp-gnc">
+                                                        <rect key="frame" x="6" y="7" width="145" height="18"/>
+                                                        <buttonCell key="cell" type="check" title="Group Automatically" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="MIK-OM-nwc">
+                                                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                            <font key="font" metaFont="system"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="switchAutoGrouping:" target="-2" id="hPo-bT-faf"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QrG-ll-9LE">
+                                                        <rect key="frame" x="161" y="5" width="106" height="21"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="hQl-71-f6g"/>
+                                                        </constraints>
+                                                        <buttonCell key="cell" type="roundRect" title="Insert Separator" bezelStyle="roundedRect" alignment="center" enabled="NO" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0Ip-Sn-Zzo">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" metaFont="cellTitle"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="insertSeparator:" target="-2" id="guq-T3-hEh"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="hMJ-Hp-gnc" firstAttribute="top" secondItem="zuT-gs-0vd" secondAttribute="top" constant="9" id="bD6-dd-L2y"/>
                                                     <constraint firstItem="aHB-oK-ulr" firstAttribute="centerY" secondItem="zuT-gs-0vd" secondAttribute="centerY" id="cbE-Nd-D0E"/>
-                                                    <constraint firstItem="QrG-ll-9LE" firstAttribute="leading" secondItem="zuT-gs-0vd" secondAttribute="leading" constant="8" id="j0K-hL-wTO"/>
+                                                    <constraint firstItem="QrG-ll-9LE" firstAttribute="leading" secondItem="hMJ-Hp-gnc" secondAttribute="trailing" constant="12" id="hpe-gA-Vdp"/>
                                                     <constraint firstItem="QrG-ll-9LE" firstAttribute="centerY" secondItem="zuT-gs-0vd" secondAttribute="centerY" id="u3L-d8-ifO"/>
+                                                    <constraint firstItem="hMJ-Hp-gnc" firstAttribute="leading" secondItem="zuT-gs-0vd" secondAttribute="leading" constant="8" id="uIs-eG-4EX"/>
+                                                    <constraint firstItem="hMJ-Hp-gnc" firstAttribute="centerY" secondItem="zuT-gs-0vd" secondAttribute="centerY" id="vzX-JW-u7o"/>
                                                     <constraint firstAttribute="trailing" secondItem="aHB-oK-ulr" secondAttribute="trailing" constant="8" id="w72-5m-kod"/>
                                                     <constraint firstAttribute="height" constant="32" id="wH4-Ck-rxx"/>
                                                 </constraints>

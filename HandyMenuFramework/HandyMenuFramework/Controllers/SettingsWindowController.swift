@@ -24,6 +24,8 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     @IBOutlet private weak var removeMenuItem: NSMenuItem!
     @IBOutlet private weak var shortcutField: ShortcutField!
     @IBOutlet private weak var deleteItemButton: NSButton!
+    @IBOutlet private weak var insertSeparatorButton: NSButton!
+    @IBOutlet private weak var autoGroupingCheckboxButton: NSButton!
     @IBOutlet private weak var collectionsTableView: NSTableView! {
         didSet {
             // Fixing first column width
@@ -109,11 +111,18 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         self.collectionsPopUpButton.addItems(withTitles: self.collections.map({$0.title}))
     }
     
+    private func configureAutoGrouping(for state: Bool) {
+        self.currentCollection.autoGrouping = state
+        self.insertSeparatorButton.isEnabled = !state
+        self.autoGroupingCheckboxButton.state = state ? .on : .off
+    }
+    
     private func selectCollection(at index: Int) {
         self.currentCollectionIndex = index
         self.collectionsPopUpButton.selectItem(at: index)
         self.collectionsTableView.reloadData()
         self.shortcutField.shortcut = self.currentCollection.shortcut
+        self.configureAutoGrouping(for: self.currentCollection.autoGrouping)
     }
     
     private func uniqueCollectionTitle() -> String {
@@ -180,7 +189,7 @@ extension SettingsWindowController: NSTableViewDelegate {
     
     // Handling Drop
     public func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
-        guard let data = info.draggingPasteboard().data(forType: .string), dropOperation == .above else { return false }
+        guard let data = info.draggingPasteboard().data(forType: .string) else { return false }
         
         if self.installedPluginsCollectionView.isEqual(info.draggingSource())  {
             guard let sourceIndexPath = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)) as? IndexPath else { return false }
@@ -374,10 +383,15 @@ extension SettingsWindowController {
         self.collectionsTableView.insertRows(at: [index], withAnimation: .effectFade)
     }
     
+    @IBAction func switchAutoGrouping(_ sender: Any) {
+        let checkboxState = self.autoGroupingCheckboxButton.state == .on ? true : false
+        self.configureAutoGrouping(for: checkboxState)
+    }
+    
 
     // Save/Cancel Buttons Actions
     @IBAction func save(_ sender: Any) {
-        self.delegate?.settingsWindowController(self, didUpdate: [])
+        self.delegate?.settingsWindowController(self, didUpdate: collections)
         self.close()
     }
     
