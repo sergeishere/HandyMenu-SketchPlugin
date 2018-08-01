@@ -17,18 +17,20 @@ class HandyMenu: NSMenu {
         self.addItem(titleItem)
         self.addItem(NSMenuItem.separator())
 
-        for item in data.items {
-            var newMenuItem:NSMenuItem
+        for (index, item) in data.items.enumerated() {
             switch item {
             case .separator:
-                newMenuItem = NSMenuItem.separator()
+                if data.autoGrouping { break }
+                self.addItem(NSMenuItem.separator())
             case .command(let commandData):
-                newMenuItem = NSMenuItem(title: commandData.name, action: #selector(runPluginCommand(sender:)), keyEquivalent: "")
+                if data.autoGrouping, index > 0, case let CollectionItem.command(previousCommand) = data.items[index-1], previousCommand.pluginID != commandData.pluginID {
+                    self.addItem(NSMenuItem.separator())
+                }
+                let newMenuItem = NSMenuItem(title: commandData.name, action: #selector(runPluginCommand(sender:)), keyEquivalent: "")
                 newMenuItem.target = self
                 newMenuItem.representedObject = commandData
+                self.addItem(newMenuItem)
             }
-            
-            self.addItem(newMenuItem)
         }
         
         
