@@ -59,7 +59,7 @@ public class PluginDataController {
                     let commandName = commandBundle.value(forKey: "name") as? String,
                     let commandID = commandBundle.value(forKey: "identifier") as? String {
                     
-                    let installedPluginCommand = PluginCommandData(name: commandName, commandID: commandID, pluginID: pluginKey)
+                    let installedPluginCommand = PluginCommandData(name: commandName, commandID: commandID, pluginName: pluginName, pluginID: pluginKey)
                     installedPluginData.commands.append(installedPluginCommand)
                 }
             }

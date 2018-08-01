@@ -43,7 +43,10 @@ public class PluginDataCaretaker {
             var newData = PluginData.empty
             var newItems: [MenuItemData] = []
             for object in objects {
-                let newItemData = PluginCommandData(name: object.name, commandID: object.commandID, pluginID: object.pluginID)
+                guard let installedPlugins = SketchAppBridge.sharedInstance().installedPlugins as? [String:NSObject],
+                    let pluginBundle = installedPlugins[object.pluginID],
+                    let pluginName = pluginBundle.value(forKey: "name") as? String else { continue }
+                let newItemData = PluginCommandData(name: object.name, commandID: object.commandID, pluginName: pluginName, pluginID: object.pluginID)
                 newItems.append(.command(newItemData))
             }
             newData.collections = [MenuData(title: "Main", shortcut: .legacyShortcut, items: newItems, manualGrouping: false)]

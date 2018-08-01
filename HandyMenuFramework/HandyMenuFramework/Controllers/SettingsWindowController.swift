@@ -152,6 +152,7 @@ extension SettingsWindowController: NSTableViewDelegate {
         case .command(let commandData):
             guard let commandCell = collectionsTableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommandCell"), owner: self) as? CommandTableViewItem else { return nil }
             commandCell.title = commandData.name
+            commandCell.toolTip = commandData.pluginName
             return commandCell
         case .separator:
             guard let separatorCell = collectionsTableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "SeparatorCell"), owner: self) else { return nil }
