@@ -40,7 +40,6 @@
 		A5AA666E20FFB10B0027BC45 /* SketchAppBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */; };
 		A5AA667120FFD1A10027BC45 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */; };
 		A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */; };
-		A5E3D3FD21110F0F00CC17CD /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E3D3FC21110F0F00CC17CD /* NSImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -91,7 +90,6 @@
 		A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SketchAppBridge.m; sourceTree = "<group>"; };
 		A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
 		A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsWindowController.xib; sourceTree = "<group>"; };
-		A5E3D3FC21110F0F00CC17CD /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +117,6 @@
 			children = (
 				A508BF09210F96F100024995 /* Utils.swift */,
 				A5905864210E0AF700B6079A /* OSLog.swift */,
-				A5E3D3FC21110F0F00CC17CD /* NSImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -346,7 +343,6 @@
 				A521562720FD3A0B002A5816 /* MenuController.swift in Sources */,
 				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
 				A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */,
-				A5E3D3FD21110F0F00CC17CD /* NSImage.swift in Sources */,
 				A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */,
 				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
 				A5AA667120FFD1A10027BC45 /* SettingsWindowController.swift in Sources */,

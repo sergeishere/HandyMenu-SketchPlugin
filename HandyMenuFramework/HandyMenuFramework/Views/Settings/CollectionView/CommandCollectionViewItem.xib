@@ -17,40 +17,26 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eRB-kw-3t5">
-                    <rect key="frame" x="18" y="8" width="105" height="17"/>
+                    <rect key="frame" x="62" y="8" width="105" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Command Name" id="kha-0L-CeA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M6a-Pf-7eS">
-                    <rect key="frame" x="4" y="9" width="16" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="16" id="KN5-ej-nBQ"/>
-                        <constraint firstAttribute="height" constant="16" id="wSb-k6-nwh"/>
-                    </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="checkmark" id="seE-PA-Oqd"/>
-                </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="eRB-kw-3t5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="MHd-Ba-MCP"/>
-                <constraint firstItem="eRB-kw-3t5" firstAttribute="leading" secondItem="M6a-Pf-7eS" secondAttribute="trailing" id="dHG-Ii-gvO"/>
+                <constraint firstItem="eRB-kw-3t5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="64" id="MHd-Ba-MCP"/>
                 <constraint firstItem="eRB-kw-3t5" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="szJ-xf-dwR"/>
-                <constraint firstItem="M6a-Pf-7eS" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="vLN-nJ-ej5"/>
             </constraints>
             <point key="canvasLocation" x="139" y="49"/>
         </customView>
         <collectionViewItem id="IfF-Sg-hG3" customClass="CommandCollectionViewItem" customModule="HandyMenuFramework" customModuleProvider="target">
             <connections>
-                <outlet property="checkmarkImageView" destination="M6a-Pf-7eS" id="Nc0-Ot-9oM"/>
                 <outlet property="contentView" destination="Hz6-mo-xeY" id="Fqy-jf-GSY"/>
                 <outlet property="textField" destination="eRB-kw-3t5" id="VhP-tm-HJ8"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="z0I-sm-kiY"/>
             </connections>
         </collectionViewItem>
     </objects>
-    <resources>
-        <image name="checkmark" width="12" height="12"/>
-    </resources>
 </document>

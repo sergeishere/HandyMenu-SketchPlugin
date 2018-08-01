@@ -248,7 +248,8 @@ extension SettingsWindowController: NSCollectionViewDataSource {
             let suppementaryHeaderView = self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionHeader,
                                                                                                    withIdentifier: NSUserInterfaceItemIdentifier("PluginSectionHeaderView"),
                                                                                                    for: indexPath) as! PluginSectionHeaderView
-            suppementaryHeaderView.title = self.installedPlugins[indexPath.section].title
+            suppementaryHeaderView.title = self.installedPlugins[indexPath.section].pluginName
+            suppementaryHeaderView.image = self.installedPlugins[indexPath.section].image
             return suppementaryHeaderView
         case .sectionFooter:
             return self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionFooter,

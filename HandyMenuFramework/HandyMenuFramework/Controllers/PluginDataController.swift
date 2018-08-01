@@ -49,7 +49,9 @@ public class PluginDataController {
             
             // Checking if the plugin exists and has name
             guard let pluginName = pluginBundle.value(forKey: "name") as? String else { continue }
-            var installedPluginData = InstalledPluginData(title: pluginName, commands: [])
+            let pluginImage: NSImage? = pluginBundle.value(forKeyPath: "iconInfo.image") as? NSImage
+            plugin_log("Image url: ", String(describing: pluginImage))
+            var installedPluginData = InstalledPluginData(pluginName: pluginName, image: pluginImage, commands: [])
             
             // Checking if the plugin has commands
             guard let commandsDictionary = pluginBundle.value(forKey: "commands") as? [String: NSObject] else { continue }
@@ -65,7 +67,7 @@ public class PluginDataController {
             }
             installedPluginsData.append(installedPluginData)
         }
-        installedPluginsData.sort { $0.title < $1.title }
+        installedPluginsData.sort { $0.pluginName < $1.pluginName }
         self.delegate?.dataController(self, didLoad: installedPluginsData)
     }
 }

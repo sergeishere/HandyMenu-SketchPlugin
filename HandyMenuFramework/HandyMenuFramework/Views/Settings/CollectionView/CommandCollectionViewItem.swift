@@ -12,15 +12,10 @@ import CoreGraphics
 class CommandCollectionViewItem: NSCollectionViewItem {
     
     @IBOutlet private weak var contentView: NSView!
-    @IBOutlet private weak var checkmarkImageView: NSImageView! {
-        didSet {
-            self.checkmarkImageView.image = self.checkmarkImageView.image?.tinted(color: NSColor.green)
-        }
-    }
     
     public var isUsed: Bool = false {
         didSet {
-            self.checkmarkImageView.isHidden = !self.isUsed
+            self.textField?.stringValue = self.isUsed ? "✓ " + commandName : commandName
             self.textField?.textColor = self.isUsed ? NSColor.controlTextColor.withAlphaComponent(0.3) : NSColor.controlTextColor
         }
     }

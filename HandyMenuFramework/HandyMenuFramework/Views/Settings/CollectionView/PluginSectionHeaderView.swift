@@ -11,13 +11,17 @@ import Cocoa
 class PluginSectionHeaderView: NSView {
     
     @IBOutlet private weak var pluginNameTextField: NSTextField!
+    @IBOutlet private weak var pluginImageView: NSImageView!
     
-    public var title: String {
-        set {
-            self.pluginNameTextField.stringValue = newValue
+    public var title: String = "" {
+        didSet {
+            self.pluginNameTextField.stringValue = self.title
         }
-        get {
-            return self.title
+    }
+    
+    public var image: NSImage? {
+        didSet {
+            self.pluginImageView.image = self.image
         }
     }
 
