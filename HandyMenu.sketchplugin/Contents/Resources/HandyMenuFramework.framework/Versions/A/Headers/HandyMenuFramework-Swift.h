@@ -231,8 +231,6 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (void)collectionView:(NSCollectionView * _Nonnull)collectionView draggingSession:(NSDraggingSession * _Nonnull)session willBeginAtPoint:(NSPoint)screenPoint forItemsAtIndexes:(NSIndexSet * _Nonnull)indexes;
 @end
 
-
-
 @class NSTableColumn;
 @protocol NSDraggingInfo;
 
@@ -246,6 +244,8 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session willBeginAtPoint:(NSPoint)screenPoint forRowIndexes:(NSIndexSet * _Nonnull)rowIndexes;
 - (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation;
 @end
+
+
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop

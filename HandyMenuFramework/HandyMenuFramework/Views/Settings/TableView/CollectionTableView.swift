@@ -9,7 +9,7 @@
 import Cocoa
 
 protocol CollectionTableViewDelegate: class {
-    func collectionTableView(_ collectionTableView: CollectionTableView, willDelete rows:IndexSet)
+    func deleteIsPressed(at rows:IndexSet)
     func collectionTableView(_ collectionTableView: CollectionTableView, draggingSession session: NSDraggingSession, movedTo screenPoint: NSPoint)
 }
 
@@ -33,8 +33,7 @@ class CollectionTableView: NSTableView {
             !self.selectedRowIndexes.isEmpty,
             let delegate = self.delegate as? CollectionTableViewDelegate {
             let selectedRows = self.selectedRowIndexes
-            self.removeRows(at: selectedRows, withAnimation: .effectFade)
-            delegate.collectionTableView(self, willDelete: selectedRows)
+            delegate.deleteIsPressed(at: selectedRows)
         }
         super.keyDown(with: event)
     }

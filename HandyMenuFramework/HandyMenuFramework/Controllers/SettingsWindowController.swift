@@ -18,6 +18,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     
     // MARK: - Outlets
+    @IBOutlet private weak var searchField: NSSearchField!
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
     @IBOutlet private weak var collectionsPopUpButton: NSPopUpButton!
     @IBOutlet private weak var collectionSettingsMenu: NSMenu!
@@ -147,6 +148,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     private func selectCollection(at index: Int) {
         self.currentCollectionIndex = index
         self.collectionsPopUpButton.selectItem(at: index)
+        self.installedPluginsCollectionView.reloadItems(at: self.installedPluginsCollectionView.indexPathsForVisibleItems())
         self.currentCollectionTableView.reloadData()
         self.shortcutField.shortcut = self.currentCollection.shortcut
         self.configureAutoGrouping(for: self.currentCollection.autoGrouping)
@@ -163,6 +165,12 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     private func pluginCommandAtIndexPath(_ indexPath: IndexPath) -> Command {
         return self.installedPlugins[indexPath.section].commands[indexPath.item]
+    }
+    
+    private func removeCommand(at row: IndexSet.Element) {
+        self.currentCollection.items.remove(at: row)
+        self.currentCollectionTableView.removeRows(at: [row], withAnimation: .effectFade)
+//        self.installedPluginsCollectionView
     }
 }
 
@@ -256,8 +264,7 @@ extension SettingsWindowController: NSTableViewDelegate, CollectionTableViewDele
             let data = session.draggingPasteboard.data(forType: .string),
             let indexes = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)) as? IndexSet,
             let rowToDelete = indexes.first {
-            self.currentCollection.items.remove(at: rowToDelete)
-            self.currentCollectionTableView.removeRows(at: indexes, withAnimation: .effectFade)
+            self.removeCommand(at: rowToDelete)
         }
     }
     
@@ -272,10 +279,10 @@ extension SettingsWindowController: NSTableViewDelegate, CollectionTableViewDele
     }
     
     
-    // Deleting item if DEL key is pressed
-    func collectionTableView(_ collectionTableView: CollectionTableView, willDelete rows: IndexSet) {
-        guard let itemIndex = rows.first else { return }
-        self.currentCollection.items.remove(at: itemIndex)
+    // Deleting item if DEL key is pressed (CollectionTableViewDelegate)
+    func deleteIsPressed(at rows: IndexSet) {
+        guard let index = rows.first else { return }
+        self.removeCommand(at: index)
     }
     
 }
@@ -395,6 +402,12 @@ extension SettingsWindowController: ShortcutFieldDelegate {
 // MARK: - Actions Handling
 extension SettingsWindowController {
     
+    
+    // Handling search action
+    @IBAction func search(_ sender: Any) {
+        plugin_log("Searching %@", self.searchField.stringValue)
+    }
+    
     // Managing Selected Collection
     @IBAction func openCollectionSettings(_ sender: Any) {
         self.removeMenuItem.isEnabled = self.collections.count > 1 ? true : false
@@ -432,8 +445,7 @@ extension SettingsWindowController {
     // Managing Collection's Items
     @IBAction func deleteSelectedItem(_ sender: Any) {
         let row = self.currentCollectionTableView.selectedRow
-        self.currentCollection.items.remove(at: row)
-        self.currentCollectionTableView.removeRows(at: [row], withAnimation: .effectFade)
+        self.removeCommand(at: row)
     }
     
     @IBAction func insertSeparator(_ sender: Any) {

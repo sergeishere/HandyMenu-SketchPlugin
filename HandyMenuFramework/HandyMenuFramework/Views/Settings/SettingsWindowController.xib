@@ -17,6 +17,7 @@
                 <outlet property="insertSeparatorButton" destination="QrG-ll-9LE" id="Uwf-M4-l6H"/>
                 <outlet property="installedPluginsCollectionView" destination="J3I-JX-xAN" id="bb5-rC-R49"/>
                 <outlet property="removeMenuItem" destination="ffe-If-1sm" id="Phf-cZ-RNW"/>
+                <outlet property="searchField" destination="ENv-y6-3C7" id="BDB-kR-yUw"/>
                 <outlet property="shortcutField" destination="Alm-vU-z38" id="Jnr-X7-Way"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -53,6 +54,9 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </searchFieldCell>
+                                        <connections>
+                                            <action selector="search:" target="-2" id="lAU-j5-dBa"/>
+                                        </connections>
                                     </searchField>
                                     <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4W-Hx-wVA">
                                         <rect key="frame" x="0.0" y="0.0" width="423" height="489"/>
