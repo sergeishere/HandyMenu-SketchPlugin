@@ -7,11 +7,16 @@
 //
 
 import Cocoa
-import CoreGraphics
+
+protocol CommandCollectionViewItemDelegate: class {
+    func doubleClick(on item: CommandCollectionViewItem)
+}
 
 class CommandCollectionViewItem: NSCollectionViewItem {
     
     @IBOutlet private weak var contentView: NSView!
+    
+    public weak var delegate: CommandCollectionViewItemDelegate?
     
     public var isUsed: Bool = false {
         didSet {
@@ -40,5 +45,13 @@ class CommandCollectionViewItem: NSCollectionViewItem {
     func setHighlight(_ selected: Bool) {
         self.view.layer?.backgroundColor = selected ? NSColor.alternateSelectedControlColor.cgColor : NSColor.clear.cgColor
         self.textField?.textColor = selected ? NSColor.white : NSColor.controlTextColor
+    }
+    
+    override func mouseDown(with event: NSEvent) {
+        super.mouseDown(with: event)
+        if (event.clickCount == 2),
+            !self.isUsed {
+            delegate?.doubleClick(on: self)
+        }
     }
 }

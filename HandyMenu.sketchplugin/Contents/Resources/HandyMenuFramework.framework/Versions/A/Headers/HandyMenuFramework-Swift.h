@@ -183,6 +183,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+@class NSEvent;
 @class NSWindow;
 @class NSCoder;
 
@@ -190,6 +191,7 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 @interface SettingsWindowController : NSWindowController
 - (void)windowDidLoad;
 - (void)close;
+- (void)mouseDown:(NSEvent * _Nonnull)event;
 - (nonnull instancetype)initWithWindow:(NSWindow * _Nullable)window OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -213,24 +215,9 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (NSView * _Nonnull)collectionView:(NSCollectionView * _Nonnull)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind _Nonnull)kind atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class NSTableColumn;
-@protocol NSDraggingInfo;
+@class NSCollectionViewLayout;
 @class NSPasteboard;
 @class NSDraggingSession;
-
-@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDelegate>
-- (CGFloat)tableView:(NSTableView * _Nonnull)tableView heightOfRow:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
-- (NSView * _Nullable)tableView:(NSTableView * _Nonnull)tableView viewForTableColumn:(NSTableColumn * _Nullable)tableColumn row:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
-- (void)tableViewSelectionDidChange:(NSNotification * _Nonnull)notification;
-- (NSDragOperation)tableView:(NSTableView * _Nonnull)tableView validateDrop:(id <NSDraggingInfo> _Nonnull)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)tableView:(NSTableView * _Nonnull)tableView writeRowsWithIndexes:(NSIndexSet * _Nonnull)rowIndexes toPasteboard:(NSPasteboard * _Nonnull)pboard SWIFT_WARN_UNUSED_RESULT;
-- (BOOL)tableView:(NSTableView * _Nonnull)tableView acceptDrop:(id <NSDraggingInfo> _Nonnull)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation SWIFT_WARN_UNUSED_RESULT;
-- (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session willBeginAtPoint:(NSPoint)screenPoint forRowIndexes:(NSIndexSet * _Nonnull)rowIndexes;
-- (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation;
-@end
-
-@class NSCollectionViewLayout;
-@class NSEvent;
 
 @interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSCollectionViewDelegateFlowLayout>
 - (NSSize)collectionView:(NSCollectionView * _Nonnull)collectionView layout:(NSCollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
@@ -245,6 +232,20 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 @end
 
 
+
+@class NSTableColumn;
+@protocol NSDraggingInfo;
+
+@interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDelegate>
+- (CGFloat)tableView:(NSTableView * _Nonnull)tableView heightOfRow:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
+- (NSView * _Nullable)tableView:(NSTableView * _Nonnull)tableView viewForTableColumn:(NSTableColumn * _Nullable)tableColumn row:(NSInteger)row SWIFT_WARN_UNUSED_RESULT;
+- (void)tableViewSelectionDidChange:(NSNotification * _Nonnull)notification;
+- (NSDragOperation)tableView:(NSTableView * _Nonnull)tableView validateDrop:(id <NSDraggingInfo> _Nonnull)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)tableView:(NSTableView * _Nonnull)tableView writeRowsWithIndexes:(NSIndexSet * _Nonnull)rowIndexes toPasteboard:(NSPasteboard * _Nonnull)pboard SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)tableView:(NSTableView * _Nonnull)tableView acceptDrop:(id <NSDraggingInfo> _Nonnull)info row:(NSInteger)row dropOperation:(NSTableViewDropOperation)dropOperation SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session willBeginAtPoint:(NSPoint)screenPoint forRowIndexes:(NSIndexSet * _Nonnull)rowIndexes;
+- (void)tableView:(NSTableView * _Nonnull)tableView draggingSession:(NSDraggingSession * _Nonnull)session endedAtPoint:(NSPoint)screenPoint operation:(NSDragOperation)operation;
+@end
 
 #if __has_attribute(external_source_symbol)
 # pragma clang attribute pop
