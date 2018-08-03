@@ -14,6 +14,10 @@
 		A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52A317D20FEB6A900E64617 /* ShortcutController.swift */; };
 		A52D36E821138F8000FD2874 /* InstalledPluginsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36E721138F8000FD2874 /* InstalledPluginsCollectionView.swift */; };
 		A52D36EA2113900A00FD2874 /* CollectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36E92113900A00FD2874 /* CollectionTableView.swift */; };
+		A52D36F12114853500FD2874 /* InputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36F02114853500FD2874 /* InputAlert.swift */; };
+		A52D36F321149F9A00FD2874 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36F221149F9A00FD2874 /* SearchField.swift */; };
+		A52D36F521149FA600FD2874 /* SearchField.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52D36F421149FA600FD2874 /* SearchField.xib */; };
+		A52D36F82114A98000FD2874 /* SearchFieldTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36F72114A98000FD2874 /* SearchFieldTextFieldCell.swift */; };
 		A5380530210A49C60026E4A5 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A538052F210A49C60026E4A5 /* assets.xcassets */; };
 		A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */; };
 		A5380535210A6DBF0026E4A5 /* CommandCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */; };
@@ -65,6 +69,10 @@
 		A52A317D20FEB6A900E64617 /* ShortcutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutController.swift; sourceTree = "<group>"; };
 		A52D36E721138F8000FD2874 /* InstalledPluginsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledPluginsCollectionView.swift; sourceTree = "<group>"; };
 		A52D36E92113900A00FD2874 /* CollectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableView.swift; sourceTree = "<group>"; };
+		A52D36F02114853500FD2874 /* InputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAlert.swift; sourceTree = "<group>"; };
+		A52D36F221149F9A00FD2874 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		A52D36F421149FA600FD2874 /* SearchField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchField.xib; sourceTree = "<group>"; };
+		A52D36F72114A98000FD2874 /* SearchFieldTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldTextFieldCell.swift; sourceTree = "<group>"; };
 		A538052F210A49C60026E4A5 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
 		A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCollectionViewItem.swift; sourceTree = "<group>"; };
 		A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommandCollectionViewItem.xib; sourceTree = "<group>"; };
@@ -125,6 +133,16 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		A52D36F621149FAA00FD2874 /* SearchField */ = {
+			isa = PBXGroup;
+			children = (
+				A52D36F221149F9A00FD2874 /* SearchField.swift */,
+				A52D36F421149FA600FD2874 /* SearchField.xib */,
+				A52D36F72114A98000FD2874 /* SearchFieldTextFieldCell.swift */,
+			);
+			path = SearchField;
+			sourceTree = "<group>";
+		};
 		A538052E210A49B20026E4A5 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +160,7 @@
 				A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */,
 				A5380542210BB9820026E4A5 /* TableView */,
 				A5380541210BB9760026E4A5 /* CollectionView */,
+				A52D36F621149FAA00FD2874 /* SearchField */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -173,6 +192,7 @@
 			children = (
 				A53A829420FF726600FD83FA /* HandyMenu.swift */,
 				A5380531210A63010026E4A5 /* Settings */,
+				A52D36F02114853500FD2874 /* InputAlert.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,6 +356,7 @@
 				A538053B210B9A3C0026E4A5 /* PluginSectionHeaderView.xib in Resources */,
 				A5380535210A6DBF0026E4A5 /* CommandCollectionViewItem.xib in Resources */,
 				A538053D210BB0780026E4A5 /* PluginSectionFooterView.xib in Resources */,
+				A52D36F521149FA600FD2874 /* SearchField.xib in Resources */,
 				A5380530210A49C60026E4A5 /* assets.xcassets in Resources */,
 				A508BF06210F579E00024995 /* ShortcutField.xib in Resources */,
 				A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */,
@@ -357,6 +378,7 @@
 				A521562720FD3A0B002A5816 /* MenuController.swift in Sources */,
 				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
 				A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */,
+				A52D36F12114853500FD2874 /* InputAlert.swift in Sources */,
 				A52D36E821138F8000FD2874 /* InstalledPluginsCollectionView.swift in Sources */,
 				A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */,
 				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
@@ -366,7 +388,9 @@
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
 				A5583D1E211206CC00F4E85B /* BorderedView.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* Collection.swift in Sources */,
+				A52D36F321149F9A00FD2874 /* SearchField.swift in Sources */,
 				A508BF0A210F96F100024995 /* Utils.swift in Sources */,
+				A52D36F82114A98000FD2874 /* SearchFieldTextFieldCell.swift in Sources */,
 				A5905865210E0AF700B6079A /* OSLog.swift in Sources */,
 				A5380539210B9A240026E4A5 /* PluginSectionHeaderView.swift in Sources */,
 				A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */,

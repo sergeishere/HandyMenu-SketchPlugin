@@ -18,7 +18,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     
     // MARK: - Outlets
-    @IBOutlet private weak var searchField: NSSearchField!
+    @IBOutlet private weak var searchField: SearchField!
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
     @IBOutlet private weak var collectionsPopUpButton: NSPopUpButton!
     @IBOutlet private weak var collectionSettingsMenu: NSMenu!
@@ -83,11 +83,14 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         
         self.shortcutField.delegate = self
         
+        self.searchField.delegate = self
+        
         self.configure(collections)
     }
     
     public override func close() {
         super.close()
+        self.window?.makeFirstResponder(nil)
         self.shortcutField.finish(with: nil)
         delegate?.settingsWindowController(didClose: self)
     }
@@ -399,14 +402,15 @@ extension SettingsWindowController: ShortcutFieldDelegate {
     }
 }
 
+// MARK: - SearchField Delegate {
+extension SettingsWindowController: SearchFieldDelegate {
+    func searchField(_ searchField: SearchField, didChanged value: String) {
+        plugin_log("Searching %@", value)
+    }
+}
+
 // MARK: - Actions Handling
 extension SettingsWindowController {
-    
-    
-    // Handling search action
-    @IBAction func search(_ sender: Any) {
-        plugin_log("Searching %@", self.searchField.stringValue)
-    }
     
     // Managing Selected Collection
     @IBAction func openCollectionSettings(_ sender: Any) {
@@ -418,7 +422,18 @@ extension SettingsWindowController {
     }
     
     @IBAction func renameCollection(_ sender: Any) {
-        // TODO: Implement this
+        guard let window = self.window else { return }
+        let inputAlert = InputAlert("Rename Collection", input: self.currentCollection.title)
+        inputAlert.beginSheetModal(for: window) { [weak self, unowned inputAlert](response) in
+            guard let textField = inputAlert.accessoryView as? NSTextField,
+                !textField.stringValue.isEmpty,
+                self?.collectionsPopUpButton.selectedItem?.title != textField.stringValue else { return }
+            if let strongSelf = self {
+                let newValue = strongSelf.collectionsPopUpButton.itemTitles.contains(textField.stringValue) ? textField.stringValue + " copy" : textField.stringValue
+                strongSelf.currentCollection.title = newValue
+                strongSelf.collectionsPopUpButton.selectedItem?.title = newValue
+            }
+        }
     }
     
     @IBAction func removeCollection(_ sender: Any) {
@@ -474,7 +489,7 @@ extension SettingsWindowController {
         guard let githubPageUrl = URL(string: "https://github.com/sergeishere/HandyMenu-SketchPlugin") else { return }
         NSWorkspace.shared.open(githubPageUrl)
     }
-    
+
 }
 
 

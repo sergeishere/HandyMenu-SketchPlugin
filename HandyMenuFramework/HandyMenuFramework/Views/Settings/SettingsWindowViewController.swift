@@ -16,11 +16,6 @@ class SettingsWindowViewController: NSViewController {
    
     public weak var delegate: SettingsWindowViewControllerDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-    }
-    
     override func viewWillLayout() {
         self.delegate?.viewWillLayout()
     }
