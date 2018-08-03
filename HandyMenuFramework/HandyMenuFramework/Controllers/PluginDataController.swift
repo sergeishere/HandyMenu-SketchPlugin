@@ -18,6 +18,7 @@ public class PluginDataController {
     
     // MARK: - Private Properties
     private var pluginData: PluginData?
+    private var installedPlugins: [InstalledPluginData] = []
     private var dataCaretaker = PluginDataCaretaker()
     
     // MARK: - Public Properties
@@ -43,11 +44,22 @@ public class PluginDataController {
     
     private func checkUserCollections() {
         // TODO:  - Implement this
-    }
-    
-    private func commandIsAvailable(_ command: Command) -> Bool {
-        // TODO:  - Implement this
-        return false
+//        guard let pluginData = self.pluginData else { return }
+//        let allCommands:[Command] = self.installedPlugins.flatMap{$0.commands}
+//        var checkedCollections: [Collection] = []
+//        for collection in pluginData.collections {
+//            var checkedCollection = collection
+//            checkedCollection.items = collection.items.filter({ (collectionItem) -> Bool in
+//                switch collectionItem {
+//                case .separator:
+//                    return true
+//                case .command(let commandData):
+//                    return allCommands.contains(commandData)
+//                }
+//            })
+//            checkedCollections.append(checkedCollections)
+//        }
+//        pluginData.collections = checkedCollections
     }
     
     public func saveCollections(_ collections: [Collection]) {
@@ -80,6 +92,7 @@ public class PluginDataController {
             }
             installedPluginsData.append(installedPluginData)
         }
+        self.installedPlugins = installedPluginsData
         installedPluginsData.sort { $0.pluginName < $1.pluginName }
         self.delegate?.dataController(self, didLoad: installedPluginsData)
     }

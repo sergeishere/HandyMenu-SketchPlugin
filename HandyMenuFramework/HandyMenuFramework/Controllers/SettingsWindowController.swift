@@ -41,6 +41,8 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     private var currentCollectionIndex: Int = 0
     private var collections: [Collection] = []
     
+    private var filteredPlugins: [InstalledPluginData] = []
+    
     private var currentCollection: Collection {
         get {
             return self.collections[self.currentCollectionIndex]
@@ -121,6 +123,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
             self.currentCollectionTableView.reloadData()
             self.configureCollectionsPopUpButton()
             self.selectCollection(at: self.collections.startIndex)
+            self.filterInstalledPlugins(by: "")
         }
     }
     
@@ -167,13 +170,31 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     }
     
     private func pluginCommandAtIndexPath(_ indexPath: IndexPath) -> Command {
-        return self.installedPlugins[indexPath.section].commands[indexPath.item]
+        return self.filteredPlugins[indexPath.section].commands[indexPath.item]
     }
     
     private func removeCommand(at row: IndexSet.Element) {
         self.currentCollection.items.remove(at: row)
         self.currentCollectionTableView.removeRows(at: [row], withAnimation: .effectFade)
-//        self.installedPluginsCollectionView
+        self.installedPluginsCollectionView.reloadData()
+    }
+    
+    
+    // Filtering installedPlugins
+    private func filterInstalledPlugins(by searchString: String){
+        guard searchString.count > 0 else {
+            self.filteredPlugins = self.installedPlugins
+            self.installedPluginsCollectionView.reloadData()
+            return
+        }
+        
+        DispatchQueue.global(qos: .default).async { [unowned self] in
+            self.filteredPlugins = self.installedPlugins.filter{$0.pluginName.localizedCaseInsensitiveContains(searchString) || $0.commands.contains(where: { $0.name.localizedCaseInsensitiveContains(searchString)}
+                )}
+            DispatchQueue.main.sync { [unowned self] in
+                self.installedPluginsCollectionView.reloadData()
+            }
+        }
     }
 }
 
@@ -295,17 +316,18 @@ extension SettingsWindowController: NSCollectionViewDataSource {
     
     // Common DataSource Methods
     public func numberOfSections(in collectionView: NSCollectionView) -> Int {
-        return self.installedPlugins.count
+        return self.filteredPlugins.count
     }
     
     public func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.installedPlugins[section].commands.count
+        return self.filteredPlugins[section].commands.count
     }
     
     public func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         guard let collectionViewItem = self.installedPluginsCollectionView.makeItem(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommandCollectionViewItem"), for: indexPath) as? CommandCollectionViewItem else { return NSCollectionViewItem()}
         let commandData = self.pluginCommandAtIndexPath(indexPath)
         collectionViewItem.configure(commandData.name, isUsed: self.currentCollection.items.contains(.command(commandData)))
+        collectionViewItem.searchingString = self.searchField.stringValue
         collectionViewItem.delegate = self
         return collectionViewItem
     }
@@ -318,8 +340,9 @@ extension SettingsWindowController: NSCollectionViewDataSource {
             let suppementaryHeaderView = self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionHeader,
                                                                                                    withIdentifier: NSUserInterfaceItemIdentifier("PluginSectionHeaderView"),
                                                                                                    for: indexPath) as! PluginSectionHeaderView
-            suppementaryHeaderView.title = self.installedPlugins[indexPath.section].pluginName
-            suppementaryHeaderView.image = self.installedPlugins[indexPath.section].image
+            suppementaryHeaderView.title = self.filteredPlugins[indexPath.section].pluginName
+            suppementaryHeaderView.image = self.filteredPlugins[indexPath.section].image
+            suppementaryHeaderView.searchingString = self.searchField.stringValue
             return suppementaryHeaderView
         case .sectionFooter:
             return self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionFooter,
@@ -405,7 +428,7 @@ extension SettingsWindowController: ShortcutFieldDelegate {
 // MARK: - SearchField Delegate {
 extension SettingsWindowController: SearchFieldDelegate {
     func searchField(_ searchField: SearchField, didChanged value: String) {
-        plugin_log("Searching %@", value)
+        self.filterInstalledPlugins(by: value)
     }
 }
 

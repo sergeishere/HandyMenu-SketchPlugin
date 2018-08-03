@@ -31,6 +31,18 @@ class CommandCollectionViewItem: NSCollectionViewItem {
         }
     }
     
+    public var searchingString: String = "" {
+        didSet {
+            guard !self.searchingString.isEmpty,
+            let textField = self.textField else { return }
+            let range = (textField.stringValue as NSString).range(of: self.searchingString, options: .caseInsensitive)
+            let attributedString = NSMutableAttributedString(string: textField.stringValue)
+            attributedString.setAttributes([.backgroundColor : NSColor.selectedTextBackgroundColor], range: range)
+            self.textField?.attributedStringValue = attributedString
+        }
+    }
+    
+    
     public func configure(_ commandName: String, isUsed:Bool) {
         self.commandName = commandName
         self.isUsed = isUsed

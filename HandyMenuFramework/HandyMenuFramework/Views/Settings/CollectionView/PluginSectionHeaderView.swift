@@ -24,11 +24,15 @@ class PluginSectionHeaderView: NSView {
             self.pluginImageView.image = self.image
         }
     }
-
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-
-        // Drawing code here.
+    
+    public var searchingString: String = "" {
+        didSet {
+            guard !self.searchingString.isEmpty else { return }
+            let range = (self.pluginNameTextField.stringValue as NSString).range(of: self.searchingString, options: .caseInsensitive)
+            let attributedString = NSMutableAttributedString(string: self.pluginNameTextField.stringValue)
+            attributedString.setAttributes([.backgroundColor : NSColor.selectedTextBackgroundColor], range: range)
+            self.pluginNameTextField.attributedStringValue = attributedString
+        }
     }
     
 }

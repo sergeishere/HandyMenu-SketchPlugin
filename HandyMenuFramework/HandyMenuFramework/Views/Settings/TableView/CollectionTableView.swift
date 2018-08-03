@@ -15,11 +15,6 @@ protocol CollectionTableViewDelegate: class {
 
 class CollectionTableView: NSTableView {
 
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-        // Drawing code here.
-    }
-    
     override func resignFirstResponder() -> Bool {
         self.deselectAll(self)
         return super.resignFirstResponder()

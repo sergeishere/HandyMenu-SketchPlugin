@@ -12,14 +12,10 @@ class CommandTableViewItem: NSTableCellView {
     
     @IBOutlet private weak var titleTextField: NSTextField!
     
-    public var title: String {
-        get {
-            return self.title
-        }
-        set {
-            self.titleTextField.stringValue = newValue
+    public var title: String = "" {
+        didSet {
+            self.titleTextField.stringValue = self.title
         }
     }
-    
     
 }

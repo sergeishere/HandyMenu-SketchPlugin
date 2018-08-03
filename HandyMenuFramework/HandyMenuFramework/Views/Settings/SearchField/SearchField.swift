@@ -19,7 +19,7 @@ class SearchField: NSView, NSTextFieldDelegate {
     @IBOutlet private weak var clearButton: NSButton!
     
     public weak var delegate: SearchFieldDelegate?
-    private var value: String {
+    public var stringValue: String {
         set {
             self.textField.stringValue = newValue
             self.clearButton.isHidden = (newValue.count == 0)
@@ -53,10 +53,10 @@ class SearchField: NSView, NSTextFieldDelegate {
     }
     
     override func controlTextDidChange(_ obj: Notification) {
-        self.value = self.textField.stringValue
+        self.stringValue = self.textField.stringValue
     }
     
     @IBAction func clear(_ sender: Any) {
-        self.value = ""
+        self.stringValue = ""
     }
 }
