@@ -25,6 +25,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     @IBOutlet private weak var insertSeparatorButton: NSButton!
     @IBOutlet private weak var autoGroupingCheckboxButton: NSButton!
     @IBOutlet private weak var collectionsScrollView: NSScrollView!
+    @IBOutlet private weak var renamingPanel: InputPanel!
     @IBOutlet private weak var currentCollectionTableView: NSTableView! {
         didSet {
             // Fixing the first column width
@@ -443,13 +444,13 @@ extension SettingsWindowController {
     
     @IBAction func renameCollection(_ sender: Any) {
         guard let window = self.window else { return }
-        let inputAlert = InputAlert("Rename Collection", input: self.currentCollection.title)
-        inputAlert.beginSheetModal(for: window) { [weak self, unowned inputAlert](response) in
-            guard let textField = inputAlert.accessoryView as? NSTextField,
-                !textField.stringValue.isEmpty,
-                self?.collectionsPopUpButton.selectedItem?.title != textField.stringValue else { return }
+        self.renamingPanel.value = self.currentCollection.title
+        self.renamingPanel.beginSheet(for: window) { [weak self] (response) in
+            guard let value = self?.renamingPanel.value,
+                !value.isEmpty,
+                self?.collectionsPopUpButton.selectedItem?.title != value else { return }
             if let strongSelf = self {
-                let newValue = strongSelf.collectionsPopUpButton.itemTitles.contains(textField.stringValue) ? textField.stringValue + " copy" : textField.stringValue
+                let newValue = strongSelf.collectionsPopUpButton.itemTitles.contains(value) ? value + " copy" : value
                 strongSelf.currentCollection.title = newValue
                 strongSelf.collectionsPopUpButton.selectedItem?.title = newValue
             }

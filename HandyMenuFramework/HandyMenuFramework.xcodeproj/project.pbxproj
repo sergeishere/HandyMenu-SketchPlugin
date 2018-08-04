@@ -14,7 +14,6 @@
 		A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52A317D20FEB6A900E64617 /* ShortcutController.swift */; };
 		A52D36E821138F8000FD2874 /* InstalledPluginsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36E721138F8000FD2874 /* InstalledPluginsCollectionView.swift */; };
 		A52D36EA2113900A00FD2874 /* CollectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36E92113900A00FD2874 /* CollectionTableView.swift */; };
-		A52D36F12114853500FD2874 /* InputAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36F02114853500FD2874 /* InputAlert.swift */; };
 		A52D36F321149F9A00FD2874 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36F221149F9A00FD2874 /* SearchField.swift */; };
 		A52D36F521149FA600FD2874 /* SearchField.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52D36F421149FA600FD2874 /* SearchField.xib */; };
 		A52D36F82114A98000FD2874 /* SearchFieldTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36F72114A98000FD2874 /* SearchFieldTextFieldCell.swift */; };
@@ -33,6 +32,7 @@
 		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
 		A58FC0E220FF87F2004730BB /* HMCommandScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A58FC0E020FF87F2004730BB /* HMCommandScheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5905865210E0AF700B6079A /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5905864210E0AF700B6079A /* OSLog.swift */; };
+		A5A136BA2115E9700042B594 /* InputPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A136B92115E9700042B594 /* InputPanel.swift */; };
 		A5A65C6320FBFECB00BBB6A8 /* HandyMenuFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */; };
 		A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */; };
@@ -69,7 +69,6 @@
 		A52A317D20FEB6A900E64617 /* ShortcutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutController.swift; sourceTree = "<group>"; };
 		A52D36E721138F8000FD2874 /* InstalledPluginsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledPluginsCollectionView.swift; sourceTree = "<group>"; };
 		A52D36E92113900A00FD2874 /* CollectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableView.swift; sourceTree = "<group>"; };
-		A52D36F02114853500FD2874 /* InputAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAlert.swift; sourceTree = "<group>"; };
 		A52D36F221149F9A00FD2874 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		A52D36F421149FA600FD2874 /* SearchField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchField.xib; sourceTree = "<group>"; };
 		A52D36F72114A98000FD2874 /* SearchFieldTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldTextFieldCell.swift; sourceTree = "<group>"; };
@@ -88,6 +87,7 @@
 		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
 		A58FC0E020FF87F2004730BB /* HMCommandScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCommandScheme.h; sourceTree = "<group>"; };
 		A5905864210E0AF700B6079A /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		A5A136B92115E9700042B594 /* InputPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPanel.swift; sourceTree = "<group>"; };
 		A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyMenuFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandyMenuFramework.h; sourceTree = "<group>"; };
 		A5A65C6220FBFECB00BBB6A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -154,6 +154,7 @@
 		A5380531210A63010026E4A5 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				A5A136BB2115EC990042B594 /* InputPanel */,
 				A5583D1D211206CB00F4E85B /* BorderedView.swift */,
 				A508BF07210F57A100024995 /* ShortcutField */,
 				A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */,
@@ -192,7 +193,6 @@
 			children = (
 				A53A829420FF726600FD83FA /* HandyMenu.swift */,
 				A5380531210A63010026E4A5 /* Settings */,
-				A52D36F02114853500FD2874 /* InputAlert.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -215,6 +215,14 @@
 				A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */,
 			);
 			path = OldVersion;
+			sourceTree = "<group>";
+		};
+		A5A136BB2115EC990042B594 /* InputPanel */ = {
+			isa = PBXGroup;
+			children = (
+				A5A136B92115E9700042B594 /* InputPanel.swift */,
+			);
+			path = InputPanel;
 			sourceTree = "<group>";
 		};
 		A5A65C5420FBFECB00BBB6A8 = {
@@ -378,7 +386,6 @@
 				A521562720FD3A0B002A5816 /* MenuController.swift in Sources */,
 				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
 				A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */,
-				A52D36F12114853500FD2874 /* InputAlert.swift in Sources */,
 				A52D36E821138F8000FD2874 /* InstalledPluginsCollectionView.swift in Sources */,
 				A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */,
 				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
@@ -386,6 +393,7 @@
 				A52D36EA2113900A00FD2874 /* CollectionTableView.swift in Sources */,
 				A58FC0DD20FF83B1004730BB /* Command.swift in Sources */,
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
+				A5A136BA2115E9700042B594 /* InputPanel.swift in Sources */,
 				A5583D1E211206CC00F4E85B /* BorderedView.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* Collection.swift in Sources */,
 				A52D36F321149F9A00FD2874 /* SearchField.swift in Sources */,
