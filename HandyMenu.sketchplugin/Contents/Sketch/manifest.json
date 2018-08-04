@@ -28,6 +28,7 @@
   "author" : "Sergey Dmitriev",
   "authorEmail" : "el.pajaro.sabio@gmail.com",
   "name" : "Handy Menu",
+  "icon": "icon.png",
   "appcast": "https://raw.githubusercontent.com/sergeishere/HandyMenu-SketchPlugin/master/appcast.xml",
   "disableCocoaScriptPreprocessor" : true
 }
