@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Cocoa
-
 class SearchFieldTextFieldCell: NSTextFieldCell {
     
     public var leftPadding: CGFloat = 0.0

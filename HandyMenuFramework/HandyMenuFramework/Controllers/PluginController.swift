@@ -5,11 +5,6 @@
 //  Created by Sergey Dmitriev on 10/06/2018.
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
-
-import Foundation
-import AppKit
-import os.log
-
 @objc(HandyMenuPlugin) class PluginController:NSObject {
     
     // MARK: - Singletone instance

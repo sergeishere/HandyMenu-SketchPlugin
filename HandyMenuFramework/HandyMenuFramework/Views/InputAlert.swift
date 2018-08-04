@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Cocoa
-
 class InputAlert: NSAlert {
 
     convenience init(_ title: String, input value:String) {

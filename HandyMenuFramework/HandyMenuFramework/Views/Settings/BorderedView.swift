@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import AppKit
-
 class BorderedView: NSView {
     
     @IBInspectable public var isHighlighted: Bool = false {

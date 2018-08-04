@@ -6,9 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Foundation
-import AppKit
-
 public protocol PluginDataControllerDelegate: class {
     func dataController(_ dataController: PluginDataController, didUpdate data:PluginData)
     func dataController(_ dataController: PluginDataController, didLoad installedPlugins:[InstalledPluginData])
@@ -71,7 +68,6 @@ public class PluginDataController {
                 case .separator:
                     return true
                 case .command(let commandData):
-                    plugin_log("Checking \(commandData.pluginID) with \(commandData.commandID)")
                     return SketchAppBridge.sharedInstance().isExists(commandData.pluginID, with: commandData.commandID)
                 }
             })

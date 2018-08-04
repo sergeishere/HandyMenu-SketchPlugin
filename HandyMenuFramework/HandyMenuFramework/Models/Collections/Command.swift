@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Foundation
-
 public struct Command:Codable, Equatable {
     public var name:String
     public var commandID:String

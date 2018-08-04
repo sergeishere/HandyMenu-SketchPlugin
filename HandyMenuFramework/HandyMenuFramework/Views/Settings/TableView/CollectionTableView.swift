@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Cocoa
-
 protocol CollectionTableViewDelegate: class {
     func deleteIsPressed(at rows:IndexSet)
     func collectionTableView(_ collectionTableView: CollectionTableView, draggingSession session: NSDraggingSession, movedTo screenPoint: NSPoint)

@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Cocoa
-
 class InstalledPluginsCollectionView: NSCollectionView {
 
     override func draw(_ dirtyRect: NSRect) {

@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Foundation
-
 public struct PluginData: Codable {
     public var userID: UUID
     public var pluginVersion:Double

@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Foundation
-
 class CommandTableViewItem: NSTableCellView {
     
     @IBOutlet private weak var titleTextField: NSTextField!

@@ -6,9 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import AppKit
-import os.log
-
 protocol ShortcutFieldDelegate:class {
     func shortcutField(_ shortcutField: ShortcutField, didChange shortcut:Shortcut)
 }

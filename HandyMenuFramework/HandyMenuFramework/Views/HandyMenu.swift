@@ -6,9 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Cocoa
-import os.log
-
 class HandyMenu: NSMenu {
     
     public func configure(for data: Collection) {

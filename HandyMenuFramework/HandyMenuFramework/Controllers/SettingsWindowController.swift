@@ -6,9 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Cocoa
-import os.log
-
 public protocol SettingsWindowControllerDelegate: class {
     func settingsWindowController(_ settingsWindowController: SettingsWindowController, didUpdate menuData:[Collection])
     func settingsWindowController(didClose settingsWindowController: SettingsWindowController)

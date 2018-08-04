@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Cocoa
-
 protocol SearchFieldDelegate: class {
     func searchField(_ searchField: SearchField, didChanged value: String)
 }

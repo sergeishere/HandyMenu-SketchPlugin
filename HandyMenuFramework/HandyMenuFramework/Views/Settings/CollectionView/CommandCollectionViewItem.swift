@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Cocoa
-
 protocol CommandCollectionViewItemDelegate: class {
     func doubleClick(on item: CommandCollectionViewItem)
 }

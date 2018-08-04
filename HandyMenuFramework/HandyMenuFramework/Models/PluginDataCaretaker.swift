@@ -6,8 +6,6 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-import Foundation
-
 public class PluginDataCaretaker {
     
     // MARK : - Handling keys

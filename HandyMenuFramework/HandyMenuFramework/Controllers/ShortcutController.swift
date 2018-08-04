@@ -5,10 +5,6 @@
 //  Created by Sergey Dmitriev on 18/07/2018.
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
-
-import Foundation
-import os.log
-
 public protocol ShortcutControllerDelegate: class {
     func shortcutController(_ shortcutController: ShortcutController, didRecognize shortcut: Shortcut, in event: NSEvent) -> NSEvent?
 }
