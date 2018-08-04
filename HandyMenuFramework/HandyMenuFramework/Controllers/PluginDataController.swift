@@ -31,35 +31,53 @@ public class PluginDataController {
     
     // MARK: - Public Properties
     public weak var delegate: PluginDataControllerDelegate?
-    
-    // MARK: - Object Lifecycle
-    public init() {}
-    
+
     // MARK: - Instance Methods
+    private func loadData(for retrievingResult: PluginDataCaretaker.RetrievingResult) -> PluginData {
+        switch retrievingResult {
+        case .v5(let pluginData):
+            return pluginData
+        case .v4(let schemes):
+            var newData = PluginData.empty
+            var newItems: [CollectionItem] = []
+            for scheme in schemes {
+                guard let installedPlugins = SketchAppBridge.sharedInstance().installedPlugins as? [String:NSObject],
+                    let pluginBundle = installedPlugins[scheme.pluginID],
+                    let pluginName = pluginBundle.value(forKey: "name") as? String else { continue }
+                let newItemData = Command(name: scheme.name, commandID: scheme.commandID, pluginName: pluginName, pluginID: scheme.pluginID)
+                newItems.append(.command(newItemData))
+            }
+            newData.collections = [Collection(title: "Main", shortcut: .legacyShortcut, items: newItems, autoGrouping: true)]
+            return newData
+        case .empty:
+            return PluginData.empty
+        }
+    }
+    
     public func loadPluginData(){
-        self.pluginData = dataCaretaker.retrieve() ?? PluginData.empty
-        self.checkUserCollections()
+        self.pluginData = self.loadData(for: dataCaretaker.retrieve())
+        self.filterCollections()
         delegate?.dataController(self, didUpdate: pluginData!)
     }
     
-    private func checkUserCollections() {
-        // TODO:  - Implement this
-//        guard let pluginData = self.pluginData else { return }
-//        let allCommands:[Command] = self.installedPlugins.flatMap{$0.commands}
-//        var checkedCollections: [Collection] = []
-//        for collection in pluginData.collections {
-//            var checkedCollection = collection
-//            checkedCollection.items = collection.items.filter({ (collectionItem) -> Bool in
-//                switch collectionItem {
-//                case .separator:
-//                    return true
-//                case .command(let commandData):
-//                    return allCommands.contains(commandData)
-//                }
-//            })
-//            checkedCollections.append(checkedCollections)
-//        }
-//        pluginData.collections = checkedCollections
+    private func filterCollections() {
+        guard let pluginData = self.pluginData else { return }
+        
+        var filteredCollections: [Collection] = [] // Preparing new array for filtered collections
+        for unfilteredCollection in pluginData.collections {
+            var newCollection = unfilteredCollection
+            newCollection.items = unfilteredCollection.items.filter({(collectionItem) -> Bool in
+                switch collectionItem {
+                case .separator:
+                    return true
+                case .command(let commandData):
+                    plugin_log("Checking \(commandData.pluginID) with \(commandData.commandID)")
+                    return SketchAppBridge.sharedInstance().isExists(commandData.pluginID, with: commandData.commandID)
+                }
+            })
+            filteredCollections.append(newCollection)
+        }
+        self.pluginData?.collections = filteredCollections
     }
     
     public func saveCollections(_ collections: [Collection]) {

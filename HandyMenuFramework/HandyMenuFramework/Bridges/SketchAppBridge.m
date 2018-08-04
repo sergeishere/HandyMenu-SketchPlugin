@@ -32,6 +32,10 @@
     return self;
 }
 
+-(BOOL)isExists:(NSString *)pluginID with:(NSString*)commandID {
+    return [[[installedPlugins valueForKey:pluginID] valueForKey:@"commands"] valueForKey:commandID] != nil;
+}
+
 -(void)runSketchPluginCommand:(NSString*)commandID from:(NSString*)pluginID {
     @try {
         id command = [[[installedPlugins valueForKey:pluginID] valueForKey:@"commands"] valueForKey:commandID];

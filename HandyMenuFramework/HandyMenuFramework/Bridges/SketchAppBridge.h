@@ -17,5 +17,6 @@
 +(SketchAppBridge*)sharedInstance;
 
 -(void)runSketchPluginCommand:(NSString*)commandID from:(NSString*)pluginID;
+-(BOOL)isExists:(NSString *)pluginID with:(NSString*)commandID;
 
 @end
