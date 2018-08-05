@@ -6,17 +6,17 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-public protocol PluginDataControllerDelegate: class {
-    func dataController(_ dataController: PluginDataController, didUpdate data:PluginData)
-    func dataController(_ dataController: PluginDataController, didLoad installedPlugins:[InstalledPluginData])
+public protocol DataControllerDelegate: class {
+    func dataController(_ dataController: DataController, didUpdate data:PluginData)
+    func dataController(_ dataController: DataController, didLoad installedPlugins:[InstalledPluginData])
 }
 
-public class PluginDataController {
+public class DataController {
     
     // MARK: - Private Properties
     private var pluginData: PluginData?
     private var installedPlugins: [InstalledPluginData] = []
-    private var dataCaretaker = PluginDataCaretaker()
+    private var dataCaretaker = DataCaretaker()
     
     // MARK: - Public Properties
     public var usedShortcuts: Set<Int> {
@@ -27,10 +27,10 @@ public class PluginDataController {
     }
     
     // MARK: - Public Properties
-    public weak var delegate: PluginDataControllerDelegate?
+    public weak var delegate: DataControllerDelegate?
 
     // MARK: - Instance Methods
-    private func loadData(for retrievingResult: PluginDataCaretaker.RetrievingResult) -> PluginData {
+    private func loadData(for retrievingResult: DataCaretaker.RetrievingResult) -> PluginData {
         switch retrievingResult {
         case .v5(let pluginData):
             return pluginData
@@ -44,7 +44,7 @@ public class PluginDataController {
                 let newItemData = Command(name: scheme.name, commandID: scheme.commandID, pluginName: pluginName, pluginID: scheme.pluginID)
                 newItems.append(.command(newItemData))
             }
-            newData.collections = [Collection(title: "Main", shortcut: .legacyShortcut, items: newItems, autoGrouping: true)]
+            newData.collections = [Collection(title: "Main Collection", shortcut: .legacyShortcut, items: newItems, autoGrouping: true)]
             return newData
         case .empty:
             return PluginData.empty
@@ -78,8 +78,9 @@ public class PluginDataController {
     
     public func saveCollections(_ collections: [Collection]) {
         self.pluginData?.collections = collections
-        // TODO: Implement this!!!
-        self.delegate?.dataController(self, didUpdate: self.pluginData!)
+        guard let pluginData = self.pluginData,
+            self.dataCaretaker.save(pluginData) else { return }
+        self.delegate?.dataController(self, didUpdate: pluginData)
     }
     
     public func loadInstalledPluginsData() {
@@ -88,7 +89,8 @@ public class PluginDataController {
         
         for (pluginKey, pluginBundle) in installedPlugins {
             // Checking if the plugin exists and has name
-            guard let pluginName = pluginBundle.value(forKey: "name") as? String else { continue }
+            guard let pluginName = pluginBundle.value(forKey: "name") as? String,
+                pluginName != "Handy Menu" else { continue }
             let pluginImage: NSImage? = pluginBundle.value(forKeyPath: "iconInfo.image") as? NSImage
             var installedPluginData = InstalledPluginData(pluginName: pluginName, image: pluginImage, commands: [])
             

@@ -12,7 +12,7 @@
     
     // MARK: - Private Properties
     private let settingsWindowController = SettingsWindowController(windowNibName: NSNib.Name(rawValue: String(describing: SettingsWindowController.self)))
-    private let dataController = PluginDataController()
+    private let dataController = DataController()
     private let menuController = MenuController()
     private let shortcutController = ShortcutController()
     
@@ -34,23 +34,28 @@
     }
     
     @objc public func showSettings() {
-        settingsWindowController.showWindow(nil)
+        self.settingsWindowController.showWindow(nil)
         shortcutController.stop()
+    }
+    
+    @objc public func show(_ collection: String) {
+        self.showSettings()
+        self.settingsWindowController.showCollection(collection)
     }
     
 }
 
 
 // MARK: - PluginDataControllerDelegate
-extension PluginController: PluginDataControllerDelegate {
+extension PluginController: DataControllerDelegate {
     
-    func dataController(_ dataController: PluginDataController, didUpdate data: PluginData) {
+    func dataController(_ dataController: DataController, didUpdate data: PluginData) {
         self.shortcutController.start()
         self.menuController.configure(for: data.collections)
         self.settingsWindowController.configure(data.collections)
     }
     
-    func dataController(_ dataController: PluginDataController, didLoad installedPlugins: [InstalledPluginData]) {
+    func dataController(_ dataController: DataController, didLoad installedPlugins: [InstalledPluginData]) {
         self.settingsWindowController.installedPlugins = installedPlugins
     }
 }

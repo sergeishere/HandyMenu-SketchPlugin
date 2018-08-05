@@ -6,7 +6,7 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-public class PluginDataCaretaker {
+public class DataCaretaker {
     
     // MARK : - Handling keys
     private let suiteName = "com.sergeishere.plugins.handymenu"
@@ -39,6 +39,12 @@ public class PluginDataCaretaker {
             return RetrievingResult.v4(objects)
         }
         return RetrievingResult.empty
+    }
+    
+    public func save(_ data: PluginData) -> Bool {
+        guard let encodedData = try? encoder.encode(data) else  { return false }
+        userDefaults.setValue(encodedData, forKey: v5key)
+        return true
     }
     
 }

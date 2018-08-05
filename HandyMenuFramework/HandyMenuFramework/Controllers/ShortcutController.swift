@@ -16,24 +16,23 @@ public class ShortcutController {
     private var keyUpMonitor:Any?
     
     // MARK: - Public Variables
-    public var currentShortcut = Shortcut()
+    public var currentShortcut = Shortcut.empty
     public weak var delegate: ShortcutControllerDelegate?
+    
+    public var isEnabled: Bool = false
     
     // MARK: - Instance Lifecycle
     public init() {
-        
-    }
-    
-    public func start() {
-        self.currentShortcut = Shortcut()
         keyDownMonitor = NSEvent.addLocalMonitorForEvents(matching: .keyDown) { [weak self] (event) -> NSEvent? in
-            if let strongSelf = self, let delegate = strongSelf.delegate {
+            if let strongSelf = self,
+                strongSelf.isEnabled,
+                let delegate = strongSelf.delegate {
                 strongSelf.currentShortcut.keyCode = Int(event.keyCode)
                 strongSelf.currentShortcut.character = event.charactersIgnoringModifiers ?? ""
-                strongSelf.currentShortcut.commandIsPressed = event.modifierFlags.contains(.command)
-                strongSelf.currentShortcut.optionIsPressed = event.modifierFlags.contains(.option)
-                strongSelf.currentShortcut.controlIsPressed = event.modifierFlags.contains(.control)
-                strongSelf.currentShortcut.shiftIsPressed = event.modifierFlags.contains(.shift)
+                strongSelf.currentShortcut.modifierFlags = [event.modifierFlags.contains(.command) ? .command : [],
+                                                            event.modifierFlags.contains(.option) ? .option : [],
+                                                            event.modifierFlags.contains(.control) ? .control : [],
+                                                            event.modifierFlags.contains(.shift) ? .shift : []]
                 return delegate.shortcutController(strongSelf, didRecognize: strongSelf.currentShortcut, in: event)
             }
             
@@ -47,14 +46,13 @@ public class ShortcutController {
         }
     }
     
+    public func start() {
+        self.isEnabled = true
+        plugin_log("Shortcut controller is ON")
+    }
+    
     public func stop() {
-        if let keyDownMonitor = self.keyDownMonitor {
-            NSEvent.removeMonitor(keyDownMonitor)
-            self.keyDownMonitor = nil
-        }
-        if let keyUpMonitor = self.keyUpMonitor {
-            NSEvent.removeMonitor(keyUpMonitor)
-            self.keyUpMonitor = nil
-        }
+        self.isEnabled = false
+        plugin_log("Shortcut controller is OFF")
     }
 }

@@ -26,6 +26,7 @@
 		A538053D210BB0780026E4A5 /* PluginSectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */; };
 		A538053F210BB3AB0026E4A5 /* SettingsWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */; };
 		A5380544210DDCD30026E4A5 /* CommandTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */; };
+		A5398D1B21165A8600BD70EF /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398D1A21165A8600BD70EF /* NSImage.swift */; };
 		A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A829420FF726600FD83FA /* HandyMenu.swift */; };
 		A5583D1E211206CC00F4E85B /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5583D1D211206CB00F4E85B /* BorderedView.swift */; };
 		A58FC0DD20FF83B1004730BB /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* Command.swift */; };
@@ -36,8 +37,8 @@
 		A5A65C6320FBFECB00BBB6A8 /* HandyMenuFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */; };
 		A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */; };
-		A5A65C7220FBFF7900BBB6A8 /* PluginDataCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6F20FBFF7900BBB6A8 /* PluginDataCaretaker.swift */; };
-		A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C7020FBFF7900BBB6A8 /* PluginDataController.swift */; };
+		A5A65C7220FBFF7900BBB6A8 /* DataCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6F20FBFF7900BBB6A8 /* DataCaretaker.swift */; };
+		A5A65C7320FBFF7900BBB6A8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C7020FBFF7900BBB6A8 /* DataController.swift */; };
 		A5A65C7520FC00C800BBB6A8 /* HandyMenuFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */; };
 		A5A65C8D20FCD94700BBB6A8 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C8C20FCD94700BBB6A8 /* Collection.swift */; };
 		A5A65C8F20FCD95100BBB6A8 /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C8E20FCD95100BBB6A8 /* CollectionItem.swift */; };
@@ -81,6 +82,7 @@
 		A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PluginSectionFooterView.xib; sourceTree = "<group>"; };
 		A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowViewController.swift; sourceTree = "<group>"; };
 		A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandTableViewItem.swift; sourceTree = "<group>"; };
+		A5398D1A21165A8600BD70EF /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
 		A53A829420FF726600FD83FA /* HandyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyMenu.swift; sourceTree = "<group>"; };
 		A5583D1D211206CB00F4E85B /* BorderedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		A58FC0DC20FF83B1004730BB /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
@@ -93,8 +95,8 @@
 		A5A65C6220FBFECB00BBB6A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginController.swift; sourceTree = "<group>"; };
 		A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginData.swift; sourceTree = "<group>"; };
-		A5A65C6F20FBFF7900BBB6A8 /* PluginDataCaretaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginDataCaretaker.swift; sourceTree = "<group>"; };
-		A5A65C7020FBFF7900BBB6A8 /* PluginDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginDataController.swift; sourceTree = "<group>"; };
+		A5A65C6F20FBFF7900BBB6A8 /* DataCaretaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCaretaker.swift; sourceTree = "<group>"; };
+		A5A65C7020FBFF7900BBB6A8 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		A5A65C8C20FCD94700BBB6A8 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		A5A65C8E20FCD95100BBB6A8 /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
 		A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				A508BF09210F96F100024995 /* Utils.swift */,
 				A5905864210E0AF700B6079A /* OSLog.swift */,
+				A5398D1A21165A8600BD70EF /* NSImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -188,10 +191,18 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		A5398D1C21166DE600BD70EF /* Shortcut */ = {
+			isa = PBXGroup;
+			children = (
+				A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */,
+			);
+			path = Shortcut;
+			sourceTree = "<group>";
+		};
 		A53A829320FF725A00FD83FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A53A829420FF726600FD83FA /* HandyMenu.swift */,
+				A5A136BC2116137A0042B594 /* Handy Menu */,
 				A5380531210A63010026E4A5 /* Settings */,
 			);
 			path = Views;
@@ -223,6 +234,14 @@
 				A5A136B92115E9700042B594 /* InputPanel.swift */,
 			);
 			path = InputPanel;
+			sourceTree = "<group>";
+		};
+		A5A136BC2116137A0042B594 /* Handy Menu */ = {
+			isa = PBXGroup;
+			children = (
+				A53A829420FF726600FD83FA /* HandyMenu.swift */,
+			);
+			path = "Handy Menu";
 			sourceTree = "<group>";
 		};
 		A5A65C5420FBFECB00BBB6A8 = {
@@ -258,11 +277,11 @@
 		A5A65C6A20FBFF2700BBB6A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A5398D1C21166DE600BD70EF /* Shortcut */,
 				A57AC50B21125E67007C0EE1 /* Collections */,
 				A58FC0DE20FF87DD004730BB /* OldVersion */,
 				A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */,
-				A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */,
-				A5A65C6F20FBFF7900BBB6A8 /* PluginDataCaretaker.swift */,
+				A5A65C6F20FBFF7900BBB6A8 /* DataCaretaker.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,7 +293,7 @@
 				A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */,
 				A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */,
 				A521562620FD3A0B002A5816 /* MenuController.swift */,
-				A5A65C7020FBFF7900BBB6A8 /* PluginDataController.swift */,
+				A5A65C7020FBFF7900BBB6A8 /* DataController.swift */,
 				A52A317D20FEB6A900E64617 /* ShortcutController.swift */,
 			);
 			path = Controllers;
@@ -385,7 +404,8 @@
 				A5A65C8F20FCD95100BBB6A8 /* CollectionItem.swift in Sources */,
 				A521562720FD3A0B002A5816 /* MenuController.swift in Sources */,
 				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
-				A5A65C7320FBFF7900BBB6A8 /* PluginDataController.swift in Sources */,
+				A5A65C7320FBFF7900BBB6A8 /* DataController.swift in Sources */,
+				A5398D1B21165A8600BD70EF /* NSImage.swift in Sources */,
 				A52D36E821138F8000FD2874 /* InstalledPluginsCollectionView.swift in Sources */,
 				A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */,
 				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
@@ -403,7 +423,7 @@
 				A5380539210B9A240026E4A5 /* PluginSectionHeaderView.swift in Sources */,
 				A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */,
 				A508BF05210F579E00024995 /* ShortcutField.swift in Sources */,
-				A5A65C7220FBFF7900BBB6A8 /* PluginDataCaretaker.swift in Sources */,
+				A5A65C7220FBFF7900BBB6A8 /* DataCaretaker.swift in Sources */,
 				A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */,
 				A538053F210BB3AB0026E4A5 /* SettingsWindowViewController.swift in Sources */,
 			);

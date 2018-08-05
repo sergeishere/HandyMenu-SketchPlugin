@@ -16,6 +16,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     // MARK: - Outlets
     @IBOutlet private weak var searchField: SearchField!
+    @IBOutlet private weak var versionField: NSTextField!
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
     @IBOutlet private weak var collectionsPopUpButton: NSPopUpButton!
     @IBOutlet private weak var collectionSettingsMenu: NSMenu!
@@ -110,6 +111,10 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     }
     
     // Public Methods
+    public func showCollection(_ collection: String) {
+        self.selectCollection(at: self.collectionsPopUpButton.indexOfItem(withTitle: collection))
+    }
+    
     public func configure(_ collections:[Collection]) {
         self.collections = collections
         
@@ -122,6 +127,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
             self.configureCollectionsPopUpButton()
             self.selectCollection(at: self.collections.startIndex)
             self.filterInstalledPlugins(by: "")
+            self.versionField.stringValue = "Version \(PluginData.currentVersion)"
         }
     }
     
@@ -152,7 +158,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     private func selectCollection(at index: Int) {
         self.currentCollectionIndex = index
         self.collectionsPopUpButton.selectItem(at: index)
-        self.installedPluginsCollectionView.reloadItems(at: self.installedPluginsCollectionView.indexPathsForVisibleItems())
+        self.installedPluginsCollectionView.reloadData()
         self.currentCollectionTableView.reloadData()
         self.shortcutField.shortcut = self.currentCollection.shortcut
         self.configureAutoGrouping(for: self.currentCollection.autoGrouping)
