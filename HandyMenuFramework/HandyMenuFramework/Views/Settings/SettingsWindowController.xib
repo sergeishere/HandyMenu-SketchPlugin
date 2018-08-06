@@ -31,7 +31,7 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="941" height="672"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+            <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="941" height="672"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
@@ -105,7 +105,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
-                                        <rect key="frame" x="0.0" y="497" width="422" height="22"/>
+                                        <rect key="frame" x="0.0" y="497" width="401" height="22"/>
                                         <subviews>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7SF-t5-biH">
                                                 <rect key="frame" x="-2" y="-2" width="76" height="26"/>
@@ -138,10 +138,14 @@
                                                     <action selector="openCollectionSettings:" target="-2" id="UBW-xC-nZT"/>
                                                 </connections>
                                             </button>
+                                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-GJ-77O">
+                                                <rect key="frame" x="103" y="0.0" width="90" height="22"/>
+                                            </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Alm-vU-z38" customClass="ShortcutField" customModule="HandyMenuFramework" customModuleProvider="target">
-                                                <rect key="frame" x="103" y="-1" width="319" height="24"/>
+                                                <rect key="frame" x="201" y="-3" width="200" height="28"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="Acv-NN-fAx"/>
+                                                    <constraint firstAttribute="width" constant="200" id="670-hZ-tvG"/>
+                                                    <constraint firstAttribute="height" constant="28" id="Acv-NN-fAx"/>
                                                 </constraints>
                                             </customView>
                                         </subviews>
@@ -155,8 +159,10 @@
                                             <integer value="1000"/>
                                             <integer value="1000"/>
                                             <integer value="1000"/>
+                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
@@ -435,7 +441,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="110.5" y="195"/>
+            <point key="canvasLocation" x="109.5" y="195"/>
         </window>
         <menu autoenablesItems="NO" id="6kd-9G-3aK">
             <items>

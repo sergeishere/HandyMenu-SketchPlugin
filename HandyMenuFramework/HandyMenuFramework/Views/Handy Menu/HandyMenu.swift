@@ -42,7 +42,7 @@ class HandyMenu: NSMenu {
         let view = NSView(frame: NSRect(x: 0, y: 0, width: self.size.width, height: 24))
         
         let titleLabel = NSTextField(labelWithAttributedString: NSAttributedString(string: title,
-                                                                                   attributes: [.font : NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .medium)]))
+                                                                                   attributes: [.font : NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .bold)]))
         
         let actionButton = NSButton()
         actionButton.frame = NSRect(x: 0, y: 0, width: 16, height: 16)

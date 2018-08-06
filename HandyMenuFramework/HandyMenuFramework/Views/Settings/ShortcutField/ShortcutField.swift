@@ -33,7 +33,7 @@ class ShortcutField: NSView {
     
     public var shortcut: Shortcut = .empty {
         didSet(newShortcut) {
-            shortcutText.stringValue = shortcut.stringRepresentation
+            shortcutText.stringValue = "Shortcut: " + shortcut.stringRepresentation
         }
     }
     
@@ -53,13 +53,14 @@ class ShortcutField: NSView {
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.width,.height]
         
-        self.contentView.wantsLayer = true
-        self.contentView.layer?.cornerRadius = self.bounds.height / 2
-        
-        
         self.shortcutController.delegate = self
         
         self.configureForState(.inactive)
+    }
+    
+    override func awakeFromNib() {
+        self.contentView.wantsLayer = true
+        self.contentView.layer?.cornerRadius = self.bounds.height / 2
     }
     
     private func configureForState(_ state: State) {
@@ -68,10 +69,13 @@ class ShortcutField: NSView {
             self.contentView.layer?.backgroundColor = NSColor.highlightColor.cgColor
             self.contentView.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
             self.contentView.layer?.borderWidth = 2.0
+            self.shortcutText.stringValue = ""
+            self.shortcutText.placeholderString = "Type shortcut or press ESC"
         case .inactive:
             self.contentView.layer?.backgroundColor = NSColor.controlColor.cgColor
             self.contentView.layer?.borderColor = NSColor.gridColor.cgColor
             self.contentView.layer?.borderWidth = 1
+            self.shortcutText.placeholderString = "Type shortcut"
         }
     }
     
