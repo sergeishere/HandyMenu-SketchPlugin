@@ -53,6 +53,7 @@ public class DataController {
     
     public func loadPluginData(){
         self.pluginData = self.loadData(for: dataCaretaker.retrieve())
+        self.pluginData?.pluginVersion = PluginData.currentVersion
         self.filterCollections()
         delegate?.dataController(self, didUpdate: pluginData!)
     }

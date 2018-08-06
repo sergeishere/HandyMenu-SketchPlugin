@@ -274,6 +274,7 @@ extension SettingsWindowController: NSTableViewDelegate, CollectionTableViewDele
             let movingItem = self.currentCollection.items.remove(at: fromRow)
             self.currentCollection.items.insert(movingItem, at: toRow)
             self.currentCollectionTableView.moveRow(at: fromRow, to: toRow)
+            self.currentCollectionTableView.deselectAll(nil)
             return true
         }
         
