@@ -32,8 +32,8 @@ class ShortcutField: NSView {
     public weak var delegate: ShortcutFieldDelegate?
     
     public var shortcut: Shortcut = .empty {
-        didSet(newShortcut) {
-            shortcutText.stringValue = "Shortcut: " + shortcut.stringRepresentation
+        didSet {
+            self.shortcutText.stringValue = shortcut.stringRepresentation.isEmpty ? "" : "Shortcut: " + shortcut.stringRepresentation
         }
     }
     
@@ -68,13 +68,10 @@ class ShortcutField: NSView {
             self.contentView.layer?.backgroundColor = NSColor.highlightColor.cgColor
             self.contentView.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
             self.contentView.layer?.borderWidth = 2.0
-            self.shortcutText.stringValue = ""
-            self.shortcutText.placeholderString = "Type shortcut or press ESC"
         case .inactive:
             self.contentView.layer?.backgroundColor = NSColor.controlColor.cgColor
             self.contentView.layer?.borderColor = NSColor.gridColor.cgColor
             self.contentView.layer?.borderWidth = 1
-            self.shortcutText.placeholderString = "Type shortcut"
         }
     }
     

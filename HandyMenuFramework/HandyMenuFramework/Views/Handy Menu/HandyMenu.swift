@@ -45,8 +45,16 @@ class HandyMenu: NSMenu {
     private func generateTitleView(with title: String) -> NSView {
         let view = NSView(frame: NSRect(x: 0, y: 0, width: self.size.width, height: 24))
         
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineBreakMode = .byTruncatingTail
+        let titleLabelAttributes: [NSAttributedStringKey:Any] = [.font : NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .medium),
+                                                                 .foregroundColor : NSColor.tertiaryLabelColor,
+                                                                 .paragraphStyle: paragraph ]
+        
         let titleLabel = NSTextField(labelWithAttributedString: NSAttributedString(string: title,
-                                                                                   attributes: [.font : NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .bold)]))
+                                                                                   attributes: titleLabelAttributes))
+        titleLabel.usesSingleLineMode = true
+        
         
         let actionButton = NSButton()
         actionButton.frame = NSRect(x: 0, y: 0, width: 16, height: 16)
@@ -54,6 +62,8 @@ class HandyMenu: NSMenu {
         actionButton.isBordered = false
         actionButton.target = self
         actionButton.action = #selector(openSettings)
+        actionButton.widthAnchor.constraint(equalToConstant: 16).isActive = true
+        actionButton.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
         let bundle = Bundle(for: HandyMenu.self)
         if let settingsImage = bundle.image(forResource: .settingsIcon),
@@ -64,7 +74,7 @@ class HandyMenu: NSMenu {
         
         let stack = NSStackView(views: [titleLabel, actionButton])
         stack.alignment = .centerY
-        stack.distribution = .fill
+        stack.distribution = .fillProportionally
         stack.orientation = .horizontal
         view.addSubview(stack)
         
