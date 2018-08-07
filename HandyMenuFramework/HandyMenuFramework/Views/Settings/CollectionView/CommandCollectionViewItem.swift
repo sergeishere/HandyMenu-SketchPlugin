@@ -19,7 +19,7 @@ class CommandCollectionViewItem: NSCollectionViewItem {
     public var isUsed: Bool = false {
         didSet {
             self.textField?.stringValue = self.isUsed ? "✓ " + commandName : commandName
-            self.textField?.textColor = self.isUsed ? NSColor.controlTextColor.withAlphaComponent(0.3) : NSColor.controlTextColor
+            self.textField?.textColor = self.isUsed ? NSColor.controlTextColor.withAlphaComponent(0.3) : .controlTextColor
         }
     }
     
@@ -48,13 +48,13 @@ class CommandCollectionViewItem: NSCollectionViewItem {
     
     override func prepareForReuse() {
         self.view.layer?.backgroundColor = NSColor.clear.cgColor
-        self.textField?.textColor = NSColor.controlTextColor
+        self.textField?.textColor = .controlTextColor
         self.isUsed = false
     }
     
     func setHighlight(_ selected: Bool) {
         self.view.layer?.backgroundColor = selected ? NSColor.alternateSelectedControlColor.cgColor : NSColor.clear.cgColor
-        self.textField?.textColor = selected ? NSColor.white : NSColor.controlTextColor
+        self.textField?.textColor = selected ? .white : .controlTextColor
     }
     
     override func mouseDown(with event: NSEvent) {

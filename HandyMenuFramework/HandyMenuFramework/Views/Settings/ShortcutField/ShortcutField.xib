@@ -8,6 +8,7 @@
         <customObject id="-2" userLabel="File's Owner" customClass="ShortcutField" customModule="HandyMenuFramework" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="c22-O7-iKe" id="8w1-FH-5hW"/>
+                <outlet property="returnButton" destination="Njf-4c-UQr" id="3Ao-yw-6yi"/>
                 <outlet property="shortcutText" destination="vsI-U0-BiE" id="1Kc-sp-fTG"/>
             </connections>
         </customObject>
@@ -25,12 +26,31 @@
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="Njf-4c-UQr">
+                    <rect key="frame" x="8" y="13" width="16" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="3i9-Th-zQy"/>
+                        <constraint firstAttribute="width" constant="16" id="D7o-M1-9ve"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_return" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="WLh-xD-lZB">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="returnInactiveState:" target="-2" id="48y-Nq-PEt"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
+                <constraint firstItem="Njf-4c-UQr" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="6Tw-Yn-Dhn"/>
                 <constraint firstItem="vsI-U0-BiE" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="IiZ-eK-nez"/>
                 <constraint firstItem="vsI-U0-BiE" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Jh7-hk-4Hw"/>
+                <constraint firstItem="Njf-4c-UQr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="tgC-hx-7Nb"/>
             </constraints>
             <point key="canvasLocation" x="141" y="128"/>
         </customView>
     </objects>
+    <resources>
+        <image name="icon_return" width="16" height="16"/>
+    </resources>
 </document>

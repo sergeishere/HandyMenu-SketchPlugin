@@ -36,13 +36,13 @@ class HandyMenu: NSMenu {
         }
         
         let titleItem = NSMenuItem(title: data.title, action: nil, keyEquivalent: "")
-        titleItem.view = generateTitleView(with: data.title)
+        titleItem.view = makeTitleView(with: data.title)
         self.insertItem(titleItem, at: 0)
         
         
     }
     
-    private func generateTitleView(with title: String) -> NSView {
+    private func makeTitleView(with title: String) -> NSView {
         let view = NSView(frame: NSRect(x: 0, y: 0, width: self.size.width, height: 24))
         
         let paragraph = NSMutableParagraphStyle()
@@ -58,7 +58,7 @@ class HandyMenu: NSMenu {
         
         let actionButton = NSButton()
         actionButton.frame = NSRect(x: 0, y: 0, width: 16, height: 16)
-        actionButton.bezelStyle = NSButton.BezelStyle.regularSquare
+        actionButton.bezelStyle = .regularSquare
         actionButton.isBordered = false
         actionButton.target = self
         actionButton.action = #selector(openSettings)
