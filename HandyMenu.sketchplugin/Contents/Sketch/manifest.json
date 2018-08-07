@@ -22,7 +22,7 @@
     ]
   },
   "identifier" : "com.sergeishere.plugins.handymenu",
-  "version" : "4.1",
+  "version" : "5.0",
   "description" : "Quick access to handpicked plugins through a contextual menu.\nPress 'cmd + 4' to show the menu.",
   "homepage": "https://github.com/sergeishere/HandyMenu-SketchPlugin",
   "author" : "Sergey Dmitriev",
