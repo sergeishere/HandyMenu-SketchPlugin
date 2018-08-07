@@ -183,6 +183,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 # pragma pop_macro("any")
 #endif
 
+
+
 @class NSEvent;
 @class NSWindow;
 @class NSCoder;
@@ -196,15 +198,15 @@ SWIFT_CLASS("_TtC18HandyMenuFramework24SettingsWindowController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
+
+
 @class NSTableView;
 
 @interface SettingsWindowController (SWIFT_EXTENSION(HandyMenuFramework)) <NSTableViewDataSource>
 - (NSInteger)numberOfRowsInTableView:(NSTableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-
-
 
 @class NSCollectionView;
 @class NSCollectionViewItem;

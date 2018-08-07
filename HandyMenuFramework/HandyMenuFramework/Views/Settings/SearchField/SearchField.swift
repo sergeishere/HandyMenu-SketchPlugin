@@ -31,8 +31,7 @@ class SearchField: NSView, NSTextFieldDelegate {
     // MARK: - Lifecycle
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
-        let nibName = type(of: self).className().components(separatedBy: ".").last!
-        if let nib = NSNib(nibNamed: NSNib.Name(rawValue: nibName), bundle: Bundle(for: type(of: self))) {
+        if let nib = NSNib(nibNamed: .searchField, bundle: Bundle(for: type(of: self))) {
             nib.instantiate(withOwner: self, topLevelObjects: nil)
             self.prepare()
         }

@@ -11,7 +11,7 @@
     @objc static let shared = PluginController()
     
     // MARK: - Private Properties
-    private let settingsWindowController = SettingsWindowController(windowNibName: NSNib.Name(rawValue: String(describing: SettingsWindowController.self)))
+    private let settingsWindowController = SettingsWindowController(windowNibName: .settingsWindowController)
     private let dataController = DataController()
     private let menuController = MenuController()
     private let shortcutController = ShortcutController()

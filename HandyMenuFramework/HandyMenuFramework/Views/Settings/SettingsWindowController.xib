@@ -31,15 +31,15 @@
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="941" height="672"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="941" height="672"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="32" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rqe-Zb-B2L">
-                        <rect key="frame" x="32" y="96" width="877" height="544"/>
+                        <rect key="frame" x="32" y="64" width="877" height="576"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-ta-d3Q" userLabel="Installed Plugins Stack">
-                                <rect key="frame" x="0.0" y="0.0" width="423" height="544"/>
+                                <rect key="frame" x="0.0" y="32" width="423" height="544"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjP-w2-Njt">
                                         <rect key="frame" x="-2" y="527" width="103" height="17"/>
@@ -72,6 +72,7 @@
                                             </subviews>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </clipView>
+                                        <edgeInsets key="contentInsets" left="0.0" right="0.0" top="20" bottom="0.0"/>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Xxu-3k-SAx">
                                             <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
@@ -94,7 +95,7 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nok-l7-CZj" userLabel="Choosen Plugins Stack">
-                                <rect key="frame" x="455" y="0.0" width="422" height="544"/>
+                                <rect key="frame" x="455" y="32" width="422" height="544"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-b0-JPK">
                                         <rect key="frame" x="-2" y="527" width="106" height="17"/>
@@ -433,7 +434,7 @@ DQ
                     <constraint firstItem="Rqe-Zb-B2L" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="32" id="AdG-yC-GMh"/>
                     <constraint firstAttribute="trailing" secondItem="wxZ-aw-2h1" secondAttribute="trailing" id="D3y-bf-3Yf"/>
                     <constraint firstItem="Rqe-Zb-B2L" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="32" id="Rur-Og-cyg"/>
-                    <constraint firstItem="wxZ-aw-2h1" firstAttribute="top" secondItem="Rqe-Zb-B2L" secondAttribute="bottom" constant="32" id="UCs-b1-MML"/>
+                    <constraint firstItem="wxZ-aw-2h1" firstAttribute="top" secondItem="Rqe-Zb-B2L" secondAttribute="bottom" id="UCs-b1-MML"/>
                     <constraint firstAttribute="trailing" secondItem="Rqe-Zb-B2L" secondAttribute="trailing" constant="32" id="V0X-NL-SN1"/>
                     <constraint firstAttribute="bottom" secondItem="wxZ-aw-2h1" secondAttribute="bottom" id="k1V-as-PrC"/>
                 </constraints>

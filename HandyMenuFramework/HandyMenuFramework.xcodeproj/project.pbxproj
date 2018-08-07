@@ -28,6 +28,8 @@
 		A5380544210DDCD30026E4A5 /* CommandTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */; };
 		A5398D1B21165A8600BD70EF /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398D1A21165A8600BD70EF /* NSImage.swift */; };
 		A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A829420FF726600FD83FA /* HandyMenu.swift */; };
+		A54EA40B2119108D00C56E01 /* NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54EA40A2119108D00C56E01 /* NSColor.swift */; };
+		A54EA40D211910D500C56E01 /* NSNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54EA40C211910D500C56E01 /* NSNib.swift */; };
 		A5583D1E211206CC00F4E85B /* BorderedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5583D1D211206CB00F4E85B /* BorderedView.swift */; };
 		A58FC0DD20FF83B1004730BB /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* Command.swift */; };
 		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
@@ -84,6 +86,8 @@
 		A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandTableViewItem.swift; sourceTree = "<group>"; };
 		A5398D1A21165A8600BD70EF /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
 		A53A829420FF726600FD83FA /* HandyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyMenu.swift; sourceTree = "<group>"; };
+		A54EA40A2119108D00C56E01 /* NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSColor.swift; sourceTree = "<group>"; };
+		A54EA40C211910D500C56E01 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNib.swift; sourceTree = "<group>"; };
 		A5583D1D211206CB00F4E85B /* BorderedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedView.swift; sourceTree = "<group>"; };
 		A58FC0DC20FF83B1004730BB /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
@@ -131,7 +135,6 @@
 			children = (
 				A508BF09210F96F100024995 /* Utils.swift */,
 				A5905864210E0AF700B6079A /* OSLog.swift */,
-				A5398D1A21165A8600BD70EF /* NSImage.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -208,6 +211,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		A54EA4092119107200C56E01 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5398D1A21165A8600BD70EF /* NSImage.swift */,
+				A54EA40A2119108D00C56E01 /* NSColor.swift */,
+				A54EA40C211910D500C56E01 /* NSNib.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		A57AC50B21125E67007C0EE1 /* Collections */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +276,7 @@
 		A5A65C6020FBFECB00BBB6A8 /* HandyMenuFramework */ = {
 			isa = PBXGroup;
 			children = (
+				A54EA4092119107200C56E01 /* Extensions */,
 				A5A65C6220FBFECB00BBB6A8 /* Info.plist */,
 				A538052E210A49B20026E4A5 /* Assets */,
 				A5A65C8920FC0F2C00BBB6A8 /* Bridges */,
@@ -413,9 +427,11 @@
 				A52D36EA2113900A00FD2874 /* CollectionTableView.swift in Sources */,
 				A58FC0DD20FF83B1004730BB /* Command.swift in Sources */,
 				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
+				A54EA40B2119108D00C56E01 /* NSColor.swift in Sources */,
 				A5A136BA2115E9700042B594 /* InputPanel.swift in Sources */,
 				A5583D1E211206CC00F4E85B /* BorderedView.swift in Sources */,
 				A5A65C8D20FCD94700BBB6A8 /* Collection.swift in Sources */,
+				A54EA40D211910D500C56E01 /* NSNib.swift in Sources */,
 				A52D36F321149F9A00FD2874 /* SearchField.swift in Sources */,
 				A508BF0A210F96F100024995 /* Utils.swift in Sources */,
 				A52D36F82114A98000FD2874 /* SearchFieldTextFieldCell.swift in Sources */,

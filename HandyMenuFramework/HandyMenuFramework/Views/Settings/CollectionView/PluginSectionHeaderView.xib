@@ -13,7 +13,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0aF-TF-zPL">
-                    <rect key="frame" x="62" y="15" width="86" height="17"/>
+                    <rect key="frame" x="70" y="15" width="86" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Plugin Name" id="JV6-1W-pbN">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -21,17 +21,17 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AQt-PH-3e9">
-                    <rect key="frame" x="16" y="8" width="32" height="32"/>
+                    <rect key="frame" x="20" y="8" width="32" height="32"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="32" id="4UN-qJ-Iut"/>
                         <constraint firstAttribute="height" constant="32" id="OD0-eC-DDM"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="ldr-8q-2ad"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="ldr-8q-2ad"/>
                 </imageView>
             </subviews>
             <constraints>
-                <constraint firstItem="0aF-TF-zPL" firstAttribute="leading" secondItem="AQt-PH-3e9" secondAttribute="trailing" constant="16" id="Uvf-Fi-KLF"/>
-                <constraint firstItem="AQt-PH-3e9" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="16" id="YbP-cR-uB8"/>
+                <constraint firstItem="0aF-TF-zPL" firstAttribute="leading" secondItem="AQt-PH-3e9" secondAttribute="trailing" constant="20" id="Uvf-Fi-KLF"/>
+                <constraint firstItem="AQt-PH-3e9" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" id="YbP-cR-uB8"/>
                 <constraint firstItem="0aF-TF-zPL" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="ad2-cg-DJx"/>
                 <constraint firstItem="AQt-PH-3e9" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="pY3-2j-vGQ"/>
             </constraints>

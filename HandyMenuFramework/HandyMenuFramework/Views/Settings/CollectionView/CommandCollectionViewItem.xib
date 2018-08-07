@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eRB-kw-3t5">
-                    <rect key="frame" x="62" y="8" width="105" height="17"/>
+                    <rect key="frame" x="70" y="8" width="105" height="17"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Command Name" id="kha-0L-CeA">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -26,7 +26,7 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstItem="eRB-kw-3t5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="64" id="MHd-Ba-MCP"/>
+                <constraint firstItem="eRB-kw-3t5" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="72" id="MHd-Ba-MCP"/>
                 <constraint firstItem="eRB-kw-3t5" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="szJ-xf-dwR"/>
             </constraints>
             <point key="canvasLocation" x="139" y="49"/>

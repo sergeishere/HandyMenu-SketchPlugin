@@ -33,4 +33,8 @@ class PluginSectionHeaderView: NSView {
         }
     }
     
+    override func awakeFromNib() {
+        self.pluginImageView.wantsLayer = true
+        self.pluginImageView.layer?.cornerRadius = 5.0
+    }
 }

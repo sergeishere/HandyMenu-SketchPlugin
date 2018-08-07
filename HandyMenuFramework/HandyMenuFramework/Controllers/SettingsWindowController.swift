@@ -53,7 +53,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     
     private let commandHeight:CGFloat = 24.0
     private let headerHeight:CGFloat = 48.0
-    private let footerHeight: CGFloat = 20.0
+    private let footerHeight: CGFloat = 32.0
     
     private var collectionTableViewRect: NSRect {
         return NSInsetRect(self.currentCollectionTableView.convert(self.collectionsScrollView.bounds, to: nil), -10, -20)
@@ -346,7 +346,7 @@ extension SettingsWindowController: NSCollectionViewDataSource {
                                                                                                    withIdentifier: NSUserInterfaceItemIdentifier("PluginSectionHeaderView"),
                                                                                                    for: indexPath) as! PluginSectionHeaderView
             suppementaryHeaderView.title = self.filteredPlugins[indexPath.section].pluginName
-            suppementaryHeaderView.image = self.filteredPlugins[indexPath.section].image
+            suppementaryHeaderView.image = self.filteredPlugins[indexPath.section].image ?? NSImage.pluginIconPlaceholderImage
             suppementaryHeaderView.searchingString = self.searchField.stringValue
             return suppementaryHeaderView
         case .sectionFooter:

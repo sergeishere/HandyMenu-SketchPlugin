@@ -13,7 +13,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ZAs-8t-j5u">
-                    <rect key="frame" x="0.0" y="-2" width="480" height="5"/>
+                    <rect key="frame" x="0.0" y="12" width="480" height="5"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="EbG-gA-fUX"/>
                     </constraints>
@@ -21,8 +21,8 @@
             </subviews>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ZAs-8t-j5u" secondAttribute="trailing" id="173-Gq-tyx"/>
+                <constraint firstItem="ZAs-8t-j5u" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" constant="8" id="7mg-DH-PpE"/>
                 <constraint firstItem="ZAs-8t-j5u" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="N77-Yb-k4q"/>
-                <constraint firstAttribute="bottom" secondItem="ZAs-8t-j5u" secondAttribute="bottom" id="baW-q3-RAw"/>
             </constraints>
             <point key="canvasLocation" x="139" y="55.5"/>
         </customView>
