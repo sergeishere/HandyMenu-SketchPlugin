@@ -1,6 +1,6 @@
 var onStart = function(context) {
     loadAndRun(context, function(){
-        HandyMenuPlugin.shared().wakeUp();
+        HandyMenuPlugin.shared().configure();
     })
 }
 

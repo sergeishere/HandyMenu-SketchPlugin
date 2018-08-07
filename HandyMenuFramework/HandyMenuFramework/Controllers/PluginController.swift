@@ -11,26 +11,26 @@
     @objc static let shared = PluginController()
     
     // MARK: - Private Properties
-    private let settingsWindowController = SettingsWindowController(windowNibName: .settingsWindowController)
-    private let dataController = DataController()
-    private let menuController = MenuController()
-    private let shortcutController = ShortcutController()
+    private let settingsWindowController: SettingsWindowController
+    private let dataController: DataController
+    private let menuController: MenuController
+    private let shortcutController: ShortcutController
     
     // MARK: - Plugin Lifecycle
     private override init() {
+        self.settingsWindowController = SettingsWindowController(windowNibName: .settingsWindowController)
+        self.dataController = DataController()
+        self.menuController = MenuController()
+        self.shortcutController = ShortcutController()
         super.init()
-        
+    }
+    
+    @objc public func configure() {
         self.settingsWindowController.delegate = self
-        
         self.shortcutController.delegate = self
-
         self.dataController.delegate = self
         self.dataController.loadInstalledPluginsData()
         self.dataController.loadPluginData()
-    }
-    
-    @objc public func wakeUp() {
-        plugin_log("Plugin has been woken up")
     }
     
     @objc public func showSettings() {
