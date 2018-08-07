@@ -13,10 +13,19 @@ public protocol SettingsWindowControllerDelegate: class {
 
 public class SettingsWindowController: NSWindowController, SettingsWindowViewControllerDelegate {
     
-    
     // MARK: - Outlets
     @IBOutlet private weak var searchField: SearchField!
-    @IBOutlet private weak var versionField: NSTextField!
+    @IBOutlet private weak var versionLabel: NSTextField!
+    @IBOutlet private weak var noPluginsLabel: NSTextField! {
+        didSet {
+            self.noPluginsLabel.alphaValue = 0.0
+        }
+    }
+    @IBOutlet private weak var emptyListLabel: NSTextField! {
+        didSet {
+            self.emptyListLabel.alphaValue = 0.0
+        }
+    }
     @IBOutlet private weak var installedPluginsCollectionView: NSCollectionView!
     @IBOutlet private weak var collectionsPopUpButton: NSPopUpButton!
     @IBOutlet private weak var collectionSettingsMenu: NSMenu!
@@ -40,7 +49,11 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
     private var currentCollectionIndex: Int = 0
     private var collections: [Collection] = []
     
-    private var filteredPlugins: [InstalledPluginData] = []
+    private var filteredPlugins: [InstalledPluginData] = [] {
+        didSet {
+            self.toggleNoPluginsLabel()
+        }
+    }
     
     private var currentCollection: Collection {
         get {
@@ -48,6 +61,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
         }
         set {
             self.collections[self.currentCollectionIndex] = newValue
+            self.toggleEmptyLabel()
         }
     }
     
@@ -127,7 +141,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
             self.configureCollectionsPopUpButton()
             self.selectCollection(at: self.collections.startIndex)
             self.filterInstalledPlugins(by: "")
-            self.versionField.stringValue = "Version \(PluginData.currentVersion)"
+            self.versionLabel.stringValue = "Version \(PluginData.currentVersion)"
         }
     }
     
@@ -153,6 +167,20 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
             plugin_log("Filtered array: %@", String(describing: self.currentCollection.items))
             self.currentCollectionTableView.removeRows(at: separatorIndexes, withAnimation: .effectFade)
         }
+    }
+    
+    private func toggleEmptyLabel() {
+        NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
+            context.duration = 0.2
+            self.emptyListLabel.animator().alphaValue = self.currentCollection.items.count > 0 ? 0.0 : 1.0
+        })
+    }
+    
+    private func toggleNoPluginsLabel() {
+        NSAnimationContext.runAnimationGroup({ [unowned self] (context) in
+            context.duration = 0.2
+            self.noPluginsLabel.animator().alphaValue = self.filteredPlugins.count > 0 ? 0.0 : 1.0
+        })
     }
     
     private func selectCollection(at index: Int) {

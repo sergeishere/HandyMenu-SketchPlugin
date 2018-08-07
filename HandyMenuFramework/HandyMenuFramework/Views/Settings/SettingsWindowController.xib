@@ -14,13 +14,15 @@
                 <outlet property="collectionsScrollView" destination="rQG-R1-rbD" id="otw-ZE-uit"/>
                 <outlet property="currentCollectionTableView" destination="yP6-CO-ubM" id="lrd-hT-ge9"/>
                 <outlet property="deleteItemButton" destination="aHB-oK-ulr" id="v3P-2H-lVy"/>
+                <outlet property="emptyListLabel" destination="r3r-mt-JeL" id="iXb-cg-iSt"/>
                 <outlet property="insertSeparatorButton" destination="QrG-ll-9LE" id="Uwf-M4-l6H"/>
                 <outlet property="installedPluginsCollectionView" destination="J3I-JX-xAN" id="bb5-rC-R49"/>
+                <outlet property="noPluginsLabel" destination="6kt-wn-FsX" id="zua-0X-kcY"/>
                 <outlet property="removeMenuItem" destination="ffe-If-1sm" id="Phf-cZ-RNW"/>
                 <outlet property="renamingPanel" destination="vBZ-cg-fls" id="J3H-vJ-Z1H"/>
                 <outlet property="searchField" destination="HQk-2F-47z" id="6l1-MO-UW0"/>
                 <outlet property="shortcutField" destination="Alm-vU-z38" id="Jnr-X7-Way"/>
-                <outlet property="versionField" destination="CjY-ld-XOj" id="wz1-30-l5H"/>
+                <outlet property="versionLabel" destination="CjY-ld-XOj" id="wz1-30-l5H"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -29,20 +31,20 @@
         <window title="Configure Handy Menu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="HandyMenu Settings Window" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="941" height="672"/>
+            <rect key="contentRect" x="196" y="240" width="1025" height="733"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="941" height="672"/>
+                <rect key="frame" x="0.0" y="0.0" width="1025" height="733"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="32" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rqe-Zb-B2L">
-                        <rect key="frame" x="32" y="64" width="877" height="576"/>
+                        <rect key="frame" x="32" y="96" width="961" height="605"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-ta-d3Q" userLabel="Installed Plugins Stack">
-                                <rect key="frame" x="0.0" y="32" width="423" height="544"/>
+                                <rect key="frame" x="0.0" y="32" width="465" height="573"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjP-w2-Njt">
-                                        <rect key="frame" x="-2" y="527" width="103" height="17"/>
+                                        <rect key="frame" x="-2" y="556" width="103" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Installed Plugins" id="qTc-Sr-gRh">
                                             <font key="font" metaFont="titleBar"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -50,38 +52,59 @@
                                         </textFieldCell>
                                     </textField>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="HQk-2F-47z" customClass="SearchField" customModule="HandyMenuFramework" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="487" width="423" height="32"/>
+                                        <rect key="frame" x="0.0" y="516" width="423" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="iK3-HH-Wty"/>
                                         </constraints>
                                     </customView>
-                                    <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4W-Hx-wVA">
-                                        <rect key="frame" x="0.0" y="0.0" width="423" height="479"/>
-                                        <clipView key="contentView" drawsBackground="NO" id="JVY-hp-lWl">
-                                            <rect key="frame" x="1" y="1" width="421" height="477"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <collectionView selectable="YES" id="J3I-JX-xAN" customClass="InstalledPluginsCollectionView" customModule="HandyMenuFramework" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="421" height="158"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" id="fzp-Se-jep">
-                                                        <size key="itemSize" width="50" height="24"/>
-                                                    </collectionViewFlowLayout>
-                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </collectionView>
-                                            </subviews>
-                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                        </clipView>
-                                        <edgeInsets key="contentInsets" left="0.0" right="0.0" top="20" bottom="0.0"/>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Xxu-3k-SAx">
-                                            <rect key="frame" x="-100" y="-100" width="233" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="GFo-xG-qGj">
-                                            <rect key="frame" x="234" y="1" width="15" height="143"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                    </scrollView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="HI3-5J-XVv">
+                                        <rect key="frame" x="0.0" y="0.0" width="463" height="508"/>
+                                        <subviews>
+                                            <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4W-Hx-wVA">
+                                                <rect key="frame" x="0.0" y="0.0" width="463" height="508"/>
+                                                <clipView key="contentView" drawsBackground="NO" id="JVY-hp-lWl">
+                                                    <rect key="frame" x="1" y="1" width="461" height="506"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <collectionView selectable="YES" id="J3I-JX-xAN" customClass="InstalledPluginsCollectionView" customModule="HandyMenuFramework" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="461" height="487"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                            <collectionViewFlowLayout key="collectionViewLayout" id="fzp-Se-jep">
+                                                                <size key="itemSize" width="50" height="24"/>
+                                                            </collectionViewFlowLayout>
+                                                            <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                        </collectionView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </clipView>
+                                                <edgeInsets key="contentInsets" left="0.0" right="0.0" top="20" bottom="0.0"/>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Xxu-3k-SAx">
+                                                    <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="GFo-xG-qGj">
+                                                    <rect key="frame" x="446" y="20" width="16" height="487"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6kt-wn-FsX">
+                                                <rect key="frame" x="167" y="262" width="130" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="No plugins are found" id="0g3-7L-EAl">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="K4W-Hx-wVA" firstAttribute="top" secondItem="HI3-5J-XVv" secondAttribute="top" id="7Ef-IK-d7J"/>
+                                            <constraint firstItem="6kt-wn-FsX" firstAttribute="centerY" secondItem="HI3-5J-XVv" secondAttribute="centerY" constant="-16" id="Urf-TI-fYe"/>
+                                            <constraint firstItem="K4W-Hx-wVA" firstAttribute="leading" secondItem="HI3-5J-XVv" secondAttribute="leading" id="VVY-OH-sfT"/>
+                                            <constraint firstAttribute="bottom" secondItem="K4W-Hx-wVA" secondAttribute="bottom" id="ePi-Nw-ho2"/>
+                                            <constraint firstAttribute="trailing" secondItem="K4W-Hx-wVA" secondAttribute="trailing" id="rhs-Xp-Xc9"/>
+                                            <constraint firstItem="6kt-wn-FsX" firstAttribute="centerX" secondItem="HI3-5J-XVv" secondAttribute="centerX" id="w8V-Bu-Tpr"/>
+                                        </constraints>
+                                    </customView>
                                 </subviews>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
@@ -95,10 +118,10 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nok-l7-CZj" userLabel="Choosen Plugins Stack">
-                                <rect key="frame" x="455" y="32" width="422" height="544"/>
+                                <rect key="frame" x="497" y="19" width="464" height="586"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-b0-JPK">
-                                        <rect key="frame" x="-2" y="527" width="106" height="17"/>
+                                        <rect key="frame" x="-2" y="569" width="106" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Choosen Plugins" id="Tcg-O9-wz5">
                                             <font key="font" metaFont="titleBar"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -106,10 +129,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
-                                        <rect key="frame" x="0.0" y="497" width="401" height="22"/>
+                                        <rect key="frame" x="0.0" y="529" width="422" height="32"/>
                                         <subviews>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7SF-t5-biH">
-                                                <rect key="frame" x="-2" y="-2" width="76" height="26"/>
+                                                <rect key="frame" x="-2" y="3" width="76" height="26"/>
                                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" refusesFirstResponder="YES" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="A10-rY-jJ4" id="9hu-G2-As4">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -126,7 +149,7 @@
                                                 </connections>
                                             </popUpButton>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-cH-Zlj">
-                                                <rect key="frame" x="79" y="3" width="16" height="16"/>
+                                                <rect key="frame" x="79" y="8" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="9kJ-Q4-sgb"/>
                                                     <constraint firstAttribute="width" constant="16" id="aeX-cb-gXA"/>
@@ -140,10 +163,10 @@
                                                 </connections>
                                             </button>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-GJ-77O">
-                                                <rect key="frame" x="103" y="0.0" width="90" height="22"/>
+                                                <rect key="frame" x="103" y="0.0" width="111" height="32"/>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Alm-vU-z38" customClass="ShortcutField" customModule="HandyMenuFramework" customModuleProvider="target">
-                                                <rect key="frame" x="201" y="-3" width="200" height="28"/>
+                                                <rect key="frame" x="222" y="2" width="200" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="670-hZ-tvG"/>
                                                     <constraint firstAttribute="height" constant="28" id="Acv-NN-fAx"/>
@@ -154,7 +177,7 @@
                                             <constraint firstItem="Alm-vU-z38" firstAttribute="centerY" secondItem="vOz-fB-u3q" secondAttribute="centerY" id="6Ky-YE-dC3"/>
                                             <constraint firstItem="hcQ-cH-Zlj" firstAttribute="centerY" secondItem="vOz-fB-u3q" secondAttribute="centerY" id="A3E-xa-cuM"/>
                                             <constraint firstItem="7SF-t5-biH" firstAttribute="centerY" secondItem="vOz-fB-u3q" secondAttribute="centerY" id="JjV-dx-Qqi"/>
-                                            <constraint firstAttribute="height" constant="22" id="qQM-DF-RmV"/>
+                                            <constraint firstAttribute="height" constant="32" id="qQM-DF-RmV"/>
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
@@ -170,16 +193,16 @@
                                         </customSpacing>
                                     </stackView>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="oO0-a4-EOh" customClass="BorderedView" customModule="HandyMenuFramework" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="422" height="489"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="422" height="521"/>
                                         <subviews>
                                             <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="24" horizontalPageScroll="10" verticalLineScroll="24" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="rQG-R1-rbD">
-                                                <rect key="frame" x="0.0" y="32" width="422" height="457"/>
+                                                <rect key="frame" x="0.0" y="32" width="422" height="489"/>
                                                 <clipView key="contentView" id="yBL-Sd-aVS">
-                                                    <rect key="frame" x="0.0" y="0.0" width="422" height="457"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="422" height="489"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="firstColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowHeight="24" rowSizeStyle="systemDefault" viewBased="YES" floatsGroupRows="NO" id="yP6-CO-ubM" customClass="CollectionTableView" customModule="HandyMenuFramework" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="422" height="437"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="422" height="469"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -252,6 +275,14 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="r3r-mt-JeL">
+                                                <rect key="frame" x="110" y="268" width="201" height="17"/>
+                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Drop plugins you need over here" id="MUB-jJ-Ql9">
+                                                    <font key="font" metaFont="system"/>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="zuT-gs-0vd" customClass="BorderedView" customModule="HandyMenuFramework" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="422" height="32"/>
                                                 <subviews>
@@ -315,6 +346,8 @@
                                             <constraint firstItem="rQG-R1-rbD" firstAttribute="top" secondItem="oO0-a4-EOh" secondAttribute="top" id="9fc-d5-Oce"/>
                                             <constraint firstItem="zuT-gs-0vd" firstAttribute="leading" secondItem="oO0-a4-EOh" secondAttribute="leading" id="BS0-xd-dyu"/>
                                             <constraint firstAttribute="trailing" secondItem="zuT-gs-0vd" secondAttribute="trailing" id="BZy-Si-YbL"/>
+                                            <constraint firstItem="r3r-mt-JeL" firstAttribute="centerX" secondItem="oO0-a4-EOh" secondAttribute="centerX" id="FVb-lq-CO0"/>
+                                            <constraint firstItem="r3r-mt-JeL" firstAttribute="centerY" secondItem="oO0-a4-EOh" secondAttribute="centerY" constant="-16" id="He0-Ly-ixb"/>
                                             <constraint firstItem="rQG-R1-rbD" firstAttribute="leading" secondItem="oO0-a4-EOh" secondAttribute="leading" id="JD2-Az-AWi"/>
                                             <constraint firstAttribute="bottom" secondItem="zuT-gs-0vd" secondAttribute="bottom" id="Oer-6d-sqg"/>
                                             <constraint firstAttribute="trailing" secondItem="rQG-R1-rbD" secondAttribute="trailing" id="g1e-sJ-67v"/>
@@ -348,16 +381,16 @@
                         </customSpacing>
                     </stackView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="wxZ-aw-2h1">
-                        <rect key="frame" x="0.0" y="0.0" width="941" height="64"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1025" height="64"/>
                         <subviews>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="t84-Qx-Cud">
-                                <rect key="frame" x="0.0" y="61" width="941" height="5"/>
+                                <rect key="frame" x="0.0" y="61" width="1025" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="wEV-Wb-KdF"/>
                                 </constraints>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-ZJ-iju">
-                                <rect key="frame" x="763" y="15" width="82" height="32"/>
+                                <rect key="frame" x="847" y="15" width="82" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="G2Y-2H-AOy"/>
                                     <constraint firstAttribute="height" constant="21" id="xbi-aj-04c"/>
@@ -374,7 +407,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-EE-jue">
-                                <rect key="frame" x="845" y="15" width="70" height="32"/>
+                                <rect key="frame" x="929" y="15" width="70" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="M69-pc-ull"/>
                                     <constraint firstAttribute="height" constant="21" id="wOI-P6-9xA"/>
@@ -433,8 +466,8 @@ DQ
                     <constraint firstItem="wxZ-aw-2h1" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="994-of-0Et"/>
                     <constraint firstItem="Rqe-Zb-B2L" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="32" id="AdG-yC-GMh"/>
                     <constraint firstAttribute="trailing" secondItem="wxZ-aw-2h1" secondAttribute="trailing" id="D3y-bf-3Yf"/>
+                    <constraint firstItem="wxZ-aw-2h1" firstAttribute="top" secondItem="Rqe-Zb-B2L" secondAttribute="bottom" constant="32" id="HsF-Aw-fQP"/>
                     <constraint firstItem="Rqe-Zb-B2L" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="32" id="Rur-Og-cyg"/>
-                    <constraint firstItem="wxZ-aw-2h1" firstAttribute="top" secondItem="Rqe-Zb-B2L" secondAttribute="bottom" id="UCs-b1-MML"/>
                     <constraint firstAttribute="trailing" secondItem="Rqe-Zb-B2L" secondAttribute="trailing" constant="32" id="V0X-NL-SN1"/>
                     <constraint firstAttribute="bottom" secondItem="wxZ-aw-2h1" secondAttribute="bottom" id="k1V-as-PrC"/>
                 </constraints>
@@ -442,7 +475,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="109.5" y="195"/>
+            <point key="canvasLocation" x="131.5" y="203.5"/>
         </window>
         <menu autoenablesItems="NO" id="6kd-9G-3aK">
             <items>
@@ -467,7 +500,7 @@ DQ
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="687.5" y="-108.5"/>
+            <point key="canvasLocation" x="703" y="-117"/>
         </menu>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vBZ-cg-fls" customClass="InputPanel" customModule="HandyMenuFramework" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" documentModal="YES"/>
