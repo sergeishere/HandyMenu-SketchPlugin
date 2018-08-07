@@ -11,24 +11,28 @@ class HandyMenu: NSMenu {
     private var collectionName: String = ""
     
     public func configure(for data: Collection) {
-        
         self.collectionName = data.title
         self.addItem(NSMenuItem.separator())
 
-        for (index, item) in data.items.enumerated() {
-            switch item {
-            case .separator:
-                if data.autoGrouping { break }
-                self.addItem(NSMenuItem.separator())
-            case .command(let commandData):
-                if data.autoGrouping, index > 0, case let CollectionItem.command(previousCommand) = data.items[index-1], previousCommand.pluginID != commandData.pluginID {
+        if data.items.count > 0 {
+            for (index, item) in data.items.enumerated() {
+                switch item {
+                case .separator:
+                    if data.autoGrouping { break }
                     self.addItem(NSMenuItem.separator())
+                case .command(let commandData):
+                    if data.autoGrouping, index > 0, case let CollectionItem.command(previousCommand) = data.items[index-1], previousCommand.pluginID != commandData.pluginID {
+                        self.addItem(NSMenuItem.separator())
+                    }
+                    let newMenuItem = NSMenuItem(title: commandData.name, action: #selector(runPluginCommand(sender:)), keyEquivalent: "")
+                    newMenuItem.target = self
+                    newMenuItem.representedObject = commandData
+                    self.addItem(newMenuItem)
                 }
-                let newMenuItem = NSMenuItem(title: commandData.name, action: #selector(runPluginCommand(sender:)), keyEquivalent: "")
-                newMenuItem.target = self
-                newMenuItem.representedObject = commandData
-                self.addItem(newMenuItem)
             }
+        }else {
+            let emptyListLabel = NSMenuItem(title: "The menu is empty", action: nil, keyEquivalent: "")
+            self.addItem(emptyListLabel)
         }
         
         let titleItem = NSMenuItem(title: data.title, action: nil, keyEquivalent: "")
