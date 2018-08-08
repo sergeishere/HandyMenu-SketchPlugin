@@ -1,18 +1,12 @@
 var onStart = function(context) {
-    loadAndRun(context,function(){
-        HandyMenu.initializePlugin();
+    loadAndRun(context, function(){
+        HandyMenuPlugin.shared().configure();
     })
 }
 
-var onShowMenu = function(context) {
-    loadAndRun(context, function(){
-        HandyMenu.showMenu();
-    })
-};
-
 var onSetup = function(context) {
     loadAndRun(context, function(){
-        HandyMenu.showSettings();
+        HandyMenuPlugin.shared().showSettings();
     })
 };
 

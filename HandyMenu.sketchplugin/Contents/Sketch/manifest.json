@@ -2,14 +2,6 @@
   "commands" : [
     {
       "script" : "script.js",
-      "name" : "Show Menu",
-      "handlers" : {
-        "run" : "onShowMenu"
-      },
-      "identifier" : "com.sergeishere.plugins.handymenu.showmenu"
-    },
-    {
-      "script" : "script.js",
       "name" : "Configure Handy Menu",
       "handlers" : {
         "run" : "onSetup"
@@ -26,17 +18,17 @@
   "menu" : {
     "title" : "Handy Menu",
     "items" : [
-      "com.sergeishere.plugins.handymenu.showmenu",
       "com.sergeishere.plugins.handymenu.setup"
     ]
   },
   "identifier" : "com.sergeishere.plugins.handymenu",
-  "version" : "4.1",
-  "description" : "Quick access to handpicked plugins through a contextual menu.\nPress 'cmd + 4' to show the menu.",
+  "version" : "5.0",
+  "description" : "Quick access to handpicked plugins through a contextual menu.\n Create collections of plugins, rename them and assign different shortcuts.",
   "homepage": "https://github.com/sergeishere/HandyMenu-SketchPlugin",
   "author" : "Sergey Dmitriev",
   "authorEmail" : "el.pajaro.sabio@gmail.com",
   "name" : "Handy Menu",
+  "icon": "icon.png",
   "appcast": "https://raw.githubusercontent.com/sergeishere/HandyMenu-SketchPlugin/master/appcast.xml",
   "disableCocoaScriptPreprocessor" : true
 }

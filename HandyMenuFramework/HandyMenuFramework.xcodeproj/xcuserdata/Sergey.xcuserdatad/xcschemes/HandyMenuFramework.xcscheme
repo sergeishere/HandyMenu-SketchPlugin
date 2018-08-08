@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "0940"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A560E80720584CAD00DCFF87"
+               BlueprintIdentifier = "A5A65C5D20FBFECB00BBB6A8"
                BuildableName = "HandyMenuFramework.framework"
                BlueprintName = "HandyMenuFramework"
                ReferencedContainer = "container:HandyMenuFramework.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A560E80720584CAD00DCFF87"
+            BlueprintIdentifier = "A5A65C5D20FBFECB00BBB6A8"
             BuildableName = "HandyMenuFramework.framework"
             BlueprintName = "HandyMenuFramework"
             ReferencedContainer = "container:HandyMenuFramework.xcodeproj">
@@ -63,7 +63,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A560E80720584CAD00DCFF87"
+            BlueprintIdentifier = "A5A65C5D20FBFECB00BBB6A8"
             BuildableName = "HandyMenuFramework.framework"
             BlueprintName = "HandyMenuFramework"
             ReferencedContainer = "container:HandyMenuFramework.xcodeproj">
