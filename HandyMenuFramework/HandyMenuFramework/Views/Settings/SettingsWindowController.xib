@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.3.2" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.3.2"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SettingsWindowController" customModule="HandyMenuFramework" customModuleProvider="target">
@@ -28,20 +28,20 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Configure Handy Menu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" frameAutosaveName="HandyMenu Settings Window" animationBehavior="default" id="F0z-JX-Cv5">
+        <window title="Configure Handy Menu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="HandyMenu Settings Window" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="1025" height="733"/>
+            <rect key="contentRect" x="196" y="240" width="1055" height="733"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="1025" height="733"/>
+                <rect key="frame" x="0.0" y="0.0" width="1055" height="733"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="32" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rqe-Zb-B2L">
-                        <rect key="frame" x="32" y="96" width="961" height="605"/>
+                        <rect key="frame" x="32" y="96" width="991" height="605"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-ta-d3Q" userLabel="Installed Plugins Stack">
-                                <rect key="frame" x="0.0" y="0.0" width="465" height="605"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="605"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjP-w2-Njt">
                                         <rect key="frame" x="-2" y="588" width="103" height="17"/>
@@ -62,7 +62,7 @@
                                         <subviews>
                                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4W-Hx-wVA">
                                                 <rect key="frame" x="0.0" y="0.0" width="465" height="540"/>
-                                                <clipView key="contentView" drawsBackground="NO" id="JVY-hp-lWl">
+                                                <clipView key="contentView" id="JVY-hp-lWl">
                                                     <rect key="frame" x="1" y="1" width="463" height="538"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
@@ -78,11 +78,11 @@
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </clipView>
                                                 <edgeInsets key="contentInsets" left="0.0" right="0.0" top="20" bottom="0.0"/>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="Xxu-3k-SAx">
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="Xxu-3k-SAx">
                                                     <rect key="frame" x="-100" y="-100" width="233" height="15"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="GFo-xG-qGj">
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="GFo-xG-qGj">
                                                     <rect key="frame" x="446" y="20" width="16" height="487"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -118,7 +118,7 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nok-l7-CZj" userLabel="Choosen Plugins Stack">
-                                <rect key="frame" x="497" y="0.0" width="464" height="605"/>
+                                <rect key="frame" x="512" y="0.0" width="479" height="605"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-b0-JPK">
                                         <rect key="frame" x="-2" y="588" width="106" height="17"/>
@@ -129,10 +129,10 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
-                                        <rect key="frame" x="0.0" y="548" width="464" height="32"/>
+                                        <rect key="frame" x="0.0" y="548" width="465" height="32"/>
                                         <subviews>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7SF-t5-biH">
-                                                <rect key="frame" x="-2" y="3" width="76" height="26"/>
+                                                <rect key="frame" x="-2" y="3" width="77" height="26"/>
                                                 <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" refusesFirstResponder="YES" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" arrowPosition="arrowAtCenter" selectedItem="A10-rY-jJ4" id="9hu-G2-As4">
                                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="menu"/>
@@ -149,7 +149,7 @@
                                                 </connections>
                                             </popUpButton>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-cH-Zlj">
-                                                <rect key="frame" x="79" y="8" width="16" height="16"/>
+                                                <rect key="frame" x="80" y="8" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="9kJ-Q4-sgb"/>
                                                     <constraint firstAttribute="width" constant="16" id="aeX-cb-gXA"/>
@@ -163,10 +163,10 @@
                                                 </connections>
                                             </button>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-GJ-77O">
-                                                <rect key="frame" x="103" y="0.0" width="153" height="32"/>
+                                                <rect key="frame" x="104" y="0.0" width="153" height="32"/>
                                             </customView>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Alm-vU-z38" customClass="ShortcutField" customModule="HandyMenuFramework" customModuleProvider="target">
-                                                <rect key="frame" x="264" y="2" width="200" height="28"/>
+                                                <rect key="frame" x="265" y="2" width="200" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="200" id="670-hZ-tvG"/>
                                                     <constraint firstAttribute="height" constant="28" id="Acv-NN-fAx"/>
@@ -181,9 +181,9 @@
                                         </constraints>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
+                                            <real value="950"/>
+                                            <real value="850"/>
+                                            <real value="900"/>
                                         </visibilityPriorities>
                                         <customSpacing>
                                             <real value="3.4028234663852886e+38"/>
@@ -207,7 +207,7 @@
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                             <tableColumns>
-                                                                <tableColumn identifier="" width="350" minWidth="200" maxWidth="1000" id="v3W-Di-HNU">
+                                                                <tableColumn width="350" minWidth="200" maxWidth="1000" id="v3W-Di-HNU">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -266,11 +266,11 @@
                                                     </subviews>
                                                 </clipView>
                                                 <edgeInsets key="contentInsets" left="0.0" right="0.0" top="20" bottom="0.0"/>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="k4o-ck-ZPf">
+                                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="k4o-ck-ZPf">
                                                     <rect key="frame" x="-100" y="-100" width="431" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="P7J-sz-hEM">
+                                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="P7J-sz-hEM">
                                                     <rect key="frame" x="224" y="17" width="15" height="102"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -381,16 +381,16 @@
                         </customSpacing>
                     </stackView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="wxZ-aw-2h1">
-                        <rect key="frame" x="0.0" y="0.0" width="1025" height="64"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1055" height="64"/>
                         <subviews>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="t84-Qx-Cud">
-                                <rect key="frame" x="0.0" y="61" width="1025" height="5"/>
+                                <rect key="frame" x="0.0" y="61" width="1055" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="wEV-Wb-KdF"/>
                                 </constraints>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-ZJ-iju">
-                                <rect key="frame" x="847" y="15" width="82" height="32"/>
+                                <rect key="frame" x="877" y="15" width="82" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="G2Y-2H-AOy"/>
                                     <constraint firstAttribute="height" constant="21" id="xbi-aj-04c"/>
@@ -407,7 +407,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-EE-jue">
-                                <rect key="frame" x="929" y="15" width="70" height="32"/>
+                                <rect key="frame" x="959" y="15" width="70" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="M69-pc-ull"/>
                                     <constraint firstAttribute="height" constant="21" id="wOI-P6-9xA"/>
@@ -475,7 +475,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="131.5" y="203.5"/>
+            <point key="canvasLocation" x="106" y="199"/>
         </window>
         <menu autoenablesItems="NO" id="6kd-9G-3aK">
             <items>
@@ -500,9 +500,9 @@ DQ
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="703" y="-117"/>
+            <point key="canvasLocation" x="748" y="-146"/>
         </menu>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vBZ-cg-fls" customClass="InputPanel" customModule="HandyMenuFramework" customModuleProvider="target">
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="vBZ-cg-fls" customClass="InputPanel" customModule="HandyMenuFramework" customModuleProvider="target">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" documentModal="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="272" y="172" width="320" height="136"/>
@@ -515,7 +515,7 @@ DQ
                         <rect key="frame" x="20" y="65" width="280" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="NGS-Y7-d5u">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
@@ -557,7 +557,7 @@ DQ
             <connections>
                 <outlet property="inputTextField" destination="WsH-Z8-TfW" id="8EA-cP-kVv"/>
             </connections>
-            <point key="canvasLocation" x="829.5" y="77"/>
+            <point key="canvasLocation" x="877" y="69"/>
         </window>
     </objects>
     <resources>

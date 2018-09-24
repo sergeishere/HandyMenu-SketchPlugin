@@ -1,27 +1,28 @@
-var onStart = function(context) {
-    loadAndRun(context, function(){
+function onStart(context) {
+    loadAndRun(context, function() {
         HandyMenuPlugin.shared().configure();
-    })
+    });
 }
 
-var onSetup = function(context) {
-    loadAndRun(context, function(){
+function onSetup(context) {
+    loadAndRun(context, function() {
         HandyMenuPlugin.shared().showSettings();
-    })
-};
-
+    });
+}
 
 function loadAndRun(context, callback) {
-    var FRAMEWORK_NAME = "HandyMenuFramework";
+    var FRAMEWORK_NAME = 'HandyMenuFramework';
     try {
         callback();
     } catch (e) {
-        var pluginBundle = NSBundle.bundleWithURL(context.plugin.url()),
-            mocha = Mocha.sharedRuntime();
-        if (mocha.loadFrameworkWithName_inDirectory(FRAMEWORK_NAME, pluginBundle.resourceURL().path())) {
+        var path = context.plugin
+            .urlForResourceNamed(FRAMEWORK_NAME + '.framework')
+            .path()
+            .stringByDeletingLastPathComponent();
+        if (Mocha.sharedRuntime().loadFrameworkWithName_inDirectory(FRAMEWORK_NAME, path)) {
             callback();
         } else {
-            print("Error while loading framework '" + FRAMEWORK_NAME + "`");
+            print("Error while loading framework '" + FRAMEWORK_NAME + '`');
         }
     }
 }
