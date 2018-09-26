@@ -12,7 +12,7 @@ class HandyMenu: NSMenu {
     
     public func configure(for data: Collection) {
         self.collectionName = data.title
-        self.addItem(NSMenuItem.separator())
+        
 
         if data.items.count > 0 {
             for (index, item) in data.items.enumerated() {
@@ -43,24 +43,25 @@ class HandyMenu: NSMenu {
     }
     
     private func makeTitleView(with title: String) -> NSView {
-        let view = NSView(frame: NSRect(x: 0, y: 0, width: self.size.width, height: 24))
+        let view = NSView(frame: NSRect(x: 0, y: 0, width: self.size.width, height: 32))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.heightAnchor.constraint(equalToConstant: 32).isActive = true
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byTruncatingTail
-        let titleLabelAttributes: [NSAttributedStringKey:Any] = [.font : NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .medium),
+        let titleLabelAttributes: [NSAttributedStringKey:Any] = [.font : NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .bold),
                                                                  .foregroundColor : NSColor.tertiaryLabelColor,
                                                                  .paragraphStyle: paragraph ]
         
         let titleLabel = NSTextField(labelWithAttributedString: NSAttributedString(string: title,
                                                                                    attributes: titleLabelAttributes))
-        titleLabel.usesSingleLineMode = true
-        
         
         let actionButton = NSButton()
         actionButton.frame = NSRect(x: 0, y: 0, width: 16, height: 16)
         actionButton.bezelStyle = .regularSquare
         actionButton.isBordered = false
         actionButton.target = self
+        actionButton.alphaValue = 0.3
         actionButton.action = #selector(openSettings)
         actionButton.widthAnchor.constraint(equalToConstant: 16).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 16).isActive = true
@@ -81,7 +82,7 @@ class HandyMenu: NSMenu {
         stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
         stack.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        stack.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
         stack.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
         return view

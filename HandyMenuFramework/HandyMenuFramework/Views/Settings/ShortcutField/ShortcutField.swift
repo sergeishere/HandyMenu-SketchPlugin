@@ -18,13 +18,8 @@ class ShortcutField: NSView {
     }
     
     // MARK: - Outlets
-    @IBOutlet private weak var contentView:NSView! {
-        didSet {
-            self.contentView.wantsLayer = true
-            self.contentView.layer?.backgroundColor = NSColor.textBackgroundColor.cgColor
-        }
-    }
-    @IBOutlet private weak var shortcutText:NSTextField!
+    @IBOutlet private var contentView: NSView!
+    @IBOutlet private weak var shortcutText: NSTextField!
     @IBOutlet private weak var returnButton: NSButton!
     
     // MARK: - Private Variables
@@ -55,30 +50,47 @@ class ShortcutField: NSView {
     // MARK: - Instance Methods
     private func prepare() {
         addSubview(self.contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.width,.height]
+        self.contentView.frame = self.bounds
+        self.contentView.autoresizingMask = [.width,.height]
+        self.contentView.wantsLayer = true
         
         shortcutController.delegate = self
         
         configureForState(.inactive)
     }
     
-    override func awakeFromNib() {
+    override func updateLayer() {
+        contentView.layer?.backgroundColor = NSColor.controlBackgroundColor.cgColor
+    }
+    
+    override func layout() {
+        super.layout()
         contentView.layer?.cornerRadius = self.bounds.height / 2
     }
     
     private func configureForState(_ state: State) {
         switch state {
         case .active:
-            contentView.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
+            if #available(OSX 10.14, *) {
+                contentView.layer?.borderColor = NSColor.controlAccentColor.cgColor
+            } else {
+                contentView.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
+            }
             contentView.layer?.borderWidth = 2.0
             returnButton.isHidden = false
             shortcutText.stringValue = ""
         case .inactive:
-            contentView.layer?.borderColor = NSColor.gridColor.cgColor
+            if #available(OSX 10.14, *) {
+                contentView.layer?.borderColor = NSColor.blue.cgColor
+            } else {
+                contentView.layer?.borderColor = NSColor.lightGray.cgColor
+            }
+            
             contentView.layer?.borderWidth = 1
+            
             returnButton.isHidden = true
         }
+        self.needsDisplay = true
     }
     
     override func mouseDown(with event: NSEvent) {
