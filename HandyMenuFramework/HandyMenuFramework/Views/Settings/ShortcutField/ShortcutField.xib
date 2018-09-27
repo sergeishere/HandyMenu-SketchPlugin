@@ -9,49 +9,55 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ShortcutField" customModule="HandyMenuFramework" customModuleProvider="target">
             <connections>
-                <outlet property="contentView" destination="c22-O7-iKe" id="8w1-FH-5hW"/>
+                <outlet property="contentView" destination="CFu-W2-DWZ" id="EtD-Xe-KWQ"/>
                 <outlet property="returnButton" destination="Njf-4c-UQr" id="3Ao-yw-6yi"/>
                 <outlet property="shortcutText" destination="vsI-U0-BiE" id="1Kc-sp-fTG"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="224" height="41"/>
+        <box boxType="custom" cornerRadius="4" title="Box" id="CFu-W2-DWZ">
+            <rect key="frame" x="0.0" y="0.0" width="177" height="114"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vsI-U0-BiE">
-                    <rect key="frame" x="68" y="12" width="89" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Type shortcut" id="Wsa-VC-MSO">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="Njf-4c-UQr">
-                    <rect key="frame" x="8" y="13" width="16" height="16"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="16" id="3i9-Th-zQy"/>
-                        <constraint firstAttribute="width" constant="16" id="D7o-M1-9ve"/>
-                    </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_return" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="WLh-xD-lZB">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
-                    <connections>
-                        <action selector="returnInactiveState:" target="-2" id="48y-Nq-PEt"/>
-                    </connections>
-                </button>
-            </subviews>
-            <constraints>
-                <constraint firstItem="Njf-4c-UQr" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="6Tw-Yn-Dhn"/>
-                <constraint firstItem="vsI-U0-BiE" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="IiZ-eK-nez"/>
-                <constraint firstItem="vsI-U0-BiE" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="Jh7-hk-4Hw"/>
-                <constraint firstItem="Njf-4c-UQr" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="tgC-hx-7Nb"/>
-            </constraints>
-            <point key="canvasLocation" x="141" y="128"/>
-        </customView>
+            <view key="contentView" id="XH6-4h-ynH">
+                <rect key="frame" x="1" y="1" width="175" height="112"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vsI-U0-BiE">
+                        <rect key="frame" x="43" y="49" width="89" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" placeholderString="Type shortcut" id="Wsa-VC-MSO">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="Njf-4c-UQr">
+                        <rect key="frame" x="8" y="48" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="3i9-Th-zQy"/>
+                            <constraint firstAttribute="width" constant="16" id="D7o-M1-9ve"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_return" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="WLh-xD-lZB">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <color key="contentTintColor" name="controlAccentColor" catalog="System" colorSpace="catalog"/>
+                        <connections>
+                            <action selector="returnInactiveState:" target="-2" id="48y-Nq-PEt"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Njf-4c-UQr" firstAttribute="centerY" secondItem="XH6-4h-ynH" secondAttribute="centerY" id="Akd-Lx-jbL"/>
+                    <constraint firstItem="vsI-U0-BiE" firstAttribute="centerY" secondItem="XH6-4h-ynH" secondAttribute="centerY" constant="-1" id="GnC-ww-DMS"/>
+                    <constraint firstItem="Njf-4c-UQr" firstAttribute="leading" secondItem="XH6-4h-ynH" secondAttribute="leading" constant="8" id="ZMI-gX-aEL"/>
+                    <constraint firstItem="vsI-U0-BiE" firstAttribute="centerX" secondItem="XH6-4h-ynH" secondAttribute="centerX" id="dph-gJ-T3I"/>
+                </constraints>
+            </view>
+            <color key="borderColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+            <color key="fillColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+            <point key="canvasLocation" x="107" y="-31"/>
+        </box>
     </objects>
     <resources>
         <image name="icon_return" width="16" height="16"/>

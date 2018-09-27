@@ -6,6 +6,8 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
-extension NSColor.Name {
-    static let coldGray = NSColor.Name(rawValue: "cold_gray")
+extension NSColor {
+    static let borderColor: NSColor = {
+        return NSColor.gridColor.withAlphaComponent(0.5)
+    }()
 }

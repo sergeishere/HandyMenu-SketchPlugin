@@ -18,7 +18,7 @@ class ShortcutField: NSView {
     }
     
     // MARK: - Outlets
-    @IBOutlet private var contentView: NSView!
+    @IBOutlet private var contentView: NSBox!
     @IBOutlet private weak var shortcutText: NSTextField!
     @IBOutlet private weak var returnButton: NSButton!
     
@@ -36,7 +36,7 @@ class ShortcutField: NSView {
     
     public var shortcut: Shortcut = .empty {
         didSet {
-            shortcutText.stringValue = shortcut.stringRepresentation.isEmpty ? "" : "Shortcut: " + shortcut.stringRepresentation
+            shortcutText.stringValue = shortcut.stringRepresentation.isEmpty ? "" : shortcut.stringRepresentation
         }
     }
     
@@ -54,8 +54,6 @@ class ShortcutField: NSView {
         addSubview(self.contentView)
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.width,.height]
-        self.contentView.wantsLayer = true
-        self.contentView.layer?.backgroundColor = NSColor.controlBackgroundColor.cgColor
         shortcutController.delegate = self
         
         configureForState(.inactive)
@@ -63,21 +61,15 @@ class ShortcutField: NSView {
     
     override func layout() {
         super.layout()
-        contentView.layer?.cornerRadius = self.bounds.height / 2
-        self.contentView.layer?.backgroundColor = NSColor.controlBackgroundColor.cgColor
         switch self.state {
         case .active:
             if #available(OSX 10.14, *) {
-                contentView.layer?.borderColor = NSColor.controlAccentColor.cgColor
+                contentView.borderColor = NSColor.controlAccentColor
             } else {
-                contentView.layer?.borderColor = NSColor.alternateSelectedControlTextColor.cgColor
+                contentView.borderColor = NSColor.alternateSelectedControlColor
             }
         case .inactive:
-            if #available(OSX 10.14, *) {
-                contentView.layer?.borderColor = NSColor.separatorColor.cgColor
-            } else {
-                contentView.layer?.borderColor = NSColor.gridColor.cgColor
-            }
+            contentView.borderColor = NSColor.gridColor
         }
         self.needsDisplay = true
     }
@@ -87,22 +79,14 @@ class ShortcutField: NSView {
         switch state {
         case .active:
             if #available(OSX 10.14, *) {
-                contentView.layer?.borderColor = NSColor.controlAccentColor.cgColor
+                contentView.borderColor = NSColor.controlAccentColor
             } else {
-                contentView.layer?.borderColor = NSColor.alternateSelectedControlTextColor.cgColor
+                contentView.borderColor = NSColor.alternateSelectedControlTextColor
             }
-            contentView.layer?.borderWidth = 2.0
             returnButton.isHidden = false
             shortcutText.stringValue = ""
         case .inactive:
-            if #available(OSX 10.14, *) {
-                contentView.layer?.borderColor = NSColor.separatorColor.cgColor
-            } else {
-                contentView.layer?.borderColor = NSColor.gridColor.cgColor
-            }
-            
-            contentView.layer?.borderWidth = 1
-            
+            contentView.borderColor = NSColor.borderColor
             returnButton.isHidden = true
         }
         self.needsDisplay = true
