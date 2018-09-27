@@ -32,17 +32,17 @@
         <window title="Configure Handy Menu" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="HandyMenu Settings Window" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="1055" height="733"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-            <view key="contentView" wantsLayer="YES" misplaced="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="1055" height="734"/>
+            <rect key="contentRect" x="196" y="240" width="1075" height="742"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="1075" height="742"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="32" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rqe-Zb-B2L">
-                        <rect key="frame" x="32" y="96" width="991" height="606"/>
+                        <rect key="frame" x="32" y="96" width="1011" height="614"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-ta-d3Q" userLabel="Installed Plugins Stack">
-                                <rect key="frame" x="0.0" y="2" width="480" height="604"/>
+                                <rect key="frame" x="0.0" y="10" width="490" height="604"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZjP-w2-Njt">
                                         <rect key="frame" x="-2" y="587" width="103" height="17"/>
@@ -124,7 +124,7 @@
                                 </customSpacing>
                             </stackView>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nok-l7-CZj" userLabel="Choosen Plugins Stack">
-                                <rect key="frame" x="512" y="0.0" width="479" height="606"/>
+                                <rect key="frame" x="522" y="8" width="489" height="606"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-b0-JPK">
                                         <rect key="frame" x="-2" y="589" width="106" height="17"/>
@@ -134,8 +134,8 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
-                                        <rect key="frame" x="0.0" y="549" width="457" height="32"/>
+                                    <stackView distribution="fillProportionally" orientation="horizontal" alignment="centerY" spacing="21" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vOz-fB-u3q">
+                                        <rect key="frame" x="0.0" y="549" width="467" height="32"/>
                                         <subviews>
                                             <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7SF-t5-biH">
                                                 <rect key="frame" x="-2" y="3" width="77" height="25"/>
@@ -155,7 +155,7 @@
                                                 </connections>
                                             </popUpButton>
                                             <button translatesAutoresizingMaskIntoConstraints="NO" id="hcQ-cH-Zlj">
-                                                <rect key="frame" x="84" y="8" width="16" height="16"/>
+                                                <rect key="frame" x="93" y="8" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="9kJ-Q4-sgb"/>
                                                     <constraint firstAttribute="width" constant="16" id="aeX-cb-gXA"/>
@@ -169,10 +169,10 @@
                                                 </connections>
                                             </button>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Vxo-GJ-77O">
-                                                <rect key="frame" x="112" y="0.0" width="108" height="32"/>
+                                                <rect key="frame" x="130" y="0.0" width="82" height="32"/>
                                             </customView>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pbR-wF-xP0">
-                                                <rect key="frame" x="230" y="8" width="57" height="17"/>
+                                                <rect key="frame" x="231" y="8" width="57" height="17"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Shortcut" id="r4i-l0-vev">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -180,7 +180,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="Alm-vU-z38" customClass="ShortcutField" customModule="HandyMenuFramework" customModuleProvider="target">
-                                                <rect key="frame" x="297" y="0.0" width="160" height="32"/>
+                                                <rect key="frame" x="307" y="0.0" width="160" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="670-hZ-tvG"/>
                                                     <constraint firstAttribute="height" constant="32" id="Acv-NN-fAx"/>
@@ -408,16 +408,16 @@
                         </customSpacing>
                     </stackView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="wxZ-aw-2h1">
-                        <rect key="frame" x="0.0" y="0.0" width="1055" height="64"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1075" height="64"/>
                         <subviews>
                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="t84-Qx-Cud">
-                                <rect key="frame" x="0.0" y="61" width="1055" height="5"/>
+                                <rect key="frame" x="0.0" y="61" width="1075" height="5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="wEV-Wb-KdF"/>
                                 </constraints>
                             </box>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-ZJ-iju">
-                                <rect key="frame" x="877" y="15" width="82" height="32"/>
+                                <rect key="frame" x="897" y="15" width="82" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="G2Y-2H-AOy"/>
                                     <constraint firstAttribute="height" constant="21" id="xbi-aj-04c"/>
@@ -434,7 +434,7 @@ Gw
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hrV-EE-jue">
-                                <rect key="frame" x="959" y="15" width="70" height="32"/>
+                                <rect key="frame" x="979" y="15" width="70" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="58" id="M69-pc-ull"/>
                                     <constraint firstAttribute="height" constant="21" id="wOI-P6-9xA"/>
@@ -451,8 +451,8 @@ DQ
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CjY-ld-XOj">
-                                <rect key="frame" x="58" y="25" width="54" height="14"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version 5" id="647-IS-QsC">
+                                <rect key="frame" x="58" y="25" width="65" height="14"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Version {%}" id="647-IS-QsC">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -502,7 +502,7 @@ DQ
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="105.5" y="198"/>
+            <point key="canvasLocation" x="115.5" y="202"/>
         </window>
         <menu autoenablesItems="NO" id="6kd-9G-3aK">
             <items>
@@ -533,7 +533,7 @@ DQ
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" documentModal="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="272" y="172" width="320" height="136"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
             <view key="contentView" id="SVd-uE-nDR">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="136"/>
                 <autoresizingMask key="autoresizingMask"/>
