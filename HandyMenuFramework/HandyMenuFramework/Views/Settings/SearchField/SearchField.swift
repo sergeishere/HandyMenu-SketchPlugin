@@ -12,16 +12,22 @@ protocol SearchFieldDelegate: class {
 
 class SearchField: NSView, NSTextFieldDelegate {
     
-    @IBOutlet private weak var contentView: NSView!
+    @IBOutlet private var contentView: NSView!
     @IBOutlet private weak var textField: NSTextField!
     @IBOutlet private weak var clearButton: NSButton!
+    @IBOutlet private weak var searchIcon: NSImageView!
     
     public weak var delegate: SearchFieldDelegate?
     public var stringValue: String {
         set {
             self.textField.stringValue = newValue
-            self.clearButton.isHidden = (newValue.count == 0)
+            let isEmpty = (newValue.count == 0)
+            self.clearButton.isHidden = isEmpty
             self.delegate?.searchField(self, didChanged: newValue)
+            if #available(OSX 10.14, *) {
+                self.searchIcon.contentTintColor = isEmpty ? NSColor.controlColor
+                    : NSColor.controlAccentColor
+            }
         }
         get {
              return self.textField.stringValue
@@ -51,6 +57,18 @@ class SearchField: NSView, NSTextFieldDelegate {
     
     override func controlTextDidChange(_ obj: Notification) {
         self.stringValue = self.textField.stringValue
+    }
+    
+    override func controlTextDidBeginEditing(_ obj: Notification) {
+        if #available(OSX 10.14, *) {
+            self.searchIcon.contentTintColor = NSColor.controlAccentColor
+        }
+    }
+    
+    override func controlTextDidEndEditing(_ obj: Notification) {
+        if #available(OSX 10.14, *) {
+            
+        }
     }
     
     @IBAction func clear(_ sender: Any) {

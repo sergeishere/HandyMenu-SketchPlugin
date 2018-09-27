@@ -29,6 +29,8 @@ class ShortcutField: NSView {
     private let stoppingKeyCodes:Set<UInt16> = [36, 53, 76] // Enter, Esc, Return keys codes
     private let deleteKeyCode:UInt16 = 51 // Delete key code
     
+    private var state: State = .inactive
+    
     // MARK: - Public Variables
     public weak var delegate: ShortcutFieldDelegate?
     
@@ -53,37 +55,50 @@ class ShortcutField: NSView {
         self.contentView.frame = self.bounds
         self.contentView.autoresizingMask = [.width,.height]
         self.contentView.wantsLayer = true
-        
+        self.contentView.layer?.backgroundColor = NSColor.controlBackgroundColor.cgColor
         shortcutController.delegate = self
         
         configureForState(.inactive)
     }
     
-    override func updateLayer() {
-        contentView.layer?.backgroundColor = NSColor.controlBackgroundColor.cgColor
-    }
-    
     override func layout() {
         super.layout()
         contentView.layer?.cornerRadius = self.bounds.height / 2
+        self.contentView.layer?.backgroundColor = NSColor.controlBackgroundColor.cgColor
+        switch self.state {
+        case .active:
+            if #available(OSX 10.14, *) {
+                contentView.layer?.borderColor = NSColor.controlAccentColor.cgColor
+            } else {
+                contentView.layer?.borderColor = NSColor.alternateSelectedControlTextColor.cgColor
+            }
+        case .inactive:
+            if #available(OSX 10.14, *) {
+                contentView.layer?.borderColor = NSColor.separatorColor.cgColor
+            } else {
+                contentView.layer?.borderColor = NSColor.gridColor.cgColor
+            }
+        }
+        self.needsDisplay = true
     }
     
     private func configureForState(_ state: State) {
+        self.state = state
         switch state {
         case .active:
             if #available(OSX 10.14, *) {
                 contentView.layer?.borderColor = NSColor.controlAccentColor.cgColor
             } else {
-                contentView.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
+                contentView.layer?.borderColor = NSColor.alternateSelectedControlTextColor.cgColor
             }
             contentView.layer?.borderWidth = 2.0
             returnButton.isHidden = false
             shortcutText.stringValue = ""
         case .inactive:
             if #available(OSX 10.14, *) {
-                contentView.layer?.borderColor = NSColor.blue.cgColor
+                contentView.layer?.borderColor = NSColor.separatorColor.cgColor
             } else {
-                contentView.layer?.borderColor = NSColor.lightGray.cgColor
+                contentView.layer?.borderColor = NSColor.gridColor.cgColor
             }
             
             contentView.layer?.borderWidth = 1

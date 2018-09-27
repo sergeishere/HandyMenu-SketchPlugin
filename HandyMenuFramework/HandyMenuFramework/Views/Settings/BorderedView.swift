@@ -8,17 +8,28 @@
 
 class BorderedView: NSView {
     
-    @IBInspectable public var isHighlighted: Bool = false {
-        didSet {
-            self.layer?.backgroundColor = NSColor.white.withAlphaComponent(0.2).cgColor
-        }
-    }
-    
     required init?(coder decoder: NSCoder) {
         super.init(coder: decoder)
         self.wantsLayer = true
+        self.layer?.backgroundColor = NSColor.textBackgroundColor.cgColor
         self.layer?.borderWidth = 1.0
-        self.layer?.borderColor = NSColor.gridColor.cgColor
+        if #available(OSX 10.14, *) {
+            self.layer?.borderColor = NSColor.separatorColor.cgColor
+        } else {
+            self.layer?.borderColor = NSColor.controlColor.cgColor
+        }
+        
+    }
+    
+    override func layout() {
+        super.layout()
+        self.layer?.backgroundColor = NSColor.textBackgroundColor.cgColor
+        if #available(OSX 10.14, *) {
+            self.layer?.borderColor = NSColor.separatorColor.cgColor
+        } else {
+            self.layer?.borderColor = NSColor.controlColor.cgColor
+        }
+        self.needsDisplay = true
     }
     
     override func draw(_ dirtyRect: NSRect) {
