@@ -12,8 +12,8 @@ class HandyMenu: NSMenu {
     
     public func configure(for data: Collection) {
         self.collectionName = data.title
+        self.addItem(NSMenuItem.separator())
         
-
         if data.items.count > 0 {
             for (index, item) in data.items.enumerated() {
                 switch item {
@@ -43,9 +43,9 @@ class HandyMenu: NSMenu {
     }
     
     private func makeTitleView(with title: String) -> NSView {
-        let view = NSView(frame: NSRect(x: 0, y: 0, width: self.size.width, height: 32))
+        let view = NSView(frame: NSRect(x: 0, y: 0, width: self.size.width, height: 28))
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        view.heightAnchor.constraint(equalToConstant: 28).isActive = true
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byTruncatingTail
@@ -57,14 +57,14 @@ class HandyMenu: NSMenu {
                                                                                    attributes: titleLabelAttributes))
         
         let actionButton = NSButton()
-        actionButton.frame = NSRect(x: 0, y: 0, width: 16, height: 16)
+        actionButton.frame = NSRect(x: 0, y: 0, width: 18, height: 18)
         actionButton.bezelStyle = .regularSquare
         actionButton.isBordered = false
         actionButton.target = self
         actionButton.alphaValue = 0.5
         actionButton.action = #selector(openSettings)
-        actionButton.widthAnchor.constraint(equalToConstant: 16).isActive = true
-        actionButton.heightAnchor.constraint(equalToConstant: 16).isActive = true
+        actionButton.widthAnchor.constraint(equalToConstant: 18).isActive = true
+        actionButton.heightAnchor.constraint(equalToConstant: 18).isActive = true
         
         let bundle = Bundle(for: HandyMenu.self)
         if let settingsImage = bundle.image(forResource: .settingsIcon) {
@@ -77,11 +77,11 @@ class HandyMenu: NSMenu {
         stack.orientation = .horizontal
         view.addSubview(stack)
         
-        stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8).isActive = true
-        stack.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        stack.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -8).isActive = true
-        stack.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            stack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            stack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+            stack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
         
         return view
     }
