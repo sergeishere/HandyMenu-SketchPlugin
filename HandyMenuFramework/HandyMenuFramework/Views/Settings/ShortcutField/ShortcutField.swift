@@ -45,61 +45,48 @@ class ShortcutField: NSView {
         super.init(coder: decoder)
         if let nib = NSNib(nibNamed: .shortcutField, bundle: Bundle(for: type(of: self))) {
             nib.instantiate(withOwner: self, topLevelObjects: nil)
-            prepare()
+            self.addSubview(self.contentView)
+            self.contentView.frame = self.bounds
+            self.contentView.autoresizingMask = [.width,.height]
+            shortcutController.delegate = self
+            render(for: .inactive)
         }
-    }
-    
-    // MARK: - Instance Methods
-    private func prepare() {
-        addSubview(self.contentView)
-        self.contentView.frame = self.bounds
-        self.contentView.autoresizingMask = [.width,.height]
-        shortcutController.delegate = self
-        
-        configureForState(.inactive)
     }
     
     override func layout() {
         super.layout()
-        switch self.state {
-        case .active:
-            if #available(OSX 10.14, *) {
-                contentView.borderColor = NSColor.controlAccentColor
-            } else {
-                contentView.borderColor = NSColor.alternateSelectedControlColor
-            }
-        case .inactive:
-            contentView.borderColor = NSColor.gridColor
-        }
-        self.needsDisplay = true
-    }
-    
-    private func configureForState(_ state: State) {
-        self.state = state
-        switch state {
-        case .active:
-            if #available(OSX 10.14, *) {
-                contentView.borderColor = NSColor.controlAccentColor
-            } else {
-                contentView.borderColor = NSColor.alternateSelectedControlTextColor
-            }
-            returnButton.isHidden = false
-            shortcutText.stringValue = ""
-        case .inactive:
-            contentView.borderColor = NSColor.borderColor
-            returnButton.isHidden = true
-        }
-        self.needsDisplay = true
+        render(for: self.state)
     }
     
     override func mouseDown(with event: NSEvent) {
         shortcutController.start()
-        configureForState(.active)
+        render(for: .active)
+    }
+    
+    // MARK: - Instance Methods
+    private func render(for state: State) {
+        self.state = state
+        switch state {
+        case .active:
+            if #available(OSX 10.14, *) {
+                self.contentView.borderColor = NSColor.controlAccentColor
+                self.returnButton.contentTintColor = NSColor.controlAccentColor
+            } else {
+                self.contentView.borderColor = NSColor.alternateSelectedControlColor
+                self.returnButton.image = NSImage.returnIconImage?.tinted(by: NSColor.alternateSelectedControlColor)
+            }
+            self.returnButton.isHidden = false
+            self.shortcutText.stringValue = ""
+        case .inactive:
+            self.contentView.borderColor = NSColor.gridColor
+            self.returnButton.isHidden = true
+        }
+        self.needsDisplay = true
     }
     
     public func finish(with shortcut:Shortcut?) {
         shortcutController.stop()
-        configureForState(.inactive)
+        render(for: .inactive)
         self.shortcut = shortcut ?? self.shortcut
     }
     

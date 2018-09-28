@@ -61,16 +61,14 @@ class HandyMenu: NSMenu {
         actionButton.bezelStyle = .regularSquare
         actionButton.isBordered = false
         actionButton.target = self
-        actionButton.alphaValue = 0.3
+        actionButton.alphaValue = 0.5
         actionButton.action = #selector(openSettings)
         actionButton.widthAnchor.constraint(equalToConstant: 16).isActive = true
         actionButton.heightAnchor.constraint(equalToConstant: 16).isActive = true
         
         let bundle = Bundle(for: HandyMenu.self)
-        if let settingsImage = bundle.image(forResource: .settingsIcon),
-            let settingsPressedImage = bundle.image(forResource: .settingsIconPressed) {
+        if let settingsImage = bundle.image(forResource: .settingsIcon) {
             actionButton.image = settingsImage
-            actionButton.alternateImage = settingsPressedImage
         }
         
         let stack = NSStackView(views: [titleLabel, actionButton])
