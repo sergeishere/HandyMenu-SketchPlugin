@@ -20,8 +20,9 @@ public class MenuController {
     }
     
     public func show(for shortcut: Shortcut) {
-        if let menu = self.menus[shortcut.hashValue] {
-            menu.popUp(positioning: nil, at: NSEvent.mouseLocation, in: nil)
+        if let menu = self.menus[shortcut.hashValue],
+            let positionInWindow = NSApp.mainWindow?.convertPoint(fromScreen: NSEvent.mouseLocation){
+            menu.popUp(positioning: nil, at: positionInWindow, in: NSApp.mainWindow?.contentView)
         }
     }
     

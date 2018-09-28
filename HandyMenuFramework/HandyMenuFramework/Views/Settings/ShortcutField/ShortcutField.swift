@@ -18,13 +18,8 @@ class ShortcutField: NSView {
     }
     
     // MARK: - Outlets
-    @IBOutlet private weak var contentView:NSView! {
-        didSet {
-            self.contentView.wantsLayer = true
-            self.contentView.layer?.backgroundColor = NSColor.textBackgroundColor.cgColor
-        }
-    }
-    @IBOutlet private weak var shortcutText:NSTextField!
+    @IBOutlet private var contentView: NSBox!
+    @IBOutlet private weak var shortcutText: NSTextField!
     @IBOutlet private weak var returnButton: NSButton!
     
     // MARK: - Private Variables
@@ -34,12 +29,14 @@ class ShortcutField: NSView {
     private let stoppingKeyCodes:Set<UInt16> = [36, 53, 76] // Enter, Esc, Return keys codes
     private let deleteKeyCode:UInt16 = 51 // Delete key code
     
+    private var state: State = .inactive
+    
     // MARK: - Public Variables
     public weak var delegate: ShortcutFieldDelegate?
     
     public var shortcut: Shortcut = .empty {
         didSet {
-            shortcutText.stringValue = shortcut.stringRepresentation.isEmpty ? "" : "Shortcut: " + shortcut.stringRepresentation
+            shortcutText.stringValue = shortcut.stringRepresentation.isEmpty ? "" : shortcut.stringRepresentation
         }
     }
     
@@ -48,47 +45,48 @@ class ShortcutField: NSView {
         super.init(coder: decoder)
         if let nib = NSNib(nibNamed: .shortcutField, bundle: Bundle(for: type(of: self))) {
             nib.instantiate(withOwner: self, topLevelObjects: nil)
-            prepare()
+            self.addSubview(self.contentView)
+            self.contentView.frame = self.bounds
+            self.contentView.autoresizingMask = [.width,.height]
+            shortcutController.delegate = self
+            render(for: .inactive)
         }
     }
     
-    // MARK: - Instance Methods
-    private func prepare() {
-        addSubview(self.contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.width,.height]
-        
-        shortcutController.delegate = self
-        
-        configureForState(.inactive)
-    }
-    
-    override func awakeFromNib() {
-        contentView.layer?.cornerRadius = self.bounds.height / 2
-    }
-    
-    private func configureForState(_ state: State) {
-        switch state {
-        case .active:
-            contentView.layer?.borderColor = NSColor.alternateSelectedControlColor.cgColor
-            contentView.layer?.borderWidth = 2.0
-            returnButton.isHidden = false
-            shortcutText.stringValue = ""
-        case .inactive:
-            contentView.layer?.borderColor = NSColor.gridColor.cgColor
-            contentView.layer?.borderWidth = 1
-            returnButton.isHidden = true
-        }
+    override func layout() {
+        super.layout()
+        render(for: self.state)
     }
     
     override func mouseDown(with event: NSEvent) {
         shortcutController.start()
-        configureForState(.active)
+        render(for: .active)
+    }
+    
+    // MARK: - Instance Methods
+    private func render(for state: State) {
+        self.state = state
+        switch state {
+        case .active:
+            if #available(OSX 10.14, *) {
+                self.contentView.borderColor = NSColor.controlAccentColor
+                self.returnButton.contentTintColor = NSColor.controlAccentColor
+            } else {
+                self.contentView.borderColor = NSColor.alternateSelectedControlColor
+                self.returnButton.image = NSImage.returnIconImage?.tinted(by: NSColor.alternateSelectedControlColor)
+            }
+            self.returnButton.isHidden = false
+            self.shortcutText.stringValue = ""
+        case .inactive:
+            self.contentView.borderColor = NSColor.gridColor
+            self.returnButton.isHidden = true
+        }
+        self.needsDisplay = true
     }
     
     public func finish(with shortcut:Shortcut?) {
         shortcutController.stop()
-        configureForState(.inactive)
+        render(for: .inactive)
         self.shortcut = shortcut ?? self.shortcut
     }
     

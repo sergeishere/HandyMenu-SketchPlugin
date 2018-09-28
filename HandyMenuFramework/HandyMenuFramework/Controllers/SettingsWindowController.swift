@@ -225,6 +225,7 @@ public class SettingsWindowController: NSWindowController, SettingsWindowViewCon
                 )}
             DispatchQueue.main.sync { [unowned self] in
                 self.installedPluginsCollectionView.reloadData()
+                self.installedPluginsCollectionView.scrollToVisible(NSRect.zero)
             }
         }
     }
