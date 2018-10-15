@@ -5,6 +5,7 @@
 
 1. [Download](https://github.com/sergeishere/HandyMenu-SketchPlugin/archive/master.zip) the archive and unzip it.
 2. Double-click the `HandyMenu.sketchplugin` to install the plugin.
+3. Restart Sketch after installing.
 
 ## Configure
 1. Open setting **Plugins → Handy Menu → Configure Handy Menu**.
