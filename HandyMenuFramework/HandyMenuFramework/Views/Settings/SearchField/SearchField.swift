@@ -93,7 +93,7 @@ class SearchField: NSView, NSTextFieldDelegate {
         self.needsDisplay = true
     }
     
-    override func controlTextDidChange(_ obj: Notification) {
+    func controlTextDidChange(_ obj: Notification) {
         self.stringValue = self.textField.stringValue
     }
     

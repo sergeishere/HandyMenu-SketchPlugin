@@ -7,7 +7,7 @@
 //
 
 extension NSNib.Name {
-    static let settingsWindowController = NSNib.Name(rawValue: String(describing: SettingsWindowController.self))
-    static let shortcutField = NSNib.Name(rawValue: String(describing: ShortcutField.self))
-    static let searchField = NSNib.Name(rawValue: String(describing: SearchField.self))
+    static let settingsWindowController = String(describing: SettingsWindowController.self)
+    static let shortcutField = String(describing: ShortcutField.self)
+    static let searchField = String(describing: SearchField.self)
 }

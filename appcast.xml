@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
-  <channel>
-    <item>
-    <title>Version 5.1</title>
+	<channel>
+		<item>
+			<title>
+				Version 5.1.1
+			</title>
+			<description>
+				<![CDATA[
+				<<ul>
+				<li>Fixed launching issue with Sketch v55</li>
+				</ul>>
+				]]>
+			</description>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v5.1.1/HandyMenu.sketchplugin.zip" sparkle:version="5.1.1" />
+		</item>
+		<item>
+			<title>
+				Version 5.1
+			</title>
 			<description>
 				<![CDATA[
 				<ul>
@@ -12,31 +27,31 @@
 				</ul>
 				]]>
 			</description>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v5.1/HandyMenu.sketchplugin.zip" sparkle:version="5.1"/>
-    </item>
-    <item>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v5.0/HandyMenu.sketchplugin.zip" sparkle:version="5.0"/>
-    </item>
-    <item>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v4.1/HandyMenu.sketchplugin.zip" sparkle:version="4.1"/>
-    </item>
-    <item>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v4/HandyMenu.sketchplugin.zip" sparkle:version="4"/>
-    </item>
-    <item>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v3/HandyMenu.sketchplugin.zip" sparkle:version="3"/>
-    </item>
-    <item>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v2/HandyMenu.sketchplugin.zip" sparkle:version="2"/>
-    </item>
-    <item>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v1.2/HandyMenu.sketchplugin.zip" sparkle:version="1.2"/>
-    </item>
-    <item>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v1.1/HandyMenu.sketchplugin.zip" sparkle:version="1.1"/>
-    </item>
-    <item>
-      <enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v1/HandyMenu.sketchplugin.zip" sparkle:version="1"/>
-    </item>
-  </channel>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v5.1/HandyMenu.sketchplugin.zip" sparkle:version="5.1" />
+		</item>
+		<item>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v5.0/HandyMenu.sketchplugin.zip" sparkle:version="5.0" />
+		</item>
+		<item>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v4.1/HandyMenu.sketchplugin.zip" sparkle:version="4.1" />
+		</item>
+		<item>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v4/HandyMenu.sketchplugin.zip" sparkle:version="4" />
+		</item>
+		<item>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v3/HandyMenu.sketchplugin.zip" sparkle:version="3" />
+		</item>
+		<item>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v2/HandyMenu.sketchplugin.zip" sparkle:version="2" />
+		</item>
+		<item>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v1.2/HandyMenu.sketchplugin.zip" sparkle:version="1.2" />
+		</item>
+		<item>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v1.1/HandyMenu.sketchplugin.zip" sparkle:version="1.1" />
+		</item>
+		<item>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v1/HandyMenu.sketchplugin.zip" sparkle:version="1" />
+		</item>
+	</channel>
 </rss>

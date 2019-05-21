@@ -22,7 +22,7 @@ class CollectionTableView: NSTableView {
         plugin_log("KeyCode: %@", event.charactersIgnoringModifiers ?? "")
         let characters = event.charactersIgnoringModifiers ?? ""
         let firstCharacter = (characters as NSString).character(at: 0)
-        if firstCharacter == NSDeleteCharacter,
+        if firstCharacter == NSEvent.SpecialKey.delete.rawValue,
             !self.selectedRowIndexes.isEmpty,
             let delegate = self.delegate as? CollectionTableViewDelegate {
             let selectedRows = self.selectedRowIndexes

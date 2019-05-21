@@ -7,10 +7,10 @@
 //
 
 extension NSImage.Name {
-    static let settingsIcon = NSImage.Name("icon_settings")
-    static let searchIcon = NSImage.Name("icon_search")
-    static let returnIcon = NSImage.Name("icon_return")
-    static let pluginIconPlaceholderImage = NSImage.Name("image_placeholder")
+    static let settingsIcon = "icon_settings"
+    static let searchIcon = "icon_search"
+    static let returnIcon = "icon_return"
+    static let pluginIconPlaceholderImage = "image_placeholder"
 }
 
 extension NSImage {

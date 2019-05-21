@@ -49,7 +49,7 @@ class HandyMenu: NSMenu {
         
         let paragraph = NSMutableParagraphStyle()
         paragraph.lineBreakMode = .byTruncatingTail
-        let titleLabelAttributes: [NSAttributedStringKey:Any] = [.font : NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .bold),
+        let titleLabelAttributes: [NSAttributedString.Key:Any] = [.font : NSFont.systemFont(ofSize: NSFont.systemFontSize, weight: .bold),
                                                                  .foregroundColor : NSColor.tertiaryLabelColor,
                                                                  .paragraphStyle: paragraph ]
         

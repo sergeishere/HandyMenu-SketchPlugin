@@ -290,13 +290,13 @@ extension SettingsWindowController: NSTableViewDelegate, CollectionTableViewDele
     }
     
     public func tableView(_ tableView: NSTableView, acceptDrop info: NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation) -> Bool {
-        guard let data = info.draggingPasteboard().data(forType: .string) else { return false }
+        guard let data = info.draggingPasteboard.data(forType: .string) else { return false }
         
-        if self.installedPluginsCollectionView.isEqual(info.draggingSource())  {
+        if self.installedPluginsCollectionView.isEqual(info.draggingSource)  {
             guard let sourceIndexPath = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)) as? IndexPath else { return false }
             self.insertNewCommand(from: sourceIndexPath, to: row)
             return true
-        } else if self.currentCollectionTableView.isEqual(info.draggingSource()) {
+        } else if self.currentCollectionTableView.isEqual(info.draggingSource) {
             guard let indexes = (try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)) as? IndexSet,
                 let fromRow = indexes.first else { return false }
             let toRow = (fromRow > row) ? row : row - 1
@@ -370,16 +370,16 @@ extension SettingsWindowController: NSCollectionViewDataSource {
     public func collectionView(_ collectionView: NSCollectionView, viewForSupplementaryElementOfKind kind: NSCollectionView.SupplementaryElementKind, at indexPath: IndexPath) -> NSView {
         
         switch kind {
-        case .sectionHeader:
-            let suppementaryHeaderView = self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionHeader,
+        case NSCollectionView.elementKindSectionHeader:
+            let suppementaryHeaderView = self.installedPluginsCollectionView.makeSupplementaryView(ofKind: NSCollectionView.elementKindSectionHeader,
                                                                                                    withIdentifier: NSUserInterfaceItemIdentifier("PluginSectionHeaderView"),
                                                                                                    for: indexPath) as! PluginSectionHeaderView
             suppementaryHeaderView.title = self.filteredPlugins[indexPath.section].pluginName
             suppementaryHeaderView.image = self.filteredPlugins[indexPath.section].image ?? NSImage.pluginIconPlaceholderImage
             suppementaryHeaderView.searchingString = self.searchField.stringValue
             return suppementaryHeaderView
-        case .sectionFooter:
-            return self.installedPluginsCollectionView.makeSupplementaryView(ofKind: .sectionFooter,
+        case NSCollectionView.elementKindSectionFooter:
+            return self.installedPluginsCollectionView.makeSupplementaryView(ofKind: NSCollectionView.elementKindSectionFooter,
                                                                              withIdentifier: NSUserInterfaceItemIdentifier("PluginSectionFooterView"),
                                                                              for: indexPath)
         default:
