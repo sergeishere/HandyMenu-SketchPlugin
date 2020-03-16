@@ -5,6 +5,7 @@
 //  Created by Sergey Dmitriev on 10/06/2018.
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
+
 @objc(HandyMenuPlugin) class PluginController:NSObject {
     
     // MARK: - Singletone instance
@@ -41,6 +42,14 @@
     @objc public func show(_ collection: String) {
         self.showSettings()
         self.settingsWindowController.showCollection(collection)
+    }
+    
+    @objc public func importSettings() {
+        self.dataController.importSettings()
+    }
+    
+    @objc public func exportSettings() {
+        self.dataController.exportSettings()
     }
     
 }

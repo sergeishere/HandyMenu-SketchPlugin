@@ -42,7 +42,8 @@ public class DataCaretaker {
     }
     
     public func save(_ data: PluginData) -> Bool {
-        guard let encodedData = try? encoder.encode(data) else  { return false }
+        guard let encodedData = try? encoder.encode(data)
+            else { return false }
         userDefaults.setValue(encodedData, forKey: v5key)
         return true
     }

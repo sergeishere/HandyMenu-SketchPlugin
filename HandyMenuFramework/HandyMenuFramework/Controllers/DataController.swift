@@ -6,6 +6,8 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
+import os.log
+
 public protocol DataControllerDelegate: class {
     func dataController(_ dataController: DataController, didUpdate data:PluginData)
     func dataController(_ dataController: DataController, didLoad installedPlugins:[InstalledPluginData])
@@ -51,7 +53,7 @@ public class DataController {
         }
     }
     
-    public func loadPluginData(){
+    public func loadPluginData() {
         self.pluginData = self.loadData(for: dataCaretaker.retrieve())
         self.pluginData?.pluginVersion = PluginData.currentVersion
         self.filterCollections()
@@ -96,7 +98,10 @@ public class DataController {
             var installedPluginData = InstalledPluginData(pluginName: pluginName, image: pluginImage, commands: [])
             
             // Checking if the plugin has commands
-            guard let commandsDictionary = pluginBundle.value(forKey: "commands") as? [String: NSObject] else { continue }
+            guard
+                let commandsDictionary = pluginBundle.value(forKey: "commands") as? [String: NSObject]
+                else { continue }
+            
             for (_, commandBundle) in commandsDictionary {
                 // Command should have name, identifier and run handler
                 if let hasRunHandler = commandBundle.value(forKey: "hasRunHandler") as? Bool, hasRunHandler == true,
@@ -112,5 +117,53 @@ public class DataController {
         self.installedPlugins = installedPluginsData
         installedPluginsData.sort { $0.pluginName < $1.pluginName }
         self.delegate?.dataController(self, didLoad: installedPluginsData)
+    }
+    
+    public func exportSettings() {
+        os_log("Exporting HandyMenu settings", log: .default)
+        let savePanel = NSSavePanel()
+        savePanel.canCreateDirectories = true
+        savePanel.nameFieldStringValue = "collections.handymenu"
+        savePanel.level = .modalPanel
+        savePanel.allowedFileTypes = ["handymenu"]
+        savePanel.begin { [weak self] response in
+            guard let self = self,
+                response == .OK,
+                let fileURL = savePanel.url,
+                let data = try? JSONEncoder().encode(self.pluginData) else { return }
+            do {
+                try data.write(to: fileURL)
+            } catch {
+                os_log("Couldn't export HandyMenu collections. %@",
+                       log: .default, type: .error, error.localizedDescription)
+            }
+        }
+    }
+    
+    public func importSettings() {
+        os_log("Importing HandyMenu settings", log: .default)
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.allowedFileTypes = ["handymenu"]
+        openPanel.level = .modalPanel
+        openPanel.nameFieldLabel = "Choose file with HandyMenu collections"
+        openPanel.begin { [weak self] response in
+            guard let self = self,
+                response == .OK,
+                let fileURL = openPanel.url
+                else { return }
+            do {
+                let data = try Data(contentsOf: fileURL)
+                let importedPluginData = try JSONDecoder().decode(PluginData.self, from: data)
+                self.pluginData = importedPluginData
+                self.filterCollections()
+                self.delegate?.dataController(self, didUpdate: importedPluginData)
+            } catch {
+                os_log("Couldn't import HandyMenu collections. %@",
+                       log: .default, type: .error, error.localizedDescription)
+                NSApplication.shared.keyWindow?.presentError(error)
+            }
+        }
     }
 }
