@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
 	<channel>
+	<item>
+			<title>
+				Version 5.2
+			</title>
+			<description>
+				<![CDATA[
+				<<ul>
+				<li>Added an option for import/export collections.</li>
+				</ul>>
+				]]>
+			</description>
+			<enclosure url="https://github.com/sergeishere/HandyMenu-SketchPlugin/releases/download/v5.2/HandyMenu.sketchplugin.zip" sparkle:version="5.2" />
+		</item>
 		<item>
 			<title>
 				Version 5.1.1
