@@ -6,6 +6,8 @@
 //  Copyright © 2018 Sergey Dmitriev. All rights reserved.
 //
 
+import os.log
+
 public protocol DataControllerDelegate: class {
     func dataController(_ dataController: DataController, didUpdate data:PluginData)
     func dataController(_ dataController: DataController, didLoad installedPlugins:[InstalledPluginData])
@@ -14,16 +16,13 @@ public protocol DataControllerDelegate: class {
 public class DataController {
     
     // MARK: - Private Properties
-    private var pluginData: PluginData?
+    private lazy var pluginData: PluginData = .empty
     private var installedPlugins: [InstalledPluginData] = []
     private var dataCaretaker = DataCaretaker()
     
     // MARK: - Public Properties
     public var usedShortcuts: Set<Int> {
-        if let shortcutHashes = pluginData?.collections.compactMap({$0.shortcut.hashValue}) {
-            return Set(shortcutHashes)
-        }
-        return []
+        Set(pluginData.collections.compactMap({$0.shortcut.hashValue}))
     }
     
     // MARK: - Public Properties
@@ -51,18 +50,20 @@ public class DataController {
         }
     }
     
-    public func loadPluginData(){
-        self.pluginData = self.loadData(for: dataCaretaker.retrieve())
-        self.pluginData?.pluginVersion = PluginData.currentVersion
-        self.filterCollections()
-        delegate?.dataController(self, didUpdate: pluginData!)
+    public func loadPluginData() {
+        pluginData = self.loadData(for: dataCaretaker.retrieve())
+        pluginData.pluginVersion = PluginData.currentVersion
+        pluginData.collections = filterCollections(pluginData.collections)
+        delegate?.dataController(self, didUpdate: pluginData)
     }
     
-    private func filterCollections() {
-        guard let pluginData = self.pluginData else { return }
+    private func filterCollections(_ collections: [Collection]) -> [Collection] {
         
-        var filteredCollections: [Collection] = [] // Preparing new array for filtered collections
-        for unfilteredCollection in pluginData.collections {
+        // Preparing new array for filtered collections
+        var filteredCollections: [Collection] = []
+        
+        // Filetering
+        for unfilteredCollection in collections {
             var newCollection = unfilteredCollection
             newCollection.items = unfilteredCollection.items.filter({(collectionItem) -> Bool in
                 switch collectionItem {
@@ -74,14 +75,13 @@ public class DataController {
             })
             filteredCollections.append(newCollection)
         }
-        self.pluginData?.collections = filteredCollections
+        return filteredCollections
     }
     
     public func saveCollections(_ collections: [Collection]) {
-        self.pluginData?.collections = collections
-        guard let pluginData = self.pluginData,
-            self.dataCaretaker.save(pluginData) else { return }
-        self.delegate?.dataController(self, didUpdate: pluginData)
+        pluginData.collections = collections
+        guard dataCaretaker.save(pluginData) else { return }
+        delegate?.dataController(self, didUpdate: pluginData)
     }
     
     public func loadInstalledPluginsData() {
@@ -96,7 +96,10 @@ public class DataController {
             var installedPluginData = InstalledPluginData(pluginName: pluginName, image: pluginImage, commands: [])
             
             // Checking if the plugin has commands
-            guard let commandsDictionary = pluginBundle.value(forKey: "commands") as? [String: NSObject] else { continue }
+            guard
+                let commandsDictionary = pluginBundle.value(forKey: "commands") as? [String: NSObject]
+                else { continue }
+            
             for (_, commandBundle) in commandsDictionary {
                 // Command should have name, identifier and run handler
                 if let hasRunHandler = commandBundle.value(forKey: "hasRunHandler") as? Bool, hasRunHandler == true,
@@ -112,5 +115,54 @@ public class DataController {
         self.installedPlugins = installedPluginsData
         installedPluginsData.sort { $0.pluginName < $1.pluginName }
         self.delegate?.dataController(self, didLoad: installedPluginsData)
+    }
+    
+    public func exportSettings() {
+        os_log("Exporting HandyMenu settings", log: .default)
+        let savePanel = NSSavePanel()
+        savePanel.canCreateDirectories = true
+        savePanel.nameFieldStringValue = "collections.handymenu"
+        savePanel.level = .modalPanel
+        savePanel.allowedFileTypes = ["handymenu"]
+        savePanel.begin { [weak self] response in
+            guard let self = self,
+                response == .OK,
+                let fileURL = savePanel.url,
+                let data = try? JSONEncoder().encode(self.pluginData) else { return }
+            do {
+                try data.write(to: fileURL)
+            } catch {
+                os_log("Couldn't export HandyMenu collections. %@",
+                       log: .default, type: .error, error.localizedDescription)
+            }
+        }
+    }
+    
+    public func importSettings() {
+        os_log("Importing HandyMenu settings", log: .default)
+        let openPanel = NSOpenPanel()
+        openPanel.canChooseDirectories = false
+        openPanel.canChooseFiles = true
+        openPanel.allowedFileTypes = ["handymenu"]
+        openPanel.level = .modalPanel
+        openPanel.nameFieldLabel = "Choose file with HandyMenu collections"
+        openPanel.begin { [weak self] response in
+            guard let self = self,
+                response == .OK,
+                let fileURL = openPanel.url
+                else { return }
+            do {
+                let data = try Data(contentsOf: fileURL)
+                let importedPluginData = try JSONDecoder().decode(PluginData.self, from: data)
+                let filteredCollections = self.filterCollections(importedPluginData.collections)
+                self.pluginData.userID = importedPluginData.userID
+                self.saveCollections(filteredCollections)
+                self.delegate?.dataController(self, didUpdate: self.pluginData)
+            } catch {
+                os_log("Couldn't import HandyMenu collections. %@",
+                       log: .default, type: .error, error.localizedDescription)
+                NSApplication.shared.keyWindow?.presentError(error)
+            }
+        }
     }
 }

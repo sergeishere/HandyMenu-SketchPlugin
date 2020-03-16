@@ -10,6 +10,22 @@
         },
         {
             "script": "script.js",
+            "name": "Export collections...",
+            "handlers": {
+                "run": "onExport"
+            },
+            "identifier": "com.sergeishere.plugins.handymenu.export"
+        },
+        {
+            "script": "script.js",
+            "name": "Import collections...",
+            "handlers": {
+                "run": "onImport"
+            },
+            "identifier": "com.sergeishere.plugins.handymenu.import"
+        },
+        {
+            "script": "script.js",
             "handlers": {
                 "Startup": "onStart"
             }
@@ -18,12 +34,15 @@
     "menu": {
         "title": "Handy Menu",
         "items": [
-            "com.sergeishere.plugins.handymenu.setup"
+            "com.sergeishere.plugins.handymenu.setup",
+            "-",
+            "com.sergeishere.plugins.handymenu.export",
+            "com.sergeishere.plugins.handymenu.import"
         ]
     },
     "identifier": "com.sergeishere.plugins.handymenu",
-    "version": "5.1.1",
-    "compatibleVersion": "55",
+    "version": "5.2",
+    "compatibleVersion": "60",
     "description": "Quick access to the plugins you love through a contextual menu.\nCreate collections of plugins, rename them and assign different shortcuts.",
     "homepage": "https://github.com/sergeishere/HandyMenu-SketchPlugin",
     "author": "Sergey Dmitriev",

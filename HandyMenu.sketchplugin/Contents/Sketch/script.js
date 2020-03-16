@@ -10,6 +10,18 @@ function onSetup(context) {
     });
 }
 
+function onExport(context) {
+    loadAndRun(context, function() {
+        HandyMenuPlugin.shared().exportSettings();
+    });
+}
+
+function onImport(context) {
+    loadAndRun(context, function() {
+        HandyMenuPlugin.shared().importSettings();
+    });
+}
+
 function loadAndRun(context, callback) {
     var FRAMEWORK_NAME = 'HandyMenuFramework';
     try {

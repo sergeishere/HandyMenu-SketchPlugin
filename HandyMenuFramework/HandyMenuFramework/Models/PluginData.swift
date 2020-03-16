@@ -11,11 +11,14 @@ public struct PluginData: Codable {
     public var pluginVersion:Double
     public var collections: [Collection]
     
-    static public var currentVersion: Double = 5.1
+    static public var currentVersion: Double = 5.2
 }
 
 extension PluginData {
     public static var empty: PluginData {
-        return PluginData(userID: UUID(), pluginVersion: PluginData.currentVersion, collections: [.emptyCollection])
+        return PluginData(
+            userID: UUID(),
+            pluginVersion: PluginData.currentVersion,
+            collections: [.emptyCollection])
     }
 }
