@@ -1,0 +1,191 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-module-flags: -target x86_64-apple-macos10.13 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name HandyMenuFramework
+import Cocoa
+@_exported import HandyMenuFramework
+import Swift
+import os.log
+import os
+public enum CollectionItem : Swift.Equatable {
+  case command(HandyMenuFramework.Command)
+  case separator
+  public static func == (a: HandyMenuFramework.CollectionItem, b: HandyMenuFramework.CollectionItem) -> Swift.Bool
+}
+extension CollectionItem : Swift.Encodable {
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension CollectionItem : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+public class MenuController {
+  public func configure(for collections: [HandyMenuFramework.Collection])
+  public func show(for shortcut: HandyMenuFramework.Shortcut)
+  @objc deinit
+}
+public protocol DataControllerDelegate : AnyObject {
+  func dataController(_ dataController: HandyMenuFramework.DataController, didUpdate data: HandyMenuFramework.PluginData)
+  func dataController(_ dataController: HandyMenuFramework.DataController, didLoad installedPlugins: [HandyMenuFramework.InstalledPluginData])
+}
+public class DataController {
+  public var usedShortcuts: Swift.Set<Swift.Int> {
+    get
+  }
+  weak public var delegate: HandyMenuFramework.DataControllerDelegate?
+  public func loadPluginData()
+  public func saveCollections(_ collections: [HandyMenuFramework.Collection])
+  public func loadInstalledPluginsData()
+  public func exportSettings()
+  public func importSettings()
+  @objc deinit
+}
+public struct PluginData : Swift.Codable {
+  public var userID: Foundation.UUID
+  public var pluginVersion: Swift.Double
+  public var collections: [HandyMenuFramework.Collection]
+  public static var currentVersion: Swift.Double
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension PluginData {
+  public static var empty: HandyMenuFramework.PluginData {
+    get
+  }
+}
+public protocol SettingsWindowControllerDelegate : AnyObject {
+  func settingsWindowController(_ settingsWindowController: HandyMenuFramework.SettingsWindowController, didUpdate menuData: [HandyMenuFramework.Collection])
+  func settingsWindowController(didClose settingsWindowController: HandyMenuFramework.SettingsWindowController)
+}
+@objc public class SettingsWindowController : AppKit.NSWindowController {
+  weak public var delegate: HandyMenuFramework.SettingsWindowControllerDelegate?
+  public var installedPlugins: [HandyMenuFramework.InstalledPluginData]
+  @objc override dynamic public func windowDidLoad()
+  @objc override dynamic public func close()
+  public func viewWillLayout()
+  @objc override dynamic public func mouseDown(with event: AppKit.NSEvent)
+  public func showCollection(_ collection: Swift.String)
+  public func configure(_ collections: [HandyMenuFramework.Collection])
+  @objc override dynamic public init(window: AppKit.NSWindow?)
+  @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension SettingsWindowController : AppKit.NSTableViewDataSource {
+  @objc dynamic public func numberOfRows(in tableView: AppKit.NSTableView) -> Swift.Int
+}
+extension SettingsWindowController : AppKit.NSTableViewDelegate {
+  @objc dynamic public func tableView(_ tableView: AppKit.NSTableView, heightOfRow row: Swift.Int) -> CoreGraphics.CGFloat
+  @objc dynamic public func tableView(_ tableView: AppKit.NSTableView, viewFor tableColumn: AppKit.NSTableColumn?, row: Swift.Int) -> AppKit.NSView?
+  @objc dynamic public func tableViewSelectionDidChange(_ notification: Foundation.Notification)
+  @objc dynamic public func tableView(_ tableView: AppKit.NSTableView, validateDrop info: AppKit.NSDraggingInfo, proposedRow row: Swift.Int, proposedDropOperation dropOperation: AppKit.NSTableView.DropOperation) -> AppKit.NSDragOperation
+  @objc dynamic public func tableView(_ tableView: AppKit.NSTableView, writeRowsWith rowIndexes: Foundation.IndexSet, to pboard: AppKit.NSPasteboard) -> Swift.Bool
+  @objc dynamic public func tableView(_ tableView: AppKit.NSTableView, acceptDrop info: AppKit.NSDraggingInfo, row: Swift.Int, dropOperation: AppKit.NSTableView.DropOperation) -> Swift.Bool
+  @objc dynamic public func tableView(_ tableView: AppKit.NSTableView, draggingSession session: AppKit.NSDraggingSession, willBeginAt screenPoint: Foundation.NSPoint, forRowIndexes rowIndexes: Foundation.IndexSet)
+  @objc dynamic public func tableView(_ tableView: AppKit.NSTableView, draggingSession session: AppKit.NSDraggingSession, endedAt screenPoint: Foundation.NSPoint, operation: AppKit.NSDragOperation)
+}
+extension SettingsWindowController : AppKit.NSCollectionViewDataSource {
+  @objc dynamic public func numberOfSections(in collectionView: AppKit.NSCollectionView) -> Swift.Int
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, itemForRepresentedObjectAt indexPath: Foundation.IndexPath) -> AppKit.NSCollectionViewItem
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, viewForSupplementaryElementOfKind kind: AppKit.NSCollectionView.SupplementaryElementKind, at indexPath: Foundation.IndexPath) -> AppKit.NSView
+}
+extension SettingsWindowController : AppKit.NSCollectionViewDelegateFlowLayout {
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, layout collectionViewLayout: AppKit.NSCollectionViewLayout, sizeForItemAt indexPath: Foundation.IndexPath) -> Foundation.NSSize
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, layout collectionViewLayout: AppKit.NSCollectionViewLayout, referenceSizeForHeaderInSection section: Swift.Int) -> Foundation.NSSize
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, layout collectionViewLayout: AppKit.NSCollectionViewLayout, referenceSizeForFooterInSection section: Swift.Int) -> Foundation.NSSize
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, canDragItemsAt indexes: Foundation.IndexSet, with event: AppKit.NSEvent) -> Swift.Bool
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, shouldSelectItemsAt indexPaths: Swift.Set<Foundation.IndexPath>) -> Swift.Set<Foundation.IndexPath>
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, didSelectItemsAt indexPaths: Swift.Set<Foundation.IndexPath>)
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, didDeselectItemsAt indexPaths: Swift.Set<Foundation.IndexPath>)
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, writeItemsAt indexPaths: Swift.Set<Foundation.IndexPath>, to pasteboard: AppKit.NSPasteboard) -> Swift.Bool
+  @objc dynamic public func collectionView(_ collectionView: AppKit.NSCollectionView, draggingSession session: AppKit.NSDraggingSession, willBeginAt screenPoint: Foundation.NSPoint, forItemsAt indexes: Foundation.IndexSet)
+}
+public struct Command : Swift.Codable, Swift.Equatable {
+  public var name: Swift.String
+  public var commandID: Swift.String
+  public var pluginName: Swift.String
+  public var pluginID: Swift.String
+  public static func == (a: HandyMenuFramework.Command, b: HandyMenuFramework.Command) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct Shortcut : Swift.Codable, Swift.Hashable {
+  public var keyCode: Swift.Int
+  public var modifierFlags: HandyMenuFramework.Shortcut.ModifierFlags
+  public var character: Swift.String
+  public var stringRepresentation: Swift.String {
+    get
+  }
+  public struct ModifierFlags : Swift.OptionSet, Swift.Codable, Swift.Hashable {
+    public let rawValue: Swift.Int
+    public init(rawValue: Swift.Int)
+    public static var control: HandyMenuFramework.Shortcut.ModifierFlags
+    public static var option: HandyMenuFramework.Shortcut.ModifierFlags
+    public static var shift: HandyMenuFramework.Shortcut.ModifierFlags
+    public static var command: HandyMenuFramework.Shortcut.ModifierFlags
+    public typealias RawValue = Swift.Int
+    public typealias Element = HandyMenuFramework.Shortcut.ModifierFlags
+    public typealias ArrayLiteralElement = HandyMenuFramework.Shortcut.ModifierFlags
+  }
+  public var hashValue: Swift.Int {
+    get
+  }
+  public static func == (a: HandyMenuFramework.Shortcut, b: HandyMenuFramework.Shortcut) -> Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+  public func hash(into hasher: inout Swift.Hasher)
+}
+extension Shortcut {
+  public static var empty: HandyMenuFramework.Shortcut {
+    get
+  }
+  public static var legacyShortcut: HandyMenuFramework.Shortcut {
+    get
+  }
+}
+public struct Collection : Swift.Codable {
+  public var title: Swift.String
+  public var shortcut: HandyMenuFramework.Shortcut
+  public var items: [HandyMenuFramework.CollectionItem]
+  public var autoGrouping: Swift.Bool
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+extension Collection {
+  public static var emptyCollection: HandyMenuFramework.Collection {
+    get
+  }
+}
+public func plugin_log(_ message: Swift.String = "", filePath: Swift.String = #file, line: Swift.UInt = #line, function: Swift.String = #function, _ args: Swift.CVarArg...)
+extension OSLog {
+  public static var handyMenuLog: os.OSLog {
+    get
+  }
+}
+public struct InstalledPluginData : Swift.Equatable {
+  public var pluginName: Swift.String
+  public var image: AppKit.NSImage?
+  public var commands: [HandyMenuFramework.Command]
+  public static func == (a: HandyMenuFramework.InstalledPluginData, b: HandyMenuFramework.InstalledPluginData) -> Swift.Bool
+}
+public class DataCaretaker {
+  public enum RetrievingResult {
+    case v4([HandyMenuFramework.HMCommandScheme])
+    case v5(HandyMenuFramework.PluginData)
+    case empty
+  }
+  public init()
+  public func retrieve() -> HandyMenuFramework.DataCaretaker.RetrievingResult
+  public func save(_ data: HandyMenuFramework.PluginData) -> Swift.Bool
+  @objc deinit
+}
+public protocol ShortcutControllerDelegate : AnyObject {
+  func shortcutController(_ shortcutController: HandyMenuFramework.ShortcutController, didRecognize shortcut: HandyMenuFramework.Shortcut, in event: AppKit.NSEvent) -> AppKit.NSEvent?
+}
+public class ShortcutController {
+  public var currentShortcut: HandyMenuFramework.Shortcut
+  weak public var delegate: HandyMenuFramework.ShortcutControllerDelegate?
+  public var isEnabled: Swift.Bool
+  public init()
+  public func start()
+  public func stop()
+  @objc deinit
+}
