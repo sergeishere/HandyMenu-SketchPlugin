@@ -1,0 +1,11 @@
+framework module HandyMenuFramework {
+  umbrella header "HandyMenuFramework.h"
+
+  export *
+  module * { export * }
+}
+
+module HandyMenuFramework.Swift {
+    header "HandyMenuFramework-Swift.h"
+    requires objc
+}
