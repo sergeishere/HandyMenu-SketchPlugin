@@ -1,0 +1,888 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		95AE893324A5560D0050CA86 /* Plugin Bundle */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 95AE893424A5560D0050CA86 /* Build configuration list for PBXAggregateTarget "Plugin Bundle" */;
+			buildPhases = (
+				95AE893B24A556240050CA86 /* ShellScript */,
+			);
+			dependencies = (
+				95AE893824A5561B0050CA86 /* PBXTargetDependency */,
+				95AE893A24A5561B0050CA86 /* PBXTargetDependency */,
+			);
+			name = "Plugin Bundle";
+			productName = "Plugin Bundle";
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		95AE892B24A555550050CA86 /* HandyMenuModern.h in Headers */ = {isa = PBXBuildFile; fileRef = 95AE892924A555550050CA86 /* HandyMenuModern.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95AE893024A555880050CA86 /* PluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AE892F24A555880050CA86 /* PluginController.swift */; };
+		95AE893224A555BB0050CA86 /* PluginStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AE893124A555BB0050CA86 /* PluginStore.swift */; };
+		95AE893D24A56C800050CA86 /* PluginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95AE893C24A56C800050CA86 /* PluginCoordinator.swift */; };
+		A508BF05210F579E00024995 /* ShortcutField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A508BF03210F579D00024995 /* ShortcutField.swift */; };
+		A508BF06210F579E00024995 /* ShortcutField.xib in Resources */ = {isa = PBXBuildFile; fileRef = A508BF04210F579D00024995 /* ShortcutField.xib */; };
+		A508BF0A210F96F100024995 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A508BF09210F96F100024995 /* Utils.swift */; };
+		A521562720FD3A0B002A5816 /* MenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A521562620FD3A0B002A5816 /* MenuController.swift */; };
+		A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52A317D20FEB6A900E64617 /* ShortcutController.swift */; };
+		A52D36E821138F8000FD2874 /* InstalledPluginsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36E721138F8000FD2874 /* InstalledPluginsCollectionView.swift */; };
+		A52D36EA2113900A00FD2874 /* CollectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36E92113900A00FD2874 /* CollectionTableView.swift */; };
+		A52D36F321149F9A00FD2874 /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36F221149F9A00FD2874 /* SearchField.swift */; };
+		A52D36F521149FA600FD2874 /* SearchField.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52D36F421149FA600FD2874 /* SearchField.xib */; };
+		A52D36F82114A98000FD2874 /* SearchFieldTextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52D36F72114A98000FD2874 /* SearchFieldTextFieldCell.swift */; };
+		A5380530210A49C60026E4A5 /* assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A538052F210A49C60026E4A5 /* assets.xcassets */; };
+		A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */; };
+		A5380535210A6DBF0026E4A5 /* CommandCollectionViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */; };
+		A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380536210A75CA0026E4A5 /* InstalledPluginData.swift */; };
+		A5380539210B9A240026E4A5 /* PluginSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380538210B9A240026E4A5 /* PluginSectionHeaderView.swift */; };
+		A538053B210B9A3C0026E4A5 /* PluginSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A538053A210B9A3C0026E4A5 /* PluginSectionHeaderView.xib */; };
+		A538053D210BB0780026E4A5 /* PluginSectionFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */; };
+		A538053F210BB3AB0026E4A5 /* SettingsWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */; };
+		A5380544210DDCD30026E4A5 /* CommandTableViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */; };
+		A5398D1B21165A8600BD70EF /* NSImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5398D1A21165A8600BD70EF /* NSImage.swift */; };
+		A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53A829420FF726600FD83FA /* HandyMenu.swift */; };
+		A54EA40D211910D500C56E01 /* NSNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54EA40C211910D500C56E01 /* NSNib.swift */; };
+		A58FC0DD20FF83B1004730BB /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DC20FF83B1004730BB /* Command.swift */; };
+		A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */; };
+		A58FC0E220FF87F2004730BB /* HMCommandScheme.h in Headers */ = {isa = PBXBuildFile; fileRef = A58FC0E020FF87F2004730BB /* HMCommandScheme.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5905865210E0AF700B6079A /* OSLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5905864210E0AF700B6079A /* OSLog.swift */; };
+		A5A136BA2115E9700042B594 /* InputPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A136B92115E9700042B594 /* InputPanel.swift */; };
+		A5A65C6320FBFECB00BBB6A8 /* HandyMenuFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */; };
+		A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */; };
+		A5A65C7220FBFF7900BBB6A8 /* DataCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C6F20FBFF7900BBB6A8 /* DataCaretaker.swift */; };
+		A5A65C7320FBFF7900BBB6A8 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C7020FBFF7900BBB6A8 /* DataController.swift */; };
+		A5A65C8D20FCD94700BBB6A8 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C8C20FCD94700BBB6A8 /* Collection.swift */; };
+		A5A65C8F20FCD95100BBB6A8 /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C8E20FCD95100BBB6A8 /* CollectionItem.swift */; };
+		A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */; };
+		A5AA666D20FFB10B0027BC45 /* SketchAppBridge.h in Headers */ = {isa = PBXBuildFile; fileRef = A5AA666B20FFB10B0027BC45 /* SketchAppBridge.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A5AA666E20FFB10B0027BC45 /* SketchAppBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */; };
+		A5AA667120FFD1A10027BC45 /* SettingsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */; };
+		A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95AE893724A5561B0050CA86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5A65C5520FBFECB00BBB6A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5A65C5D20FBFECB00BBB6A8;
+			remoteInfo = HandyMenuFramework;
+		};
+		95AE893924A5561B0050CA86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5A65C5520FBFECB00BBB6A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95AE892624A555550050CA86;
+			remoteInfo = HandyMenuModern;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		95AE892724A555550050CA86 /* HandyMenuModern.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyMenuModern.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95AE892924A555550050CA86 /* HandyMenuModern.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandyMenuModern.h; sourceTree = "<group>"; };
+		95AE892A24A555550050CA86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		95AE892F24A555880050CA86 /* PluginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginController.swift; sourceTree = "<group>"; };
+		95AE893124A555BB0050CA86 /* PluginStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginStore.swift; sourceTree = "<group>"; };
+		95AE893C24A56C800050CA86 /* PluginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginCoordinator.swift; sourceTree = "<group>"; };
+		A508BF03210F579D00024995 /* ShortcutField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutField.swift; sourceTree = "<group>"; };
+		A508BF04210F579D00024995 /* ShortcutField.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShortcutField.xib; sourceTree = "<group>"; };
+		A508BF09210F96F100024995 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		A521562620FD3A0B002A5816 /* MenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuController.swift; path = HandyMenuFramework/Controllers/MenuController.swift; sourceTree = SOURCE_ROOT; };
+		A52A317D20FEB6A900E64617 /* ShortcutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortcutController.swift; sourceTree = "<group>"; };
+		A52D36E721138F8000FD2874 /* InstalledPluginsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledPluginsCollectionView.swift; sourceTree = "<group>"; };
+		A52D36E92113900A00FD2874 /* CollectionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableView.swift; sourceTree = "<group>"; };
+		A52D36F221149F9A00FD2874 /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		A52D36F421149FA600FD2874 /* SearchField.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchField.xib; sourceTree = "<group>"; };
+		A52D36F72114A98000FD2874 /* SearchFieldTextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFieldTextFieldCell.swift; sourceTree = "<group>"; };
+		A538052F210A49C60026E4A5 /* assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = assets.xcassets; sourceTree = "<group>"; };
+		A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandCollectionViewItem.swift; sourceTree = "<group>"; };
+		A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommandCollectionViewItem.xib; sourceTree = "<group>"; };
+		A5380536210A75CA0026E4A5 /* InstalledPluginData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstalledPluginData.swift; sourceTree = "<group>"; };
+		A5380538210B9A240026E4A5 /* PluginSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PluginSectionHeaderView.swift; sourceTree = "<group>"; };
+		A538053A210B9A3C0026E4A5 /* PluginSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PluginSectionHeaderView.xib; sourceTree = "<group>"; };
+		A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PluginSectionFooterView.xib; sourceTree = "<group>"; };
+		A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowViewController.swift; sourceTree = "<group>"; };
+		A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandTableViewItem.swift; sourceTree = "<group>"; };
+		A5398D1A21165A8600BD70EF /* NSImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSImage.swift; sourceTree = "<group>"; };
+		A53A829420FF726600FD83FA /* HandyMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyMenu.swift; sourceTree = "<group>"; };
+		A54EA40C211910D500C56E01 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNib.swift; sourceTree = "<group>"; };
+		A58FC0DC20FF83B1004730BB /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCommandScheme.m; sourceTree = "<group>"; };
+		A58FC0E020FF87F2004730BB /* HMCommandScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCommandScheme.h; sourceTree = "<group>"; };
+		A5905864210E0AF700B6079A /* OSLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLog.swift; sourceTree = "<group>"; };
+		A5A136B92115E9700042B594 /* InputPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputPanel.swift; sourceTree = "<group>"; };
+		A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HandyMenuFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HandyMenuFramework.h; sourceTree = "<group>"; };
+		A5A65C6220FBFECB00BBB6A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginController.swift; sourceTree = "<group>"; };
+		A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PluginData.swift; sourceTree = "<group>"; };
+		A5A65C6F20FBFF7900BBB6A8 /* DataCaretaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataCaretaker.swift; sourceTree = "<group>"; };
+		A5A65C7020FBFF7900BBB6A8 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		A5A65C8C20FCD94700BBB6A8 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		A5A65C8E20FCD95100BBB6A8 /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
+		A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcut.swift; sourceTree = "<group>"; };
+		A5AA666B20FFB10B0027BC45 /* SketchAppBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SketchAppBridge.h; sourceTree = "<group>"; };
+		A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SketchAppBridge.m; sourceTree = "<group>"; };
+		A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsWindowController.swift; sourceTree = "<group>"; };
+		A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsWindowController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95AE892424A555550050CA86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5A65C5A20FBFECB00BBB6A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95AE892824A555550050CA86 /* HandyMenuModern */ = {
+			isa = PBXGroup;
+			children = (
+				95AE892924A555550050CA86 /* HandyMenuModern.h */,
+				95AE892A24A555550050CA86 /* Info.plist */,
+				95AE892F24A555880050CA86 /* PluginController.swift */,
+				95AE893C24A56C800050CA86 /* PluginCoordinator.swift */,
+				95AE893124A555BB0050CA86 /* PluginStore.swift */,
+			);
+			path = HandyMenuModern;
+			sourceTree = "<group>";
+		};
+		A508BF07210F57A100024995 /* ShortcutField */ = {
+			isa = PBXGroup;
+			children = (
+				A508BF03210F579D00024995 /* ShortcutField.swift */,
+				A508BF04210F579D00024995 /* ShortcutField.xib */,
+			);
+			path = ShortcutField;
+			sourceTree = "<group>";
+		};
+		A508BF08210F96D300024995 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A508BF09210F96F100024995 /* Utils.swift */,
+				A5905864210E0AF700B6079A /* OSLog.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A52D36F621149FAA00FD2874 /* SearchField */ = {
+			isa = PBXGroup;
+			children = (
+				A52D36F221149F9A00FD2874 /* SearchField.swift */,
+				A52D36F421149FA600FD2874 /* SearchField.xib */,
+				A52D36F72114A98000FD2874 /* SearchFieldTextFieldCell.swift */,
+			);
+			path = SearchField;
+			sourceTree = "<group>";
+		};
+		A538052E210A49B20026E4A5 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				A538052F210A49C60026E4A5 /* assets.xcassets */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		A5380531210A63010026E4A5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A5A136BB2115EC990042B594 /* InputPanel */,
+				A508BF07210F57A100024995 /* ShortcutField */,
+				A5AA667020FFD1A10027BC45 /* SettingsWindowController.xib */,
+				A538053E210BB3AB0026E4A5 /* SettingsWindowViewController.swift */,
+				A5380542210BB9820026E4A5 /* TableView */,
+				A5380541210BB9760026E4A5 /* CollectionView */,
+				A52D36F621149FAA00FD2874 /* SearchField */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A5380541210BB9760026E4A5 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				A5380532210A6DBF0026E4A5 /* CommandCollectionViewItem.swift */,
+				A5380533210A6DBF0026E4A5 /* CommandCollectionViewItem.xib */,
+				A5380538210B9A240026E4A5 /* PluginSectionHeaderView.swift */,
+				A538053A210B9A3C0026E4A5 /* PluginSectionHeaderView.xib */,
+				A538053C210BB0780026E4A5 /* PluginSectionFooterView.xib */,
+				A52D36E721138F8000FD2874 /* InstalledPluginsCollectionView.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		A5380542210BB9820026E4A5 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				A5380543210DDCD30026E4A5 /* CommandTableViewItem.swift */,
+				A52D36E92113900A00FD2874 /* CollectionTableView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		A5398D1C21166DE600BD70EF /* Shortcut */ = {
+			isa = PBXGroup;
+			children = (
+				A5A65C9020FCD97B00BBB6A8 /* Shortcut.swift */,
+			);
+			path = Shortcut;
+			sourceTree = "<group>";
+		};
+		A53A829320FF725A00FD83FA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A5A136BC2116137A0042B594 /* Handy Menu */,
+				A5380531210A63010026E4A5 /* Settings */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A54EA4092119107200C56E01 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5398D1A21165A8600BD70EF /* NSImage.swift */,
+				A54EA40C211910D500C56E01 /* NSNib.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A57AC50B21125E67007C0EE1 /* Collections */ = {
+			isa = PBXGroup;
+			children = (
+				A5380536210A75CA0026E4A5 /* InstalledPluginData.swift */,
+				A5A65C8C20FCD94700BBB6A8 /* Collection.swift */,
+				A5A65C8E20FCD95100BBB6A8 /* CollectionItem.swift */,
+				A58FC0DC20FF83B1004730BB /* Command.swift */,
+			);
+			path = Collections;
+			sourceTree = "<group>";
+		};
+		A58FC0DE20FF87DD004730BB /* OldVersion */ = {
+			isa = PBXGroup;
+			children = (
+				A58FC0E020FF87F2004730BB /* HMCommandScheme.h */,
+				A58FC0DF20FF87F2004730BB /* HMCommandScheme.m */,
+			);
+			path = OldVersion;
+			sourceTree = "<group>";
+		};
+		A5A136BB2115EC990042B594 /* InputPanel */ = {
+			isa = PBXGroup;
+			children = (
+				A5A136B92115E9700042B594 /* InputPanel.swift */,
+			);
+			path = InputPanel;
+			sourceTree = "<group>";
+		};
+		A5A136BC2116137A0042B594 /* Handy Menu */ = {
+			isa = PBXGroup;
+			children = (
+				A53A829420FF726600FD83FA /* HandyMenu.swift */,
+			);
+			path = "Handy Menu";
+			sourceTree = "<group>";
+		};
+		A5A65C5420FBFECB00BBB6A8 = {
+			isa = PBXGroup;
+			children = (
+				A5A65C6020FBFECB00BBB6A8 /* HandyMenuFramework */,
+				95AE892824A555550050CA86 /* HandyMenuModern */,
+				A5A65C5F20FBFECB00BBB6A8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5A65C5F20FBFECB00BBB6A8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */,
+				95AE892724A555550050CA86 /* HandyMenuModern.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5A65C6020FBFECB00BBB6A8 /* HandyMenuFramework */ = {
+			isa = PBXGroup;
+			children = (
+				A54EA4092119107200C56E01 /* Extensions */,
+				A5A65C6220FBFECB00BBB6A8 /* Info.plist */,
+				A538052E210A49B20026E4A5 /* Assets */,
+				A5A65C8920FC0F2C00BBB6A8 /* Bridges */,
+				A5A65C6B20FBFF2C00BBB6A8 /* Controllers */,
+				A5A65C6A20FBFF2700BBB6A8 /* Models */,
+				A508BF08210F96D300024995 /* Utils */,
+				A53A829320FF725A00FD83FA /* Views */,
+			);
+			path = HandyMenuFramework;
+			sourceTree = "<group>";
+		};
+		A5A65C6A20FBFF2700BBB6A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5398D1C21166DE600BD70EF /* Shortcut */,
+				A57AC50B21125E67007C0EE1 /* Collections */,
+				A58FC0DE20FF87DD004730BB /* OldVersion */,
+				A5A65C6E20FBFF7900BBB6A8 /* PluginData.swift */,
+				A5A65C6F20FBFF7900BBB6A8 /* DataCaretaker.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5A65C6B20FBFF2C00BBB6A8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A5A65C6120FBFECB00BBB6A8 /* HandyMenuFramework.h */,
+				A5AA666F20FFD1A10027BC45 /* SettingsWindowController.swift */,
+				A5A65C6C20FBFF4100BBB6A8 /* PluginController.swift */,
+				A521562620FD3A0B002A5816 /* MenuController.swift */,
+				A5A65C7020FBFF7900BBB6A8 /* DataController.swift */,
+				A52A317D20FEB6A900E64617 /* ShortcutController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A5A65C8920FC0F2C00BBB6A8 /* Bridges */ = {
+			isa = PBXGroup;
+			children = (
+				A5AA666B20FFB10B0027BC45 /* SketchAppBridge.h */,
+				A5AA666C20FFB10B0027BC45 /* SketchAppBridge.m */,
+			);
+			path = Bridges;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		95AE892224A555550050CA86 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95AE892B24A555550050CA86 /* HandyMenuModern.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5A65C5B20FBFECB00BBB6A8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A58FC0E220FF87F2004730BB /* HMCommandScheme.h in Headers */,
+				A5A65C6320FBFECB00BBB6A8 /* HandyMenuFramework.h in Headers */,
+				A5AA666D20FFB10B0027BC45 /* SketchAppBridge.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		95AE892624A555550050CA86 /* HandyMenuModern */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95AE892E24A555550050CA86 /* Build configuration list for PBXNativeTarget "HandyMenuModern" */;
+			buildPhases = (
+				95AE892224A555550050CA86 /* Headers */,
+				95AE892324A555550050CA86 /* Sources */,
+				95AE892424A555550050CA86 /* Frameworks */,
+				95AE892524A555550050CA86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HandyMenuModern;
+			productName = HandyMenuModern;
+			productReference = 95AE892724A555550050CA86 /* HandyMenuModern.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A5A65C5D20FBFECB00BBB6A8 /* HandyMenuFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5A65C6620FBFECB00BBB6A8 /* Build configuration list for PBXNativeTarget "HandyMenuFramework" */;
+			buildPhases = (
+				A5A65C5920FBFECB00BBB6A8 /* Sources */,
+				A5A65C5A20FBFECB00BBB6A8 /* Frameworks */,
+				A5A65C5B20FBFECB00BBB6A8 /* Headers */,
+				A5A65C5C20FBFECB00BBB6A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HandyMenuFramework;
+			productName = HandyMenuFramework;
+			productReference = A5A65C5E20FBFECB00BBB6A8 /* HandyMenuFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5A65C5520FBFECB00BBB6A8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = "Sergey Dmitriev";
+				TargetAttributes = {
+					95AE892624A555550050CA86 = {
+						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1150;
+					};
+					95AE893324A5560D0050CA86 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					A5A65C5D20FBFECB00BBB6A8 = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1020;
+					};
+				};
+			};
+			buildConfigurationList = A5A65C5820FBFECB00BBB6A8 /* Build configuration list for PBXProject "HandyMenuFramework" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5A65C5420FBFECB00BBB6A8;
+			productRefGroup = A5A65C5F20FBFECB00BBB6A8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5A65C5D20FBFECB00BBB6A8 /* HandyMenuFramework */,
+				95AE892624A555550050CA86 /* HandyMenuModern */,
+				95AE893324A5560D0050CA86 /* Plugin Bundle */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95AE892524A555550050CA86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5A65C5C20FBFECB00BBB6A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A538053B210B9A3C0026E4A5 /* PluginSectionHeaderView.xib in Resources */,
+				A5380535210A6DBF0026E4A5 /* CommandCollectionViewItem.xib in Resources */,
+				A538053D210BB0780026E4A5 /* PluginSectionFooterView.xib in Resources */,
+				A52D36F521149FA600FD2874 /* SearchField.xib in Resources */,
+				A5380530210A49C60026E4A5 /* assets.xcassets in Resources */,
+				A508BF06210F579E00024995 /* ShortcutField.xib in Resources */,
+				A5AA667220FFD1A10027BC45 /* SettingsWindowController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		95AE893B24A556240050CA86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh ../build.sh\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95AE892324A555550050CA86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95AE893D24A56C800050CA86 /* PluginCoordinator.swift in Sources */,
+				95AE893224A555BB0050CA86 /* PluginStore.swift in Sources */,
+				95AE893024A555880050CA86 /* PluginController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5A65C5920FBFECB00BBB6A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A58FC0E120FF87F2004730BB /* HMCommandScheme.m in Sources */,
+				A5380544210DDCD30026E4A5 /* CommandTableViewItem.swift in Sources */,
+				A53A829520FF726600FD83FA /* HandyMenu.swift in Sources */,
+				A5AA666E20FFB10B0027BC45 /* SketchAppBridge.m in Sources */,
+				A5A65C8F20FCD95100BBB6A8 /* CollectionItem.swift in Sources */,
+				A521562720FD3A0B002A5816 /* MenuController.swift in Sources */,
+				A5A65C6D20FBFF4100BBB6A8 /* PluginController.swift in Sources */,
+				A5A65C7320FBFF7900BBB6A8 /* DataController.swift in Sources */,
+				A5398D1B21165A8600BD70EF /* NSImage.swift in Sources */,
+				A52D36E821138F8000FD2874 /* InstalledPluginsCollectionView.swift in Sources */,
+				A5380534210A6DBF0026E4A5 /* CommandCollectionViewItem.swift in Sources */,
+				A5A65C7120FBFF7900BBB6A8 /* PluginData.swift in Sources */,
+				A5AA667120FFD1A10027BC45 /* SettingsWindowController.swift in Sources */,
+				A52D36EA2113900A00FD2874 /* CollectionTableView.swift in Sources */,
+				A58FC0DD20FF83B1004730BB /* Command.swift in Sources */,
+				A5A65C9120FCD97B00BBB6A8 /* Shortcut.swift in Sources */,
+				A5A136BA2115E9700042B594 /* InputPanel.swift in Sources */,
+				A5A65C8D20FCD94700BBB6A8 /* Collection.swift in Sources */,
+				A54EA40D211910D500C56E01 /* NSNib.swift in Sources */,
+				A52D36F321149F9A00FD2874 /* SearchField.swift in Sources */,
+				A508BF0A210F96F100024995 /* Utils.swift in Sources */,
+				A52D36F82114A98000FD2874 /* SearchFieldTextFieldCell.swift in Sources */,
+				A5905865210E0AF700B6079A /* OSLog.swift in Sources */,
+				A5380539210B9A240026E4A5 /* PluginSectionHeaderView.swift in Sources */,
+				A5380537210A75CA0026E4A5 /* InstalledPluginData.swift in Sources */,
+				A508BF05210F579E00024995 /* ShortcutField.swift in Sources */,
+				A5A65C7220FBFF7900BBB6A8 /* DataCaretaker.swift in Sources */,
+				A52A317E20FEB6A900E64617 /* ShortcutController.swift in Sources */,
+				A538053F210BB3AB0026E4A5 /* SettingsWindowViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95AE893824A5561B0050CA86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5A65C5D20FBFECB00BBB6A8 /* HandyMenuFramework */;
+			targetProxy = 95AE893724A5561B0050CA86 /* PBXContainerItemProxy */;
+		};
+		95AE893A24A5561B0050CA86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95AE892624A555550050CA86 /* HandyMenuModern */;
+			targetProxy = 95AE893924A5561B0050CA86 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		95AE892C24A555550050CA86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z4GRJH5268;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HandyMenuModern/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 6.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sergeishere.HandyMenuModern;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		95AE892D24A555550050CA86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z4GRJH5268;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = HandyMenuModern/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MARKETING_VERSION = 6.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sergeishere.HandyMenuModern;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		95AE893524A5560D0050CA86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEPLOYMENT_LOCATION = NO;
+				DEVELOPMENT_TEAM = Z4GRJH5268;
+				INSTALL_PATH = "${PROJECT_DIR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		95AE893624A5560D0050CA86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEPLOYMENT_LOCATION = NO;
+				DEVELOPMENT_TEAM = Z4GRJH5268;
+				INSTALL_PATH = "${PROJECT_DIR}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A5A65C6420FBFECB00BBB6A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A5A65C6520FBFECB00BBB6A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A5A65C6720FBFECB00BBB6A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 5.2;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z4GRJH5268;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = HandyMenuFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 5.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sergeishere.HandyMenuFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A5A65C6820FBFECB00BBB6A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 5.2;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = Z4GRJH5268;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = HandyMenuFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 5.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sergeishere.HandyMenuFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95AE892E24A555550050CA86 /* Build configuration list for PBXNativeTarget "HandyMenuModern" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95AE892C24A555550050CA86 /* Debug */,
+				95AE892D24A555550050CA86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95AE893424A5560D0050CA86 /* Build configuration list for PBXAggregateTarget "Plugin Bundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95AE893524A5560D0050CA86 /* Debug */,
+				95AE893624A5560D0050CA86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5A65C5820FBFECB00BBB6A8 /* Build configuration list for PBXProject "HandyMenuFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5A65C6420FBFECB00BBB6A8 /* Debug */,
+				A5A65C6520FBFECB00BBB6A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5A65C6620FBFECB00BBB6A8 /* Build configuration list for PBXNativeTarget "HandyMenuFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5A65C6720FBFECB00BBB6A8 /* Debug */,
+				A5A65C6820FBFECB00BBB6A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5A65C5520FBFECB00BBB6A8 /* Project object */;
+}

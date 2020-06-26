@@ -23,7 +23,12 @@ function onImport(context) {
 }
 
 function loadAndRun(context, callback) {
-    var FRAMEWORK_NAME = 'HandyMenuFramework';
+
+    var osVersionString = NSProcessInfo.processInfo().operatingSystemVersionString();
+    var doesOsSupportModern = /11.[0-9]/.test(osVersionString) || /10.15.[0-9]/.test(osVersionString);
+
+    var FRAMEWORK_NAME = doesOsSupportModern ? 'HandyMenuModern' : 'HandyMenuFramework';
+
     try {
         callback();
     } catch (e) {

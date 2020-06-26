@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
 // swift-module-flags: -target x86_64-apple-macos10.13 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name HandyMenuFramework
 import Cocoa
 @_exported import HandyMenuFramework
@@ -17,7 +17,7 @@ extension CollectionItem : Swift.Encodable {
 extension CollectionItem : Swift.Decodable {
   public init(from decoder: Swift.Decoder) throws
 }
-public class MenuController {
+@_hasMissingDesignatedInitializers public class MenuController {
   public func configure(for collections: [HandyMenuFramework.Collection])
   public func show(for shortcut: HandyMenuFramework.Shortcut)
   @objc deinit
@@ -26,7 +26,7 @@ public protocol DataControllerDelegate : AnyObject {
   func dataController(_ dataController: HandyMenuFramework.DataController, didUpdate data: HandyMenuFramework.PluginData)
   func dataController(_ dataController: HandyMenuFramework.DataController, didLoad installedPlugins: [HandyMenuFramework.InstalledPluginData])
 }
-public class DataController {
+@_hasMissingDesignatedInitializers public class DataController {
   public var usedShortcuts: Swift.Set<Swift.Int> {
     get
   }
@@ -43,8 +43,8 @@ public struct PluginData : Swift.Codable {
   public var pluginVersion: Swift.Double
   public var collections: [HandyMenuFramework.Collection]
   public static var currentVersion: Swift.Double
-  public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 extension PluginData {
   public static var empty: HandyMenuFramework.PluginData {
@@ -55,7 +55,7 @@ public protocol SettingsWindowControllerDelegate : AnyObject {
   func settingsWindowController(_ settingsWindowController: HandyMenuFramework.SettingsWindowController, didUpdate menuData: [HandyMenuFramework.Collection])
   func settingsWindowController(didClose settingsWindowController: HandyMenuFramework.SettingsWindowController)
 }
-@objc public class SettingsWindowController : AppKit.NSWindowController {
+@objc @_inheritsConvenienceInitializers public class SettingsWindowController : AppKit.NSWindowController {
   weak public var delegate: HandyMenuFramework.SettingsWindowControllerDelegate?
   public var installedPlugins: [HandyMenuFramework.InstalledPluginData]
   @objc override dynamic public func windowDidLoad()
@@ -104,8 +104,8 @@ public struct Command : Swift.Codable, Swift.Equatable {
   public var pluginName: Swift.String
   public var pluginID: Swift.String
   public static func == (a: HandyMenuFramework.Command, b: HandyMenuFramework.Command) -> Swift.Bool
-  public func encode(to encoder: Swift.Encoder) throws
   public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
 }
 public struct Shortcut : Swift.Codable, Swift.Hashable {
   public var keyCode: Swift.Int
@@ -128,10 +128,10 @@ public struct Shortcut : Swift.Codable, Swift.Hashable {
   public var hashValue: Swift.Int {
     get
   }
-  public static func == (a: HandyMenuFramework.Shortcut, b: HandyMenuFramework.Shortcut) -> Swift.Bool
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
   public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: HandyMenuFramework.Shortcut, b: HandyMenuFramework.Shortcut) -> Swift.Bool
 }
 extension Shortcut {
   public static var empty: HandyMenuFramework.Shortcut {

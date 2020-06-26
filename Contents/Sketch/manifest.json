@@ -41,9 +41,9 @@
         ]
     },
     "identifier": "com.sergeishere.plugins.handymenu",
-    "version": "5.2",
+    "version": "6.0",
     "compatibleVersion": "60",
-    "description": "Quick access to the plugins you love through a contextual menu.\nCreate collections of plugins, rename them and assign different shortcuts.",
+    "description": "Quick access to the plugins and tools you love through a contextual menu.\nCreate collections of plugins or menus, rename them and assign different shortcuts.",
     "homepage": "https://github.com/sergeishere/HandyMenu-SketchPlugin",
     "author": "Sergey Dmitriev",
     "authorEmail": "el.pajaro.sabio@gmail.com",

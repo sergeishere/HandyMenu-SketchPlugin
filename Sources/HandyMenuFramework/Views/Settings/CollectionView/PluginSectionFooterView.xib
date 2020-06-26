@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="45"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="ZAs-8t-j5u">
+                    <rect key="frame" x="0.0" y="12" width="480" height="5"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="EbG-gA-fUX"/>
+                    </constraints>
+                </box>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="ZAs-8t-j5u" secondAttribute="trailing" id="173-Gq-tyx"/>
+                <constraint firstItem="ZAs-8t-j5u" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" constant="8" id="7mg-DH-PpE"/>
+                <constraint firstItem="ZAs-8t-j5u" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="N77-Yb-k4q"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="55.5"/>
+        </customView>
+    </objects>
+</document>

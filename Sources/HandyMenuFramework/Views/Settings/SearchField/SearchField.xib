@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SearchField" customModule="HandyMenuFramework" customModuleProvider="target">
+            <connections>
+                <outlet property="clearButton" destination="QQd-EM-Dea" id="sFW-Ah-Du4"/>
+                <outlet property="contentView" destination="a47-tA-nNk" id="n9F-ag-pch"/>
+                <outlet property="searchIcon" destination="2l3-Ah-5Ci" id="EnH-Tz-jmX"/>
+                <outlet property="textField" destination="sNj-F6-geh" id="Y3b-3t-OGT"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <box boxType="custom" cornerRadius="4" title="Box" titlePosition="noTitle" id="a47-tA-nNk">
+            <rect key="frame" x="0.0" y="0.0" width="303" height="114"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <view key="contentView" id="cfW-k4-vC8">
+                <rect key="frame" x="2" y="2" width="299" height="110"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2l3-Ah-5Ci">
+                        <rect key="frame" x="8" y="47" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="1SB-3j-Tkx"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="1rg-pw-E2O"/>
+                            <constraint firstAttribute="width" constant="16" id="ejA-Ze-L9s"/>
+                            <constraint firstAttribute="height" constant="16" id="vM3-cX-jG7"/>
+                        </constraints>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="icon_search" id="9Sr-9a-evq"/>
+                        <color key="contentTintColor" name="tertiaryLabelColor" catalog="System" colorSpace="catalog"/>
+                    </imageView>
+                    <button hidden="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QQd-EM-Dea">
+                        <rect key="frame" x="275" y="47" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="9A8-ZC-BKr"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="16" id="Kx8-yb-54n"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="16" id="QcL-kR-ORT"/>
+                            <constraint firstAttribute="width" constant="16" id="iJH-jc-eyF"/>
+                        </constraints>
+                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="icon_clear" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Gyu-pA-kvs">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="clear:" target="-2" id="j4u-YV-Fhl"/>
+                        </connections>
+                    </button>
+                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sNj-F6-geh" customClass="ResponsiveTextField" customModule="HandyMenuFramework" customModuleProvider="target">
+                        <rect key="frame" x="30" y="47" width="239" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" continuous="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" state="on" focusRingType="none" placeholderString="Search plugins" usesSingleLineMode="YES" id="Yj9-2Q-0Ju">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                        <connections>
+                            <action selector="textChanged:" target="-2" id="Jh6-Jb-ZIU"/>
+                        </connections>
+                    </textField>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2l3-Ah-5Ci" firstAttribute="centerY" secondItem="cfW-k4-vC8" secondAttribute="centerY" id="9UZ-Vd-mGZ"/>
+                    <constraint firstItem="sNj-F6-geh" firstAttribute="centerY" secondItem="cfW-k4-vC8" secondAttribute="centerY" id="Pbz-tg-CFp"/>
+                    <constraint firstItem="2l3-Ah-5Ci" firstAttribute="leading" secondItem="cfW-k4-vC8" secondAttribute="leading" constant="8" id="Yhy-eV-0QM"/>
+                    <constraint firstAttribute="trailing" secondItem="QQd-EM-Dea" secondAttribute="trailing" constant="8" id="a14-H4-iNR"/>
+                    <constraint firstAttribute="trailing" secondItem="sNj-F6-geh" secondAttribute="trailing" constant="32" id="e50-7x-MXg"/>
+                    <constraint firstItem="QQd-EM-Dea" firstAttribute="centerY" secondItem="cfW-k4-vC8" secondAttribute="centerY" id="ia0-Gd-h0i"/>
+                    <constraint firstItem="sNj-F6-geh" firstAttribute="leading" secondItem="cfW-k4-vC8" secondAttribute="leading" constant="32" id="uHn-1m-raU"/>
+                </constraints>
+            </view>
+            <color key="borderColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+            <color key="fillColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+            <size key="contentViewMargins" width="1" height="1"/>
+            <point key="canvasLocation" x="43.5" y="170"/>
+        </box>
+    </objects>
+    <resources>
+        <image name="icon_clear" width="16" height="16"/>
+        <image name="icon_search" width="16" height="16"/>
+    </resources>
+</document>
