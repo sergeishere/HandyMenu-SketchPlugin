@@ -13,7 +13,7 @@ PLUGIN_BUNDLE_PATH="../${PLUGIN_BUNDLE_NAME}/"
 CONTENT_SOURCE_PATH="../Contents"
 CONTENT_TARGET_PATH="${PLUGIN_BUNDLE_PATH}/Contents"
 
-PLUGIN_TARGET_PATH="/Users/serge/Library/Application Support/com.bohemiancoding.sketch3/Plugins/${PLUGIN_BUNDLE_NAME}"
+PLUGIN_TARGET_PATH="${HOME}/Library/Application Support/com.bohemiancoding.sketch3/Plugins/${PLUGIN_BUNDLE_NAME}"
 
 # Cleaning
 echo "Cleaning..."

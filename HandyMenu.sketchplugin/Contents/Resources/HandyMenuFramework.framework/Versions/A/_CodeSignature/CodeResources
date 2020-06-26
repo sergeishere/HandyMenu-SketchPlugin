@@ -6,11 +6,11 @@
 	<dict>
 		<key>Resources/Assets.car</key>
 		<data>
-		xNzUfJD3HLXrjPU11PSKFTvXNlo=
+		jGxU+I/6FjxrdlpU+KllHIhw4LA=
 		</data>
 		<key>Resources/CommandCollectionViewItem.nib</key>
 		<data>
-		EgA1CPz7DsEV0ub2shFXtA6+tvo=
+		vrD7Gy01z722vwbRC8XS4/rnTxE=
 		</data>
 		<key>Resources/Info.plist</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Resources/PluginSectionFooterView.nib</key>
 		<data>
-		WeKDCo6vOFa+kdPsDUKktS1p36s=
+		GAHVwu8OtL+RPWuhc4lNlQEciOQ=
 		</data>
 		<key>Resources/PluginSectionHeaderView.nib</key>
 		<data>
@@ -26,15 +26,15 @@
 		</data>
 		<key>Resources/SearchField.nib</key>
 		<data>
-		xWVzk5r1gk89Fcf8FFDvBiOhLic=
+		47/W41cYNCfWEqSvGzsWvbGAy6Q=
 		</data>
 		<key>Resources/SettingsWindowController.nib</key>
 		<data>
-		1yenIIQlzUQvW7BfyVOaCkjvR1c=
+		07xHenF+CMDNMm7iNNdJGIIT7wQ=
 		</data>
 		<key>Resources/ShortcutField.nib</key>
 		<data>
-		7vW+ixoZDPSc4vey+HpLtTkw8ro=
+		dHSOtZu4vKQpu7IB4IzbGdi+CFo=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -220,7 +220,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7OJhHqgQBuf3Dw2yToYbS17Hi6MiZHU9+lUbSJZC/iQ=
+			mkXbMrZRO5jayWdn9Ns88M3a9gYk2zLcEZki0F7p1aI=
 			</data>
 		</dict>
 		<key>Modules/HandyMenuFramework.swiftmodule/x86_64.swiftdoc</key>
@@ -241,7 +241,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			7OJhHqgQBuf3Dw2yToYbS17Hi6MiZHU9+lUbSJZC/iQ=
+			mkXbMrZRO5jayWdn9Ns88M3a9gYk2zLcEZki0F7p1aI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -255,14 +255,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eHKvIiEJyfAqeQPTl/Kj8lelGZY1b3CWBWnapwdEcE4=
+			oXf03swa5//iYBO04NQeK9dEG3cZ+av8AejGIEJuSTs=
 			</data>
 		</dict>
 		<key>Resources/CommandCollectionViewItem.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			RWr6W4v4NGrepj8zy14/5biS2tSg0nQHK6L57mvkn3A=
+			emI+CpT1VQLx4EAN+WkT2NH9SFf/GlfFou7q6yUVhYo=
 			</data>
 		</dict>
 		<key>Resources/Info.plist</key>
@@ -276,7 +276,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ODwUgMmeN2qt/gTyoRrFKm8HHlkw+dsIVHR9/SDNSKk=
+			BoM3m85jsCbhPJG0gr9niebDb4cQN6CLXXNjSmC3qLc=
 			</data>
 		</dict>
 		<key>Resources/PluginSectionHeaderView.nib</key>
@@ -290,21 +290,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			u+sf16e44cS5grJnWHwG8nrLwQfzucUSYSrj9x3Mtco=
+			kpruttiSfofxxoyCSCNr99viKfovQSAgUACLCXqOcsA=
 			</data>
 		</dict>
 		<key>Resources/SettingsWindowController.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			6OBSpqDi51z3Nu7FnYAjN3iu5Y9nF0h9ax3xv0bFFEM=
+			Jxnk3suRiPn4EAkkMvy3R3DuV6tOAahWc0hfRljneOY=
 			</data>
 		</dict>
 		<key>Resources/ShortcutField.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			t+9wALY0pL3FTRUVDCfh0SolAgOWKtokgNNQU1AELAg=
+			HTNeoym4b0MLP6XiWT4bnBpMgk59oV1L4Q0eQaCryCc=
 			</data>
 		</dict>
 	</dict>
